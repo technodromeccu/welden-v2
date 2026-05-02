@@ -1,0 +1,20 @@
+[
+  {
+    "userId": "user_admin",
+    "email": "admin@welden.example",
+    "salt": "00000000000000000000000000000000",
+    "passwordHash": "296f8c35fa7e964c7a341c8baddb4638d55d50a2ef370331c6ca3e0bc9e2d8571f12a4de4538ace3c1da3ccd798a16523606350e553c75454de9f7f247060d3b"
+  },
+  {
+    "userId": "user_manager",
+    "email": "manager@welden.example",
+    "salt": "11111111111111111111111111111111",
+    "passwordHash": "e5b94c02c803a2a40aaa0dbb9118af966692d813c83ff23c0e5785f1f08b69e52da629da586f28e3f2c18b404ee61371e90503b1fd47f72f5ef3d4dfffd6145d"
+  },
+  {
+    "userId": "user_agent",
+    "email": "agent@welden.example",
+    "salt": "22222222222222222222222222222222",
+    "passwordHash": "d58f84ffead456734dbc34ebd36dae15009cdcd47a5a890ef633d5b4ba2577bc31921dd8f4b89443fc75cbb8395948ae538b4796dcd7b2c59e1b8f73207fbcef"
+  }
+]

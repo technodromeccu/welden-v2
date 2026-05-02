@@ -1,0 +1,26 @@
+[
+  {
+    "id": "user_admin",
+    "name": "Aarav Menon",
+    "email": "admin@welden.example",
+    "role": "admin",
+    "active": true,
+    "notificationPreference": "all"
+  },
+  {
+    "id": "user_manager",
+    "name": "Kavya Rao",
+    "email": "manager@welden.example",
+    "role": "manager",
+    "active": true,
+    "notificationPreference": "all"
+  },
+  {
+    "id": "user_agent",
+    "name": "Rohan Shah",
+    "email": "agent@welden.example",
+    "role": "agent",
+    "active": true,
+    "notificationPreference": "assigned_only"
+  }
+]

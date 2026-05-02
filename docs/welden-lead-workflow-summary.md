@@ -1,0 +1,169 @@
+# Welden Lead Workflow Summary
+
+## Overview
+
+Welden now operates on a lead-only workflow.
+
+Every customer inquiry becomes a lead. The lead is assigned, reviewed, followed up, and moved through the sales process until it is marked won or lost.
+
+## How A Lead Enters The System
+
+A lead can enter the system through:
+
+- chatbot inquiry
+- website consultation form
+
+As soon as a lead is created:
+
+- a lead record is created in the admin
+- the lead is assigned to the default owner or selected staff member
+- an internal email is sent through Resend to the assigned staff member and the admin notification email list
+- the first call deadline is set for within 2 working days
+
+## Lead Types
+
+### Normal Lead
+
+A normal lead is an inquiry that needs review and first contact.
+
+Examples:
+
+- machine inquiry
+- callback request
+- technical discussion
+- custom requirement
+
+### Lead With Quote
+
+A lead with quote is a lead where the chatbot has already issued a preliminary quotation.
+
+These leads should be treated as higher priority because the commercial discussion has already started.
+
+## First Call Rule
+
+Every new lead must receive a first staff call within 2 working days.
+
+The admin shows this clearly so the team can act on time.
+
+The first call status appears as:
+
+- Call pending
+- Call due today
+- Call overdue
+- First call complete
+
+This makes it easy for admin and staff to see which leads need immediate action.
+
+## Workflow Stages
+
+The lead moves through these stages:
+
+1. New
+2. Quoted
+3. Contact Scheduled
+4. Contacted
+5. Qualified
+6. Proposal Sent
+7. Won
+8. Lost
+
+## Basic Working Flow
+
+1. Lead enters the system
+2. Lead is assigned to staff
+3. Admin and assigned staff receive internal email notification
+4. Staff reviews the requirement
+5. Staff makes the first call within 2 working days
+6. Staff updates the lead status and notes
+7. Staff schedules the next follow-up if needed
+8. Lead moves toward quote, proposal, won, or lost
+
+## How Follow-Up Works
+
+### Scenario 1: Normal lead
+
+If the lead is a normal inquiry:
+
+1. staff reviews the customer details and machine requirement
+2. staff makes the first call
+3. staff qualifies the opportunity
+4. staff updates the stage
+5. staff schedules the next follow-up if the discussion is still active
+
+Typical movement:
+
+- New to Contacted
+- Contacted to Qualified
+- Qualified to Proposal Sent, Won, or Lost
+
+### Scenario 2: Lead with quote from chatbot
+
+If the chatbot has already issued a preliminary quotation:
+
+1. the lead appears as a lead with quote
+2. staff reviews the quotation reference and customer requirement
+3. staff calls the customer within the first-call deadline
+4. staff confirms interest, questions, scope, pricing, and next decision step
+5. staff schedules follow-up until the lead is closed
+
+Typical movement:
+
+- Quoted to Proposal Sent
+- Quoted to Won
+- Quoted to Lost
+
+### Scenario 3: Customer does not answer
+
+If the customer does not answer:
+
+- staff logs the contact attempt
+- staff marks the lead for follow-up
+- staff schedules the next call
+
+### Scenario 4: Customer asks for a later callback
+
+If the customer asks to speak later:
+
+- staff records the preferred callback time
+- the lead remains visible for scheduled follow-up
+- staff calls again at the agreed time
+
+## Email Notifications
+
+When a new lead is created, an internal email is sent to:
+
+- the assigned staff member
+- the admin or internal notification email list configured in settings
+
+The email includes the main lead details and the first call deadline so the team can act quickly.
+
+## Reminder And Follow-Up Discipline
+
+After the first call, the lead continues under the normal follow-up process.
+
+Staff should always keep these points updated:
+
+- owner
+- stage
+- notes
+- next follow-up time
+- customer response
+
+No active lead should remain open without a clear next step.
+
+## Closing The Lead
+
+A lead is closed as:
+
+- Won when the opportunity converts successfully
+- Lost when the customer does not proceed or the opportunity is no longer active
+
+## Operating Principle
+
+The workflow is working properly when every open lead clearly shows:
+
+- who owns it
+- whether the first call is pending, due, overdue, or complete
+- what the current stage is
+- what happens next
+- when the next follow-up is due

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "kb_1",
+    "title": "Welden Product Overview",
+    "sourceType": "text",
+    "summary": "Overview of machine families and their industrial value.",
+    "extractedText": "Welden builds automated machines for pipe cutting, idler welding, double end boring, and bearing pushing. The focus is production efficiency, reliability, and repeatable output.",
+    "active": true,
+    "updatedAt": "2026-03-20T00:00:00.000Z"
+  },
+  {
+    "id": "kb_2",
+    "title": "Advisor Qualification Rules",
+    "sourceType": "text",
+    "summary": "Internal rules for matching line requirements to machine categories.",
+    "extractedText": "Pipe and tube cutting needs should bias toward the automated pipe cutting system. Repetitive welding of idlers should bias toward the idler welding machine. Bore preparation or simultaneous end boring should bias toward double end boring. Bearing insertion and controlled assembly pressure should bias toward bearing pushing.",
+    "active": true,
+    "updatedAt": "2026-03-20T00:00:00.000Z"
+  }
+]

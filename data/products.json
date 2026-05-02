@@ -1,0 +1,650 @@
+[
+  {
+    "id": "prod_idler_welding",
+    "title": "Automatic Conveyor Idler Welding Machine",
+    "shortName": "",
+    "slug": "idler-welding-machine",
+    "category": "Idler Welding",
+    "summary": "Automated dual-torch rotary welding for idler assembly.",
+    "detailedDescription": "Experience simultaneous, uniform down-hand welding on both ends of the conveyor idler. Driven by advanced PLC control, this automated process delivers consistent weld quality every cycle, significantly reducing rework and improving structural integrity across production shifts.",
+    "capabilities": [
+      "Simultaneous Dual-Torch Action",
+      "Advanced PLC Control",
+      "Pneumatic Clamping",
+      "Centralized Welding Control",
+      "Heavy-duty 400 Amp Power Source"
+    ],
+    "idealUseCases": [
+      "Conveyor idler assembly",
+      "Rotary welding lines",
+      "Uniform dual-end weld operations"
+    ],
+    "industries": [
+      "Bulk handling equipment",
+      "Conveyor manufacturing",
+      "Fabrication lines"
+    ],
+    "media": [
+      "/images/machines/Automatic-Conveyor-Idler-Welding-Machine.png"
+    ],
+    "brochureUrl": "/brochures/uploads/idler-welding.pdf",
+    "published": true,
+    "accent": "#29a3d8",
+    "usp": "Simultaneous dual-torch action for balanced thermal input.",
+    "heroTitle": "Rotary Welding in Under 40 Seconds.",
+    "heroPoints": [
+      "Simultaneous dual-torch action for balanced thermal input.",
+      "Heavy-duty power sources engineered for 24/7 production."
+    ],
+    "heroImagePosition": "center center",
+    "specs": [
+      {
+        "label": "Model",
+        "value": "THIWM"
+      },
+      {
+        "label": "Power Input",
+        "value": "3 phase 415V / 50 Hz"
+      },
+      {
+        "label": "Rated Duty Cycle",
+        "value": "60%"
+      },
+      {
+        "label": "Rated Output Current",
+        "value": "400 A"
+      },
+      {
+        "label": "Welding Wire",
+        "value": "0.8 - 1.2 mm"
+      },
+      {
+        "label": "Workpiece Length",
+        "value": "200 mm - 2200 mm"
+      },
+      {
+        "label": "Workpiece Diameter",
+        "value": "76 mm - 194 mm"
+      },
+      {
+        "label": "Spindle Speed",
+        "value": "1 - 6 RPM"
+      },
+      {
+        "label": "Dimension (L x W x H) (Approximately)",
+        "value": "3600 x 700 x 1250 mm"
+      },
+      {
+        "label": "Weight (Approximately)",
+        "value": "750 Kg"
+      }
+    ],
+    "howItWorks": [
+      {
+        "step": 1,
+        "title": "Load and Clamp",
+        "body": "The idler assembly is placed on the rotary fixture and secured with pneumatic clamping for consistent, repeatable positioning."
+      },
+      {
+        "step": 2,
+        "title": "Torch Positioning",
+        "body": "The PLC activates dual-torch positioning, aligning both MIG torches with the weld joints at each end of the idler."
+      },
+      {
+        "step": 3,
+        "title": "Simultaneous Rotary Welding",
+        "body": "The idler rotates at 1–6 RPM while both torches deposit weld beads simultaneously, balancing thermal input on both ends in a single pass."
+      },
+      {
+        "step": 4,
+        "title": "Cycle Complete",
+        "body": "Torches retract, clamping is released, and the finished assembly exits the fixture ready for inspection. Next part loads immediately."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What welding process does the idler welding machine use?",
+        "answer": "The machine uses MIG/MAG welding with dual 400A torches operating simultaneously for down-hand rotary welding on both ends of the idler."
+      },
+      {
+        "question": "What rotation speed is used during welding?",
+        "answer": "The idler rotates at 1–6 RPM, PLC-controlled, to deliver a consistent weld bead profile regardless of idler diameter."
+      },
+      {
+        "question": "What workpiece dimensions does it support?",
+        "answer": "The machine handles workpiece lengths from 200mm to 2200mm and outer diameters from 76mm to 194mm — covering the full range of standard conveyor idler sizes."
+      },
+      {
+        "question": "Does simultaneous dual-torch welding reduce distortion?",
+        "answer": "Yes. Welding both ends at the same time balances thermal input symmetrically, which minimizes the asymmetric distortion that is common in sequential single-torch welding."
+      },
+      {
+        "question": "Can the welding machine operate continuously on production shifts?",
+        "answer": "Yes. The heavy-duty 400A power sources and PLC-driven automation are rated for continuous multi-shift operation without performance degradation."
+      }
+    ],
+    "featuredImage": "/images/machines/Automatic-Conveyor-Idler-Welding-Machine.png",
+    "heroImage": "/images/machines/Automatic-Conveyor-Idler-Welding-Machine.png",
+    "videoUrl": "",
+    "landingCardLayout": [
+      {
+        "id": "landing_card:cardMedia",
+        "surface": "landing_card",
+        "type": "cardMedia",
+        "hidden": false
+      },
+      {
+        "id": "landing_card:categoryBadge",
+        "surface": "landing_card",
+        "type": "categoryBadge",
+        "hidden": false
+      },
+      {
+        "id": "landing_card:title",
+        "surface": "landing_card",
+        "type": "title",
+        "hidden": false
+      },
+      {
+        "id": "landing_card:summary",
+        "surface": "landing_card",
+        "type": "summary",
+        "hidden": false
+      },
+      {
+        "id": "landing_card:usp",
+        "surface": "landing_card",
+        "type": "usp",
+        "hidden": false
+      },
+      {
+        "id": "landing_card:capabilityChips",
+        "surface": "landing_card",
+        "type": "capabilityChips",
+        "hidden": false
+      },
+      {
+        "id": "landing_card:primaryCta",
+        "surface": "landing_card",
+        "type": "primaryCta",
+        "hidden": false
+      }
+    ],
+    "machinePageLayout": [
+      {
+        "id": "machine_page:hero",
+        "surface": "machine_page",
+        "type": "hero",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:overview",
+        "surface": "machine_page",
+        "type": "overview",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:quickSpecs",
+        "surface": "machine_page",
+        "type": "quickSpecs",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:capabilities",
+        "surface": "machine_page",
+        "type": "capabilities",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:useCases",
+        "surface": "machine_page",
+        "type": "useCases",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:industries",
+        "surface": "machine_page",
+        "type": "industries",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:howItWorks",
+        "surface": "machine_page",
+        "type": "howItWorks",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:specTable",
+        "surface": "machine_page",
+        "type": "specTable",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:gallery",
+        "surface": "machine_page",
+        "type": "gallery",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:resourcePanel",
+        "surface": "machine_page",
+        "type": "resourcePanel",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:faq",
+        "surface": "machine_page",
+        "type": "faq",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:consultation",
+        "surface": "machine_page",
+        "type": "consultation",
+        "hidden": false
+      },
+      {
+        "id": "machine_page:relatedMachines",
+        "surface": "machine_page",
+        "type": "relatedMachines",
+        "hidden": false
+      }
+    ],
+    "machinePageSectionOrder": [],
+    "updatedAt": "2026-04-23T11:06:58.220Z"
+  },
+  {
+    "id": "prod_double_end_boring",
+    "title": "Automatic Double End Boring Machine",
+    "shortName": "Boring Machine",
+    "slug": "double-end-boring-machine",
+    "category": "Double End Boring",
+    "summary": "Simultaneous dual-head boring for precision bearing housings.",
+    "detailedDescription": "Engineered with a heavy-duty cast-iron body, this automatic double end boring machine delivers unmatched durability and vibration-free stability. This high-precision machine performs simultaneous facing, boring, and outer chamfering on both ends of the conveyor idler pipe, dramatically reducing cycle time and increasing throughput.",
+    "capabilities": [
+      "Robust Cast-Iron Construction",
+      "7-inch HMI Interface",
+      "Simultaneous Dual-End Machining",
+      "PLC-Based Automation",
+      "Hydraulic Vice Clamping"
+    ],
+    "idealUseCases": [
+      "Conveyor idler bearing housings",
+      "Dual-end facing and boring",
+      "High-volume precision machining"
+    ],
+    "industries": [
+      "Conveyor idler manufacturing",
+      "Industrial components",
+      "Production machining"
+    ],
+    "media": [
+      "/images/machines/Automatic-Double-End-Boring-Machine.png"
+    ],
+    "brochureUrl": "/brochures/uploads/double-end-boring.pdf",
+    "published": true,
+    "accent": "#3b49a8",
+    "usp": "Dual-head boring for perfect bearing housing alignment.",
+    "heroTitle": "Precision ID Boring in Under 40 Seconds.",
+    "heroPoints": [
+      "Dual-head boring for perfect bearing housing alignment.",
+      "Engineered for high-volume conveyor idler production."
+    ],
+    "heroImagePosition": "center center",
+    "specs": [
+      {
+        "label": "Operating Pressure of Hydraulic System",
+        "value": "40 - 50 BAR"
+      },
+      {
+        "label": "Spindle Speed",
+        "value": "572 RPM"
+      },
+      {
+        "label": "Maximum Diameter Of Pipe",
+        "value": "194.7 mm"
+      },
+      {
+        "label": "Minimum Diameter Of Pipe",
+        "value": "76 mm"
+      },
+      {
+        "label": "Feeding Speed",
+        "value": "0.3-0.6 mm/sec"
+      },
+      {
+        "label": "Cutting Depth (can be increased)",
+        "value": "10 mm"
+      },
+      {
+        "label": "Spindle Motor (Two Numbers)",
+        "value": "5 HP / 3.7 KW"
+      },
+      {
+        "label": "Hydraulic Power Pack Motor",
+        "value": "2 HP / 105 KW"
+      },
+      {
+        "label": "Weight (Approximately)",
+        "value": "3.2 TON"
+      },
+      {
+        "label": "Dimension (L x W x H) (Approximately)",
+        "value": "Not specified"
+      },
+      {
+        "label": "Processing Precision",
+        "value": "0.3-0.5 mm"
+      }
+    ],
+    "howItWorks": [
+      {
+        "step": 1,
+        "title": "Load and Clamp",
+        "body": "The pipe is positioned and secured by the hydraulic vice clamp, ensuring vibration-free stability for precision machining."
+      },
+      {
+        "step": 2,
+        "title": "Dual-Head Approach",
+        "body": "The PLC activates both boring heads simultaneously, indexing them to the programmed boring depth and diameter."
+      },
+      {
+        "step": 3,
+        "title": "Simultaneous Machining",
+        "body": "Both ends of the pipe are faced, bored, and chamfered in a single continuous cycle — no double-handling required."
+      },
+      {
+        "step": 4,
+        "title": "Retract and Eject",
+        "body": "Heads retract automatically and the finished part is released, ready for the next cycle in under 40 seconds."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What pipe diameters can the double end boring machine handle?",
+        "answer": "The machine handles outer diameters from 76mm to 194.7mm, covering standard conveyor idler pipe sizes used in bulk handling systems."
+      },
+      {
+        "question": "What is the cycle time for dual-end boring?",
+        "answer": "A complete facing, boring, and chamfering cycle on both ends takes under 40 seconds, enabling high-volume production throughput."
+      },
+      {
+        "question": "Does the machine bore both ends at the same time?",
+        "answer": "Yes. Both boring heads operate simultaneously in a single setup, eliminating the need to re-chuck or reposition the pipe — reducing cycle time and positioning error."
+      },
+      {
+        "question": "What type of control system does it use?",
+        "answer": "The machine uses a PLC-based control system with a 7-inch HMI for parameter setting, with hydraulic clamping and programmable spindle speeds."
+      },
+      {
+        "question": "Is the boring machine suitable for 24/7 production shifts?",
+        "answer": "Yes. The heavy-duty cast-iron frame is engineered specifically for vibration-free stability and continuous industrial operation across extended shifts."
+      }
+    ]
+  },
+  {
+    "id": "prod_pipe_cutting",
+    "title": "Automatic Pipe Cutting Machine",
+    "shortName": "Pipe Cutter",
+    "slug": "pipe-cutting-machine",
+    "category": "Pipe Cutting",
+    "summary": "High-precision, unmanned pipe cutting for production lines.",
+    "detailedDescription": "The Weldman automatic pipe cutting machine is a fully automated solution where the cutting tool remains stationary while the pipe rotates at controlled speed. The pipe is fed to the cutting head using a hydraulic motor-operated trolley, delivering repeatable cut length, excellent end parallelism, and continuous output.",
+    "capabilities": [
+      "Fully Automated Operation",
+      "Hydraulic Motor-Operated Trolley",
+      "Heavy-Duty Collet Actuated Clamping",
+      "Auto Job Loading Structure",
+      "PLC-Controlled Process"
+    ],
+    "idealUseCases": [
+      "Cut-to-length pipe production",
+      "Continuous unmanned loading",
+      "Tube and pipe line automation"
+    ],
+    "industries": [
+      "Tube processing",
+      "Steel fabrication",
+      "Industrial production lines"
+    ],
+    "media": [
+      "/images/machines/Automatic-Pipe-Cutting-Machine.png"
+    ],
+    "brochureUrl": "/brochures/uploads/pipe-cutting.pdf",
+    "published": true,
+    "accent": "#244b93",
+    "usp": "Auto-loads 6 m pipe for continuous, unmanned operation.",
+    "heroTitle": "25-Second Taper-Free Pipe Cutting.",
+    "heroPoints": [
+      "Auto-loads 6 m pipe for continuous, unmanned operation.",
+      "Hydraulic chuck and parting tool for lathe-quality precision cutting."
+    ],
+    "heroImagePosition": "center center",
+    "specs": [
+      {
+        "label": "Minimum Diameter of Pipe to be cut",
+        "value": "76 mm"
+      },
+      {
+        "label": "Maximum Diameter of Pipe to be cut",
+        "value": "168.3 mm"
+      },
+      {
+        "label": "Minimum Length of Pipe to be cut",
+        "value": "200 mm"
+      },
+      {
+        "label": "Maximum Length of Pipe to be cut",
+        "value": "2200 mm"
+      },
+      {
+        "label": "Clamping",
+        "value": "Collate with Hydraulic Cylinder"
+      },
+      {
+        "label": "Sequence of Operation",
+        "value": "By PLC"
+      },
+      {
+        "label": "Maximum Length of Pipe that can be taken by the Machine",
+        "value": "6000 mm"
+      },
+      {
+        "label": "Hydraulic System Pressure",
+        "value": "50 BAR"
+      },
+      {
+        "label": "Tool Feeding Speed",
+        "value": "0.2 mm/sec - 0.8 mm/sec"
+      },
+      {
+        "label": "Spindle Drive Motor",
+        "value": "7.5 HP"
+      },
+      {
+        "label": "Hydraulic System Motor",
+        "value": "5.0 HP"
+      },
+      {
+        "label": "Dimension (L x W x H) (Approximately)",
+        "value": "13 m x 5.5 m x 1.5 m Height"
+      },
+      {
+        "label": "Weight (Approximately)",
+        "value": "1.5 Ton"
+      },
+      {
+        "label": "Repeated Precision of Cut Length",
+        "value": "0.8 mm"
+      },
+      {
+        "label": "Both End Parallelism of Cut-Off Pipe",
+        "value": "+/- 0.3 mm"
+      }
+    ],
+    "howItWorks": [
+      {
+        "step": 1,
+        "title": "Auto-Load Raw Pipe",
+        "body": "A pipe up to 6 metres is loaded onto the integrated auto-loading structure, which feeds it into the cutting head without manual handling."
+      },
+      {
+        "step": 2,
+        "title": "Hydraulic Chuck Clamping",
+        "body": "The collet-type hydraulic chuck clamps the pipe securely, eliminating movement during rotation and ensuring a taper-free cut."
+      },
+      {
+        "step": 3,
+        "title": "Indexed Rotation and Cut",
+        "body": "The PLC-controlled trolley advances the pipe to the programmed cut length. The stationary cutting tool cuts as the pipe rotates."
+      },
+      {
+        "step": 4,
+        "title": "Eject and Repeat",
+        "body": "The cut section is automatically ejected. The trolley advances for the next cut and the cycle repeats unmanned until the full pipe is consumed."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What pipe sizes can the automatic pipe cutting machine handle?",
+        "answer": "The machine cuts pipes with outer diameters from 76mm to 168.3mm and produces cut lengths from 200mm to 2200mm."
+      },
+      {
+        "question": "Can it handle full-length 6-metre industrial pipes?",
+        "answer": "Yes. The integrated auto-loading structure accommodates pipes up to 6000mm (6 metres), feeding them automatically without manual reloading between cuts."
+      },
+      {
+        "question": "What is the cut precision?",
+        "answer": "The machine delivers repeated cut length precision of ±0.8mm and both-end parallelism within ±0.3mm, consistent across the full production run."
+      },
+      {
+        "question": "Does the machine require an operator during cutting?",
+        "answer": "No. Once the pipe is loaded and parameters are set via PLC, the machine runs the complete cut-and-eject sequence unmanned until the pipe is fully consumed."
+      },
+      {
+        "question": "What clamping system does it use?",
+        "answer": "A collet-type hydraulic chuck clamps the pipe securely during rotation, preventing movement and eliminating the taper common in unsupported cutting operations."
+      }
+    ]
+  },
+  {
+    "id": "prod_bearing_pushing",
+    "title": "Bearing Pushing Machine",
+    "shortName": "Bearing Press",
+    "slug": "bearing-pushing-machine",
+    "category": "Bearing Pushing",
+    "summary": "Safe and precise automated bearing installation.",
+    "detailedDescription": "Engineered for controlled assembly, the bearing pushing machine uses synchronized concentric cylinders to apply uniform opposing pressure. That eliminates manual hammering, protects the bearing seat, and improves assembly integrity at production pace.",
+    "capabilities": [
+      "Flawless Bearing Seating",
+      "Proprietary Hydraulic Dampening",
+      "Optimized Assembly Integrity",
+      "Balanced Axial Force Application",
+      "Heavy-Duty Rigid Framework"
+    ],
+    "idealUseCases": [
+      "Dual-end bearing pressing",
+      "Conveyor idler assembly",
+      "Damage-free bearing seating"
+    ],
+    "industries": [
+      "Assembly lines",
+      "Conveyor idler production",
+      "Industrial machinery"
+    ],
+    "media": [
+      "/images/machines/Bearing-Pushing-Machine.png"
+    ],
+    "brochureUrl": "/brochures/uploads/bearing-pushing.pdf",
+    "published": true,
+    "accent": "#4a78b8",
+    "usp": "Simultaneous dual-press action for balanced assembly.",
+    "heroTitle": "Precision Dual-End Bearing Pressing.",
+    "heroPoints": [
+      "Simultaneous dual-press action for balanced assembly.",
+      "Eliminates manual hammering and prevents bearing damage."
+    ],
+    "heroImagePosition": "center center",
+    "specs": [
+      {
+        "label": "Input Power Supply",
+        "value": "3 phase 415V"
+      },
+      {
+        "label": "Machine Mandrel Centre Height",
+        "value": "900"
+      },
+      {
+        "label": "Pressing Assembly Roller Diameter",
+        "value": "76 - 219 mm"
+      },
+      {
+        "label": "Pressing Assembly Roller Length",
+        "value": "200 - 2200 mm"
+      },
+      {
+        "label": "Hydraulic System Pressure",
+        "value": "40 BAR"
+      },
+      {
+        "label": "Hydraulic System Motor",
+        "value": "3.7 KW / 5 HP"
+      },
+      {
+        "label": "Dimensions [L x W x H] (Approximately)",
+        "value": "4200 x 550 x 1000 (H) mm"
+      },
+      {
+        "label": "Weight (Approximately)",
+        "value": "900 Kg"
+      }
+    ],
+    "featuredImage": "/images/machines/Bearing-Pushing-Machine.png",
+    "heroImage": "/images/machines/Bearing-Pushing-Machine.png",
+    "videoUrl": "",
+    "howItWorks": [
+      {
+        "step": 1,
+        "title": "Position the Assembly",
+        "body": "The idler shaft is placed on the mandrel between both press heads, with bearings seated by hand on each shaft end."
+      },
+      {
+        "step": 2,
+        "title": "PLC-Controlled Press Cycle",
+        "body": "The PLC activates the synchronized concentric cylinders, which advance from both sides simultaneously toward the bearing seats."
+      },
+      {
+        "step": 3,
+        "title": "Controlled Hydraulic Press",
+        "body": "Both bearings are pressed to full seating depth with 40 BAR of controlled hydraulic force — no impact load, no seat damage."
+      },
+      {
+        "step": 4,
+        "title": "Confirm and Release",
+        "body": "Hydraulic pressure confirms full seating, cylinders retract, and the assembled idler is removed. The cycle repeats immediately."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "What roller and bearing sizes does the bearing pushing machine support?",
+        "answer": "The machine handles roller diameters from 76mm to 219mm and assembly lengths from 200mm to 2200mm, covering standard conveyor idler configurations."
+      },
+      {
+        "question": "How does the machine prevent bearing damage during pressing?",
+        "answer": "Synchronized concentric cylinders apply controlled, balanced axial force from both sides simultaneously — replacing manual hammering, which creates impact loads that damage bearing seats and races."
+      },
+      {
+        "question": "What hydraulic pressure does the machine operate at?",
+        "answer": "The pressing system operates at 40 BAR, providing consistent seating force without over-pressing — critical for preserving bearing fit tolerance."
+      },
+      {
+        "question": "Is it suitable for high-volume production?",
+        "answer": "Yes. Each press cycle is fast and fully repeatable. PLC sequencing ensures consistent stroke and pressure every cycle, with no dependency on operator skill."
+      },
+      {
+        "question": "Can it handle a wide range of conveyor idler assembly sizes?",
+        "answer": "Yes. The adjustable mandrel centres and heavy-duty framework accommodate the full range of standard conveyor idler sizes, from lightweight to heavy-duty assemblies."
+      }
+    ]
+  }
+]

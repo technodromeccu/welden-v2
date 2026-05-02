@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Brand palette ─────────────────────────────────── */
+  --color-forge:              #0a1628;   /* near-black navy */
+  --color-steel:              #1e3a5f;   /* mid navy */
+  --color-iron:               #2d5282;   /* interactive navy */
+  --color-arc:                #f59e0b;   /* amber accent / CTA */
+  --color-arc-dim:            #d97706;   /* amber hover */
+  --color-arc-glow:           rgba(245,158,11,0.35);
+
+  /* ── Neutral surfaces ──────────────────────────────── */
+  --color-surface:            #f8f7f4;   /* warm off-white page bg */
+  --color-panel:              #efeee9;   /* card backgrounds */
+  --color-border:             #d4d0c8;   /* dividers */
+  --color-muted:              #555f6b;   /* secondary text — darkened to ≥4.5:1 on surface (DS-09) */
+  --color-on-dark:            #e2e8f0;   /* text on dark surfaces */
+  --color-on-dark-dim:        rgba(226,232,240,0.64);
+
+  /* ── Semantic (kept for compatibility) ─────────────── */
+  --color-primary:            #2d5282;
+  --color-primary-container:  #1e3a5f;
+  --color-primary-fixed:      #dbeafe;
+  --color-primary-fixed-dim:  #bfdbfe;
+  --color-on-primary:         #ffffff;
+  --color-on-primary-fixed:   #0a1628;
+  --color-secondary:          #4b5563;
+  --color-secondary-container:#e5e7eb;
+  --color-on-secondary:       #ffffff;
+  --color-background:         #f8f7f4;
+  --color-surface-bright:     #ffffff;
+  --color-surface-dim:        #e5e3de;
+  --color-surface-variant:    #e8e6e1;
+  --color-surface-container-lowest:  #ffffff;
+  --color-surface-container-low:     #f3f2ee;
+  --color-surface-container:         #eeede8;
+  --color-surface-container-high:    #e8e7e2;
+  --color-surface-container-highest: #e2e1dc;
+  --color-outline:            #9ca3af;
+  --color-outline-variant:    #d1cfc9;
+  --color-on-surface:         #1a1a1a;
+  --color-on-surface-variant: #4b5563;
+  --color-error:              #dc2626;
+  --color-error-container:    #fee2e2;
+  --color-on-error:           #ffffff;
+  --color-on-error-container: #991b1b;
+  --color-success:            #16a34a;
+  --color-warning:            #d97706;
+  --color-danger:             #dc2626;
+
+  /* ── Typography ────────────────────────────────────── */
+  --font-display: var(--font-dm), "DM Sans", sans-serif;
+  --font-headline: var(--font-dm), "DM Sans", sans-serif;
+  --font-body:    var(--font-sans), "Inter", sans-serif;
+  --font-label:   var(--font-sans), "Inter", sans-serif;
+  --font-mono:    var(--font-jetbrains), "JetBrains Mono", monospace;
+
+  /* ── Radius scale ──────────────────────────────────── */
+  /* DS-03: semantic brand tokens — use these in component classes.
+     Do NOT define --radius-lg/xl here: those would override Tailwind's
+     rounded-lg (0.5rem) / rounded-xl (0.75rem) utilities and break admin layouts. */
+  --radius-chip:    0.375rem;   /* inline badges, chips */
+  --radius-btn:     0.5rem;     /* buttons, inputs */
+  --radius-card:    0.875rem;   /* content cards */
+  --radius-panel:   1.25rem;    /* sidebar panels */
+  --radius-modal:   1.5rem;     /* dialogs, modals */
+
+  /* ── Shadow scale ──────────────────────────────────── */
+  /* DS-04: map Tailwind's standard shadow utilities (shadow-sm … shadow-2xl) to
+     brand-tinted values so every component that uses shadow-md etc. looks consistent. */
+  --shadow-sm:  0 1px 2px rgba(10,22,40,0.05);
+  --shadow:     0 1px 3px rgba(10,22,40,0.05), 0 4px 16px rgba(10,22,40,0.06);
+  --shadow-md:  0 4px 16px rgba(10,22,40,0.08), 0 2px 6px rgba(10,22,40,0.04);
+  --shadow-lg:  0 8px 32px rgba(10,22,40,0.10), 0 2px 8px rgba(10,22,40,0.06);
+  --shadow-xl:  0 16px 48px rgba(10,22,40,0.14), 0 4px 12px rgba(10,22,40,0.08);
+  --shadow-2xl: 0 24px 64px rgba(10,22,40,0.18), 0 4px 16px rgba(10,22,40,0.10);
+  /* Semantic aliases that component classes reference by name */
+  --shadow-card:  var(--shadow);
+  --shadow-float: var(--shadow-lg);
+  --shadow-modal: var(--shadow-2xl);
+  --shadow-arc:   0 4px 24px rgba(245,158,11,0.32);
+
+  /* ── Letter-spacing scale ──────────────────────────── */
+  /* DS-06: named tracking tokens so component classes use one source of truth
+     instead of repeated magic em values scattered across the codebase. */
+  --tracking-display:  -0.05em;  /* large hero headings */
+  --tracking-heading:  -0.04em;  /* section headings */
+  --tracking-tight:    -0.02em;  /* card titles, subheadings */
+  --tracking-normal:    0em;     /* body copy */
+  --tracking-label:     0.16em;  /* data labels in admin UI */
+  --tracking-button:    0.18em;  /* button / CTA text */
+  --tracking-eyebrow:   0.22em;  /* eyebrow tags, badge text */
+
+  /* ── Motion ────────────────────────────────────────── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:      150ms;
+  --dur-base:      250ms;
+  --dur-slow:      400ms;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-body);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: rgba(245,158,11,0.18);
+    color: var(--color-forge);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* ── Buttons ─────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-[var(--radius-btn)]
+           bg-[var(--color-arc)] px-6 py-3
+           text-xs font-bold uppercase tracking-[var(--tracking-button)] text-[var(--color-forge)]
+           shadow-[var(--shadow-arc)]
+           transition-all duration-[var(--dur-fast)]
+           hover:bg-[var(--color-arc-dim)] hover:shadow-[0_6px_28px_rgba(245,158,11,0.44)]
+           active:scale-[0.97] disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-[var(--radius-btn)]
+           border border-[var(--color-iron)] bg-transparent px-6 py-3
+           text-xs font-bold uppercase tracking-[var(--tracking-button)] text-[var(--color-iron)]
+           transition-all duration-[var(--dur-fast)]
+           hover:bg-[var(--color-iron)] hover:text-white
+           active:scale-[0.97] disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-[var(--radius-btn)]
+           px-4 py-2 text-sm font-medium text-[var(--color-muted)]
+           transition-all duration-[var(--dur-fast)]
+           hover:bg-[var(--color-panel)] hover:text-[var(--color-forge)]
+           active:scale-[0.97];
+  }
+
+  .btn-dark {
+    @apply inline-flex items-center gap-2 rounded-[var(--radius-btn)]
+           border border-white/12 bg-white/8 px-6 py-3
+           text-xs font-bold uppercase tracking-[var(--tracking-button)] text-white
+           transition-all duration-[var(--dur-fast)]
+           hover:bg-white/16 active:scale-[0.97];
+  }
+
+  /* DS-01: white and navy variants — for use on dark/light backgrounds */
+  .btn-white {
+    @apply inline-flex items-center gap-2 rounded-[var(--radius-btn)]
+           bg-white px-6 py-3
+           text-xs font-bold uppercase tracking-[var(--tracking-button)] text-[var(--color-forge)]
+           transition-all duration-[var(--dur-fast)]
+           hover:bg-[var(--color-arc)] hover:text-[var(--color-forge)]
+           active:scale-[0.97] disabled:opacity-50;
+  }
+
+  /* DS-01: solid navy variant — filled primary/iron color, for product page CTAs */
+  .btn-navy {
+    @apply inline-flex items-center gap-2 rounded-[var(--radius-btn)]
+           bg-[var(--color-iron)] px-6 py-3
+           text-xs font-bold uppercase tracking-[var(--tracking-button)] text-white
+           transition-all duration-[var(--dur-fast)]
+           hover:brightness-110 active:scale-[0.97] disabled:opacity-50;
+  }
+
+  /* ── Inputs ──────────────────────────────────────── */
+  .field-input {
+    @apply h-12 w-full rounded-[var(--radius-btn)]
+           border border-[var(--color-border)] bg-white px-4
+           text-base text-[var(--color-forge)]
+           outline-none ring-0
+           transition-all duration-[var(--dur-fast)]
+           focus:border-[var(--color-iron)] focus:ring-2 focus:ring-[var(--color-iron)]/15
+           placeholder:text-[var(--color-muted)];
+  }
+
+  .field-textarea {
+    @apply w-full rounded-[var(--radius-card)]
+           border border-[var(--color-border)] bg-white px-4 py-3
+           text-sm text-[var(--color-forge)]
+           outline-none ring-0 resize-none
+           transition-all duration-[var(--dur-fast)]
+           focus:border-[var(--color-iron)] focus:ring-2 focus:ring-[var(--color-iron)]/15
+           placeholder:text-[var(--color-muted)];
+  }
+
+  /* ── Cards ───────────────────────────────────────── */
+  .card {
+    @apply rounded-[var(--radius-card)] bg-white
+           border border-[var(--color-border)]/60
+           shadow-[var(--shadow-card)];
+  }
+
+  .card-dark {
+    @apply rounded-[var(--radius-card)] bg-[var(--color-steel)]
+           border border-white/8
+           shadow-[var(--shadow-float)];
+  }
+
+  /* ── Eyebrow label ───────────────────────────────── */
+  .eyebrow {
+    @apply inline-flex items-center rounded-full
+           border border-[var(--color-arc)]/20 bg-[var(--color-arc)]/8
+           px-4 py-2
+           text-[10px] font-bold uppercase tracking-[var(--tracking-eyebrow)] text-[var(--color-arc-dim)];
+  }
+
+  .eyebrow-dark {
+    @apply inline-flex items-center rounded-full
+           border border-white/12 bg-white/8
+           px-4 py-2
+           text-[10px] font-bold uppercase tracking-[var(--tracking-eyebrow)] text-[var(--color-on-dark)];
+  }
+
+  .eyebrow-subtle {
+    @apply inline-flex items-center rounded-full
+           border border-[var(--color-iron)]/12 bg-[var(--color-primary-fixed)]/40
+           px-4 py-2
+           text-[10px] font-bold uppercase tracking-[var(--tracking-eyebrow)] text-[var(--color-iron)];
+  }
+
+  /* ── Section heading ─────────────────────────────── */
+  .section-heading {
+    @apply font-display text-4xl font-black leading-[1.15] tracking-[var(--tracking-heading)] text-[var(--color-forge)] lg:text-5xl;
+  }
+
+  .section-heading-dark {
+    @apply font-display text-4xl font-black leading-[1.15] tracking-[var(--tracking-heading)] text-white lg:text-5xl;
+  }
+}
+
+@layer utilities {
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .glass-panel {
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .glass-dark {
+    background: rgba(10,22,40,0.78);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .font-display { font-family: var(--font-display); }
+  .font-mono    { font-family: var(--font-mono); }
+
+  /* Arc amber underline accent */
+  .arc-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .arc-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--color-arc);
+    border-radius: 9999px;
+  }
+}

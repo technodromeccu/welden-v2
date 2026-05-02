@@ -1,0 +1,27 @@
+{
+  "advisorDefaultAssigneeId": "user_agent",
+  "businessDays": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "businessHours": {
+    "start": 9,
+    "end": 18
+  },
+  "internalNotificationEmails": [
+    "connect@welden.in"
+  ],
+  "firstResponseSlaWorkingDays": 2,
+  "slaReminderLeadHours": 4,
+  "slaEscalationLeadHours": 24,
+  "slaEscalationEmails": [
+    "connect@welden.in"
+  ],
+  "lastQuotationNumber": 2,
+  "staleLeadDays": 5,
+  "quotationLogoUrl": "",
+  "quotationBrandName": "Welden Industries"
+}

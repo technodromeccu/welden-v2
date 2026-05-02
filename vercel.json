@@ -1,0 +1,16 @@
+{
+  "crons": [
+    {
+      "path": "/api/sla-sweep",
+      "schedule": "0 8-17 * * 1-5"
+    },
+    {
+      "path": "/api/backups/run",
+      "schedule": "30 8 * * *"
+    },
+    {
+      "path": "/api/backups/run",
+      "schedule": "30 13 * * *"
+    }
+  ]
+}

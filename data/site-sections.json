@@ -1,0 +1,154 @@
+[
+  {
+    "key": "hero",
+    "title": "Machines built to remove uncertainty from industrial production.",
+    "eyebrow": "Welden Industries",
+    "body": "Welden builds reliable automated machines for pipe cutting, idler welding, double end boring, and bearing pushing. The site is led by a Guided Machine Advisor that qualifies line needs, recommends the best-fit machine, and creates a tracked lead when commercial or engineering follow-up is needed.",
+    "items": [
+      "cta_primary|Talk to our expert",
+      "cta_secondary|Explore machines"
+    ],
+    "slides": [
+      {
+        "id": "hero-slide-boring",
+        "eyebrow": "Automatic Double End Boring Machine",
+        "title": "Precision ID Boring in Under 40 Seconds.",
+        "summary": "Simultaneous boring for repeatable accuracy across heavy-duty bearing housings.",
+        "imageUrl": "/images/machines/Automatic-Double-End-Boring-Machine.png",
+        "imagePosition": "center center"
+      },
+      {
+        "id": "hero-slide-welding",
+        "eyebrow": "Automatic Conveyor Idler Welding Machine",
+        "title": "Rotary Welding in Under 40 Seconds.",
+        "summary": "Simultaneous dual-torch action for balanced thermal input and continuous production.",
+        "imageUrl": "/images/machines/Automatic-Conveyor-Idler-Welding-Machine.png",
+        "imagePosition": "center center"
+      },
+      {
+        "id": "hero-slide-pipe",
+        "eyebrow": "Automatic Pipe Cutting Machine",
+        "title": "25-Second Taper-Free Pipe Cutting.",
+        "summary": "Fast, clean pipe preparation with stable clamping and repeatable edge quality.",
+        "imageUrl": "/images/machines/Automatic-Pipe-Cutting-Machine.png",
+        "imagePosition": "center center"
+      },
+      {
+        "id": "hero-slide-bearing",
+        "eyebrow": "Bearing Pushing Machine",
+        "title": "Precision Dual-End Bearing Pressing.",
+        "summary": "Controlled hydraulic pressure protects the seat while increasing assembly consistency.",
+        "imageUrl": "/images/machines/Bearing-Pushing-Machine.png",
+        "imagePosition": "center center"
+      }
+    ],
+    "published": true
+  },
+  {
+    "key": "about",
+    "eyebrow": "About Welden",
+    "title": "Built around dependable industrial output, not brochure claims.",
+    "body": "Welden Industries focuses on automation equipment for conveyor idler and allied production lines. We design machines that reduce manual variation, improve cycle consistency, and give production teams a more repeatable path from cutting and boring to welding and bearing assembly.",
+    "items": [
+      "Automation-first machine design for repeatable, production-floor performance.",
+      "Built for manufacturers that need tighter tolerances, cleaner process flow, and less dependency on manual skill variation.",
+      "Machine range covers pipe cutting, idler welding, double end boring, and bearing pushing.",
+      "Commercial and technical discussions can start on the site and continue through tracked follow-up."
+    ],
+    "published": true
+  },
+  {
+    "key": "machines",
+    "eyebrow": "Machine lineup",
+    "title": "Four machines. Every stage of idler production.",
+    "body": "From pipe cutting and boring to welding and bearing assembly - Welden's machines are engineered to work in sequence or stand alone. Each one removes a manual bottleneck, tightens tolerances, and keeps your line running at pace.",
+    "published": false
+  },
+  {
+    "key": "machine_cards",
+    "eyebrow": "Landing page catalog",
+    "title": "Machine cards",
+    "body": "Controls whether the published machine cards appear on the homepage.",
+    "items": [],
+    "published": true
+  },
+  {
+    "key": "advisor",
+    "title": "A first-pass digital sales engineer for your production line.",
+    "eyebrow": "Advisor Workflow",
+    "body": "The Guided Machine Advisor asks progressive questions about process, material, throughput, bottlenecks, automation level, and urgency. It recommends only from approved Welden knowledge and creates a tracked lead when you need quotation or human support.",
+    "items": [
+      "Knowledge-grounded answers",
+      "Lead capture before chat",
+      "Automatic internal lead handoff"
+    ],
+    "published": true
+  },
+  {
+    "key": "contact",
+    "title": "Need a quote, a human response, or technical clarity on a machine?",
+    "eyebrow": "Consultation Desk",
+    "body": "Fill in the form or use the chatbot. We'll get back to you within 2 working days.",
+    "items": [
+      "Email: connect@welden.in",
+      "Welden Industries, Garia Mahayatalla, Near Laskarpur Post Office, Kolkata 700153, West Bengal, India",
+      "whatsapp_number|919836621216",
+      "whatsapp_label|WhatsApp",
+      "cta_quote|Request Quote",
+      "cta_chatbot|Open Chatbot",
+      "form_heading|Contact Us",
+      "form_submit|Send Message",
+      "form_chatbot_cta|Use Chatbot Instead"
+    ],
+    "published": true
+  },
+  {
+    "key": "machine_details",
+    "title": "Machine detail pages",
+    "eyebrow": "Detail Page CMS",
+    "body": "Control the shared labels, card headings, and CTA copy used across public machine detail pages.",
+    "items": [
+      "back_link|Back to machines",
+      "primary_cta|Talk to our expert",
+      "secondary_cta|Download brochure",
+      "overview_eyebrow|Machine overview",
+      "capabilities_eyebrow|Core advantages",
+      "use_cases_eyebrow|Best fit",
+      "industries_eyebrow|Industries served",
+      "specs_eyebrow|Technical specifications",
+      "specs_title|Full machine data for engineering review.",
+      "media_eyebrow|Machine media",
+      "media_title|Visual reference, brochure, and supporting media.",
+      "resource_eyebrow|Resource access",
+      "resource_title|Commercial and technical handoff.",
+      "resource_body|Use the brochure for commercial sharing, the detail page for search visibility, and the consultation route when the buyer needs application-specific guidance.",
+      "resource_video_note|Video reference available for richer machine review.",
+      "video_cta|Open video",
+      "contact_eyebrow|Consultation desk",
+      "contact_title|Talk through this machine with Welden.",
+      "contact_body|Use the consultation route when you need quote support, application fit, or engineering clarification on the selected machine.",
+      "contact_point_one|Chatbot and consultation form both connect back to tracked internal follow-up.",
+      "contact_point_two|This page keeps deeper product detail available for serious buyers without overloading the homepage.",
+      "consultation_eyebrow|Machine consultation",
+      "consultation_title|Request follow-up",
+      "consultation_body|Reach the Welden team with a machine-specific requirement and create a tracked consultation lead.",
+      "current_machine_label|Current machine",
+      "related_eyebrow|Related machines",
+      "related_title|Explore the wider Welden machine lineup.",
+      "related_cta|View all on homepage"
+    ],
+    "published": true
+  },
+  {
+    "key": "footer",
+    "title": "Welden Industries",
+    "eyebrow": "Footer",
+    "body": "Industrial automation for production efficiency.",
+    "items": [
+      "About Us|#about",
+      "Machines|#machines",
+      "Contact|#contact"
+    ],
+    "published": true
+  }
+]

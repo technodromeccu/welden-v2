@@ -1,0 +1,281 @@
+WELDEN LEAD MANAGEMENT WORKFLOW
+
+OVERVIEW
+
+This document explains the current Welden lead workflow for admin and staff.
+
+The system now works as a lead-only process. Every inquiry becomes a lead, is assigned to staff, followed up, and then moved to won or lost.
+
+This guide covers:
+
+- how leads enter the system
+- the difference between a normal lead and a lead with quote
+- the first-call deadline
+- email notifications
+- staff and admin responsibilities
+- how follow-up should happen
+- how leads are closed
+
+WORKFLOW SUMMARY
+
+Every lead should move through this process:
+
+1. Lead enters the system
+2. Lead is assigned to staff
+3. Admin and assigned staff receive internal email notification
+4. Staff reviews the lead
+5. Staff makes the first call within 2 working days
+6. Staff records the outcome and next step
+7. Staff continues follow-up until the lead is won or lost
+
+LEAD ENTRY
+
+Leads can enter the system through:
+
+- chatbot inquiry
+- website consultation form
+
+When a lead is created, the system stores:
+
+- customer name
+- email
+- phone number
+- company, if available
+- requirement summary
+- machine interest, if identified
+
+LEAD TYPES
+
+Normal Lead
+
+A normal lead is a lead without a preliminary quotation.
+
+Typical examples:
+
+- machine suitability inquiry
+- callback request
+- technical question
+- custom requirement
+
+Main purpose of follow-up:
+
+- understand the need
+- qualify the opportunity
+- decide the next commercial step
+
+Lead With Quote
+
+A lead with quote is a lead where the chatbot has already issued a preliminary quotation.
+
+These leads should be treated with higher urgency because the pricing discussion has already started.
+
+Main purpose of follow-up:
+
+- confirm the customer received the quotation
+- answer technical or commercial questions
+- move the customer toward proposal, decision, won, or lost
+
+FIRST CALL DEADLINE
+
+Every new lead must receive a first staff call within 2 working days.
+
+This is the first-response rule the team should follow.
+
+The admin shows the first-call status clearly as:
+
+- Call pending
+- Call due today
+- Call overdue
+- First call complete
+
+This helps admin and staff quickly identify which leads need action.
+
+EMAIL NOTIFICATIONS
+
+When a new lead is created, an internal email is sent through Resend to:
+
+- the assigned staff member
+- the internal admin notification email list
+
+The email includes the key lead details and the first-call deadline.
+
+LEAD STAGES
+
+The active stages used by the team are:
+
+- New
+- Quoted
+- Contact Scheduled
+- Contacted
+- Qualified
+- Proposal Sent
+- Won
+- Lost
+
+TEAM RESPONSIBILITIES
+
+Admin Responsibilities
+
+Admin should:
+
+- monitor all new leads
+- check that every lead has an owner
+- check that the first call happens on time
+- monitor quoted leads closely
+- review overdue and delayed leads
+- review won and lost closure quality
+
+Staff Responsibilities
+
+Staff should:
+
+- review assigned leads quickly
+- make the first call within 2 working days
+- record notes clearly
+- update the stage correctly
+- set the next follow-up date when needed
+- continue follow-up until the lead is closed
+
+DAILY WORKING METHOD
+
+For every active lead, the team should always know:
+
+- who owns the lead
+- whether it is a normal lead or a lead with quote
+- whether the first call is pending, due, overdue, or complete
+- what happens next
+- when the next follow-up is due
+
+If these points are clear, the lead is under control.
+
+FOLLOW-UP PROCESS
+
+Step 1: Review the lead
+
+When a lead enters the system, staff should review:
+
+- customer details
+- requirement summary
+- machine interest
+- whether a quotation already exists
+- whether immediate contact is needed
+
+Step 2: Make the first call
+
+The first staff call should happen within 2 working days.
+
+The purpose of the first call is to:
+
+- confirm the customer requirement
+- understand seriousness and timing
+- answer immediate questions
+- decide the next commercial step
+
+Step 3: Record the outcome
+
+After the first call, staff should record:
+
+- what the customer said
+- whether the lead is serious
+- whether the lead needs qualification, proposal, or close
+- what the next action is
+- when the next follow-up will happen
+
+Step 4: Continue follow-up
+
+Every active lead should have a clear next step.
+
+A lead should not remain open without:
+
+- an owner
+- a current stage
+- notes
+- a next follow-up plan when the conversation is still active
+
+SCENARIO HANDLING
+
+Scenario 1: Normal lead
+
+1. staff reviews the inquiry
+2. staff makes the first call
+3. staff qualifies the requirement
+4. staff updates the stage
+5. staff schedules the next follow-up if needed
+
+Typical movement:
+
+- New to Contacted
+- Contacted to Qualified
+- Qualified to Proposal Sent, Won, or Lost
+
+Scenario 2: Lead with quote from chatbot
+
+1. the lead enters as a lead with quote
+2. staff reviews the quotation reference and customer requirement
+3. staff calls the customer within the first-call deadline
+4. staff confirms quotation receipt, interest, objections, and next decision step
+5. staff continues follow-up until closed
+
+Typical movement:
+
+- Quoted to Proposal Sent
+- Quoted to Won
+- Quoted to Lost
+
+Scenario 3: Customer does not answer
+
+- staff logs the contact attempt
+- staff schedules the next follow-up
+- staff tries again at the next planned time
+
+Scenario 4: Customer asks for callback later
+
+- staff records the preferred callback time
+- the lead is kept visible for scheduled follow-up
+- staff calls again at the agreed time
+
+FOLLOW-UP DISCIPLINE
+
+The team should remember:
+
+- internal updates are not the same as customer communication
+- changing stage or adding notes does not mean contact happened
+- a lead should only be treated as contacted when staff has actually made contact or logged the attempt properly
+
+WORKING DAYS AND REMINDER WINDOW
+
+Current working setup:
+
+- working days: Monday to Friday
+- working hours: 9:00 to 18:00
+- reminder window: 4 hours before the follow-up target
+
+HOW LEADS ARE CLOSED
+
+Won
+
+A lead is closed as won when:
+
+- the commercial process is complete
+- the customer confirms the deal
+- the opportunity has successfully converted
+
+Lost
+
+A lead is closed as lost when:
+
+- the customer declines
+- the project does not move forward
+- there is no active commercial opportunity left
+
+FINAL OPERATING RULE
+
+Every open lead should always have clear answers to these questions:
+
+- Who owns it?
+- What type of lead is it?
+- Has the first call been completed?
+- What is the next step?
+- When is the next follow-up due?
+
+If these answers are clear, the workflow is healthy and easy for both admin and staff to manage.

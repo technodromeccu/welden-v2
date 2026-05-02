@@ -1,0 +1,432 @@
+[
+  {
+    "id": "qtpl_double_end_boring",
+    "title": "Automatic Twin Head Pipe Boring Machine preliminary quotation",
+    "productId": "prod_double_end_boring",
+    "productSlug": "double-end-boring-machine",
+    "machineName": "Automatic Twin Head Pipe Boring Machine",
+    "variantLabel": null,
+    "active": true,
+    "currency": "INR",
+    "basePrice": "16,85,000.00",
+    "intro": "Dear Sir, please find below our preliminary quotation for the Automatic Twin Head Pipe Boring Machine. Welden Industries offers the machine complete with tool-heads and multiple tools for simultaneous facing and boring of both ends of the idler pipe.",
+    "scopeItems": [
+      "WELDMAN make Automatic Twin Head Idler Pipe Boring Machine",
+      "Automatic twin-head boring and facing on both ends of the idler pipe",
+      "A set of tool holders with tools is supplied with the machine",
+      "Hydraulic power pack included",
+      "Catalogue and sample video of the machine are enclosed herewith"
+    ],
+    "exclusions": [
+      "Hydraulic oil and cutting oil are not in our scope of supply",
+      "Any civil work including foundation and foundation nut-bolts are not in our scope of supply",
+      "Food, lodging and local conveyance for Welden technicians are to be paid by the customer",
+      "Foundation nuts and bolts, if required, are not in our scope of supply"
+    ],
+    "deliveryNote": "10 weeks from the date of receipt of your techno-commercially clear order along with the advance.",
+    "installationNote": "Our people will visit your works for supervision of erection, commissioning and training of your operator. Food, lodging and local conveyance from the place of their stay to your site and back for our technicians are to be paid by you.",
+    "warrantyNote": "18 months from the date of delivery or 12 months from the date of commissioning, whichever is earlier, against any manufacturing defect.",
+    "paymentTerms": "40% of the basic order value advance along with the order and balance 60% of the basic order value along with 100% GST amount to be paid after inspection at our works, against proforma invoice before delivery.",
+    "validityNote": "Our offer is open for acceptance up to 45 days from the date of our offer. This preliminary quotation is subject to technical and commercial confirmation.",
+    "termsAndConditions": [
+      "Price quoted is on Ex. Works Kolkata basis and exclusive of GST, which will be charged extra as applicable at the time of delivery.",
+      "Packing and forwarding extra at 2.5%.",
+      "Transit insurance to client's account.",
+      "GST extra as applicable at the time of delivery. Present rate 18%.",
+      "GSTIN No.: 19AAACW4205C1ZQ.",
+      "Suitable for conveyor tube/pipe having diameter of 76 mm to 200 mm and length of 200 mm to 2200 mm by using two vices.",
+      "Standard machine is suitable for boring depth of 10 mm. Longer boring length can be supplied at nominal extra cost.",
+      "Input supply 415V, 3 phase, 4-wire, 50 Hz AC with PLC sequence and HMI-assisted boring and facing operation.",
+      "Bank: ICICI Bank Ltd., Kolkata-Mahamayatala Branch, Account No. 266505500258, IFSC ICIC0002665, MICR 700229143."
+    ],
+    "footerNote": "We hope you will find our offer quite attractive and shall favour us with your valued order at your earliest. Subject to technical and commercial confirmation by Welden Industries.",
+    "sampleDocumentUrl": "/uploads/quotations/automatic-double-end-boring-machine-3dc8d554-3c05-460c-8004-dfd373359cef.pdf",
+    "companyName": "Welden Industries",
+    "companyAddress": "Mahamayatala (Garia), Laskarpur,\nKolkata - 700153, West Bengal",
+    "companyPhone": "033-24359094/5694/9830060993",
+    "companyWebsite": "www.welden.in",
+    "createdAt": "2026-03-26T10:00:00.000Z",
+    "updatedAt": "2026-03-26T16:30:00.000Z",
+    "technicalSpecifications": [
+      "Input Supply: 415V, 3 Phase, 4-Wire, 50 Hz AC",
+      "Machining Operation: By 2 nos. 5 HP Motors, one for each head",
+      "No. of Tools for each Head: 03 nos. (Total 6 tools in operation)",
+      "Hydraulic Power Pack: 2 HP motor coupled to gear pump, manifold and solenoid valve",
+      "Clamping-Declamping: By 02 special vices operated by hydraulic motor",
+      "Boring and Facing: With 02 stepper motors and HMI",
+      "Cooling: Close circuit system with distilled water and coolant in 1:10 ratio"
+    ],
+    "generalNotes": [
+      "Suitable for conveyor tube/pipe diameter 76 mm to 200 mm and length 200 mm to 2200 mm by using two vices.",
+      "Standard machine is suitable for a boring depth of 10 mm. Longer boring length can be supplied at nominal extra cost.",
+      "Hydraulic power pack will be supplied. Hydraulic oil and cutting oil are not in our scope of supply.",
+      "We will provide the drawing in advance to undertake the civil work beforehand to avoid delay in commissioning."
+    ],
+    "bankDetails": [
+      "Pay to: Welden Industries",
+      "Bank Name: ICICI Bank Ltd.",
+      "Branch: Kolkata-Mahamayatala Branch",
+      "Address: 449, N. S. C. Bose Road, Kolkata-700103",
+      "Account No.: 266505500258",
+      "IFSC Code: ICIC0002665",
+      "MICR Code: 700229143"
+    ]
+  },
+  {
+    "id": "qtpl_idler_welding_manual",
+    "title": "Twin Head Automatic Idler Welding Machine preliminary quotation - manual version",
+    "productId": "prod_idler_welding",
+    "productSlug": "idler-welding-machine",
+    "machineName": "Twin Head Automatic Idler Welding Machine",
+    "variantLabel": "Manual loading/unloading and manual clamping/de-clamping",
+    "active": true,
+    "currency": "INR",
+    "basePrice": "6,15,000.00",
+    "intro": "Dear Sir, please find below our preliminary quotation for the Twin Head Automatic Idler Welding Machine, manual loading/unloading and manual clamping/de-clamping version, complete with 02 sets MIG Welding Machines.",
+    "scopeItems": [
+      "Automatic Twin Head Idler Welding Machine, loading and unloading and clamping and de-clamping all manual",
+      "01 no. welding fixture for holding and rotating the job at predetermined speed for automatic both-side disc-end welding",
+      "02 sets WELDMAN Semi-Automatic CO2 Welding Machines with 400A inverter based MIG/MAG/CO2 power source, wire feeder, torch, regulator, heater and welding accessories",
+      "02 nos. stands for mounting of the wire feeders",
+      "Control panel and pendent for automatic welding sequence and overlap"
+    ],
+    "exclusions": [
+      "Any foundation work or civil work is not in our scope of supply",
+      "Food, lodging and local conveyance for Welden technicians are to be paid by the customer",
+      "Foundation nuts and bolts, if required, are not in our scope of supply",
+      "If required, crane facility, welding support arrangement and labourers are to be provided free of charge by the customer"
+    ],
+    "deliveryNote": "8 to 10 weeks from the date of receipt of your techno-commercially clear order along with the advance.",
+    "installationNote": "Our people will visit your works for supervision of erection, commissioning and training of your operator. Food, lodging and local conveyance from the place of their stay to your site and back for our technicians are to be paid by you.",
+    "warrantyNote": "18 months from the date of delivery or 12 months from the date of commissioning, whichever is earlier, against any manufacturing defect.",
+    "paymentTerms": "40% of the basic order value advance along with the order and balance 60% of the basic order value along with 100% GST amount to be paid after inspection at our works, against proforma invoice before delivery.",
+    "validityNote": "Our offer is open for acceptance up to 45 days from the date of our offer. This preliminary quotation is subject to technical and commercial confirmation.",
+    "termsAndConditions": [
+      "Price quoted is on Ex. Works Kolkata basis and exclusive of GST, which will be charged extra as applicable at the time of delivery.",
+      "Packing and forwarding extra at 2.5%.",
+      "Transit insurance to client's account.",
+      "GST extra as applicable at the time of delivery. Present rate 18%.",
+      "GSTIN No.: 19AAACW4205C1ZQ.",
+      "Minimum diameter 76 mm, maximum diameter 200 mm, minimum length 200 mm, maximum length 2200 mm.",
+      "Tailstock clamping is manual through handwheel operation on the tailstock.",
+      "Bank: ICICI Bank Ltd., Kolkata-Mahamayatala Branch, Account No. 266505500258, IFSC ICIC0002665, MICR 700229143."
+    ],
+    "footerNote": "We hope you will find our offer quite attractive and shall favour us with your valued order at your earliest. Subject to technical and commercial confirmation by Welden Industries.",
+    "sampleDocumentUrl": "",
+    "companyName": "Welden Industries",
+    "companyAddress": "Mahamayatala (Garia), Laskarpur,\nKolkata - 700153, West Bengal",
+    "companyPhone": "033-24359094/5694/9830060993",
+    "companyWebsite": "www.welden.in",
+    "createdAt": "2026-03-26T16:30:00.000Z",
+    "updatedAt": "2026-03-26T16:30:00.000Z",
+    "technicalSpecifications": [
+      "Minimum diameter: 76 mm",
+      "Maximum diameter: 200 mm",
+      "Minimum length: 200 mm",
+      "Maximum length: 2200 mm",
+      "02 sets WELDMAN Semi-Automatic CO2 Welding Machines included",
+      "PLC-controlled sequence for automatic welding and overlap"
+    ],
+    "generalNotes": [
+      "Fixture supplied complete with control panel, interconnection cable and 02 stands for mounting of wire feeders.",
+      "Loading and unloading of the job is manual, and clamping is done with the hand wheel on the tailstock.",
+      "Once the Start push button is pressed, welding starts and the job rotates; after overlap the welding stops automatically.",
+      "Our people will visit your works for supervision of erection, commissioning and training of your operator."
+    ],
+    "bankDetails": [
+      "Pay to: Welden Industries",
+      "Bank Name: ICICI Bank Ltd.",
+      "Branch: Kolkata-Mahamayatala Branch",
+      "Address: 449, N. S. C. Bose Road, Kolkata-700103",
+      "Account No.: 266505500258",
+      "IFSC Code: ICIC0002665",
+      "MICR Code: 700229143"
+    ]
+  },
+  {
+    "id": "qtpl_idler_welding_pneumatic",
+    "title": "Twin Head Automatic Idler Welding Machine preliminary quotation - pneumatic clamping version",
+    "productId": "prod_idler_welding",
+    "productSlug": "idler-welding-machine",
+    "machineName": "Twin Head Automatic Idler Welding Machine",
+    "variantLabel": "Manual loading/unloading with pneumatic clamping/de-clamping",
+    "active": true,
+    "currency": "INR",
+    "basePrice": "6,85,000.00",
+    "intro": "Dear Sir, please find below our preliminary quotation for the Twin Head Automatic Idler Welding Machine, manual loading/unloading with pneumatic clamping and de-clamping version, complete with 02 sets MIG Welding Machines.",
+    "scopeItems": [
+      "Automatic Twin Head Idler Welding Machine, loading and unloading manual and clamping and de-clamping pneumatic",
+      "01 no. welding fixture for holding and rotating the job at predetermined speed for automatic both-side disc-end welding",
+      "02 sets WELDMAN Semi-Automatic CO2 Welding Machines with 400A inverter based MIG/MAG/CO2 power source, wire feeder, torch, regulator, heater and welding accessories",
+      "02 nos. stands for mounting of the wire feeders",
+      "Control panel with PLC for welding and overlap sequence"
+    ],
+    "exclusions": [
+      "Any foundation work or civil work is not in our scope of supply",
+      "Food, lodging and local conveyance for Welden technicians are to be paid by the customer",
+      "Foundation nuts and bolts, if required, are not in our scope of supply",
+      "If required, crane facility, welding support arrangement and labourers are to be provided free of charge by the customer"
+    ],
+    "deliveryNote": "8 to 10 weeks from the date of receipt of your techno-commercially clear order along with the advance.",
+    "installationNote": "Our people will visit your works for supervision of erection, commissioning and training of your operator. Food, lodging and local conveyance from the place of their stay to your site and back for our technicians are to be paid by you.",
+    "warrantyNote": "18 months from the date of delivery or 12 months from the date of commissioning, whichever is earlier, against any manufacturing defect.",
+    "paymentTerms": "40% of the basic order value advance along with the order and balance 60% of the basic order value along with 100% GST amount to be paid after inspection at our works, against proforma invoice before delivery.",
+    "validityNote": "Our offer is open for acceptance up to 45 days from the date of our offer. This preliminary quotation is subject to technical and commercial confirmation.",
+    "termsAndConditions": [
+      "Price quoted is on Ex. Works Kolkata basis and exclusive of GST, which will be charged extra as applicable at the time of delivery.",
+      "Packing and forwarding extra at 2.5%.",
+      "Transit insurance to client's account.",
+      "GST extra as applicable at the time of delivery. Present rate 18%.",
+      "GSTIN No.: 19AAACW4205C1ZQ.",
+      "Minimum diameter 76 mm, maximum diameter 200 mm, minimum length 200 mm, maximum length 2200 mm.",
+      "Clamping of the job is done with the help of pneumatic cylinder.",
+      "Bank: ICICI Bank Ltd., Kolkata-Mahamayatala Branch, Account No. 266505500258, IFSC ICIC0002665, MICR 700229143."
+    ],
+    "footerNote": "We hope you will find our offer quite attractive and shall favour us with your valued order at your earliest. Subject to technical and commercial confirmation by Welden Industries.",
+    "sampleDocumentUrl": "",
+    "companyName": "Welden Industries",
+    "companyAddress": "Mahamayatala (Garia), Laskarpur,\nKolkata - 700153, West Bengal",
+    "companyPhone": "033-24359094/5694/9830060993",
+    "companyWebsite": "www.welden.in",
+    "createdAt": "2026-03-26T16:30:00.000Z",
+    "updatedAt": "2026-03-26T16:30:00.000Z",
+    "technicalSpecifications": [
+      "Minimum diameter: 76 mm",
+      "Maximum diameter: 200 mm",
+      "Minimum length: 200 mm",
+      "Maximum length: 2200 mm",
+      "02 sets WELDMAN Semi-Automatic CO2 Welding Machines included",
+      "Clamping of the job is done with pneumatic cylinder"
+    ],
+    "generalNotes": [
+      "Fixture supplied complete with control panel and 02 stands for mounting of wire feeders.",
+      "Loading and unloading of the job is manual while clamping and de-clamping are pneumatic.",
+      "Once the Start push button is pressed, the job is clamped, rotates, welding starts, then stops automatically after overlap.",
+      "Our people will visit your works for supervision of erection, commissioning and training of your operator."
+    ],
+    "bankDetails": [
+      "Pay to: Welden Industries",
+      "Bank Name: ICICI Bank Ltd.",
+      "Branch: Kolkata-Mahamayatala Branch",
+      "Address: 449, N. S. C. Bose Road, Kolkata-700103",
+      "Account No.: 266505500258",
+      "IFSC Code: ICIC0002665",
+      "MICR Code: 700229143"
+    ]
+  },
+  {
+    "id": "qtpl_idler_welding_mechanized",
+    "title": "Twin Head Automatic Idler Welding Machine preliminary quotation - fully mechanized version",
+    "productId": "prod_idler_welding",
+    "productSlug": "idler-welding-machine",
+    "machineName": "Twin Head Automatic Idler Welding Machine",
+    "variantLabel": "Loading/unloading and clamping/de-clamping all mechanized",
+    "active": true,
+    "currency": "INR",
+    "basePrice": "12,38,000.00",
+    "intro": "Dear Sir, please find below our preliminary quotation for the Twin Head Automatic Idler Welding Machine, all mechanized version, complete with 02 sets MIG Welding Machines.",
+    "scopeItems": [
+      "Automatic Twin Head Idler Welding Machine, loading and unloading and clamping and de-clamping all mechanized",
+      "01 no. welding fixture with headstock and tailstock for automatic two-end disc welding",
+      "02 sets WELDMAN Semi-Automatic CO2 Welding Machines with 400A inverter based MIG/MAG/CO2 power source, wire feeder, torch, regulator, heater and welding accessories",
+      "Automatic pick, load, clamp, weld, unload sequence with manual, semi-automatic and automatic modes",
+      "Control panel for welding operation and rotation"
+    ],
+    "exclusions": [
+      "Compressor or compressed air arrangement is not in our scope of supply",
+      "Any foundation work or civil work is not in our scope of supply",
+      "Food, lodging and local conveyance for Welden technicians are to be paid by the customer",
+      "If required, crane facility, welding support arrangement and labourers are to be provided free of charge by the customer"
+    ],
+    "deliveryNote": "8 to 10 weeks from the date of receipt of your techno-commercially clear order along with the advance.",
+    "installationNote": "Our people will visit your works for supervision of erection, commissioning and training of your operator. Food, lodging and local conveyance from the place of their stay to your site and back for our technicians are to be paid by you.",
+    "warrantyNote": "18 months from the date of delivery or 12 months from the date of commissioning, whichever is earlier, against any manufacturing defect.",
+    "paymentTerms": "40% of the basic order value advance along with the order and balance 60% of the basic order value along with 100% GST amount to be paid after inspection at our works, against proforma invoice before delivery.",
+    "validityNote": "Our offer is open for acceptance up to 45 days from the date of our offer. This preliminary quotation is subject to technical and commercial confirmation.",
+    "termsAndConditions": [
+      "Price quoted is on Ex. Works Kolkata basis and exclusive of GST, which will be charged extra as applicable at the time of delivery.",
+      "Packing and forwarding extra at 2.5%.",
+      "Transit insurance to client's account.",
+      "GST extra as applicable at the time of delivery. Present rate 18%.",
+      "GSTIN No.: 19AAACW4205C1ZQ.",
+      "Machine suitable for idlers with diameter 76 mm to 200 mm and length 200 mm to 2200 mm.",
+      "The machine has Manual, Semi-Automatic and Automatic modes of operation.",
+      "Bank: ICICI Bank Ltd., Kolkata-Mahamayatala Branch, Account No. 266505500258, IFSC ICIC0002665, MICR 700229143."
+    ],
+    "footerNote": "We hope you will find our offer quite attractive and shall favour us with your valued order at your earliest. Subject to technical and commercial confirmation by Welden Industries.",
+    "sampleDocumentUrl": "",
+    "companyName": "Welden Industries",
+    "companyAddress": "Mahamayatala (Garia), Laskarpur,\nKolkata - 700153, West Bengal",
+    "companyPhone": "033-24359094/5694/9830060993",
+    "companyWebsite": "www.welden.in",
+    "createdAt": "2026-03-26T16:30:00.000Z",
+    "updatedAt": "2026-03-26T16:30:00.000Z",
+    "technicalSpecifications": [
+      "Minimum diameter: 76 mm",
+      "Maximum diameter: 200 mm",
+      "Minimum length: 200 mm",
+      "Maximum length: 2200 mm",
+      "02 sets WELDMAN Semi-Automatic CO2 Welding Machines included",
+      "Manual, Semi-Automatic and Automatic modes of operation available"
+    ],
+    "generalNotes": [
+      "The machine picks the first idler in the row, places it on the holding bracket, clamps, welds, unloads, and repeats.",
+      "The machine is pneumatically operated. Compressor or arrangement for supply of compressed air is not in our scope of supply.",
+      "Control panel for welding operation and rotation is included.",
+      "Our people will visit your works for supervision of erection, commissioning and training of your operator."
+    ],
+    "bankDetails": [
+      "Pay to: Welden Industries",
+      "Bank Name: ICICI Bank Ltd.",
+      "Branch: Kolkata-Mahamayatala Branch",
+      "Address: 449, N. S. C. Bose Road, Kolkata-700103",
+      "Account No.: 266505500258",
+      "IFSC Code: ICIC0002665",
+      "MICR Code: 700229143"
+    ]
+  },
+  {
+    "id": "qtpl_pipe_cutting",
+    "title": "Automatic Pipe Cutting Machine preliminary quotation",
+    "productId": "prod_pipe_cutting",
+    "productSlug": "pipe-cutting-machine",
+    "machineName": "Automatic Pipe Cutting Machine",
+    "variantLabel": null,
+    "active": true,
+    "currency": "INR",
+    "basePrice": "19,65,000.00",
+    "intro": "Dear Sir, please find below our preliminary quotation for the Automatic Pipe Cutting Machine, job rotating type, tools remain stationary, type APCMRJ, with auto loading structure.",
+    "scopeItems": [
+      "WELDMAN make Automatic Pipe Cutting Machine, job rotating type, tools remain stationary, type APCMRJ, with auto loading structure",
+      "Hydraulic motor operated trolley for feeding pipe to the cutting head",
+      "Hydraulic collet clamping and de-clamping of the job",
+      "Motorized slide driven by stepper motor for tool movement",
+      "Catalogue and sample video of the machine are enclosed herewith"
+    ],
+    "exclusions": [
+      "Automatic loading structure is optional and can be supplied at extra cost if not already ordered",
+      "Any foundation work or civil work is not in our scope of supply",
+      "Food, lodging and local conveyance for Welden technicians are to be paid by the customer",
+      "Foundation nuts and bolts, if required, are not in our scope of supply"
+    ],
+    "deliveryNote": "10 weeks from the date of receipt of your techno-commercially clear order along with the advance.",
+    "installationNote": "Our people will visit your works for supervision of erection, commissioning and training of your operator. Food, lodging and local conveyance from the place of their stay to your site and back for our technicians are to be paid by you.",
+    "warrantyNote": "18 months from the date of delivery or 12 months from the date of commissioning, whichever is earlier, against any manufacturing defect.",
+    "paymentTerms": "40% of the basic order value advance along with the order and balance 60% of the basic order value along with 100% GST amount to be paid after inspection at our works, against proforma invoice before delivery.",
+    "validityNote": "Our offer is open for acceptance up to 45 days from the date of our offer. This preliminary quotation is subject to technical and commercial confirmation.",
+    "termsAndConditions": [
+      "Price quoted is on Ex. Works Kolkata basis and exclusive of GST, which will be charged extra as applicable at the time of delivery.",
+      "Packing and forwarding extra at 2.5%.",
+      "Transit insurance to client's account.",
+      "GST extra as applicable at the time of delivery. Present rate 18%.",
+      "GSTIN No.: 19AAACW4205C1ZQ.",
+      "Pipe size suitability: 76 mm to 168.3 mm diameter and 200 mm to 2200 mm cut length.",
+      "Sequence of operation by PLC with AC motor for cutting head 7.5 HP and AC motor for hydraulic power pack 5 HP.",
+      "Bank: ICICI Bank Ltd., Kolkata-Mahamayatala Branch, Account No. 266505500258, IFSC ICIC0002665, MICR 700229143."
+    ],
+    "footerNote": "We hope you will find our offer quite attractive and shall favour us with your valued order at your earliest. Subject to technical and commercial confirmation by Welden Industries.",
+    "sampleDocumentUrl": "",
+    "companyName": "Welden Industries",
+    "companyAddress": "Mahamayatala (Garia), Laskarpur,\nKolkata - 700153, West Bengal",
+    "companyPhone": "033-24359094/5694/9830060993",
+    "companyWebsite": "www.welden.in",
+    "createdAt": "2026-03-26T10:00:00.000Z",
+    "updatedAt": "2026-03-26T16:30:00.000Z",
+    "technicalSpecifications": [
+      "Minimum diameter of pipe to be cut: 76 mm",
+      "Maximum diameter of pipe to be cut: 168.3 mm",
+      "Minimum length of pipe to be cut: 200 mm",
+      "Maximum length of pipe to be cut: 2200 mm",
+      "AC Motor for Cutting Head: 7.5 HP",
+      "AC Motor for Hydraulic Power Pack: 5 HP",
+      "Sequence of operation: By PLC with HMI",
+      "Max. length of the pipe: 6000 mm"
+    ],
+    "generalNotes": [
+      "Our people will visit your works for supervision of erection, commissioning and training of your operator.",
+      "Food, lodging and local conveyance from the place of stay to your site and back for our technicians are to be paid by you.",
+      "Any foundation work / civil work for erection and commissioning is not in our scope of supply.",
+      "We will provide the drawing in advance to undertake the civil work beforehand to avoid delay in commissioning."
+    ],
+    "bankDetails": [
+      "Pay to: Welden Industries",
+      "Bank Name: ICICI Bank Ltd.",
+      "Branch: Kolkata-Mahamayatala Branch",
+      "Address: 449, N. S. C. Bose Road, Kolkata-700103",
+      "Account No.: 266505500258",
+      "IFSC Code: ICIC0002665",
+      "MICR Code: 700229143"
+    ]
+  },
+  {
+    "id": "qtpl_bearing_pushing",
+    "title": "Horizontal Bearing Pushing Machine preliminary quotation",
+    "productId": "prod_bearing_pushing",
+    "productSlug": "bearing-pushing-machine",
+    "machineName": "Horizontal Bearing Pushing Machine",
+    "variantLabel": null,
+    "active": true,
+    "currency": "INR",
+    "basePrice": "7,45,000.00",
+    "intro": "Dear Sir, please find below our preliminary quotation for the Horizontal Bearing Pushing Machine, suitable for maximum bearing OD 100 mm.",
+    "scopeItems": [
+      "WELDMAN make Automatic Twin Head Bearing Fitting Machine, horizontal type, suitable for maximum bearing size OD 100 mm",
+      "Fabricated bed with two heads fitted with hydraulic cylinders for pushing the bearing from two sides",
+      "Three sets of mandrels supplied with the machine for pushing three sizes of bearings",
+      "Hydraulic power pack supplied with the machine",
+      "Catalogue and sample video of the machine are enclosed herewith"
+    ],
+    "exclusions": [
+      "First fill of hydraulic oil is not included",
+      "Dust cap, rain cap etc. are best fitted manually",
+      "Any foundation work or civil work is not in our scope of supply",
+      "Food, lodging and local conveyance for Welden technicians are to be paid by the customer"
+    ],
+    "deliveryNote": "8 weeks from the date of receipt of your techno-commercially clear order along with the advance.",
+    "installationNote": "Our people will visit your works for supervision of erection, commissioning and training of your operator. Food, lodging and local conveyance from the place of their stay to your site and back for our technicians are to be paid by you.",
+    "warrantyNote": "18 months from the date of delivery or 12 months from the date of commissioning, whichever is earlier, against any manufacturing defect.",
+    "paymentTerms": "40% of the basic order value advance along with the order and balance 60% of the basic order value along with 100% GST amount to be paid after inspection at our works, against proforma invoice before delivery.",
+    "validityNote": "Our offer is open for acceptance up to 45 days from the date of our offer. This preliminary quotation is subject to technical and commercial confirmation.",
+    "termsAndConditions": [
+      "Price quoted is on Ex. Works Kolkata basis and exclusive of GST, which will be charged extra as applicable at the time of delivery.",
+      "Packing and forwarding extra at 2.5%.",
+      "Transit insurance to client's account.",
+      "GST extra as applicable at the time of delivery. Present rate 18%.",
+      "GSTIN No.: 19AAACW4205C1ZQ.",
+      "Suitable for idlers with length 200 mm to 2200 mm and OD 76 mm to 200 mm.",
+      "Pressure arrangement is adjustable depending on bearing size up to 100 mm.",
+      "Bank: ICICI Bank Ltd., Kolkata-Mahamayatala Branch, Account No. 266505500258, IFSC ICIC0002665, MICR 700229143."
+    ],
+    "footerNote": "We hope you will find our offer quite attractive and shall favour us with your valued order at your earliest. Subject to technical and commercial confirmation by Welden Industries.",
+    "sampleDocumentUrl": "",
+    "companyName": "Welden Industries",
+    "companyAddress": "Mahamayatala (Garia), Laskarpur,\nKolkata - 700153, West Bengal",
+    "companyPhone": "033-24359094/5694/9830060993",
+    "companyWebsite": "www.welden.in",
+    "createdAt": "2026-03-26T10:00:00.000Z",
+    "updatedAt": "2026-03-26T16:30:00.000Z",
+    "technicalSpecifications": [
+      "Minimum Length: 200 mm",
+      "Maximum Length: 2200 mm",
+      "Minimum Diameter (OD): 76 mm",
+      "Maximum Diameter (OD): 200 mm",
+      "Maximum Bearing Size (OD): 100 mm",
+      "Three sets of mandrel will be supplied for pushing three sizes of bearings"
+    ],
+    "generalNotes": [
+      "The machine is meant for pushing the bearing only. It is best to fit dust cap and rain cap manually.",
+      "The equipment supplied is complete with hydraulic power pack but without first fill of the oil.",
+      "Pressure can be adjusted depending on the size of the bearing.",
+      "Our people will visit your works for supervision of erection, commissioning and training of your operator."
+    ],
+    "bankDetails": [
+      "Pay to: Welden Industries",
+      "Bank Name: ICICI Bank Ltd.",
+      "Branch: Kolkata-Mahamayatala Branch",
+      "Address: 449, N. S. C. Bose Road, Kolkata-700103",
+      "Account No.: 266505500258",
+      "IFSC Code: ICIC0002665",
+      "MICR Code: 700229143"
+    ]
+  }
+]
