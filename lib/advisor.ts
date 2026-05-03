@@ -585,6 +585,7 @@ export async function handleAdvisorChat(input: {
         delivered: delivery.delivered
       });
     }
+    }
 
     quotationReference = issuedQuotes.length === 1
       ? issuedQuotes[0].referenceNumber
