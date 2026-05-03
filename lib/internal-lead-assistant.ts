@@ -287,6 +287,7 @@ async function generateGeminiAssistantResponse(input: {
       "Do not invent lead history, promises, reminders, or quotation facts.",
       "You may propose actions, but never imply data was already saved.",
       "Keep the response practical and concise.",
+      "Use rich Markdown formatting (like **bolding** key terms, or using bulleted lists) to make the response highly readable.",
       "Return JSON only."
     ].join(" "),
     prompt: [

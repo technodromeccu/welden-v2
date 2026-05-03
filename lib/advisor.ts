@@ -290,16 +290,21 @@ async function generateGroundedAdvisorAnswer(input: {
 
   const groundedContext = buildGroundedContext(input.knowledge, input.selectedProduct, input.documents, input.siteSections);
   // Gather knowledge base file URIs
-  const kbFiles = await Promise.all(
+  const kbFilesRaw = await Promise.all(
     input.documents
       .filter((doc) => doc.active && doc.fileUrl)
       .map(async (doc) => {
-        const filePath = path.join(process.cwd(), "public", doc.fileUrl!.replace(/^\//, ""));
-        const mimeType = doc.sourceType === "video" ? "video/mp4" : "application/pdf";
-        const uri = await getCachedStaticFileUri(filePath, mimeType, doc.title);
-        return { mimeType, fileUri: uri };
+        try {
+          const filePath = path.join(process.cwd(), "public", doc.fileUrl!.replace(/^\//, ""));
+          const mimeType = doc.sourceType === "video" ? "video/mp4" : "application/pdf";
+          const uri = await getCachedStaticFileUri(filePath, mimeType, doc.title);
+          return { mimeType, fileUri: uri };
+        } catch {
+          return null;
+        }
       })
   );
+  const kbFiles = kbFilesRaw.filter((file) => file !== null) as Array<{ mimeType: string; fileUri: string }>;
 
   const response = await generateGeminiJson<AdvisorAiPayload>({
     groundedContextSummary: groundedContext.summary,
@@ -309,6 +314,7 @@ async function generateGroundedAdvisorAnswer(input: {
       "Do not invent features, prices, lead times, policies, or machine details.",
       "If the context is insufficient, say so professionally and decline to speculate.",
       "Keep the tone professional, concise, and commercial.",
+      "Use rich Markdown formatting (like **bolding** key terms, or using bulleted lists for specs and features) to make your answer highly readable.",
       "Return valid JSON only."
     ].join(" "),
     prompt: [
@@ -526,12 +532,15 @@ export async function handleAdvisorChat(input: {
     const issuedQuotes: Array<{ productTitle: string; referenceNumber: string; delivered: boolean }> = [];
     const skippedProducts: string[] = [];
 
-    for (const product of quoteProducts) {
-      const matchedQuotationTemplates = getActiveQuotationTemplatesForProduct(product, quotationTemplates);
-      if (!matchedQuotationTemplates.length) {
-        skippedProducts.push(product.title);
-        continue;
-      }
+    if (quoteProducts.length === 0) {
+      answerText = "I would be happy to help with a quotation. Could you please specify which machine or category you are interested in?";
+    } else {
+      for (const product of quoteProducts) {
+        const matchedQuotationTemplates = getActiveQuotationTemplatesForProduct(product, quotationTemplates);
+        if (!matchedQuotationTemplates.length) {
+          skippedProducts.push(product.title);
+          continue;
+        }
 
       const primaryTemplate = matchedQuotationTemplates[0];
       const quotation = matchedQuotationTemplates.length === 1

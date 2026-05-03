@@ -42,7 +42,7 @@ function stripBom(value: string) {
 async function blobRead<T>(name: string): Promise<T> {
   const { getStore } = await import("@netlify/blobs");
   const store = getStore("welden-data");
-  const raw = await store.get(name, { type: "text" });
+  const raw = await store.get(name, { type: "text", consistency: "strong" });
 
   if (raw === null) {
     // Key doesn't exist yet — try to seed from bundled data/ folder first
