@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -116,6 +116,18 @@ function AuditLogPanel() {
   );
 }
 
+function ArrayTextarea({ value, onChange, placeholder, splitBy }: { value: string[]; onChange: (val: string[]) => void; placeholder?: string; splitBy: "comma" | "newline" }) {
+  const [text, setText] = useState(value.join("\n"));
+  useEffect(() => {
+    const pattern = splitBy === "comma" ? /\r?\n|,/ : /\r?\n/;
+    const parsedLocal = text.split(pattern).map((s) => s.trim()).filter(Boolean);
+    if (JSON.stringify(parsedLocal) !== JSON.stringify(value)) {
+      setText(value.join("\n"));
+    }
+  }, [value, splitBy, text]);
+  return <Textarea rows={4} placeholder={placeholder} value={text} onChange={(e) => { setText(e.target.value); const pattern = splitBy === "comma" ? /\r?\n|,/ : /\r?\n/; onChange(e.target.value.split(pattern).map((entry) => entry.trim()).filter(Boolean)); }} />;
+}
+
 export function SettingsView(props: SettingsViewProps) {
   const { users, settingsDraft, setSettingsDraft, dataSettings, backupStatus, backupArtifacts, backupLoading, backupRunning, backupError, fetchBackupStatus, runBackupNow, downloadLocalBackup, saveSettings, uploadBrandingImage, getSaveButtonLabel } = props;
   const [uploadingLogo, setUploadingLogo] = useState(false);
@@ -155,6 +167,10 @@ export function SettingsView(props: SettingsViewProps) {
             <div className="rounded-xl bg-surface-container-low p-4">
               <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Escalation emails</div>
               <div className="mt-2 text-base leading-7 text-on-surface">{(settingsDraft.slaEscalationEmails ?? []).join(", ") || "None configured"}</div>
+            </div>
+            <div className="rounded-xl bg-surface-container-low p-4">
+              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation CC emails</div>
+              <div className="mt-2 text-base leading-7 text-on-surface">{(settingsDraft.quotationCcEmails ?? []).join(", ") || "None configured"}</div>
             </div>
             <div className="rounded-xl bg-surface-container-low p-4">
               <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation branding</div>
@@ -225,8 +241,10 @@ export function SettingsView(props: SettingsViewProps) {
             <label className="grid gap-2 text-sm"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Reminder lead hours</span><Input type="number" min="1" value={String(settingsDraft.slaReminderLeadHours ?? 4)} onChange={(e) => setSettingsDraft((current) => ({ ...current, slaReminderLeadHours: Number(e.target.value) }))} /></label>
             <label className="grid gap-2 text-sm"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Escalation lead hours</span><Input type="number" min="1" value={String(settingsDraft.slaEscalationLeadHours ?? 24)} onChange={(e) => setSettingsDraft((current) => ({ ...current, slaEscalationLeadHours: Number(e.target.value) }))} /></label>
             <label className="grid gap-2 text-sm"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Stale lead threshold (days)</span><Input type="number" min="1" value={String(settingsDraft.staleLeadDays ?? 5)} onChange={(e) => setSettingsDraft((current) => ({ ...current, staleLeadDays: Number(e.target.value) }))} /></label>
-            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Internal notification emails</span><Textarea rows={4} value={(settingsDraft.internalNotificationEmails ?? []).join("\n")} onChange={(e) => setSettingsDraft((current) => ({ ...current, internalNotificationEmails: e.target.value.split(/\r?\n|,/).map((entry) => entry.trim()).filter(Boolean) }))} /></div>
-            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Escalation emails</span><Textarea rows={4} value={(settingsDraft.slaEscalationEmails ?? []).join("\n")} onChange={(e) => setSettingsDraft((current) => ({ ...current, slaEscalationEmails: e.target.value.split(/\r?\n|,/).map((entry) => entry.trim()).filter(Boolean) }))} /></div>
+            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Internal notification emails</span><ArrayTextarea splitBy="comma" value={settingsDraft.internalNotificationEmails ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, internalNotificationEmails: val }))} /></div>
+            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Escalation emails</span><ArrayTextarea splitBy="comma" value={settingsDraft.slaEscalationEmails ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, slaEscalationEmails: val }))} /></div>
+            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation CC emails</span><ArrayTextarea splitBy="comma" value={settingsDraft.quotationCcEmails ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, quotationCcEmails: val }))} /></div>
+            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Chatbot quick action questions</span><ArrayTextarea splitBy="newline" placeholder="What is the price of the Automatic Pipe Cutting Machine?" value={settingsDraft.quickActionQuestions ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, quickActionQuestions: val }))} /></div>
             <label className="grid gap-2 text-sm md:col-span-2">
               <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation brand name</span>
               <Input value={settingsDraft.quotationBrandName ?? ""} onChange={(e) => setSettingsDraft((current) => ({ ...current, quotationBrandName: e.target.value }))} placeholder="Welden Industries" />

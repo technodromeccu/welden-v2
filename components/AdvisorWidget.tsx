@@ -11,7 +11,7 @@ import type { AdvisorCitation, AiResponseMetadata, Lead, LeadQuality, Product, R
 // Which step of the info-collection we're on before full chat unlocks
 type ChatPhase = "collecting_name" | "collecting_email" | "collecting_phone" | "chatting";
 
-type ChatAction = { label: string; href: string };
+type ChatAction = { label: string; href?: string; isPrompt?: boolean };
 type ChatMessage = {
   id: string;
   role: "bot" | "user";
@@ -96,10 +96,11 @@ function makeWelcomeMessages(productCount: number): ChatMessage[] {
   ];
 }
 
-export function AdvisorWidget({ products, whatsappHref, whatsappLabel }: {
+export function AdvisorWidget({ products, whatsappHref, whatsappLabel, quickActionQuestions }: {
   products: Product[];
   whatsappHref?: string | null;
   whatsappLabel?: string;
+  quickActionQuestions?: string[];
 }) {
   const reduced = useReducedMotion();
   const [isOpen, setIsOpen] = useState(false);
@@ -308,7 +309,10 @@ export function AdvisorWidget({ products, whatsappHref, whatsappLabel }: {
       leadRef.current = updatedLead;
       setPhase("chatting");
       const firstName = updatedLead.name.split(/\s+/)[0];
-      append([makeMessage("bot", `You're all set, ${firstName}. Go ahead — ask me anything about Welden machines, specs, pricing, or quotations.`, "system")]);
+      const quickActions = quickActionQuestions?.length
+        ? quickActionQuestions.map((q) => ({ label: q, isPrompt: true }))
+        : undefined;
+      append([makeMessage("bot", `You're all set, ${firstName}. Go ahead — ask me anything about Welden machines, specs, pricing, or quotations.`, "system", undefined, quickActions)]);
       return;
     }
 
@@ -448,20 +452,40 @@ export function AdvisorWidget({ products, whatsappHref, whatsappLabel }: {
                                 {/* Action buttons */}
                                 {message.actions?.length ? (
                                   <div className="flex flex-wrap gap-2 border-t border-white/8 px-4 py-3">
-                                    {message.actions.map((action) => (
-                                      <motion.a
-                                        key={`${message.id}-${action.href}`}
-                                        href={action.href}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        whileHover={{ y: -1 }}
-                                        whileTap={{ scale: 0.97 }}
-                                        transition={spring}
-                                        className="rounded-[var(--radius-btn)] bg-[var(--color-arc)] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--color-forge)]"
-                                      >
-                                        {action.label}
-                                      </motion.a>
-                                    ))}
+                                    {message.actions.map((action) => {
+                                      if (action.isPrompt) {
+                                        return (
+                                          <motion.button
+                                            key={`${message.id}-${action.label}`}
+                                            onClick={() => {
+                                              const nextMessages = [...messages, makeMessage("user", action.label)];
+                                              append([makeMessage("user", action.label)]);
+                                              void askBot(action.label, nextMessages);
+                                            }}
+                                            whileHover={{ y: -1 }}
+                                            whileTap={{ scale: 0.97 }}
+                                            transition={spring}
+                                            className="rounded-[var(--radius-btn)] bg-[var(--color-arc)] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--color-forge)]"
+                                          >
+                                            {action.label}
+                                          </motion.button>
+                                        );
+                                      }
+                                      return (
+                                        <motion.a
+                                          key={`${message.id}-${action.href}`}
+                                          href={action.href}
+                                          target="_blank"
+                                          rel="noreferrer"
+                                          whileHover={{ y: -1 }}
+                                          whileTap={{ scale: 0.97 }}
+                                          transition={spring}
+                                          className="rounded-[var(--radius-btn)] bg-[var(--color-arc)] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[var(--color-forge)]"
+                                        >
+                                          {action.label}
+                                        </motion.a>
+                                      );
+                                    })}
                                   </div>
                                 ) : null}
 

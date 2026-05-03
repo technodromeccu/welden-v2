@@ -851,6 +851,12 @@ export function LeadsView(props: LeadsViewProps) {
                       <div><span className="font-semibold text-on-surface">Machine need:</span> {selectedLead.answers.machineProblem || "No machine need captured."}</div>
                       <div><span className="font-semibold text-on-surface">Recommendation:</span> {selectedLead.recommendation.explanation}</div>
                     </div>
+                    {selectedLead.recommendation.engineeringBrief && (
+                      <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4 text-sm leading-7 text-secondary">
+                        <div className="font-semibold text-primary">AI Engineering Feasibility Brief</div>
+                        <div className="mt-2 whitespace-pre-wrap">{selectedLead.recommendation.engineeringBrief}</div>
+                      </div>
+                    )}
                     <div className="rounded-2xl border border-dashed border-outline-variant/20 bg-surface-container-low/30 p-4 text-sm leading-7 text-secondary">
                       <div className="font-semibold text-on-surface">Lead quality</div>
                       <div className="mt-2">{selectedLead.quality?.warnings?.length ? selectedLead.quality.warnings.join(" ") : "No obvious issues found in the submitted details."}</div>

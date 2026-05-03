@@ -7,7 +7,7 @@ import { MachinePageSurface } from "@/components/machines/MachineSurfaceRenderer
 import { buildMachinePageViewModel, getPublicProducts } from "@/lib/machine-page";
 import { ensureSiteSections } from "@/lib/site-sections";
 import { readCollection } from "@/lib/store";
-import type { Product, SiteSection } from "@/lib/types";
+import type { Product, SiteSection, Settings } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -43,17 +43,21 @@ function absoluteAssetUrl(path?: string) {
 }
 
 async function getMachineDetail(slug: string) {
-  const [products, rawSiteSections] = await Promise.all([
+  const [products, rawSiteSections, rawSettings] = await Promise.all([
     readCollection<Product[]>("products"),
-    readCollection<SiteSection[]>("site-sections")
+    readCollection<SiteSection[]>("site-sections"),
+    readCollection<Settings>("settings")
   ]);
   const siteSections = ensureSiteSections(rawSiteSections);
+  const { normalizeSettings } = await import("@/lib/settings");
+  const settings = normalizeSettings(rawSettings ?? ({} as Settings));
+
   const liveProducts = getPublicProducts(products);
   const product = liveProducts.find((item) => item.slug === slug);
   const publishedSections = siteSections.filter((section) => section.published !== false);
   const sectionMap = Object.fromEntries(publishedSections.map((section) => [section.key, section]));
 
-  return { product, liveProducts, sectionMap, publishedSections };
+  return { product, liveProducts, sectionMap, publishedSections, settings };
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -91,7 +95,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function MachineDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const { product, liveProducts, sectionMap, publishedSections } = await getMachineDetail(slug);
+  const { product, liveProducts, sectionMap, publishedSections, settings } = await getMachineDetail(slug);
 
   if (!product) {
     notFound();
@@ -228,7 +232,7 @@ export default async function MachineDetailPage({ params }: PageProps) {
         </footer>
       ) : null}
 
-      {visibility.advisor ? <AdvisorWidget products={liveProducts} /> : null}
+      {visibility.advisor ? <AdvisorWidget products={liveProducts} quickActionQuestions={settings.quickActionQuestions} /> : null}
 
       <script
         type="application/ld+json"

@@ -72,7 +72,7 @@ async function appendLog(entry: EmailEntry) {
   await writeCollection("email-log", emailLog.slice(0, 500));
 }
 
-export async function sendEmail(to: string[], subject: string, body: string, options?: { html?: string }) {
+export async function sendEmail(to: string[], subject: string, body: string, options?: { html?: string; cc?: string[] }) {
   const recipients = to.filter(Boolean).map((email) => email.trim()).filter(Boolean);
   const maskedRecipients = recipients.map(maskEmail);
   const bodyPreview = buildBodyPreview(body);
@@ -121,6 +121,10 @@ export async function sendEmail(to: string[], subject: string, body: string, opt
 
   if (config.replyToEmail) {
     payload.reply_to = config.replyToEmail;
+  }
+
+  if (options?.cc && options.cc.length > 0) {
+    payload.cc = options.cc;
   }
 
   try {
@@ -204,5 +208,5 @@ export async function sendQuotationEmail(input: {
     }
   });
 
-  return sendEmail(input.to, subject, text, { html });
+  return sendEmail(input.to, subject, text, { html, cc: settings.quotationCcEmails });
 }

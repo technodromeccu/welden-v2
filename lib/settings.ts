@@ -1,4 +1,4 @@
-﻿import type { Settings } from "@/lib/types";
+import type { Settings } from "@/lib/types";
 
 const DEFAULT_BUSINESS_DAYS = [1, 2, 3, 4, 5];
 const DEFAULT_BUSINESS_HOURS = { start: 9, end: 18 };
@@ -16,6 +16,10 @@ function trimOptional(value?: string | null) {
   return value?.trim() || "";
 }
 
+function uniqueStrings(values: string[]) {
+  return Array.from(new Set(values.map((value) => value.trim()).filter(Boolean)));
+}
+
 export function normalizeSettings(settings: Settings): Settings {
   return {
     advisorDefaultAssigneeId: settings.advisorDefaultAssigneeId,
@@ -29,6 +33,8 @@ export function normalizeSettings(settings: Settings): Settings {
     slaReminderLeadHours: settings.slaReminderLeadHours ?? DEFAULT_REMINDER_LEAD_HOURS,
     slaEscalationLeadHours: settings.slaEscalationLeadHours ?? DEFAULT_ESCALATION_LEAD_HOURS,
     slaEscalationEmails: uniqueEmails(settings.slaEscalationEmails ?? settings.internalNotificationEmails ?? []),
+    quotationCcEmails: uniqueEmails(settings.quotationCcEmails ?? []),
+    quickActionQuestions: uniqueStrings(settings.quickActionQuestions ?? []),
     staleLeadDays: settings.staleLeadDays ?? DEFAULT_STALE_LEAD_DAYS,
     quotationLogoUrl: trimOptional(settings.quotationLogoUrl),
     quotationBrandName: trimOptional(settings.quotationBrandName),

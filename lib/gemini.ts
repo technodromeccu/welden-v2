@@ -53,6 +53,8 @@ export async function generateGeminiJson<T>(input: {
   prompt: string;
   model?: string;
   groundedContextSummary?: string | null;
+  inlineData?: Array<{ mimeType: string; data: string }>;
+  fileData?: Array<{ mimeType: string; fileUri: string }>;
 }): Promise<GeminiJsonResult<T>> {
   const apiKey = process.env.GEMINI_API_KEY?.trim();
   const model = input.model?.trim() || DEFAULT_GEMINI_MODEL;
@@ -81,7 +83,21 @@ export async function generateGeminiJson<T>(input: {
         contents: [
           {
             role: "user",
-            parts: [{ text: input.prompt }]
+            parts: [
+              { text: input.prompt },
+              ...(input.inlineData ?? []).map((file) => ({
+                inlineData: {
+                  mimeType: file.mimeType,
+                  data: file.data
+                }
+              })),
+              ...(input.fileData ?? []).map((file) => ({
+                fileData: {
+                  mimeType: file.mimeType,
+                  fileUri: file.fileUri
+                }
+              }))
+            ]
           }
         ],
         generationConfig: {

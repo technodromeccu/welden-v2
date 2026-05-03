@@ -323,6 +323,9 @@ export interface KnowledgeDocument {
   extractedText: string;
   active: boolean;
   updatedAt: string;
+  fileUrl?: string;
+  geminiFileUri?: string;
+  geminiUploadTime?: string;
 }
 
 export interface AdvisorCitation {
@@ -362,6 +365,7 @@ export interface AdvisorRecommendation {
   highlights: string[];
   citations?: AdvisorCitation[];
   escalationReason?: string;
+  engineeringBrief?: string | null;
 }
 
 export interface PublicAdvisorResponse {
@@ -487,6 +491,8 @@ export interface Settings {
   slaReminderLeadHours?: number;
   slaEscalationLeadHours?: number;
   slaEscalationEmails?: string[];
+  quotationCcEmails?: string[];
+  quickActionQuestions?: string[];
   staleLeadDays?: number;
   quotationLogoUrl?: string;
   quotationBrandName?: string;

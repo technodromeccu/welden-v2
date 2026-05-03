@@ -2,7 +2,7 @@ import crypto from "crypto";
 import path from "path";
 import { mkdir, readFile, writeFile } from "fs/promises";
 
-type AssetDirectory = "brochures/uploads" | "images/machines/uploads" | "images/branding/uploads" | "uploads/quotations";
+type AssetDirectory = "brochures/uploads" | "images/machines/uploads" | "images/branding/uploads" | "uploads/quotations" | "uploads/knowledge";
 
 const isBlobAssetRuntime =
   process.env.USE_BLOBS === "true" &&

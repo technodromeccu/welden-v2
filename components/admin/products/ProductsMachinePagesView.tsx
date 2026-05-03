@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Eye,
   GripVertical,
@@ -447,7 +448,7 @@ function GalleryAssetEditor({
       <div className="space-y-3">
         {images.length ? images.map((image, index) => (
           <div
-            key={`${image}-${index}`}
+            key={index}
             draggable
             onDragStart={() => setDraggedIndex(index)}
             onDragEnd={() => setDraggedIndex(null)}
@@ -535,7 +536,7 @@ function SpecsEditor({
     <div className="space-y-2">
       {specs.map((spec, index) => (
         <div
-          key={`${spec.label}-${spec.value}-${index}`}
+          key={index}
           draggable
           onDragStart={() => setDraggedIndex(index)}
           onDragEnd={() => setDraggedIndex(null)}
@@ -761,7 +762,7 @@ function HowItWorksEditor({
     <div className="space-y-3">
       {steps.map((step, index) => (
         <div
-          key={`${step.title}-${step.body}-${index}`}
+          key={index}
           draggable
           onDragStart={() => setDraggedIndex(index)}
           onDragEnd={() => setDraggedIndex(null)}
@@ -1016,7 +1017,6 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
   const [draggedBlockId, setDraggedBlockId] = useState<string | null>(null);
   const [showGlobalMachineLabels, setShowGlobalMachineLabels] = useState(false);
   const [builderSidebarTab, setBuilderSidebarTab] = useState<"edit" | "structure">("edit");
-  const [isBuilderDrawerOpen, setIsBuilderDrawerOpen] = useState(false);
 
   const normalizedDraft = normalizeProductDraftForm(productDraft);
   const previewProduct = useMemo(() => toPreviewProduct(normalizedDraft, selectedPublishedProduct), [normalizedDraft, selectedPublishedProduct]);
@@ -1052,7 +1052,6 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
     const nextSelectedBlock = blockId ? currentLayout.find((block) => block.id === blockId) ?? null : null;
     if (nextSelectedBlock) {
       setBuilderSidebarTab("edit");
-      setIsBuilderDrawerOpen(!isSimpleQuickEditBlock(nextSelectedBlock));
     }
   }
 
@@ -1146,7 +1145,6 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
             size="sm"
             onClick={() => {
               setBuilderSidebarTab("edit");
-              setIsBuilderDrawerOpen(true);
             }}
           >
             More controls
@@ -1156,7 +1154,6 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
             size="sm"
             onClick={() => {
               setSelectedBlockId(null);
-              setIsBuilderDrawerOpen(false);
             }}
           >
             Close
@@ -1425,8 +1422,9 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
         saveMachineDetailLabels={saveMachineDetailLabels}
       />
 
-      <div className="grid gap-6 xl:grid-cols-[310px_minmax(0,1fr)]">
-        <div className="space-y-4">
+      <div className="grid gap-6">
+        {!(showProductEditor || showAddProduct) && (
+          <div className="space-y-4">
           <Card className="border border-outline-variant/12 shadow-sm">
             <CardHeader className="border-b border-outline-variant/10 bg-white/80 pb-4">
               <div className="flex items-center justify-between gap-3">
@@ -1445,8 +1443,8 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                 <Input className="pl-10" placeholder="Search title, slug, or category..." value={productSearch} onChange={(event) => setProductSearch(event.target.value)} />
               </div>
             </CardHeader>
-            <CardContent className="max-h-[75vh] overflow-y-auto p-0">
-              <div className="divide-y divide-outline-variant/10">
+            <CardContent className="max-h-[75vh] overflow-y-auto p-4 sm:p-6">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {filteredProducts.map((product: Product) => {
                   const status = getMachineStatus(product, data.productDrafts.find((draft: ProductDraftRecord) => draft.productId === product.id));
                   const completeness = getCompleteness(product);
@@ -1466,11 +1464,11 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                         if (currentUser.role === "admin" && draggedProductId) void moveProduct(draggedProductId, product.id);
                       }}
                       onClick={() => { setSelectedProductId(product.id); setShowProductEditor(true); setShowAddProduct(false); }}
-                      className={cn("cursor-pointer px-4 py-4 transition hover:bg-surface-container-low/40", isDragged && "bg-primary-fixed/25")}
+                      className={cn("cursor-pointer rounded-2xl border border-outline-variant/15 p-4 transition hover:bg-surface-container-low hover:shadow-md", isDragged && "bg-primary-fixed/25")}
                     >
-                      <div className="flex gap-3">
-                        <div className="flex h-16 w-20 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-outline-variant/15 bg-surface-container-low">
-                          {image ? <Image src={image} alt={product.title} width={160} height={128} unoptimized className="h-full w-full object-cover" /> : <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">No image</div>}
+                      <div className="flex flex-col gap-4">
+                        <div className="flex h-40 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl border border-outline-variant/15 bg-surface-container-low">
+                          {image ? <Image src={image} alt={product.title} width={400} height={320} unoptimized className="h-full w-full object-cover" /> : <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">No image</div>}
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-start justify-between gap-3">
@@ -1480,18 +1478,18 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                             </div>
                             {currentUser.role === "admin" ? <GripVertical className="mt-1 h-4 w-4 shrink-0 text-secondary" /> : null}
                           </div>
-                          <div className="mt-2 flex flex-wrap gap-2">
+                          <div className="mt-3 flex flex-wrap gap-2">
                             <span className={cn("rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em]", status.tone)}>{status.label}</span>
                             <span className="rounded-full bg-surface-container px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">{completeness.percent}% complete</span>
                           </div>
-                          <div className="mt-2 text-xs leading-5 text-secondary">{product.category || "No category"}{lastUpdated ? ` • Updated ${new Date(lastUpdated).toLocaleDateString()}` : ""}</div>
+                          <div className="mt-3 text-xs leading-5 text-secondary">{product.category || "No category"}{lastUpdated ? ` • Updated ${new Date(lastUpdated).toLocaleDateString()}` : ""}</div>
                         </div>
                       </div>
                     </div>
                   );
                 })}
-                {!filteredProducts.length ? <div className="px-4 py-10 text-center text-sm text-secondary">No machines match this search.</div> : null}
               </div>
+              {!filteredProducts.length ? <div className="py-10 text-center text-sm text-secondary">No machines match this search.</div> : null}
             </CardContent>
           </Card>
 
@@ -1506,10 +1504,10 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                   <Sparkles className="mr-1.5 h-3.5 w-3.5" /> Edit
                 </Button>
               </div>
-              <div className="mt-3">Shared labels for navigation, resource sections, and consultation copy across all machine detail pages.</div>
             </CardContent>
           </Card>
         </div>
+        )}
 
         <div className="space-y-4">
           {showAddProduct ? (
@@ -1523,258 +1521,197 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
           ) : showProductEditor && selectedPublishedProduct ? (
             <>
               <div className="space-y-6">
-                <Card className="border border-outline-variant/12 shadow-sm">
-                  <CardHeader className="border-b border-outline-variant/10 bg-white/80 pb-5">
-                    <div className="flex flex-col gap-5">
-                      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                        <div>
-                          <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Machine builder</div>
-                          <div className="mt-1 text-2xl font-black tracking-tight text-primary">{previewProduct.title || "Untitled machine"}</div>
-                          <div className="mt-2 max-w-3xl text-sm leading-7 text-secondary">
-                            This is the live WYSIWYG page. Click a section to edit it, drag sections to change order, and publish only when the public site should update.
+                <div className="flex flex-col gap-6 xl:flex-row xl:items-start">
+                  <Card className="flex-1 border border-outline-variant/12 shadow-sm min-w-0">
+                    <CardHeader className="border-b border-outline-variant/10 bg-white/80 pb-5">
+                      <div className="flex flex-col gap-5">
+                        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                          <div>
+                            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Machine builder</div>
+                            <div className="mt-1 text-2xl font-black tracking-tight text-primary">{previewProduct.title || "Untitled machine"}</div>
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              <span className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                                {selectedProductDraftRecord
+                                  ? `Draft saved ${new Date(selectedProductDraftRecord.updatedAt).toLocaleDateString()}`
+                                  : "No saved draft yet"}
+                              </span>
+                              <span className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                                {changedFields.length ? `${changedFields.length} unpublished change${changedFields.length > 1 ? "s" : ""}` : "No unpublished changes"}
+                              </span>
+                            </div>
                           </div>
-                          <div className="mt-3 flex flex-wrap gap-2">
-                            <span className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
-                              {selectedProductDraftRecord
-                                ? `Draft saved ${new Date(selectedProductDraftRecord.updatedAt).toLocaleDateString()}`
-                                : "No saved draft yet"}
-                            </span>
-                            <span className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
-                              {changedFields.length ? `${changedFields.length} unpublished change${changedFields.length > 1 ? "s" : ""}` : "No unpublished changes"}
-                            </span>
+                          <div className="flex flex-wrap gap-2">
+                            <Button variant="outline" onClick={() => setShowGlobalMachineLabels(true)}>Global labels</Button>
+                            <Button variant="outline" onClick={() => setShowProductEditor(false)}>Back to list</Button>
+                            <Button variant="outline" onClick={discardMachineDraft} disabled={machineDraftBusy !== null}>Discard draft</Button>
+                            <Button variant="outline" onClick={saveProduct} disabled={machineDraftBusy !== null}>
+                              {machineDraftBusy === "save" ? "Saving..." : getSaveButtonLabel("machine-draft-save", "Save draft")}
+                            </Button>
+                            <Button onClick={publishMachine} disabled={machineDraftBusy !== null}>
+                              {machineDraftBusy === "publish" ? "Publishing..." : getSaveButtonLabel("machine-publish", "Publish changes")}
+                            </Button>
+                            <Button variant="outline" className="border-rose-200 text-rose-600 hover:bg-rose-50 hover:text-rose-700" onClick={deleteProduct} disabled={machineDraftBusy !== null}>
+                              Delete machine
+                            </Button>
                           </div>
                         </div>
-                        <div className="flex flex-wrap gap-2">
-                          <Button variant="outline" onClick={() => setShowGlobalMachineLabels(true)}>Global labels</Button>
-                          <Button variant="outline" onClick={() => setShowProductEditor(false)}>Back to list</Button>
-                          <Button variant="outline" onClick={discardMachineDraft} disabled={machineDraftBusy !== null}>Discard draft</Button>
-                          <Button variant="outline" onClick={saveProduct} disabled={machineDraftBusy !== null}>
-                            {machineDraftBusy === "save" ? "Saving..." : getSaveButtonLabel("machine-draft-save", "Save draft")}
-                          </Button>
-                          <Button onClick={publishMachine} disabled={machineDraftBusy !== null}>
-                            {machineDraftBusy === "publish" ? "Publishing..." : getSaveButtonLabel("machine-publish", "Publish changes")}
-                          </Button>
-                          <Button variant="outline" className="border-rose-200 text-rose-600 hover:bg-rose-50 hover:text-rose-700" onClick={deleteProduct} disabled={machineDraftBusy !== null}>
-                            Delete machine
-                          </Button>
+
+                        <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_auto_auto] xl:items-center">
+                          <div className="inline-flex max-w-max rounded-full bg-surface-container p-1">
+                            <button
+                              type="button"
+                              onClick={() => setActiveSurface("landing_card")}
+                              className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] transition", activeSurface === "landing_card" ? "bg-white text-primary shadow-sm" : "text-secondary")}
+                            >
+                              <Eye className="mr-1.5 inline h-3.5 w-3.5" /> Landing Page Card
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setActiveSurface("machine_page")}
+                              className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] transition", activeSurface === "machine_page" ? "bg-white text-primary shadow-sm" : "text-secondary")}
+                            >
+                              <LayoutTemplate className="mr-1.5 inline h-3.5 w-3.5" /> Machine Detail Page
+                            </button>
+                          </div>
+                          <div className="inline-flex rounded-full bg-surface-container p-1 xl:justify-end">
+                            <button type="button" onClick={() => setPreviewDevice("desktop")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] transition", previewDevice === "desktop" ? "bg-white text-primary shadow-sm" : "text-secondary")}>
+                              <Monitor className="mr-1 inline h-3.5 w-3.5" /> Desktop
+                            </button>
+                            <button type="button" onClick={() => setPreviewDevice("mobile")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] transition", previewDevice === "mobile" ? "bg-white text-primary shadow-sm" : "text-secondary")}>
+                              <Smartphone className="mr-1 inline h-3.5 w-3.5" /> Mobile
+                            </button>
+                          </div>
                         </div>
                       </div>
-
-                      <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_auto_auto] xl:items-center">
-                        <div className="inline-flex max-w-max rounded-full bg-surface-container p-1">
-                          <button
-                            type="button"
-                            onClick={() => setActiveSurface("landing_card")}
-                            className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] transition", activeSurface === "landing_card" ? "bg-white text-primary shadow-sm" : "text-secondary")}
-                          >
-                            <Eye className="mr-1.5 inline h-3.5 w-3.5" /> Landing Page Card
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => setActiveSurface("machine_page")}
-                            className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] transition", activeSurface === "machine_page" ? "bg-white text-primary shadow-sm" : "text-secondary")}
-                          >
-                            <LayoutTemplate className="mr-1.5 inline h-3.5 w-3.5" /> Machine Detail Page
-                          </button>
-                        </div>
-                        <div className="rounded-full bg-surface-container px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-secondary">
-                          {SURFACE_COPY[activeSurface].audience}
-                        </div>
-                        <div className="inline-flex rounded-full bg-surface-container p-1">
-                          <button type="button" onClick={() => setPreviewDevice("desktop")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] transition", previewDevice === "desktop" ? "bg-white text-primary shadow-sm" : "text-secondary")}>
-                            <Monitor className="mr-1 inline h-3.5 w-3.5" /> Desktop
-                          </button>
-                          <button type="button" onClick={() => setPreviewDevice("mobile")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] transition", previewDevice === "mobile" ? "bg-white text-primary shadow-sm" : "text-secondary")}>
-                            <Smartphone className="mr-1 inline h-3.5 w-3.5" /> Mobile
-                          </button>
-                        </div>
-                        <div className="flex flex-wrap gap-2 xl:justify-end">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => {
-                              setBuilderSidebarTab("structure");
-                              setIsBuilderDrawerOpen(true);
-                            }}
-                          >
-                            Structure
-                          </Button>
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => {
-                              setBuilderSidebarTab("edit");
-                              setIsBuilderDrawerOpen(true);
-                            }}
-                          >
-                            Edit panel
-                          </Button>
-                        </div>
+                    </CardHeader>
+                    <CardContent className="space-y-4 bg-[linear-gradient(180deg,#f5f8fc_0%,#eef3f8_100%)] p-5">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                          {SURFACE_COPY[activeSurface].label}
+                        </span>
+                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                          Click section to edit
+                        </span>
+                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                          Drag section to reorder
+                        </span>
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 bg-[linear-gradient(180deg,#f5f8fc_0%,#eef3f8_100%)] p-5">
-                    <div className="flex flex-wrap gap-2">
-                      <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
-                        {SURFACE_COPY[activeSurface].label}
-                      </span>
-                      <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
-                        Click section to edit
-                      </span>
-                      <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
-                        Drag section to reorder
-                      </span>
-                    </div>
-                    <div className={cn("mx-auto transition-all", previewDevice === "desktop" ? "max-w-none" : "max-w-[390px]")}>
-                      {activeSurface === "landing_card" ? (
-                        <LandingCardSurface
-                          product={previewProduct}
-                          layout={previewProduct.landingCardLayout ?? []}
-                          interaction={{
-                            editable: true,
-                            selectedBlockId,
-                            draggedBlockId,
-                            onSelectBlock: selectBlockForEditing,
-                            onDragStart: setDraggedBlockId,
-                            onDragEnd: () => setDraggedBlockId(null),
-                            onMoveBlock: (dragId, targetId) => {
-                              setSurfaceLayout("landing_card", moveMachineBlock(currentLayout, dragId, targetId));
-                              setDraggedBlockId(null);
-                            },
-                            onFieldChange: updateInlineField
-                          }}
-                        />
-                      ) : (
-                        <MachinePageSurface
-                          product={previewProduct}
-                          liveProducts={liveProducts}
-                          siteSections={data.siteSections}
-                          layout={previewProduct.machinePageLayout ?? []}
-                          interaction={{
-                            editable: true,
-                            selectedBlockId,
-                            draggedBlockId,
-                            onSelectBlock: selectBlockForEditing,
-                            onDragStart: setDraggedBlockId,
-                            onDragEnd: () => setDraggedBlockId(null),
-                            onMoveBlock: (dragId, targetId) => {
-                              setSurfaceLayout("machine_page", moveMachineBlock(currentLayout, dragId, targetId));
-                              setDraggedBlockId(null);
-                            },
-                            onFieldChange: updateInlineField
-                          }}
-                        />
-                      )}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+                      <div className={cn("mx-auto transition-all", previewDevice === "desktop" ? "max-w-none" : "max-w-[390px]")}>
+                        {activeSurface === "landing_card" ? (
+                          <LandingCardSurface
+                            product={previewProduct}
+                            layout={previewProduct.landingCardLayout ?? []}
+                            interaction={{
+                              editable: true,
+                              selectedBlockId,
+                              draggedBlockId,
+                              onSelectBlock: selectBlockForEditing,
+                              onDragStart: setDraggedBlockId,
+                              onDragEnd: () => setDraggedBlockId(null),
+                              onMoveBlock: (dragId, targetId) => {
+                                setSurfaceLayout("landing_card", moveMachineBlock(currentLayout, dragId, targetId));
+                                setDraggedBlockId(null);
+                              },
+                              onFieldChange: updateInlineField
+                            }}
+                          />
+                        ) : (
+                          <MachinePageSurface
+                            product={previewProduct}
+                            liveProducts={liveProducts}
+                            siteSections={data.siteSections}
+                            layout={previewProduct.machinePageLayout ?? []}
+                            interaction={{
+                              editable: true,
+                              selectedBlockId,
+                              draggedBlockId,
+                              onSelectBlock: selectBlockForEditing,
+                              onDragStart: setDraggedBlockId,
+                              onDragEnd: () => setDraggedBlockId(null),
+                              onMoveBlock: (dragId, targetId) => {
+                                setSurfaceLayout("machine_page", moveMachineBlock(currentLayout, dragId, targetId));
+                                setDraggedBlockId(null);
+                              },
+                              onFieldChange: updateInlineField
+                            }}
+                          />
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
 
-              {selectedBlock && isSimpleQuickEditBlock(selectedBlock) && !isBuilderDrawerOpen ? (
-                <div className="pointer-events-none fixed inset-0 z-[84]">
-                  <div className="absolute bottom-4 right-4 left-4 flex justify-end sm:bottom-6 sm:right-6 sm:left-auto">
-                    <div className="pointer-events-auto w-full max-w-[420px] rounded-[1.8rem] border border-outline-variant/12 bg-white/96 p-5 shadow-[0_24px_70px_-28px_rgba(15,23,42,0.42)] backdrop-blur">
-                      {renderSimpleBlockQuickEdit()}
-                    </div>
-                  </div>
-                </div>
-              ) : null}
-
-              <div className={cn(
-                "pointer-events-none fixed inset-0 z-[85] transition",
-                isBuilderDrawerOpen ? "pointer-events-auto" : ""
-              )}>
-                <button
-                  type="button"
-                  aria-label="Close editor drawer"
-                  onClick={() => setIsBuilderDrawerOpen(false)}
-                  className={cn(
-                    "absolute inset-0 bg-slate-950/18 transition-opacity",
-                    isBuilderDrawerOpen ? "opacity-100" : "pointer-events-none opacity-0"
-                  )}
-                />
-                <div className="absolute inset-y-0 right-0 flex max-w-full items-start justify-end p-3 pt-20 sm:p-4 sm:pt-24">
-                  <div className={cn(
-                    "flex h-[calc(100vh-5.5rem)] w-[min(420px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[2rem] border border-outline-variant/12 bg-white shadow-[0_28px_80px_-30px_rgba(15,23,42,0.45)] transition-all duration-300 sm:h-[calc(100vh-7rem)] sm:w-[400px]",
-                    isBuilderDrawerOpen ? "translate-x-0 opacity-100" : "translate-x-[110%] opacity-0"
-                  )}>
+                  <div className="sticky top-6 flex h-[calc(100vh-4rem)] w-full flex-col overflow-hidden rounded-[2rem] border border-outline-variant/12 bg-white shadow-sm xl:w-[420px] xl:shrink-0">
                     <div className="flex items-start justify-between gap-3 border-b border-outline-variant/10 bg-white/90 px-5 py-4 backdrop-blur">
                       <div>
-                        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Editor drawer</div>
+                        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Inspector</div>
                         <div className="mt-1 text-xl font-black tracking-tight text-primary">
                           {builderSidebarTab === "edit"
                             ? (selectedBlock ? getBlockLabel(selectedBlock) : "Select a section")
                             : (activeSurface === "landing_card" ? "Landing card structure" : "Machine page structure")}
                         </div>
-                        <div className="mt-2 text-sm leading-6 text-secondary">
+                        <div className="mt-1 text-sm text-secondary">
                           {builderSidebarTab === "edit"
-                            ? "Click a section on the page to edit its content, media, or settings."
-                            : "Reorder sections here, then click any section on the page to edit it."}
+                            ? "Click a section on the page to edit its content."
+                            : "Reorder sections here."}
                         </div>
                       </div>
-                      <button
-                        type="button"
-                        onClick={() => setIsBuilderDrawerOpen(false)}
-                        className="flex h-10 w-10 items-center justify-center rounded-full border border-outline-variant/12 text-secondary transition hover:bg-surface-container-low hover:text-primary"
-                      >
-                        <X className="h-4 w-4" />
-                      </button>
                     </div>
-                    <div className="border-b border-outline-variant/10 px-5 py-3">
+                    <div className="border-b border-outline-variant/10 px-5 py-3 bg-surface-container-low/40">
                       <div className="inline-flex rounded-full bg-surface-container p-1">
                         <button
                           type="button"
                           onClick={() => setBuilderSidebarTab("edit")}
-                          className={cn("rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] transition", builderSidebarTab === "edit" ? "bg-white text-primary shadow-sm" : "text-secondary")}
+                          className={cn("rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] transition", builderSidebarTab === "edit" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
                         >
-                          Edit
+                          Edit section
                         </button>
                         <button
                           type="button"
                           onClick={() => setBuilderSidebarTab("structure")}
-                          className={cn("rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] transition", builderSidebarTab === "structure" ? "bg-white text-primary shadow-sm" : "text-secondary")}
+                          className={cn("rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] transition", builderSidebarTab === "structure" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
                         >
                           Structure
                         </button>
                       </div>
                     </div>
-                    <div className="flex-1 overflow-y-auto p-5">
-                      {builderSidebarTab === "edit" ? (
-                        renderBlockInspector()
-                      ) : (
-                        <StructureOrganizer
-                          embedded
-                          surface={activeSurface}
-                          layout={currentLayout}
-                          selectedBlockId={selectedBlockId}
-                          draggedBlockId={draggedBlockId}
-                          setDraggedBlockId={setDraggedBlockId}
-                          selectBlock={selectBlockForEditing}
-                          moveBlock={(dragId, targetId) => setSurfaceLayout(activeSurface, moveMachineBlock(currentLayout, dragId, targetId))}
-                          toggleBlockVisibility={(blockId) => setSurfaceLayout(activeSurface, updateMachineBlockVisibility(currentLayout, blockId, !currentLayout.find((block) => block.id === blockId)?.hidden))}
-                          removeBlock={removeBlockById}
-                          availableBlocks={availableBlocks}
-                          addBlock={addBlock}
-                        />
-                      )}
+                    <div className="relative flex-1 overflow-y-auto overflow-x-hidden bg-white">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={builderSidebarTab + (selectedBlock?.id ?? "none")}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.15 }}
+                          className="p-5"
+                        >
+                          {builderSidebarTab === "edit" ? (
+                            selectedBlock && isSimpleQuickEditBlock(selectedBlock) ? (
+                              renderSimpleBlockQuickEdit()
+                            ) : renderBlockInspector()
+                          ) : (
+                            <StructureOrganizer
+                              embedded
+                              surface={activeSurface}
+                              layout={currentLayout}
+                              selectedBlockId={selectedBlockId}
+                              draggedBlockId={draggedBlockId}
+                              setDraggedBlockId={setDraggedBlockId}
+                              selectBlock={selectBlockForEditing}
+                              moveBlock={(dragId, targetId) => setSurfaceLayout(activeSurface, moveMachineBlock(currentLayout, dragId, targetId))}
+                              toggleBlockVisibility={(blockId) => setSurfaceLayout(activeSurface, updateMachineBlockVisibility(currentLayout, blockId, !currentLayout.find((block) => block.id === blockId)?.hidden))}
+                              removeBlock={removeBlockById}
+                              availableBlocks={availableBlocks}
+                              addBlock={addBlock}
+                            />
+                          )}
+                        </motion.div>
+                      </AnimatePresence>
                     </div>
                   </div>
                 </div>
               </div>
             </>
-          ) : (
-            <Card className="border border-outline-variant/12 shadow-sm">
-              <CardContent className="flex min-h-[520px] flex-col items-center justify-center gap-4 p-10 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary-fixed/30 text-primary">
-                  <Wand2 className="h-7 w-7" />
-                </div>
-                <div className="text-2xl font-black tracking-tight text-primary">Choose a machine to open the visual builder</div>
-                <div className="max-w-xl text-sm leading-7 text-secondary">
-                  Open a machine from the left rail to edit its landing-page card and machine detail page visually, save drafts, and publish when you are ready.
-                </div>
-              </CardContent>
-            </Card>
-          )}
+          ) : null}
         </div>
       </div>
     </>

@@ -373,7 +373,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
         return {
           eyebrow: "Machine workspace",
           title: "Machines",
-          description: "Edit each machine in one place with draft saves, live admin preview, and explicit publish control.",
+          description: null,
           chips: [
             `Role ${currentUser.role}`,
             `Machines ${data.products.length}`,

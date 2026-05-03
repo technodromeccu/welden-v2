@@ -8,7 +8,7 @@ import { RevealSection, RevealItem } from "@/components/ui/RevealSection";
 import { getPublicProducts } from "@/lib/machine-page";
 import { ensureSiteSections } from "@/lib/site-sections";
 import { readCollection } from "@/lib/store";
-import type { Product, SiteSection } from "@/lib/types";
+import type { Product, SiteSection, Settings } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -99,11 +99,14 @@ function parseContactActions(section?: SiteSection) {
 }
 
 export default async function HomePage() {
-  const [products, rawSiteSections] = await Promise.all([
+  const [products, rawSiteSections, rawSettings] = await Promise.all([
     readCollection<Product[]>("products"),
-    readCollection<SiteSection[]>("site-sections")
+    readCollection<SiteSection[]>("site-sections"),
+    readCollection<Settings>("settings")
   ]);
   const siteSections = ensureSiteSections(rawSiteSections);
+  const { normalizeSettings } = await import("@/lib/settings");
+  const settings = normalizeSettings(rawSettings ?? ({} as Settings));
 
   const liveProducts = getPublicProducts(products);
   const sectionMap = Object.fromEntries(
@@ -423,6 +426,7 @@ export default async function HomePage() {
           products={liveProducts}
           whatsappHref={contactActions.whatsappHref}
           whatsappLabel={contactActions.whatsappLabel}
+          quickActionQuestions={settings.quickActionQuestions}
         />
       ) : null}
     </>

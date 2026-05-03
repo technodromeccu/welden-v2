@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { requireApiUser } from "@/lib/auth";
 import { requireSameOrigin } from "@/lib/origin-check";
 import { nowIso, readCollection, writeCollection } from "@/lib/store";
@@ -37,6 +37,9 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
   }
   if (typeof body.sourceType === "string") {
     document.sourceType = body.sourceType;
+  }
+  if (typeof body.fileUrl === "string") {
+    document.fileUrl = body.fileUrl;
   }
   document.updatedAt = nowIso();
 

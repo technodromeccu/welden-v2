@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { requireApiUser } from "@/lib/auth";
 import { requireSameOrigin } from "@/lib/origin-check";
 import { makeId, nowIso, readCollection, writeCollection } from "@/lib/store";
@@ -32,6 +32,7 @@ export async function POST(request: Request) {
     summary: body.summary ?? "",
     extractedText: body.extractedText ?? "",
     active: body.active ?? true,
+    fileUrl: body.fileUrl,
     updatedAt: nowIso()
   };
   documents.unshift(document);

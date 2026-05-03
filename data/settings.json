@@ -20,8 +20,15 @@
   "slaEscalationEmails": [
     "connect@welden.in"
   ],
-  "lastQuotationNumber": 2,
+  "quotationCcEmails": [],
+  "quickActionQuestions": [
+    "Automatic Conveyor Idler Welding Machine",
+    "Automatic Double End Boring Machine",
+    "Automatic Pipe Cutting Machine",
+    "Bearing Pushing Machine"
+  ],
   "staleLeadDays": 5,
   "quotationLogoUrl": "",
-  "quotationBrandName": "Welden Industries"
+  "quotationBrandName": "Welden Industries",
+  "lastQuotationNumber": 2
 }

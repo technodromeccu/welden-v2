@@ -7,6 +7,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { InternalLeadAssistant } from "@/components/admin/leads/InternalLeadAssistant";
 import { fmtStatus } from "@/components/admin/shared/admin-panel-helpers";
 import type { DashboardSummary, DeploymentHealth } from "@/lib/types";
+import { Bar, BarChart, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+
+const COLORS = ['#0284c7', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
 
 type TodayQueueEntry = {
   session: { id: string; lead: { name: string; phone: string }; recommendation: { recommendedCategory?: string | null } };
@@ -345,13 +348,41 @@ export function DashboardView(props: DashboardViewProps) {
         <Card className="border border-outline-variant/15 bg-white shadow-sm">
           <CardHeader className="pb-4"><CardTitle>Stage pressure</CardTitle><CardDescription>Where the active pipeline is bunching up right now.</CardDescription></CardHeader>
           <CardContent className="space-y-3 text-sm text-secondary">
-            {dashboardStageCounts.length ? dashboardStageCounts.slice(0, 5).map((entry) => <div key={entry.stage} className="flex items-center justify-between rounded-xl bg-surface-container-low px-4 py-3"><span className="capitalize">{fmtStatus(entry.stage)}</span><span className="font-semibold text-on-surface">{entry.count}</span></div>) : <div className="rounded-xl border border-dashed border-outline-variant/20 bg-surface-container-low/40 px-4 py-8 text-center">No lead stages recorded yet.</div>}
+            {dashboardStageCounts.length ? (
+              <div className="h-64 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={dashboardStageCounts} layout="vertical" margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
+                    <XAxis type="number" hide />
+                    <YAxis dataKey="stage" type="category" axisLine={false} tickLine={false} tickFormatter={(value: string) => fmtStatus(value)} style={{ fontSize: '12px', fill: '#64748b' }} />
+                    <Tooltip cursor={{ fill: '#f1f5f9' }} contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }} />
+                    <Bar dataKey="count" fill="#3b82f6" radius={[0, 4, 4, 0]}>
+                      {dashboardStageCounts.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            ) : <div className="rounded-xl border border-dashed border-outline-variant/20 bg-surface-container-low/40 px-4 py-8 text-center">No lead stages recorded yet.</div>}
           </CardContent>
         </Card>
         <Card className="border border-outline-variant/15 bg-white shadow-sm">
           <CardHeader className="pb-4"><CardTitle>Demand signals</CardTitle><CardDescription>The machine categories showing the strongest current pull.</CardDescription></CardHeader>
           <CardContent className="space-y-3 text-sm text-secondary">
-            {dashboardMachineInterest.length ? dashboardMachineInterest.slice(0, 5).map((entry) => <div key={entry.label} className="flex items-center justify-between rounded-xl bg-surface-container-low px-4 py-3"><span className="line-clamp-1 pr-3 text-on-surface">{entry.label}</span><span className="font-semibold text-on-surface">{entry.count}</span></div>) : <div className="rounded-xl border border-dashed border-outline-variant/20 bg-surface-container-low/40 px-4 py-8 text-center">No machine demand signals yet.</div>}
+            {dashboardMachineInterest.length ? (
+              <div className="h-64 w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie data={dashboardMachineInterest} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="count" nameKey="label">
+                      {dashboardMachineInterest.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <Tooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }} />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+            ) : <div className="rounded-xl border border-dashed border-outline-variant/20 bg-surface-container-low/40 px-4 py-8 text-center">No machine demand signals yet.</div>}
           </CardContent>
         </Card>
         <Card className="border border-outline-variant/15 bg-white shadow-sm">

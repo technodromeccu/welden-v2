@@ -8,6 +8,10 @@ import { buildSiteSectionSourceText, buildSnippet, scoreBag, tokenize } from "@/
 import { mergePublicAdvisorMemorySummary } from "@/lib/advisor-memory";
 import type { AdvisorIntent } from "@/lib/advisor-core";
 import type { AdvisorCitation, AiConfidence, AiResponseMetadata, KnowledgeDocument, Lead, Product, PublicAdvisorResponse, SiteSection } from "@/lib/types";
+import { getCachedStaticFileUri, needsGeminiRefresh, uploadFileToGemini } from "./gemini-files";
+import { writeCollection } from "./store";
+import fs from "fs";
+import path from "path";
 
 type KnowledgeAnswer = {
   found: boolean;
@@ -244,6 +248,18 @@ function buildGroundedContext(knowledge: KnowledgeAnswer, selectedProduct: Produ
   };
 }
 
+async function loadBrochuresFileData() {
+  const brochuresDir = path.join(process.cwd(), "public", "brochures");
+  const files = await fs.promises.readdir(brochuresDir).catch(() => []);
+  const pdfs = files.filter((f) => f.endsWith(".pdf"));
+  const fileData: Array<{ mimeType: string; fileUri: string }> = [];
+  for (const pdf of pdfs) {
+    const uri = await getCachedStaticFileUri(path.join(brochuresDir, pdf), "application/pdf", pdf);
+    fileData.push({ mimeType: "application/pdf", fileUri: uri });
+  }
+  return fileData;
+}
+
 async function generateGroundedAdvisorAnswer(input: {
   question: string;
   transcriptSummary?: string;
@@ -273,6 +289,18 @@ async function generateGroundedAdvisorAnswer(input: {
   }
 
   const groundedContext = buildGroundedContext(input.knowledge, input.selectedProduct, input.documents, input.siteSections);
+  // Gather knowledge base file URIs
+  const kbFiles = await Promise.all(
+    input.documents
+      .filter((doc) => doc.active && doc.fileUrl)
+      .map(async (doc) => {
+        const filePath = path.join(process.cwd(), "public", doc.fileUrl!.replace(/^\//, ""));
+        const mimeType = doc.sourceType === "video" ? "video/mp4" : "application/pdf";
+        const uri = await getCachedStaticFileUri(filePath, mimeType, doc.title);
+        return { mimeType, fileUri: uri };
+      })
+  );
+
   const response = await generateGeminiJson<AdvisorAiPayload>({
     groundedContextSummary: groundedContext.summary,
     system: [
@@ -291,7 +319,8 @@ async function generateGroundedAdvisorAnswer(input: {
       `Approved grounding context:\n${groundedContext.prompt}`,
       "JSON schema:",
       '{ "answer": "string", "confidence": "high|medium|low", "humanHandoffRecommended": true, "groundedContextSummary": "string" }'
-    ].filter(Boolean).join("\n\n")
+    ].filter(Boolean).join("\n\n"),
+    fileData: [...(await loadBrochuresFileData()), ...kbFiles]
   });
 
   if (!response.ok || !response.data.answer?.trim()) {
@@ -363,6 +392,35 @@ async function parseUserQuery(input: {
   return { intent, matchedProductIds };
 }
 
+async function generateEngineeringBrief(input: {
+  question: string;
+  transcriptSummary?: string;
+  selectedProduct: Product | null;
+  knowledgeContext: string;
+}): Promise<{ userSummary: string; engineeringBrief: string; feasible: boolean }> {
+  const productContext = input.selectedProduct 
+    ? `Baseline Machine: ${input.selectedProduct.title}\nCapabilities: ${input.selectedProduct.capabilities?.join(", ") || "None"}\nSpecs: ${input.selectedProduct.specs?.map((s) => `${s.label}: ${s.value}`).join("\n") || "None"}`
+    : "No baseline machine identified.";
+
+  const prompt = `User Custom Requirement: ${input.question}\nTranscript Summary: ${input.transcriptSummary || "none"}\n\n${productContext}\n\nRelevant Knowledge Base Content:\n${input.knowledgeContext}`;
+
+  const response = await generateGeminiJson<{ userSummary: string; engineeringBrief: string; feasible: boolean }>({
+    system: "You are an expert Applications Engineer at Welden Industries. A prospective customer has a custom technical requirement. Perform a gap analysis against our standard machinery. Return JSON containing:\n1. 'userSummary' (a polite, consultative reply to the user explaining technical feasibility, max 3 sentences)\n2. 'engineeringBrief' (a highly technical, bulleted engineering brief outlining the specific mechanical/software deviations required, meant for internal engineering staff)\n3. 'feasible' (boolean, whether this fits within Welden's general domain).",
+    prompt,
+    groundedContextSummary: "Custom Requirement Feasibility Check"
+  });
+
+  if (!response.ok || !response.data) {
+    return {
+      userSummary: "This sounds like a highly specific engineering requirement. I will log this for our technical team to review and follow up with you.",
+      engineeringBrief: "Failed to generate AI engineering brief. Please review the customer's request manually.",
+      feasible: false
+    };
+  }
+
+  return response.data;
+}
+
 export async function handleAdvisorChat(input: {
   lead: Lead;
   question: string;
@@ -390,18 +448,42 @@ export async function handleAdvisorChat(input: {
   const selectedProduct = explicitlyMentionedProduct ?? knowledge.matchedProduct ?? requestedQuoteProducts[0] ?? null;
   const selectedCategory = selectedProduct?.category ?? knowledge.recommendedCategory;
   const priorLeadMemory = getPriorLeadMemory(advisorSessions, input.lead);
-  const generated = await generateGroundedAdvisorAnswer({
-    question: input.question,
-    transcriptSummary: input.transcriptSummary,
-    priorMemory: priorLeadMemory,
-    intent,
-    selectedProduct,
-    knowledge,
-    documents,
-    siteSections
-  });
+  
+  let answerText = "";
+  let engineeringBriefText: string | null = null;
+  let aiMetadata: AiResponseMetadata = { provider: "gemini" };
+  
+  if (intent === "custom_requirement") {
+    const briefContext = knowledge.citations.map((c) => c.snippet).join("\n\n");
+    const briefResult = await generateEngineeringBrief({
+      question: input.question,
+      transcriptSummary: input.transcriptSummary,
+      selectedProduct,
+      knowledgeContext: briefContext
+    });
+    answerText = briefResult.userSummary;
+    engineeringBriefText = briefResult.engineeringBrief;
+    aiMetadata = {
+      provider: "gemini",
+      confidence: briefResult.feasible ? "high" : "low",
+      humanHandoffRecommended: true,
+      groundedContextSummary: "Engineering Gap Analysis"
+    };
+  } else {
+    const generated = await generateGroundedAdvisorAnswer({
+      question: input.question,
+      transcriptSummary: input.transcriptSummary,
+      priorMemory: priorLeadMemory,
+      intent,
+      selectedProduct,
+      knowledge,
+      documents,
+      siteSections
+    });
+    answerText = generated.answer;
+    aiMetadata = generated.ai;
+  }
 
-  let answerText = generated.answer;
   const quality = assessLeadQuality(input.lead);
   const session = await createLeadFromInquiry({
     lead: input.lead,
@@ -418,7 +500,8 @@ export async function handleAdvisorChat(input: {
       explanation: answerText,
       highlights: selectedProduct?.capabilities?.slice(0, 3) ?? knowledge.highlights,
       citations: knowledge.citations,
-      escalationReason: knowledge.found ? undefined : "No grounded website or KB answer"
+      escalationReason: knowledge.found ? undefined : "No grounded website or KB answer",
+      engineeringBrief: engineeringBriefText
     },
     diagnostics: {
       intent,
@@ -541,6 +624,6 @@ export async function handleAdvisorChat(input: {
     quotationReference,
     quality,
     sessionId: session.id,
-    ai: generated.ai
+    ai: aiMetadata
   };
 }
