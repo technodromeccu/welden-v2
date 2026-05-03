@@ -45,13 +45,22 @@ async function blobRead<T>(name: string): Promise<T> {
   const raw = await store.get(name, { type: "text" });
 
   if (raw === null) {
-    // Key doesn't exist yet — seed with default and return it
-    if (Object.prototype.hasOwnProperty.call(runtimeDefaults, name)) {
-      const fallback = runtimeDefaults[name] as T;
+    // Key doesn't exist yet — try to seed from bundled data/ folder first
+    try {
+      const filePath = path.join(dataDir, `${name}.json`);
+      const content = await fs.readFile(filePath, "utf8");
+      const fallback = JSON.parse(stripBom(content)) as T;
       await store.setJSON(name, fallback);
       return fallback;
+    } catch {
+      // If no file exists, seed with default and return it
+      if (Object.prototype.hasOwnProperty.call(runtimeDefaults, name)) {
+        const fallback = runtimeDefaults[name] as T;
+        await store.setJSON(name, fallback);
+        return fallback;
+      }
+      throw new Error(`Collection "${name}" not found and has no default.`);
     }
-    throw new Error(`Collection "${name}" not found and has no default.`);
   }
 
   return JSON.parse(raw) as T;
