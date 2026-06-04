@@ -37,3 +37,11 @@ tmp_test.txt
 /data/backup-status.json
 /public/images/machines/uploads/*
 !/public/images/machines/uploads/.gitkeep
+
+# Firebase Admin SDK service-account key (NEVER commit)
+.secrets/
+
+# Internal working/planning docs — local only, never pushed
+/PRODUCTION-PLAN.md
+/docs/firebase-migration-spec.md
+/docs/firebase-project-details.md

@@ -32,7 +32,17 @@ Full-stack Next.js MVP for the Welden Industries website, Guided Machine Advisor
 - `CRON_SECRET`: protects `/api/sla-sweep`
 - `NEXT_PUBLIC_SITE_URL`: canonical public site URL for metadata
 
+### Firebase data backend (optional, opt-in)
+- `DATA_BACKEND`: `file` (default) or `firestore`. Set to `firestore` to use Firestore + Cloud Storage.
+- `FIREBASE_PROJECT_ID`, `FIREBASE_STORAGE_BUCKET`: target project + bucket.
+- Credentials: `GOOGLE_APPLICATION_CREDENTIALS` (path, local) **or** `FIREBASE_SERVICE_ACCOUNT_JSON` (full JSON, hosted).
+- Seed config collections into Firestore once: `npm run migrate:firestore` (idempotent; `-- --force` to overwrite).
+- See `docs/firebase-project-details.md` for the provisioned project and `docs/firebase-migration-spec.md` for design notes.
+
 ### Optional
+- `GEMINI_MODEL`: Advisor chatbot model ID. Defaults to `gemini-3.5-flash`.
+- `GEMINI_TEMPERATURE`: Sampling temperature. Defaults to `1.0` (Google's recommendation for Gemini 3.x). Lower for more deterministic grounded answers.
+- `GEMINI_THINKING_LEVEL`: Reasoning depth (`minimal`/`low`/`medium`/`high`). Defaults to `low` to reduce advisor latency and cost.
 - `RESEND_API_KEY`
 - `RESEND_SENDER_EMAIL`
 - `RESEND_SENDER_NAME`
