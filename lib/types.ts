@@ -575,6 +575,8 @@ export interface DeploymentHealth {
   resendConfigured: boolean;
   cronConfigured: boolean;
   geminiConfigured: boolean;
+  /** True when DATA_BACKEND=firestore (Firebase is the active data tier). */
+  firestoreBackend: boolean;
   readyForProduction: boolean;
 }
 

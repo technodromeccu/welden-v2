@@ -8,7 +8,7 @@ import type { Settings } from "@/lib/types";
 
 export async function POST(request: Request) {
   try {
-    const rateLimited = enforceRateLimit("contact-lead", request.headers, { maxRequests: 5, windowMs: 10 * 60 * 1000 });
+    const rateLimited = await enforceRateLimit("contact-lead", request.headers, { maxRequests: 5, windowMs: 10 * 60 * 1000 });
     if (rateLimited) {
       return rateLimited;
     }

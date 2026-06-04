@@ -5,6 +5,7 @@ export function getDeploymentHealth(): DeploymentHealth {
   const resendConfigured = Boolean(process.env.RESEND_API_KEY && process.env.RESEND_SENDER_EMAIL);
   const cronConfigured = Boolean(process.env.CRON_SECRET);
   const geminiConfigured = Boolean(process.env.GEMINI_API_KEY);
+  const firestoreBackend = process.env.DATA_BACKEND === "firestore";
 
   return {
     authSecretConfigured,
@@ -12,6 +13,7 @@ export function getDeploymentHealth(): DeploymentHealth {
     resendConfigured,
     cronConfigured,
     geminiConfigured,
+    firestoreBackend,
     readyForProduction: authSecretConfigured && cronConfigured && resendConfigured
   };
 }

@@ -5,7 +5,7 @@ import { LoginSchema, parseSchema } from "@/lib/schemas";
 
 export async function POST(request: Request) {
   try {
-    const rateLimited = enforceRateLimit("auth-login", request.headers, { maxRequests: 5, windowMs: 60 * 1000 });
+    const rateLimited = await enforceRateLimit("auth-login", request.headers, { maxRequests: 5, windowMs: 60 * 1000 });
     if (rateLimited) {
       return rateLimited;
     }

@@ -21,7 +21,7 @@ export async function GET(request: Request) {
 
 // POST — consume token and update password
 export async function POST(request: Request) {
-  const rateLimited = enforceRateLimit("reset-password", request.headers, { maxRequests: 5, windowMs: 15 * 60 * 1000 });
+  const rateLimited = await enforceRateLimit("reset-password", request.headers, { maxRequests: 5, windowMs: 15 * 60 * 1000 });
   if (rateLimited) return rateLimited;
 
   try {

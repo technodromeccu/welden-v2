@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
-import { consumeRateLimit, type RateLimitPolicy } from "@/lib/rate-limit-core";
+import { consumeRateLimit, type RateLimitPolicy, type RateLimitResult } from "@/lib/rate-limit-core";
+
+// SEC-01: use the durable Firestore-backed limiter when Firestore is the active backend
+// (the in-memory limiter does not hold across serverless instances). Falls back to the
+// in-memory limiter for local/file-backed dev. Disabled during the Next.js build phase.
+const useDurableLimiter =
+  process.env.DATA_BACKEND === "firestore" &&
+  process.env.NEXT_PHASE !== "phase-production-build";
 
 function getClientIdentifier(headers: Headers) {
   const forwardedFor = headers.get("x-forwarded-for")?.split(",")[0]?.trim();
@@ -10,8 +17,22 @@ function getClientIdentifier(headers: Headers) {
 
 export { consumeRateLimit } from "@/lib/rate-limit-core";
 
-export function enforceRateLimit(scope: string, headers: Headers, policy: RateLimitPolicy) {
-  const result = consumeRateLimit(scope, getClientIdentifier(headers), policy);
+export async function enforceRateLimit(scope: string, headers: Headers, policy: RateLimitPolicy) {
+  const clientIdentifier = getClientIdentifier(headers);
+  let result: RateLimitResult;
+
+  if (useDurableLimiter) {
+    try {
+      const { consumeRateLimitDurable } = await import("@/lib/rate-limit-store");
+      result = await consumeRateLimitDurable(scope, clientIdentifier, policy);
+    } catch {
+      // Never let a rate-limit backend hiccup take down the endpoint — fail open to the
+      // in-memory limiter so legitimate requests still succeed.
+      result = consumeRateLimit(scope, clientIdentifier, policy);
+    }
+  } else {
+    result = consumeRateLimit(scope, clientIdentifier, policy);
+  }
 
   if (result.allowed) {
     return null;
