@@ -10,6 +10,7 @@
     "test": "node --experimental-strip-types --experimental-specifier-resolution=node tests/run-tests.ts",
     "smoke": "node --experimental-strip-types --experimental-specifier-resolution=node tests/smoke-auth.ts",
     "preview": "next build && next start",
+    "migrate:firestore": "node --experimental-strip-types --experimental-specifier-resolution=node scripts/migrate-to-firestore.ts",
     "backup": "node --experimental-strip-types --experimental-specifier-resolution=node scripts/backup.ts",
     "backups:list": "node --experimental-strip-types --experimental-specifier-resolution=node scripts/backups-list.ts",
     "restore": "node --experimental-strip-types --experimental-specifier-resolution=node scripts/restore.ts"
@@ -20,6 +21,7 @@
     "@tailwindcss/postcss": "^4.2.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "firebase-admin": "^13.10.0",
     "framer-motion": "^12.38.0",
     "lucide-react": "^0.577.0",
     "next": "16.2.3",
@@ -41,7 +43,7 @@
     "typescript": "5.9.3"
   },
   "overrides": {
-    "brace-expansion": "5.0.5",
+    "brace-expansion": "2.0.2",
     "picomatch": "4.0.4"
   }
 }
