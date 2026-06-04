@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import { buildSessionToken, canAccessRole, createPasswordRecord, hashPassword } from "../lib/auth-core.ts";
 import { mergePublicAdvisorMemorySummary } from "../lib/advisor-memory.ts";
-import { detectConversationProduct, detectProductSelection, detectRequestedQuoteProducts, shouldQuoteAllProducts } from "../lib/advisor-core.ts";
+// Note: deterministic product-detection helpers (detectConversationProduct, etc.) were
+// removed when product matching moved to the Gemini intent router in lib/advisor.ts.
+// Their tests were removed with them — the behavior is now model-driven, not a pure unit.
 import { addMachineBlock, deriveLandingCardLayout, deriveMachinePageLayout, moveMachineBlock, removeMachineBlock } from "../lib/machine-builder.ts";
 import { mergeProductWithDraft, normalizeProduct, normalizeProductDraftRecord, productToDraftPayload } from "../lib/products.ts";
 import { consumeRateLimit } from "../lib/rate-limit-core.ts";
@@ -89,120 +91,6 @@ const cases: Case[] = [
       assert.equal(merged.includes("Machine in discussion: Automatic Pipe Cutting Machine."), true);
       assert.equal(merged.includes("Latest visitor request: Please send pricing."), true);
       assert.equal(merged.includes("Latest outcome: Shared grounded machine details."), true);
-    }
-  },
-  {
-    name: "detectConversationProduct keeps the last discussed machine for follow-up quote requests",
-    run: () => {
-      const products = [
-        { id: "prod_double_end_boring", title: "Automatic Double End Boring Machine", shortName: "Boring Machine", slug: "double-end-boring-machine", category: "Double End Boring", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_idler_welding", title: "Automatic Conveyor Idler Welding Machine", shortName: "Welding Machine", slug: "idler-welding-machine", category: "Idler Welding", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_pipe_cutting", title: "Automatic Pipe Cutting Machine", shortName: "Pipe Cutter", slug: "pipe-cutting-machine", category: "Pipe Cutting", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_bearing_pushing", title: "Bearing Pushing Machine", shortName: "Bearing Press", slug: "bearing-pushing-machine", category: "Bearing Pushing", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" }
-      ];
-
-      const match = detectConversationProduct(
-        products,
-        "Please send me a quote.",
-        [
-          "Visitor: I want details about the automatic pipe cutting machine.",
-          "Advisor: Automatic Pipe Cutting Machine: High-precision, unmanned pipe cutting for production lines."
-        ].join("\n")
-      );
-
-      assert.equal(match?.id, "prod_pipe_cutting");
-    }
-  },
-  {
-    name: "detectProductSelection prefers a direct machine mention over transcript context",
-    run: () => {
-      const products = [
-        { id: "prod_double_end_boring", title: "Automatic Double End Boring Machine", shortName: "Boring Machine", slug: "double-end-boring-machine", category: "Double End Boring", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_idler_welding", title: "Automatic Conveyor Idler Welding Machine", shortName: "Welding Machine", slug: "idler-welding-machine", category: "Idler Welding", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_pipe_cutting", title: "Automatic Pipe Cutting Machine", shortName: "Pipe Cutter", slug: "pipe-cutting-machine", category: "Pipe Cutting", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" }
-      ];
-
-      const selection = detectProductSelection(
-        products,
-        "Tell me about the welding machine.",
-        [
-          "Visitor: I need a quote for the boring machine.",
-          "Advisor: Automatic Double End Boring Machine is used for precision boring."
-        ].join("\n")
-      );
-
-      assert.equal(selection.direct?.id, "prod_idler_welding");
-      assert.equal(selection.transcript, null);
-      assert.equal(selection.selected?.id, "prod_idler_welding");
-    }
-  },
-  {
-    name: "detectProductSelection falls back to transcript context for quote follow-ups without a new machine mention",
-    run: () => {
-      const products = [
-        { id: "prod_bearing_pushing", title: "Bearing Pushing Machine", shortName: "Bearing Press", slug: "bearing-pushing-machine", category: "Bearing Pushing", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_idler_welding", title: "Automatic Conveyor Idler Welding Machine", shortName: "Welding Machine", slug: "idler-welding-machine", category: "Idler Welding", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" }
-      ];
-
-      const selection = detectProductSelection(
-        products,
-        "Please send me a quote.",
-        [
-          "Visitor: I need details about the bearing pushing machine.",
-          "Advisor: Bearing Pushing Machine prevents damage during pressing."
-        ].join("\n")
-      );
-
-      assert.equal(selection.direct, null);
-      assert.equal(selection.transcript?.id, "prod_bearing_pushing");
-      assert.equal(selection.selected?.id, "prod_bearing_pushing");
-    }
-  },
-  {
-    name: "detectRequestedQuoteProducts returns all published products for all-machines quote requests",
-    run: () => {
-      const products = [
-        { id: "prod_double_end_boring", title: "Automatic Double End Boring Machine", shortName: "Boring Machine", slug: "double-end-boring-machine", category: "Double End Boring", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_idler_welding", title: "Automatic Conveyor Idler Welding Machine", shortName: "Welding Machine", slug: "idler-welding-machine", category: "Idler Welding", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_pipe_cutting", title: "Automatic Pipe Cutting Machine", shortName: "Pipe Cutter", slug: "pipe-cutting-machine", category: "Pipe Cutting", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_bearing_pushing", title: "Bearing Pushing Machine", shortName: "Bearing Press", slug: "bearing-pushing-machine", category: "Bearing Pushing", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" }
-      ];
-
-      const matches = detectRequestedQuoteProducts(products, "Please send quotations for all 4 machines.");
-
-      assert.equal(shouldQuoteAllProducts("Please send quotations for all 4 machines."), true);
-      assert.deepEqual(matches.map((product) => product.id), [
-        "prod_double_end_boring",
-        "prod_idler_welding",
-        "prod_pipe_cutting",
-        "prod_bearing_pushing"
-      ]);
-    }
-  },
-  {
-    name: "detectRequestedQuoteProducts collects multiple machines from transcript context",
-    run: () => {
-      const products = [
-        { id: "prod_double_end_boring", title: "Automatic Double End Boring Machine", shortName: "Boring Machine", slug: "double-end-boring-machine", category: "Double End Boring", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_idler_welding", title: "Automatic Conveyor Idler Welding Machine", shortName: "Welding Machine", slug: "idler-welding-machine", category: "Idler Welding", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" },
-        { id: "prod_pipe_cutting", title: "Automatic Pipe Cutting Machine", shortName: "Pipe Cutter", slug: "pipe-cutting-machine", category: "Pipe Cutting", summary: "", capabilities: [], idealUseCases: [], industries: [], media: [], brochureUrl: "", published: true, accent: "#000" }
-      ];
-
-      const matches = detectRequestedQuoteProducts(
-        products,
-        "Please send me quotations for these machines.",
-        [
-          "Visitor: Tell me about the boring machine.",
-          "Advisor: Automatic Double End Boring Machine details.",
-          "Visitor: Also show me the welding machine and pipe cutting machine."
-        ].join("\n")
-      );
-
-      assert.deepEqual(new Set(matches.map((product) => product.id)), new Set([
-        "prod_idler_welding",
-        "prod_pipe_cutting",
-        "prod_double_end_boring"
-      ]));
     }
   },
   {
