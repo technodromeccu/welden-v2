@@ -8,6 +8,10 @@ const isBlobAssetRuntime =
   process.env.USE_BLOBS === "true" &&
   process.env.NEXT_PHASE !== "phase-production-build";
 
+const isFirebaseAssetRuntime =
+  process.env.DATA_BACKEND === "firestore" &&
+  process.env.NEXT_PHASE !== "phase-production-build";
+
 const contentTypeByExtension = new Map([
   [".pdf", "application/pdf"],
   [".doc", "application/msword"],
@@ -74,6 +78,16 @@ export async function saveUploadedAsset(input: {
   const bytes = Buffer.from(raw);
   const contentType = input.file.type || getContentTypeFromKey(key);
 
+  if (isFirebaseAssetRuntime) {
+    const { getStorageBucket } = await import("./firebase-admin");
+    const bucket = await getStorageBucket();
+    await bucket.file(key).save(bytes, {
+      contentType,
+      metadata: { metadata: { originalName: input.file.name } }
+    });
+    return { key, url: createAssetUrl(key) };
+  }
+
   if (isBlobAssetRuntime) {
     const store = await getAssetStore();
     await store.set(key, raw, {
@@ -96,6 +110,25 @@ export async function readStoredAsset(keySegments: string[]) {
   const key = sanitizeSegments(keySegments).join("/");
   if (!key) {
     return null;
+  }
+
+  if (isFirebaseAssetRuntime) {
+    const { getStorageBucket } = await import("./firebase-admin");
+    const bucket = await getStorageBucket();
+    const fileRef = bucket.file(key);
+    const [exists] = await fileRef.exists();
+    if (!exists) {
+      return null;
+    }
+    const [buffer] = await fileRef.download();
+    const [meta] = await fileRef.getMetadata();
+    const originalName = (meta.metadata as { originalName?: string } | undefined)?.originalName;
+    return {
+      key,
+      bytes: Buffer.from(buffer),
+      contentType: meta.contentType || getContentTypeFromKey(key),
+      fileName: originalName || path.basename(key)
+    };
   }
 
   if (isBlobAssetRuntime) {

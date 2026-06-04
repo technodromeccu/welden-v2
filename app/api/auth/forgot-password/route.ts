@@ -7,7 +7,7 @@ import { apiError } from "@/lib/api-error";
 
 export async function POST(request: Request) {
   // Tight rate-limit: 3 requests per 10 minutes per IP to prevent email flooding
-  const rateLimited = enforceRateLimit("forgot-password", request.headers, { maxRequests: 3, windowMs: 10 * 60 * 1000 });
+  const rateLimited = await enforceRateLimit("forgot-password", request.headers, { maxRequests: 3, windowMs: 10 * 60 * 1000 });
   if (rateLimited) return rateLimited;
 
   try {

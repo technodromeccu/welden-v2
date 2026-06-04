@@ -39,7 +39,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const rateLimited = enforceRateLimit("advisor-recommend", request.headers, { maxRequests: 15, windowMs: 5 * 60 * 1000 });
+    const rateLimited = await enforceRateLimit("advisor-recommend", request.headers, { maxRequests: 15, windowMs: 5 * 60 * 1000 });
     if (rateLimited) {
       return rateLimited;
     }

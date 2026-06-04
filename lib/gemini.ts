@@ -1,7 +1,23 @@
 import type { AiProvider, AiResponseMetadata } from "./types";
 
-const DEFAULT_GEMINI_MODEL = process.env.GEMINI_MODEL?.trim() || "gemini-2.0-flash";
+const DEFAULT_GEMINI_MODEL = process.env.GEMINI_MODEL?.trim() || "gemini-3.5-flash";
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta";
+
+// Temperature: Google recommends 1.0 (the default) for Gemini 3.x; lowering it can
+// degrade reasoning. Kept env-configurable so a more deterministic value can be set
+// for grounded RAG without a code change. Falls back to 1.0 on an invalid value.
+const DEFAULT_GEMINI_TEMPERATURE = (() => {
+  const parsed = Number(process.env.GEMINI_TEMPERATURE?.trim());
+  return Number.isFinite(parsed) ? parsed : 1.0;
+})();
+
+// Thinking level: "low" cuts advisor latency and token cost versus the Gemini 3.x
+// default of "high". Env-configurable; invalid values fall back to "low".
+const VALID_THINKING_LEVELS = new Set(["minimal", "low", "medium", "high"]);
+const DEFAULT_GEMINI_THINKING_LEVEL = (() => {
+  const value = process.env.GEMINI_THINKING_LEVEL?.trim();
+  return value && VALID_THINKING_LEVELS.has(value) ? value : "low";
+})();
 
 type GeminiJsonResult<T> =
   | {
@@ -101,9 +117,12 @@ export async function generateGeminiJson<T>(input: {
           }
         ],
         generationConfig: {
-          temperature: 0.3,
+          temperature: DEFAULT_GEMINI_TEMPERATURE,
           topP: 0.9,
-          responseMimeType: "application/json"
+          responseMimeType: "application/json",
+          thinkingConfig: {
+            thinkingLevel: DEFAULT_GEMINI_THINKING_LEVEL
+          }
         }
       })
     });

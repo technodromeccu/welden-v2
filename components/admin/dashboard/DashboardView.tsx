@@ -212,7 +212,7 @@ export function DashboardView(props: DashboardViewProps) {
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Pipeline intake</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardFirstCallOpenCount}</div><div className="mt-2 text-sm text-secondary">New leads still waiting for the first staff touch.</div></CardContent></Card>
         <Card className="border border-amber-200/70 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Quoted but cooling</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardQuotedAwaitingCallCount}</div><div className="mt-2 text-sm text-secondary">Quotes sent without a logged human follow-up yet.</div></CardContent></Card>
-        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Callbacks committed</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardCallbacksTodayCount}</div><div className="mt-2 text-sm text-secondary">Buyer calls scheduled into today's operating window.</div></CardContent></Card>
+        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Callbacks committed</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardCallbacksTodayCount}</div><div className="mt-2 text-sm text-secondary">Buyer calls scheduled into today&apos;s operating window.</div></CardContent></Card>
         <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Immediate pressure</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardFirstCallDueCount}</div><div className="mt-2 text-sm text-secondary">Leads whose first call deadline has already arrived.</div></CardContent></Card>
       </section>
 
@@ -221,7 +221,7 @@ export function DashboardView(props: DashboardViewProps) {
           <CardHeader className="pb-4">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <CardTitle>Today's queue</CardTitle>
+                <CardTitle>Today&apos;s queue</CardTitle>
                 <CardDescription>Callbacks, overdue follow-ups, and first calls that need attention right now.</CardDescription>
               </div>
               {totalTodayCount > 0 && (
