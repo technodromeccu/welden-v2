@@ -244,13 +244,19 @@ The leads board uses **eight stage-specific themes** in `leads-view-helpers.ts �
 </Card>
 ```
 
-### Status badge (info example)
+### Status badge — use named variants (no inline color overrides)
 ```tsx
-<Badge variant="outline" className="border-sky-200/80 bg-sky-50 text-sky-900">
-  Scheduled
-</Badge>
+<Badge variant="info">Scheduled</Badge>
+<Badge variant="success">Quote sent</Badge>
+<Badge variant="warning">Stale</Badge>
+<Badge variant="danger">Call overdue</Badge>
+<Badge variant="default">12 items</Badge>     {/* count / chip */}
+<Badge variant="secondary">Lead context</Badge>  {/* informational tag */}
+<Badge variant="outline">No quote yet</Badge>    {/* subtle neutral */}
 ```
-Swap the color triplet (`amber-*`, `emerald-*`, `rose-*`, `sky-*`, `slate-*`) per the **Status** table above. Always border + bg + text together.
+**Seven canonical tones:** `default · secondary · outline · info · success · warning · danger`. Do NOT pass inline `bg-*`/`text-*`/`border-*` overrides — if you need a new tone, add it to the variant map. The only legal `className` on `<Badge>` is layout (margins, gap, leading-icon spacing).
+
+Floor: badge text is `text-xs` (12px) — never sub-12px.
 
 ### Eyebrow label (uppercase mini-heading)
 ```tsx
