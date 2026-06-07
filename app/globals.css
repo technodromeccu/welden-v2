@@ -147,6 +147,22 @@
     outline-offset: 2px;
     border-radius: inherit;
   }
+
+  /* Pointer cursor on buttons. Tailwind's preflight reset keeps button at
+     cursor:default, which makes interactive buttons feel un-clickable. Anchors
+     (<a>) already get the pointer from the user-agent stylesheet, so this
+     re-aligns <button> to match user expectations. Disabled buttons get the
+     not-allowed cursor. Tailwind utilities (cursor-grab, cursor-grabbing) are
+     in @layer utilities and will continue to override this base rule for
+     drag handles and similar specialized cases. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+  button:disabled,
+  [role="button"][aria-disabled="true"] {
+    cursor: not-allowed;
+  }
 }
 
 @layer components {
