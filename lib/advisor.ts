@@ -6,6 +6,7 @@ import { assessLeadQuality } from "@/lib/request-validation";
 import { readCollection } from "@/lib/store";
 import { buildSiteSectionSourceText, buildSnippet, scoreBag, tokenize } from "@/lib/advisor-core";
 import { mergePublicAdvisorMemorySummary } from "@/lib/advisor-memory";
+import { getKbDocGeminiFile, pickFileBackedDocForGrounding } from "@/lib/kb-grounding";
 import type { AdvisorIntent } from "@/lib/advisor-core";
 import type { AdvisorCitation, AiConfidence, AiResponseMetadata, KnowledgeDocument, Lead, Product, PublicAdvisorResponse, SiteSection } from "@/lib/types";
 import { writeCollection } from "./store";
@@ -275,11 +276,23 @@ async function generateGroundedAdvisorAnswer(input: {
 
   const groundedContext = buildGroundedContext(input.knowledge, input.selectedProduct, input.documents, input.siteSections);
 
-  // PERF: brochure/KB PDF grounding was removed. Uploading + processing 4 brochure PDFs
-  // through the Gemini File API added ~10s per reply (advisor was 16-21s, over Netlify's
-  // timeout) and the local-filesystem read was already broken on serverless. The text
-  // grounding below (product specs + KB extractedText + site sections) produces accurate
-  // answers; PDF-content grounding can return later via Cloud Storage + a cached upload.
+  // FILE GROUNDING (KB docs only, capped at one per request for latency).
+  // PR #5 dropped bundled-brochure grounding because it read from local disk;
+  // KB docs uploaded by admins live in Cloud Storage and are picked up here.
+  // We only consider a file-backed doc if it was already cited as a relevant
+  // grounding source, and we re-use the Gemini Files URI from the previous
+  // upload until it ages past 40h. Failures degrade silently — the advisor
+  // still answers from text grounding.
+  const fileData: Array<{ mimeType: string; fileUri: string }> = [];
+  const citedDocumentIds = input.knowledge.citations
+    .filter((citation) => citation.sourceType === "knowledge_document")
+    .map((citation) => citation.sourceId);
+  const fileBackedDoc = pickFileBackedDocForGrounding(input.documents, citedDocumentIds);
+  if (fileBackedDoc) {
+    const file = await getKbDocGeminiFile(fileBackedDoc);
+    if (file) fileData.push(file);
+  }
+
   const response = await generateGeminiJson<AdvisorAiPayload>({
     groundedContextSummary: groundedContext.summary,
     system: [
@@ -299,7 +312,8 @@ async function generateGroundedAdvisorAnswer(input: {
       `Approved grounding context:\n${groundedContext.prompt}`,
       "JSON schema:",
       '{ "answer": "string", "confidence": "high|medium|low", "humanHandoffRecommended": true, "groundedContextSummary": "string" }'
-    ].filter(Boolean).join("\n\n")
+    ].filter(Boolean).join("\n\n"),
+    fileData: fileData.length ? fileData : undefined
   });
 
   if (!response.ok || !response.data.answer?.trim()) {
