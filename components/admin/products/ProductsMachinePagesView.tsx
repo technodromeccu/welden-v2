@@ -324,7 +324,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
 
         <div className="rounded-3xl border border-outline-variant/12 bg-white p-6">
           <div className="mb-4 flex items-center justify-between gap-3">
-            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Block settings</div>
+            <div className="text-sm font-semibold text-on-surface">Block settings</div>
             <div className="flex gap-2">
               <Button
                 variant="outline"
@@ -581,7 +581,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                     >
                       <div className="flex flex-col gap-4">
                         <div className="flex h-40 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl border border-outline-variant/15 bg-surface-container-low">
-                          {image ? <Image src={image} alt={product.title} width={400} height={320} unoptimized className="h-full w-full object-cover" /> : <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary/60">No image</div>}
+                          {image ? <Image src={image} alt={product.title} width={400} height={320} unoptimized className="h-full w-full object-cover" /> : <div className="text-xs text-secondary/60">No image</div>}
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-start justify-between gap-3">
