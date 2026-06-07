@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import path from "path";
-import { mkdir, readFile, writeFile } from "fs/promises";
+import { mkdir, readFile, unlink, writeFile } from "fs/promises";
 
 type AssetDirectory = "brochures/uploads" | "images/machines/uploads" | "images/branding/uploads" | "uploads/quotations" | "uploads/knowledge";
 
@@ -166,4 +166,62 @@ export async function readStoredAsset(keySegments: string[]) {
 
 export function buildUploadedFileName(prefix: string, extension: string) {
   return `${prefix}-${crypto.randomUUID()}${extension}`;
+}
+
+// Best-effort asset deletion. Mirrors readStoredAsset's backend selection
+// (Firebase Storage → Netlify Blobs → local public/). Returns true if the
+// asset was removed (or didn't exist), false on a real failure. Never throws —
+// callers should treat a false return as "asset cleanup did not succeed" and
+// decide whether to proceed with the rest of their work.
+export async function deleteStoredAsset(keySegments: string[]): Promise<boolean> {
+  const key = sanitizeSegments(keySegments).join("/");
+  if (!key) return false;
+
+  try {
+    if (isFirebaseAssetRuntime) {
+      const { getStorageBucket } = await import("./firebase-admin");
+      const bucket = await getStorageBucket();
+      const fileRef = bucket.file(key);
+      const [exists] = await fileRef.exists();
+      if (!exists) return true;
+      await fileRef.delete();
+      return true;
+    }
+
+    if (isBlobAssetRuntime) {
+      const store = await getAssetStore();
+      await store.delete(key);
+      return true;
+    }
+
+    const outputPath = joinPublicPath(key);
+    assertInsidePublic(outputPath);
+    try {
+      await unlink(outputPath);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === "ENOENT") return true;
+      throw error;
+    }
+    return true;
+  } catch (error) {
+    console.warn("[asset-storage] deleteStoredAsset failed", key, error);
+    return false;
+  }
+}
+
+// Convert a stored fileUrl (either "/api/assets/<key>" for Cloud Storage / Blobs,
+// or "/<key>" for the legacy local-dev form) into the key segments expected by
+// deleteStoredAsset / readStoredAsset. Returns null if the URL is empty or
+// doesn't point at a stored asset.
+export function fileUrlToAssetKey(fileUrl: string | null | undefined): string[] | null {
+  const trimmed = (fileUrl ?? "").trim();
+  if (!trimmed) return null;
+
+  const apiPrefix = "/api/assets/";
+  const rawKey = trimmed.startsWith(apiPrefix)
+    ? trimmed.slice(apiPrefix.length)
+    : trimmed.replace(/^\/+/, "");
+
+  if (!rawKey) return null;
+  return rawKey.split("/").filter(Boolean).map((seg) => decodeURIComponent(seg));
 }

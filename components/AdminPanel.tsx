@@ -1119,6 +1119,18 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
       setNotice("Document updated."); markSaved("knowledge-doc-save"); setError(null); setLoadedTabs((current) => ({ ...current, "knowledge base": false, dashboard: false })); await refresh("knowledge base", true);
     } catch (e) { setError(e instanceof Error ? e.message : "Unable to save document."); }
   }
+  async function deleteDoc() {
+    if (!selectedDoc) return;
+    try {
+      await api(`/api/knowledge-documents/${selectedDoc.id}`, { method: "DELETE" });
+      setNotice(`Deleted "${selectedDoc.title}".`);
+      setError(null);
+      setSelectedDocId(null);
+      setShowKnowledgeDocEditor(false);
+      setLoadedTabs((current) => ({ ...current, "knowledge base": false, dashboard: false }));
+      await refresh("knowledge base", true);
+    } catch (e) { setError(e instanceof Error ? e.message : "Unable to delete document."); }
+  }
   async function saveSections() { try { await api("/api/site-sections", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Object.values(siteDrafts)) }); setNotice("Site content saved."); markSaved("site-content-save"); setError(null); setLoadedTabs((current) => ({ ...current, "site content": false, dashboard: false })); await refresh("site content", true); } catch (e) { setError(e instanceof Error ? e.message : "Unable to save site content."); } }
 
   async function sendLeadQuotation() {
@@ -1459,6 +1471,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
             docDraft,
             setDocDraft,
             saveDoc,
+            deleteDoc,
             setSelectedDocId,
             showSiteContentEditor,
             setShowSiteContentEditor,
