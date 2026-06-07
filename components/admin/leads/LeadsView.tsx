@@ -692,7 +692,7 @@ export function LeadsView(props: LeadsViewProps) {
                   <div className="space-y-6">
                     {nextBestAction && (
                       <div className={cn(
-                        "rounded-[1.75rem] border px-5 py-5 shadow-sm lg:px-6",
+                        "rounded-3xl border px-5 py-5 shadow-sm lg:px-6",
                         nextBestAction.tone === "danger"
                           ? "border-red-200/80 bg-red-50/90"
                           : nextBestAction.tone === "warning"
@@ -739,7 +739,7 @@ export function LeadsView(props: LeadsViewProps) {
                     )}
 
                     {escalationAction ? (
-                      <div className="rounded-[1.75rem] border border-red-200/80 bg-red-50/85 px-5 py-5 shadow-sm lg:px-6">
+                      <div className="rounded-3xl border border-red-200/80 bg-red-50/85 px-5 py-5 shadow-sm lg:px-6">
                         <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-red-700">Escalation mode</div>
                         <div className="mt-2 text-2xl font-black tracking-tight text-red-950">{escalationAction.title}</div>
                         <div className="mt-2 text-sm leading-6 text-red-900/80">{escalationAction.body}</div>
@@ -1122,7 +1122,7 @@ export function LeadsView(props: LeadsViewProps) {
           ) : null}
 
           {currentUserRole !== "agent" && pipelineViewMode === "board" ? (
-            <section className="overflow-hidden rounded-[2rem] border border-outline-variant/12 bg-[radial-gradient(circle_at_top_left,rgba(26,75,140,0.08),transparent_22%),linear-gradient(180deg,rgba(248,250,252,0.96),rgba(255,255,255,0.98))] shadow-[0_28px_80px_-42px_rgba(15,23,42,0.3)]">
+            <section className="overflow-hidden rounded-3xl border border-outline-variant/12 bg-[radial-gradient(circle_at_top_left,rgba(26,75,140,0.08),transparent_22%),linear-gradient(180deg,rgba(248,250,252,0.96),rgba(255,255,255,0.98))] shadow-[0_28px_80px_-42px_rgba(15,23,42,0.3)]">
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-outline-variant/10 px-5 py-4">
                 <div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Kanban flow</div>
@@ -1168,12 +1168,12 @@ export function LeadsView(props: LeadsViewProps) {
                       setDragOverStage((current) => current === column.stage ? null : current);
                     }}
                     className={cn(
-                      "flex min-h-[34rem] w-[320px] shrink-0 flex-col rounded-[1.75rem] border p-3 transition-all duration-200",
+                      "flex min-h-[34rem] w-[320px] shrink-0 flex-col rounded-3xl border p-3 transition-all duration-200",
                       boardStageThemes[column.stage].lane,
                       dragOverStage === column.stage && draggedLeadId ? boardStageThemes[column.stage].laneActive : ""
                     )}
                   >
-                    <div className="sticky top-0 z-10 rounded-[1.2rem] border border-white/60 bg-white/80 px-4 py-3 backdrop-blur-sm">
+                    <div className="sticky top-0 z-10 rounded-3xl border border-white/60 bg-white/80 px-4 py-3 backdrop-blur-sm">
                       <div className="flex items-start justify-between gap-3">
                         <div>
                           <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
@@ -1224,7 +1224,7 @@ export function LeadsView(props: LeadsViewProps) {
                               setDragOverStage(null);
                             }}
                             className={cn(
-                              "w-full rounded-[1.4rem] border border-white/80 bg-white/95 px-4 py-4 text-left shadow-sm transition-all duration-200",
+                              "w-full rounded-3xl border border-white/80 bg-white/95 px-4 py-4 text-left shadow-sm transition-all duration-200",
                               "hover:-translate-y-0.5 hover:border-primary/20 hover:bg-white",
                               boardStageThemes[column.stage].cardGlow,
                               !stageUpdating && "cursor-grab active:cursor-grabbing",
@@ -1307,7 +1307,7 @@ export function LeadsView(props: LeadsViewProps) {
                         );
                       }) : (
                         <div className={cn(
-                          "flex min-h-[12rem] items-center justify-center rounded-[1.4rem] border border-dashed px-4 py-8 text-center text-sm text-secondary",
+                          "flex min-h-[12rem] items-center justify-center rounded-3xl border border-dashed px-4 py-8 text-center text-sm text-secondary",
                           dragOverStage === column.stage && draggedLeadId ? "border-primary/35 bg-white/90 text-on-surface" : "border-outline-variant/20 bg-white/60"
                         )}>
                           {dragOverStage === column.stage && draggedLeadId ? "Drop here to move this deal." : "No deals in this stage yet."}

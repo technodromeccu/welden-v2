@@ -280,13 +280,13 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
     if (!selectedBlock) {
       return (
         <div className="space-y-5">
-          <div className="rounded-[1.5rem] border border-outline-variant/12 bg-[linear-gradient(180deg,#f6f9fc_0%,#ffffff_100%)] p-5">
+          <div className="rounded-3xl border border-outline-variant/12 bg-[linear-gradient(180deg,#f6f9fc_0%,#ffffff_100%)] p-5">
             <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">{SURFACE_COPY[activeSurface].eyebrow}</div>
             <div className="mt-2 text-xl font-black tracking-tight text-primary">{SURFACE_COPY[activeSurface].label}</div>
             <div className="mt-2 text-sm leading-7 text-secondary">{SURFACE_COPY[activeSurface].description}</div>
             <div className="mt-3 rounded-2xl bg-surface-container-low/50 px-4 py-3 text-sm leading-6 text-on-surface">{SURFACE_COPY[activeSurface].audience}</div>
           </div>
-          <div className="rounded-[1.5rem] border border-outline-variant/12 bg-white p-5">
+          <div className="rounded-3xl border border-outline-variant/12 bg-white p-5">
             <div className="flex items-start gap-3">
               <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-primary-fixed/30 text-primary">
                 <SquarePen className="h-4.5 w-4.5" />
@@ -305,7 +305,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
 
     return (
       <div className="space-y-5">
-        <div className="rounded-[1.5rem] border border-outline-variant/12 bg-white p-5">
+        <div className="rounded-3xl border border-outline-variant/12 bg-white p-5">
           <div className="flex items-start justify-between gap-3">
             <div>
               <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Selected block</div>
@@ -322,7 +322,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
           </div>
         </div>
 
-        <div className="rounded-[1.5rem] border border-outline-variant/12 bg-white p-5">
+        <div className="rounded-3xl border border-outline-variant/12 bg-white p-5">
           <div className="mb-4 flex items-center justify-between gap-3">
             <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Block settings</div>
             <div className="flex gap-2">
@@ -753,7 +753,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                     </CardContent>
                   </Card>
 
-                  <div className="sticky top-6 flex h-[calc(100vh-4rem)] w-full flex-col overflow-hidden rounded-[2rem] border border-outline-variant/12 bg-white shadow-sm xl:w-[420px] xl:shrink-0">
+                  <div className="sticky top-6 flex h-[calc(100vh-4rem)] w-full flex-col overflow-hidden rounded-3xl border border-outline-variant/12 bg-white shadow-sm xl:w-[420px] xl:shrink-0">
                     <div className="flex items-start justify-between gap-3 border-b border-outline-variant/10 bg-white/90 px-5 py-4 backdrop-blur">
                       <div>
                         <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Inspector</div>

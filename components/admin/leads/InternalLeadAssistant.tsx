@@ -245,7 +245,7 @@ export function InternalLeadAssistant({
           </CardHeader>
           <CardContent className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden p-5">
             {selectedLead?.workflow?.assistantMemory ? (
-              <div className="rounded-[1.35rem] border border-sky-200/80 bg-[linear-gradient(135deg,rgba(237,246,255,0.95),rgba(248,251,255,0.95))] px-4 py-4 text-sm leading-6 text-slate-800">
+              <div className="rounded-3xl border border-sky-200/80 bg-[linear-gradient(135deg,rgba(237,246,255,0.95),rgba(248,251,255,0.95))] px-4 py-4 text-sm leading-6 text-slate-800">
                 <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em] text-sky-800">
                   <Radar className="h-3.5 w-3.5" /> Remembered context
                 </div>
@@ -254,7 +254,7 @@ export function InternalLeadAssistant({
             ) : null}
 
             {!selectedLead && attentionCount > 0 ? (
-              <div className="rounded-[1.35rem] border border-amber-200/80 bg-[linear-gradient(135deg,rgba(255,248,228,0.98),rgba(255,252,243,0.96))] px-4 py-4 text-sm leading-6 text-amber-950">
+              <div className="rounded-3xl border border-amber-200/80 bg-[linear-gradient(135deg,rgba(255,248,228,0.98),rgba(255,252,243,0.96))] px-4 py-4 text-sm leading-6 text-amber-950">
                 <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-amber-700">
                   <MessageSquareWarning className="h-3.5 w-3.5" /> Existing leads need updates
                 </div>
@@ -277,14 +277,14 @@ export function InternalLeadAssistant({
               ))}
             </div>
 
-            <div className="min-h-0 flex-1 overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(244,247,251,0.95),rgba(250,251,253,0.98))]">
+            <div className="min-h-0 flex-1 overflow-hidden rounded-3xl border border-slate-200/80 bg-[linear-gradient(180deg,rgba(244,247,251,0.95),rgba(250,251,253,0.98))]">
               <div className="flex h-full min-h-[16rem] flex-col gap-3 overflow-y-auto px-4 py-4">
                 {messages.map((message, index) => (
                   <div
                     key={`${message.role}-${index}`}
                     className={message.role === "assistant"
-                      ? "rounded-[1.35rem] rounded-tl-md border border-white bg-white px-4 py-3 text-sm leading-6 text-slate-800 shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]"
-                      : "ml-8 rounded-[1.35rem] rounded-br-md bg-[linear-gradient(135deg,#0f3d78,#1b5aa5)] px-4 py-3 text-sm leading-6 text-white shadow-[0_14px_32px_-18px_rgba(15,61,120,0.65)]"}
+                      ? "rounded-3xl rounded-tl-md border border-white bg-white px-4 py-3 text-sm leading-6 text-slate-800 shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]"
+                      : "ml-8 rounded-3xl rounded-br-md bg-[linear-gradient(135deg,#0f3d78,#1b5aa5)] px-4 py-3 text-sm leading-6 text-white shadow-[0_14px_32px_-18px_rgba(15,61,120,0.65)]"}
                   >
                     {message.role === "assistant"
                       ? <ChatMarkdown content={message.text} tone="light" />
@@ -311,7 +311,7 @@ export function InternalLeadAssistant({
                   </div>
                 ))}
                 {loading ? (
-                  <div className="flex items-center gap-2 rounded-[1.35rem] border border-white bg-white px-4 py-3 text-sm text-slate-500 shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]">
+                  <div className="flex items-center gap-2 rounded-3xl border border-white bg-white px-4 py-3 text-sm text-slate-500 shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]">
                     <Loader2 className="h-4 w-4 animate-spin" /> Thinking...
                   </div>
                 ) : null}
@@ -324,7 +324,7 @@ export function InternalLeadAssistant({
                 event.preventDefault();
                 void askAssistant(input);
               }}
-              className="rounded-[1.5rem] border border-slate-200/80 bg-white p-2 shadow-[0_12px_30px_-24px_rgba(15,23,42,0.25)]"
+              className="rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_12px_30px_-24px_rgba(15,23,42,0.25)]"
             >
               <div className="flex gap-2">
                 <Input
@@ -340,7 +340,7 @@ export function InternalLeadAssistant({
             </form>
 
             {selectedLead ? (
-              <div className="rounded-[1.5rem] border border-slate-200/80 bg-[linear-gradient(180deg,#ffffff,#f8fafc)] p-4">
+              <div className="rounded-3xl border border-slate-200/80 bg-[linear-gradient(180deg,#ffffff,#f8fafc)] p-4">
                 <div className="flex items-center gap-2">
                   <Badge variant="outline" className="bg-white"><PhoneCall className="mr-1 h-3 w-3" /> Log phone call outcome</Badge>
                 </div>

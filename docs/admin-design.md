@@ -78,6 +78,7 @@ typography:
     color: "{colors.secondary-text}"
 rounded:
   pill:   "9999px"   # full radius — badges, status dots, avatars, pill buttons
+  modal:  "1.5rem"   # rounded-3xl — modal shells, floating panels, large surfaces
   card:   "1rem"     # rounded-2xl — primary card shell (canonical)
   inner:  "0.75rem"  # rounded-xl — inner panels, list rows, content tiles
   button: "0.5rem"   # rounded-lg — buttons, inputs, dropdowns
@@ -324,11 +325,12 @@ The admin uses **one shadow value**: `shadow-sm`. That is intentional — depth 
 | Element | Radius class | Token |
 |---|---|---|
 | Avatar, dot, pill, status circle | `rounded-full` | `pill` |
+| **Modal shell, floating panel, large container** | `rounded-3xl` | `modal` (1.5rem) |
 | Card (the shell) | `rounded-2xl` | `card` (1rem) |
 | Inner panel, list row, content tile | `rounded-xl` | `inner` (0.75rem) |
 | Button, input, dropdown menu | `rounded-lg` | `button` (0.5rem) |
 
-**Custom radii are banned** (`rounded-[1.35rem]`, `rounded-[1.5rem]`, etc.). They exist today as inconsistencies — see the audit punch list.
+**Custom radii are banned** (`rounded-[1.35rem]`, `rounded-[1.5rem]`, etc.). PR-B (2026-06-07) collapsed all 23 prior custom values to `rounded-3xl`. Anything larger or smaller than these five named values should not appear in the admin.
 
 ---
 
