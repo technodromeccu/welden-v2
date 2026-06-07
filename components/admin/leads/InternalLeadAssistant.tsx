@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Bot, BrainCircuit, Loader2, MessageSquareWarning, PhoneCall, Radar, SendHorizontal, Sparkles, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -57,6 +57,7 @@ export function InternalLeadAssistant({
   const [isOpen, setIsOpen] = useState(false);
   const [callOutcome, setCallOutcome] = useState<LeadCallOutcome>("no_answer");
   const [callSummary, setCallSummary] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const attentionCount = overview.leadsNeedingCallUpdate + overview.callbacksDueNow + overview.quotationsNeedingFollowUp + overview.leadsWaitingOnAssets;
   const quickPrompts = useMemo(() => selectedLead
@@ -90,6 +91,12 @@ export function InternalLeadAssistant({
     selectedLead?.workflow?.pendingAssistantPrompt
   ]);
 
+  // Keep the newest message (and the "Thinking..." indicator) in view — without this the
+  // small chat window leaves new replies below the fold and appears stuck.
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [messages, loading]);
+
   async function askAssistant(message: string) {
     const trimmed = message.trim();
     if (!trimmed) return;
@@ -104,7 +111,17 @@ export function InternalLeadAssistant({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: trimmed, selectedLeadId: selectedLead?.id ?? null })
       });
-      const payload = await response.json() as InternalAssistantResponse & { error?: string };
+      // Parse defensively: a serverless timeout returns an HTML page, not JSON.
+      const rawText = await response.text();
+      let payload: (InternalAssistantResponse & { error?: string }) | null = null;
+      try {
+        payload = rawText ? (JSON.parse(rawText) as InternalAssistantResponse & { error?: string }) : null;
+      } catch {
+        payload = null;
+      }
+      if (!response.ok || !payload) {
+        throw new Error(payload?.error ?? "unavailable");
+      }
 
       setMessages((current) => [...current, {
         role: "assistant",
@@ -114,6 +131,11 @@ export function InternalLeadAssistant({
       // Note: do NOT auto-open a lead here. The reply must stay in the chat window.
       // open_lead proposals are rendered as explicit action buttons the user can click
       // (auto-navigating used to switch to the lead page and reset the conversation).
+    } catch {
+      setMessages((current) => [...current, {
+        role: "assistant",
+        text: "I couldn't reach the assistant just now. Please try again in a moment."
+      }]);
     } finally {
       setLoading(false);
     }
@@ -273,6 +295,7 @@ export function InternalLeadAssistant({
                     <Loader2 className="h-4 w-4 animate-spin" /> Thinking...
                   </div>
                 ) : null}
+                <div ref={messagesEndRef} />
               </div>
             </div>
 
