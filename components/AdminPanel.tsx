@@ -1169,22 +1169,18 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
   async function deleteUser(id: string) { if (!window.confirm("Delete this user?")) return; try { await api(`/api/users/${id}`, { method: "DELETE" }); setNotice("User deleted."); setError(null); setLoadedTabs((current) => ({ ...current, users: false, settings: false, leads: false, dashboard: false })); await refresh("users", true); } catch (e) { setError(e instanceof Error ? e.message : "Unable to delete user."); } }
   return (
     <div className="min-h-screen bg-[linear-gradient(180deg,#f3f6fb_0%,#edf2f8_28%,#f7f9fc_100%)] text-on-surface">
+      {/* Sidebar refinement: dropped the half-blind 2-metric widget at top (was slicing 2 of N
+          cockpit metrics — full set still renders in the mobile shell + dashboard). Active nav state
+          uses a quieter shadow. Text hierarchy flattened to two on-dark tones: white/90 for primary,
+          white/55 for secondary. Group label and item subtitle now visually distinct. */}
       <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 border-r border-slate-200/80 bg-[#0d1b2f] text-white lg:flex lg:flex-col">
         <div className="border-b border-white/10 px-6 py-6">
           <div className="text-xs font-bold uppercase tracking-[0.24em] text-sky-200/80">Welden Industries</div>
         </div>
-        <div className="grid grid-cols-2 gap-2 border-b border-white/10 px-6 py-4">
-          {cockpitMetrics.slice(0, 2).map((metric) => (
-            <div key={metric.label} className="rounded-2xl border border-white/8 bg-white/5 px-3 py-3">
-              <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">{metric.label}</div>
-              <div className={cn("mt-1 text-xl font-black tracking-tight", metric.tone, metric.tone === "text-on-surface" ? "text-white" : metric.tone)}>{metric.value}</div>
-            </div>
-          ))}
-        </div>
         <nav className="mt-4 flex-1 overflow-y-auto px-4 pb-4">
           {groupedTabs.map((group) => (
             <div key={group.label} className="mb-6">
-              <div className="px-3 pb-2 text-xs font-bold uppercase tracking-[0.2em] text-slate-500">{group.label}</div>
+              <div className="px-3 pb-2 text-xs font-bold uppercase tracking-[0.2em] text-white/45">{group.label}</div>
               <div className="space-y-1">
                 {group.tabs.map((entry) => {
                   const Icon = iconForTab(entry);
@@ -1197,16 +1193,16 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
                       className={cn(
                         "flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-left text-sm font-medium tracking-tight transition-colors",
                         active
-                          ? "bg-white text-slate-950 shadow-[0_14px_32px_-22px_rgba(255,255,255,0.95)]"
-                          : "text-slate-300 hover:bg-white/8 hover:text-white"
+                          ? "bg-white text-slate-950 shadow-sm"
+                          : "text-white/75 hover:bg-white/8 hover:text-white"
                       )}
                     >
-                      <span className={cn("flex h-9 w-9 items-center justify-center rounded-xl", active ? "bg-slate-100 text-primary" : "bg-white/6 text-slate-300")}>
+                      <span className={cn("flex h-9 w-9 items-center justify-center rounded-xl", active ? "bg-slate-100 text-primary" : "bg-white/6 text-white/75")}>
                         <Icon className="h-4 w-4" />
                       </span>
                       <div className="min-w-0">
                         <div className="truncate font-semibold">{getTabLabel(entry)}</div>
-                        <div className={cn("text-xs", active ? "text-slate-500" : "text-slate-500")}>
+                        <div className={cn("text-xs", active ? "text-slate-500" : "text-white/45")}>
                           {entry === "dashboard" ? "Today's priorities" : entry === "leads" ? "Lead queue and workspaces" : entry === "machines" ? "Catalog, pages, and preview" : entry === "quotation templates" ? "Commercial output" : "Manage supporting assets"}
                         </div>
                       </div>
@@ -1220,14 +1216,14 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
         <div className="border-t border-white/10 px-4 py-3">
           <a
             href="/admin/help"
-            className="flex items-center gap-3 rounded-2xl px-3 py-3 text-left text-sm font-medium tracking-tight text-slate-300 transition-colors hover:bg-white/8 hover:text-white"
+            className="flex items-center gap-3 rounded-2xl px-3 py-3 text-left text-sm font-medium tracking-tight text-white/75 transition-colors hover:bg-white/8 hover:text-white"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/6 text-slate-300">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/6 text-white/75">
               <BookOpen className="h-4 w-4" />
             </span>
             <div className="min-w-0">
               <div className="truncate font-semibold">Help &amp; Guide</div>
-              <div className="text-xs text-slate-500">Terms, flows, and FAQs</div>
+              <div className="text-xs text-white/45">Terms, flows, and FAQs</div>
             </div>
           </a>
         </div>
@@ -1239,7 +1235,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
               </div>
               <div className="min-w-0">
                 <div className="truncate font-semibold text-white">{currentUser.name}</div>
-                <div className="truncate text-xs text-slate-400">{currentUser.email}</div>
+                <div className="truncate text-xs text-white/55">{currentUser.email}</div>
               </div>
             </div>
             <div className="inline-flex shrink-0 rounded-full bg-sky-400/12 px-2.5 py-1 text-xs font-bold uppercase tracking-[0.16em] text-sky-200">{currentUser.role}</div>
