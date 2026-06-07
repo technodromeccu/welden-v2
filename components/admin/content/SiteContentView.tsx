@@ -133,7 +133,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                     </button>
                                   );
                                 })}
-                                {!heroSlides.length ? <div className="rounded-2xl border border-dashed border-outline-variant/20 bg-white px-5 py-10 text-center text-sm text-secondary md:col-span-2 xl:col-span-4">No hero slides yet. Add a slide to start building the hero.</div> : null}
+                                {!heroSlides.length ? <div className="rounded-2xl border border-dashed border-outline-variant/15 bg-white px-5 py-10 text-center text-sm text-secondary md:col-span-2 xl:col-span-4">No hero slides yet. Add a slide to start building the hero.</div> : null}
                               </div>
 
                               {selectedHeroSlide ? (
@@ -163,7 +163,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                     <Textarea rows={3} placeholder="One-line USP" value={selectedHeroSlide.summary} onChange={(e) => updateHeroSlide(selectedHeroSlide.id, { summary: e.target.value })} />
                                     <div className="grid gap-3 md:grid-cols-[1fr_auto] md:items-center">
                                       <Input placeholder="Hero image URL" value={selectedHeroSlide.imageUrl} onChange={(e) => updateHeroSlide(selectedHeroSlide.id, { imageUrl: e.target.value })} />
-                                      <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/20 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
+                                      <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/15 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
                                         <input type="file" accept="image/png,image/jpeg,image/webp,image/gif" className="hidden" onChange={handleHeroImageUpload} disabled={isUploadingHeroImage} />
                                         {isUploadingHeroImage ? "Uploading..." : "Upload image"}
                                       </label>

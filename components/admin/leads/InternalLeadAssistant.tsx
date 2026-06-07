@@ -214,11 +214,11 @@ export function InternalLeadAssistant({
                   {selectedLead ? <Badge variant="outline" className="bg-white/70">Lead context</Badge> : <Badge variant="outline" className="bg-white/70">Dashboard context</Badge>}
                   {attentionCount > 0 ? <Badge variant="warning">{attentionCount} active prompts</Badge> : null}
                 </div>
-                <CardTitle className="mt-3 flex items-center gap-2 text-[1.45rem] tracking-tight text-slate-950">
+                <CardTitle className="mt-3 flex items-center gap-2 text-[1.45rem] tracking-tight text-on-surface">
                   <Sparkles className="h-5 w-5 text-sky-700" />
                   {selectedLead ? "Lead Copilot" : "Queue Copilot"}
                 </CardTitle>
-                <CardDescription className="mt-2 max-w-[24rem] text-sm leading-6 text-slate-600">
+                <CardDescription className="mt-2 max-w-[24rem] text-sm leading-6 text-secondary">
                   {selectedLead
                     ? "A sharper workspace for remembered call history, missing follow-up prompts, and guided next actions."
                     : "A floating lead chatbot that watches the current pipeline, spots follow-up gaps, and helps update existing leads fast."}
@@ -227,7 +227,7 @@ export function InternalLeadAssistant({
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-white/80 bg-white/80 text-slate-500 transition hover:border-slate-200 hover:text-slate-900"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-white/80 bg-white/80 text-secondary transition hover:border-slate-200 hover:text-on-surface"
                 aria-label="Close lead chatbot"
               >
                 <X className="h-4 w-4" />
@@ -245,7 +245,7 @@ export function InternalLeadAssistant({
           </CardHeader>
           <CardContent className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden p-5">
             {selectedLead?.workflow?.assistantMemory ? (
-              <div className="rounded-3xl border border-sky-200/80 bg-[linear-gradient(135deg,rgba(237,246,255,0.95),rgba(248,251,255,0.95))] px-4 py-4 text-sm leading-6 text-slate-800">
+              <div className="rounded-3xl border border-sky-200/80 bg-[linear-gradient(135deg,rgba(237,246,255,0.95),rgba(248,251,255,0.95))] px-4 py-4 text-sm leading-6 text-on-surface">
                 <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em] text-sky-800">
                   <Radar className="h-3.5 w-3.5" /> Remembered context
                 </div>
@@ -270,7 +270,7 @@ export function InternalLeadAssistant({
                   key={prompt}
                   type="button"
                   onClick={() => void askAssistant(prompt)}
-                  className="rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-600 transition hover:-translate-y-px hover:border-sky-200 hover:bg-sky-50 hover:text-sky-900"
+                  className="rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-secondary transition hover:-translate-y-px hover:border-sky-200 hover:bg-sky-50 hover:text-sky-900"
                 >
                   {prompt}
                 </button>
@@ -283,7 +283,7 @@ export function InternalLeadAssistant({
                   <div
                     key={`${message.role}-${index}`}
                     className={message.role === "assistant"
-                      ? "rounded-3xl rounded-tl-md border border-white bg-white px-4 py-3 text-sm leading-6 text-slate-800 shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]"
+                      ? "rounded-3xl rounded-tl-md border border-white bg-white px-4 py-3 text-sm leading-6 text-on-surface shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]"
                       : "ml-8 rounded-3xl rounded-br-md bg-[linear-gradient(135deg,#0f3d78,#1b5aa5)] px-4 py-3 text-sm leading-6 text-white shadow-[0_14px_32px_-18px_rgba(15,61,120,0.65)]"}
                   >
                     {message.role === "assistant"
@@ -311,7 +311,7 @@ export function InternalLeadAssistant({
                   </div>
                 ))}
                 {loading ? (
-                  <div className="flex items-center gap-2 rounded-3xl border border-white bg-white px-4 py-3 text-sm text-slate-500 shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]">
+                  <div className="flex items-center gap-2 rounded-3xl border border-white bg-white px-4 py-3 text-sm text-secondary shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]">
                     <Loader2 className="h-4 w-4 animate-spin" /> Thinking...
                   </div>
                 ) : null}
@@ -346,7 +346,7 @@ export function InternalLeadAssistant({
                 </div>
                 <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(10.5rem,12rem)_minmax(0,1fr)]">
                   <select
-                    className="h-11 rounded-2xl border border-slate-200 bg-slate-50 px-3 text-sm text-slate-900 outline-none"
+                    className="h-11 rounded-2xl border border-slate-200 bg-slate-50 px-3 text-sm text-on-surface outline-none"
                     value={callOutcome}
                     onChange={(event) => setCallOutcome(event.target.value as LeadCallOutcome)}
                   >

@@ -109,10 +109,10 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
                   <Input placeholder="Summary" value={newDoc.summary} onChange={(e) => setNewDoc((c: any) => ({ ...c, summary: e.target.value }))} />
                   
                   {newDoc.sourceType !== "text" && (
-                    <div className="rounded-xl border border-outline-variant/20 p-4">
+                    <div className="rounded-xl border border-outline-variant/15 p-4">
                       <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary mb-2">Upload source file</div>
                       <div className="flex items-center gap-3">
-                        <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/20 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
+                        <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/15 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
                           <input type="file" accept="application/pdf,video/mp4" className="hidden" onChange={(e) => handleFileUpload(e, true)} disabled={uploading} />
                           {uploading ? "Uploading..." : "Select File"}
                         </label>
@@ -173,10 +173,10 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
                   <Input value={docDraft.summary} onChange={(e) => setDocDraft((c: any) => ({ ...c, summary: e.target.value }))} placeholder="Summary" />
                   
                   {docDraft.sourceType !== "text" && (
-                    <div className="rounded-xl border border-outline-variant/20 p-4">
+                    <div className="rounded-xl border border-outline-variant/15 p-4">
                       <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary mb-2">Upload source file</div>
                       <div className="flex items-center gap-3">
-                        <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/20 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
+                        <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/15 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
                           <input type="file" accept="application/pdf,video/mp4" className="hidden" onChange={(e) => handleFileUpload(e, false)} disabled={uploading} />
                           {uploading ? "Uploading..." : "Select File"}
                         </label>

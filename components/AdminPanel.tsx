@@ -1283,7 +1283,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
           {error ? <div className="rounded-md border border-error/20 bg-error-container px-4 py-3 text-sm text-on-error-container">{error}</div> : null}
           {/* Only show a global skeleton before the first load for a tab, not on every later refresh. */}
           {loadingTab && !loadedTabs[tab] ? (
-            <div className="overflow-hidden rounded-2xl border border-outline-variant/20 bg-white shadow-sm">
+            <div className="overflow-hidden rounded-2xl border border-outline-variant/15 bg-white shadow-sm">
               {[...Array(5)].map((_, i) => (
                 <div key={i} className="flex items-center gap-4 border-b border-outline-variant/10 px-6 py-5 last:border-0">
                   <div className="h-11 w-11 animate-pulse rounded-xl bg-surface-container-high" />

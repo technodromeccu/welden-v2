@@ -106,7 +106,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                           <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Commercial summary</div>
                           <div className="mt-4 grid gap-3 md:grid-cols-2">
                             <Input placeholder="Template title" value={newQuotationTemplate.title} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, title: e.target.value }))} />
-                            <select className="h-11 rounded-xl border border-outline-variant/20 bg-white px-3 text-sm text-on-surface outline-none" value={newQuotationTemplate.productId} onChange={(e) => { const product = data.products.find((entry: any) => entry.id === e.target.value); setNewQuotationTemplate((current: any) => ({ ...current, productId: e.target.value, machineName: product?.title ?? current.machineName })); }}>
+                            <select className="h-11 rounded-xl border border-outline-variant/15 bg-white px-3 text-sm text-on-surface outline-none" value={newQuotationTemplate.productId} onChange={(e) => { const product = data.products.find((entry: any) => entry.id === e.target.value); setNewQuotationTemplate((current: any) => ({ ...current, productId: e.target.value, machineName: product?.title ?? current.machineName })); }}>
                               <option value="">Select machine</option>
                               {data.products.filter((product: any) => product.title.trim()).map((product: any) => <option key={product.id} value={product.id}>{product.title}</option>)}
                             </select>
@@ -265,7 +265,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                   </div>
                   <div className="mt-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div className="relative w-full max-w-xl">
-                      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                      <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary/60" />
                       <Input className="pl-10" placeholder="Search quotation template title, machine, variant, or price..." value={quotationSearch} onChange={(e) => setQuotationSearch(e.target.value)} />
                     </div>
                     <div className="text-sm text-secondary">Open any card to edit pricing, scope, and chatbot output.</div>
@@ -351,7 +351,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                       })}
                     </div>
                   ) : (
-                    <div className="rounded-3xl border border-dashed border-outline-variant/20 bg-white px-6 py-12 text-center text-sm text-secondary">
+                    <div className="rounded-3xl border border-dashed border-outline-variant/15 bg-white px-6 py-12 text-center text-sm text-secondary">
                       No quotation templates match the current search.
                     </div>
                   )}
@@ -391,7 +391,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                           <div className="mt-4 grid gap-3 md:grid-cols-2">
                             <Input placeholder="Template title" value={quotationTemplateDraft.title} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, title: e.target.value }))} />
                             <select
-                              className="h-11 rounded-xl border border-outline-variant/20 bg-white px-3 text-sm text-on-surface outline-none"
+                              className="h-11 rounded-xl border border-outline-variant/15 bg-white px-3 text-sm text-on-surface outline-none"
                               value={quotationTemplateDraft.productId}
                               onChange={(e) => {
                                 const product = data.products.find((entry: any) => entry.id === e.target.value);

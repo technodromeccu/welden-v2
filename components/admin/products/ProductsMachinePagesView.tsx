@@ -401,7 +401,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                 <FieldGroup label="Media" hint="Brochure link powers the secondary CTA.">
                   <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
                     <Input placeholder="/brochures/machine.pdf" value={normalizedDraft.brochureUrl} onChange={(event) => patchDraft({ brochureUrl: event.target.value })} />
-                    <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/20 px-3 py-2 text-xs font-semibold text-primary hover:bg-primary-fixed/20 whitespace-nowrap">
+                    <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/15 px-3 py-2 text-xs font-semibold text-primary hover:bg-primary-fixed/20 whitespace-nowrap">
                       <input type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" className="hidden" onChange={handleProductBrochureUpload} disabled={isUploadingBrochure} />
                       {isUploadingBrochure ? "Uploading..." : "Upload"}
                     </label>
@@ -497,7 +497,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                 <FieldGroup label="Media" hint="Brochure and video populate the resource panel.">
                   <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
                     <Input placeholder="/brochures/machine.pdf" value={normalizedDraft.brochureUrl} onChange={(event) => patchDraft({ brochureUrl: event.target.value })} />
-                    <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/20 px-3 py-2 text-xs font-semibold text-primary hover:bg-primary-fixed/20 whitespace-nowrap">
+                    <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/15 px-3 py-2 text-xs font-semibold text-primary hover:bg-primary-fixed/20 whitespace-nowrap">
                       <input type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" className="hidden" onChange={handleProductBrochureUpload} disabled={isUploadingBrochure} />
                       {isUploadingBrochure ? "Uploading..." : "Upload"}
                     </label>
@@ -552,7 +552,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                 ) : null}
               </div>
               <div className="relative mt-4">
-                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary/60" />
                 <Input className="pl-10" placeholder="Search title, slug, or category..." value={productSearch} onChange={(event) => setProductSearch(event.target.value)} />
               </div>
             </CardHeader>
@@ -581,7 +581,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                     >
                       <div className="flex flex-col gap-4">
                         <div className="flex h-40 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl border border-outline-variant/15 bg-surface-container-low">
-                          {image ? <Image src={image} alt={product.title} width={400} height={320} unoptimized className="h-full w-full object-cover" /> : <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">No image</div>}
+                          {image ? <Image src={image} alt={product.title} width={400} height={320} unoptimized className="h-full w-full object-cover" /> : <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary/60">No image</div>}
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-start justify-between gap-3">

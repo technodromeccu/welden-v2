@@ -44,7 +44,7 @@ export function ImageAssetEditor({
         </div>
         <div className="grid gap-3 border-t border-outline-variant/10 p-4 sm:grid-cols-[minmax(0,1fr)_auto]">
           <Input placeholder={placeholder} value={value} onChange={(event) => onChange(event.target.value)} />
-          <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-outline-variant/20 px-4 py-2 text-xs font-semibold text-primary transition hover:bg-primary-fixed/20 whitespace-nowrap">
+          <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-outline-variant/15 px-4 py-2 text-xs font-semibold text-primary transition hover:bg-primary-fixed/20 whitespace-nowrap">
             <ImagePlus className="h-3.5 w-3.5" />
             <input type="file" accept="image/*" className="hidden" onChange={onUpload} disabled={uploading} />
             {uploading ? "Uploading..." : "Upload"}
@@ -146,7 +146,7 @@ export function GalleryAssetEditor({
           <Button type="button" variant="outline" size="sm" onClick={addImage}>
             <Plus className="mr-1.5 h-3.5 w-3.5" /> Add image slot
           </Button>
-          <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-outline-variant/20 px-4 py-2 text-xs font-semibold text-primary transition hover:bg-primary-fixed/20 whitespace-nowrap">
+          <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-outline-variant/15 px-4 py-2 text-xs font-semibold text-primary transition hover:bg-primary-fixed/20 whitespace-nowrap">
             <ImagePlus className="h-3.5 w-3.5" />
             <input type="file" accept="image/*" multiple className="hidden" onChange={onUpload} disabled={uploading} />
             {uploading ? "Uploading..." : "Upload images"}
