@@ -43,7 +43,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
               <div className="grid gap-4 xl:grid-cols-3">
                 <Card className="border border-outline-variant/15 bg-white shadow-sm">
                   <CardContent className="p-6">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Template library</div>
+                    <div className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Template library</div>
                     <div className="mt-3 flex items-end justify-between gap-4">
                       <div>
                         <div className="text-3xl font-black tracking-tight text-primary">{data.quotationTemplates.length}</div>
@@ -55,7 +55,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                 </Card>
                 <Card className="border border-emerald-200/70 bg-emerald-50/60 shadow-sm">
                   <CardContent className="p-6">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-700">Active templates</div>
+                    <div className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700">Active templates</div>
                     <div className="mt-3 flex items-end justify-between gap-4">
                       <div>
                         <div className="text-3xl font-black tracking-tight text-primary">{data.quotationTemplates.filter((template: any) => template.active).length}</div>
@@ -67,7 +67,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                 </Card>
                 <Card className="border border-primary/10 bg-primary-fixed/20 shadow-sm">
                   <CardContent className="p-6">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Machine coverage</div>
+                    <div className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Machine coverage</div>
                     <div className="mt-3 flex items-end justify-between gap-4">
                       <div>
                         <div className="text-3xl font-black tracking-tight text-primary">{new Set(data.quotationTemplates.map((template: any) => template.productId).filter(Boolean)).size}</div>
@@ -86,8 +86,8 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                 <div className="space-y-6">
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div>
-                      <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Creating template</div>
-                      <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">Add quotation template</h2>
+                      <div className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Creating template</div>
+                      <h2 className="mt-2 text-4xl font-black tracking-tight text-primary ">Add quotation template</h2>
                       <p className="mt-2 text-sm leading-6 text-secondary md:text-base">Create a preliminary quotation template in the same commercial workspace used for editing, so new templates start clean and structured.</p>
                     </div>
                     <div className="flex flex-wrap gap-3">
@@ -103,7 +103,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                       </CardHeader>
                       <CardContent className="space-y-6">
                         <div className="rounded-2xl border border-primary/10 bg-primary-fixed/20 p-6">
-                          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Commercial summary</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Commercial summary</div>
                           <div className="mt-4 grid gap-3 md:grid-cols-2">
                             <Input placeholder="Template title" value={newQuotationTemplate.title} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, title: e.target.value }))} />
                             <select className="h-11 rounded-xl border border-outline-variant/15 bg-white px-3 text-sm text-on-surface outline-none" value={newQuotationTemplate.productId} onChange={(e) => { const product = data.products.find((entry: any) => entry.id === e.target.value); setNewQuotationTemplate((current: any) => ({ ...current, productId: e.target.value, machineName: product?.title ?? current.machineName })); }}>
@@ -116,39 +116,39 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                             <Input placeholder="Base price" value={newQuotationTemplate.basePrice} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, basePrice: e.target.value }))} />
                           </div>
                           <div className="mt-4 grid gap-2">
-                            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Offer introduction</span>
+                            <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Offer introduction</span>
                             <Textarea rows={4} placeholder="Intro" value={newQuotationTemplate.intro} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, intro: e.target.value }))} />
                           </div>
                         </div>
 
                         <div className="grid gap-4 lg:grid-cols-2">
                           <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
-                            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Scope and technical definition</div>
+                            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Scope and technical definition</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Scope items</span>
+                                <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Scope items</span>
                                 <Textarea rows={10} placeholder="Scope items, one per line" value={newQuotationTemplate.scopeItems} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, scopeItems: e.target.value }))} />
                               </div>
                               <div className="grid gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Technical specifications</span>
+                                <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Technical specifications</span>
                                 <Textarea rows={10} placeholder="Technical specifications, one per line" value={newQuotationTemplate.technicalSpecifications} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, technicalSpecifications: e.target.value }))} />
                               </div>
                             </div>
                           </div>
 
                           <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
-                            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">General notes and commercial terms</div>
+                            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">General notes and commercial terms</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">General notes</span>
+                                <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">General notes</span>
                                 <Textarea rows={6} placeholder="General notes, one per line" value={newQuotationTemplate.generalNotes} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, generalNotes: e.target.value }))} />
                               </div>
                               <div className="grid gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Exclusions</span>
+                                <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Exclusions</span>
                                 <Textarea rows={6} placeholder="Exclusions, one per line" value={newQuotationTemplate.exclusions} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, exclusions: e.target.value }))} />
                               </div>
                               <div className="grid gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Terms and conditions</span>
+                                <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Terms and conditions</span>
                                 <Textarea rows={6} placeholder="Terms and conditions, one per line" value={newQuotationTemplate.termsAndConditions} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, termsAndConditions: e.target.value }))} />
                               </div>
                             </div>
@@ -156,7 +156,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         </div>
 
                         <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
-                          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Delivery, payment, and footer</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Delivery, payment, and footer</div>
                           <div className="mt-4 grid gap-4 md:grid-cols-2">
                             <Input placeholder="Delivery note" value={newQuotationTemplate.deliveryNote} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, deliveryNote: e.target.value }))} />
                             <Input placeholder="Installation note" value={newQuotationTemplate.installationNote} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, installationNote: e.target.value }))} />
@@ -164,11 +164,11 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                             <Input placeholder="Payment terms" value={newQuotationTemplate.paymentTerms} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, paymentTerms: e.target.value }))} />
                             <Input className="md:col-span-2" placeholder="Validity note" value={newQuotationTemplate.validityNote} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, validityNote: e.target.value }))} />
                             <div className="grid gap-2 md:col-span-2">
-                              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Bank details</span>
+                              <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Bank details</span>
                               <Textarea rows={6} placeholder="Bank details, one per line" value={newQuotationTemplate.bankDetails} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, bankDetails: e.target.value }))} />
                             </div>
                             <div className="grid gap-2 md:col-span-2">
-                              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Footer note</span>
+                              <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Footer note</span>
                               <Textarea rows={5} placeholder="Footer note" value={newQuotationTemplate.footerNote} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, footerNote: e.target.value }))} />
                             </div>
                             <Input placeholder="Company name" value={newQuotationTemplate.companyName} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, companyName: e.target.value }))} />
@@ -188,20 +188,20 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         </CardHeader>
                         <CardContent className="space-y-4">
                           <div className="rounded-2xl border border-primary/12 bg-primary-fixed/20 p-4">
-                            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Base price</div>
+                            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Base price</div>
                             <div className="mt-2 text-3xl font-black tracking-tight text-primary">{newQuotationTemplate.currency || "INR"} {newQuotationTemplate.basePrice || "On request"}</div>
                           </div>
                           <div className="grid gap-3">
                             <div className="rounded-xl bg-surface-container-low p-4">
-                              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Linked machine</div>
+                              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Linked machine</div>
                               <div className="mt-2 text-sm font-semibold leading-6 text-on-surface">{data.products.find((product: any) => product.id === newQuotationTemplate.productId)?.title || newQuotationTemplate.machineName || "Not linked yet"}</div>
                             </div>
                             <div className="rounded-xl bg-surface-container-low p-4">
-                              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Variant</div>
+                              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Variant</div>
                               <div className="mt-2 text-sm font-semibold leading-6 text-on-surface">{newQuotationTemplate.variantLabel || "Default quotation"}</div>
                             </div>
                             <div className="rounded-xl bg-surface-container-low p-4">
-                              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Commercial depth</div>
+                              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Commercial depth</div>
                               <div className="mt-2 space-y-2 text-sm text-secondary">
                                 <div>{textToLines(newQuotationTemplate.scopeItems).length} scope items</div>
                                 <div>{textToLines(newQuotationTemplate.technicalSpecifications).length} specification lines</div>
@@ -219,7 +219,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         </CardHeader>
                         <CardContent>
                           <div className="rounded-2xl border border-outline-variant/12 bg-white p-4 text-sm leading-6 text-on-surface shadow-sm">
-                            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Preliminary quotation</div>
+                            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Preliminary quotation</div>
                             <div className="mt-3 font-semibold text-primary">Issued to: {"{Customer Name}"}</div>
                             <div className="mt-1 text-secondary">Reference: {"{Auto-generated quotation ref}"}</div>
                             <div className="mt-4 text-base font-bold text-on-surface">{newQuotationTemplate.machineName || "Machine name"}</div>
@@ -253,13 +253,13 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                 <CardHeader className="border-b border-outline-variant/10 bg-white/90 pb-5">
                   <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
                     <div className="max-w-2xl">
-                      <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Template library</div>
+                      <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Template library</div>
                       <div className="mt-2 text-3xl font-black tracking-tight text-primary">Commercial quotation templates</div>
                       <p className="mt-2 text-sm leading-6 text-secondary">Browse, reorder, and open machine-linked commercial templates without leaving the quotation workspace.</p>
                     </div>
                     <div className="flex flex-wrap items-center gap-3 xl:justify-end">
-                      <div className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">{filteredQuotationTemplates.length} in view</div>
-                      <div className="rounded-full bg-primary-fixed/30 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Drag cards to reorder</div>
+                      <div className="rounded-full bg-surface-container px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">{filteredQuotationTemplates.length} in view</div>
+                      <div className="rounded-full bg-primary-fixed/30 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">Drag cards to reorder</div>
                       <Button className="rounded-lg px-6 py-2.5" onClick={() => { setShowQuotationTemplateEditor(false); setShowAddQuotationTemplate(true); }}><Plus className="mr-2 h-4 w-4" />Add template</Button>
                     </div>
                   </div>
@@ -312,25 +312,25 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                                 </div>
                               </div>
                               <div className="flex items-center gap-2 text-secondary">
-                                <div className="flex cursor-grab items-center gap-1 text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">
+                                <div className="flex cursor-grab items-center gap-1 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
                                   <GripVertical className="h-4 w-4" />
                                   Sort
                                 </div>
-                                <span className={cn("inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em]", template.active ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500")}>{template.active ? "Active" : "Inactive"}</span>
+                                <span className={cn("inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.16em]", template.active ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500")}>{template.active ? "Active" : "Inactive"}</span>
                               </div>
                             </div>
 
                             <div className="mt-6 grid gap-3 sm:grid-cols-3">
                               <div className="rounded-2xl bg-surface-container-low p-4">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Base price</div>
+                                <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Base price</div>
                                 <div className="mt-2 text-lg font-black tracking-tight text-primary">{template.currency} {template.basePrice || "On request"}</div>
                               </div>
                               <div className="rounded-2xl bg-surface-container-low p-4">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Variant</div>
+                                <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Variant</div>
                                 <div className="mt-2 text-sm font-semibold leading-6 text-on-surface">{template.variantLabel || "Default quotation"}</div>
                               </div>
                               <div className="rounded-2xl bg-surface-container-low p-4">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Linked machine</div>
+                                <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Linked machine</div>
                                 <div className="mt-2 text-sm font-semibold leading-6 text-on-surface">{linkedProduct?.slug ?? "Not linked"}</div>
                               </div>
                             </div>
@@ -363,8 +363,8 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                 <div className="space-y-6">
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div className="max-w-4xl">
-                      <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Editing template - {selectedQuotationTemplate.title}</div>
-                      <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">{quotationTemplateDraft.machineName || selectedQuotationTemplate.machineName}</h2>
+                      <div className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Editing template - {selectedQuotationTemplate.title}</div>
+                      <h2 className="mt-2 text-4xl font-black tracking-tight text-primary ">{quotationTemplateDraft.machineName || selectedQuotationTemplate.machineName}</h2>
                       <p className="mt-2 text-sm leading-6 text-secondary md:text-base">A cleaner commercial editor for machine-linked preliminary quotations, with pricing, scope, terms, and preview context in one place.</p>
                       <div className="mt-4 flex flex-wrap items-center gap-2">
                         <Badge variant={quotationTemplateDraft.active ? "success" : "outline"}>{quotationTemplateDraft.active ? "Active" : "Inactive"}</Badge>
@@ -387,7 +387,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                       </CardHeader>
                       <CardContent className="space-y-6">
                         <div className="rounded-2xl border border-primary/10 bg-primary-fixed/20 p-6">
-                          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Commercial summary</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Commercial summary</div>
                           <div className="mt-4 grid gap-3 md:grid-cols-2">
                             <Input placeholder="Template title" value={quotationTemplateDraft.title} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, title: e.target.value }))} />
                             <select
@@ -413,39 +413,39 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                             <Input placeholder="Base price" value={quotationTemplateDraft.basePrice} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, basePrice: e.target.value }))} />
                           </div>
                           <div className="mt-4 grid gap-2">
-                            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Offer introduction</span>
+                            <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Offer introduction</span>
                             <Textarea rows={4} placeholder="Intro" value={quotationTemplateDraft.intro} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, intro: e.target.value }))} />
                           </div>
                         </div>
 
                         <div className="grid gap-4 lg:grid-cols-2">
                           <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
-                            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Scope and technical definition</div>
+                            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Scope and technical definition</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Scope items</span>
+                                <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Scope items</span>
                                 <Textarea rows={10} placeholder="Scope items, one per line" value={quotationTemplateDraft.scopeItems} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, scopeItems: e.target.value }))} />
                               </div>
                               <div className="grid gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Technical specifications</span>
+                                <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Technical specifications</span>
                                 <Textarea rows={10} placeholder="Technical specifications, one per line" value={quotationTemplateDraft.technicalSpecifications} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, technicalSpecifications: e.target.value }))} />
                               </div>
                             </div>
                           </div>
 
                           <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
-                            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">General notes and commercial terms</div>
+                            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">General notes and commercial terms</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">General notes</span>
+                                <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">General notes</span>
                                 <Textarea rows={6} placeholder="General notes, one per line" value={quotationTemplateDraft.generalNotes} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, generalNotes: e.target.value }))} />
                               </div>
                               <div className="grid gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Exclusions</span>
+                                <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Exclusions</span>
                                 <Textarea rows={6} placeholder="Exclusions, one per line" value={quotationTemplateDraft.exclusions} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, exclusions: e.target.value }))} />
                               </div>
                               <div className="grid gap-2">
-                                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Terms and conditions</span>
+                                <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Terms and conditions</span>
                                 <Textarea rows={6} placeholder="Terms and conditions, one per line" value={quotationTemplateDraft.termsAndConditions} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, termsAndConditions: e.target.value }))} />
                               </div>
                             </div>
@@ -453,7 +453,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         </div>
 
                         <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
-                          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Delivery, payment, and footer</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Delivery, payment, and footer</div>
                           <div className="mt-4 grid gap-4 md:grid-cols-2">
                             <Input placeholder="Delivery note" value={quotationTemplateDraft.deliveryNote} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, deliveryNote: e.target.value }))} />
                             <Input placeholder="Installation note" value={quotationTemplateDraft.installationNote} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, installationNote: e.target.value }))} />
@@ -461,11 +461,11 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                             <Input placeholder="Payment terms" value={quotationTemplateDraft.paymentTerms} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, paymentTerms: e.target.value }))} />
                             <Input className="md:col-span-2" placeholder="Validity note" value={quotationTemplateDraft.validityNote} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, validityNote: e.target.value }))} />
                             <div className="grid gap-2 md:col-span-2">
-                              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Bank details</span>
+                              <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Bank details</span>
                               <Textarea rows={6} placeholder="Bank details, one per line" value={quotationTemplateDraft.bankDetails} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, bankDetails: e.target.value }))} />
                             </div>
                             <div className="grid gap-2 md:col-span-2">
-                              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Footer note</span>
+                              <span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Footer note</span>
                               <Textarea rows={5} placeholder="Footer note" value={quotationTemplateDraft.footerNote} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, footerNote: e.target.value }))} />
                             </div>
                             <Input placeholder="Company name" value={quotationTemplateDraft.companyName} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, companyName: e.target.value }))} />
@@ -485,20 +485,20 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         </CardHeader>
                         <CardContent className="space-y-4">
                           <div className="rounded-2xl border border-primary/12 bg-primary-fixed/20 p-4">
-                            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Base price</div>
+                            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Base price</div>
                             <div className="mt-2 text-3xl font-black tracking-tight text-primary">{quotationTemplateDraft.currency || "INR"} {quotationTemplateDraft.basePrice || "On request"}</div>
                           </div>
                           <div className="grid gap-3">
                             <div className="rounded-xl bg-surface-container-low p-4">
-                              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Linked machine</div>
+                              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Linked machine</div>
                               <div className="mt-2 text-sm font-semibold leading-6 text-on-surface">{selectedQuotationTemplateLinkedProduct?.title || quotationTemplateDraft.machineName || "Not linked"}</div>
                             </div>
                             <div className="rounded-xl bg-surface-container-low p-4">
-                              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Variant</div>
+                              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Variant</div>
                               <div className="mt-2 text-sm font-semibold leading-6 text-on-surface">{quotationTemplateDraft.variantLabel || "Default quotation"}</div>
                             </div>
                             <div className="rounded-xl bg-surface-container-low p-4">
-                              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Commercial depth</div>
+                              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Commercial depth</div>
                               <div className="mt-2 space-y-2 text-sm text-secondary">
                                 <div>{textToLines(quotationTemplateDraft.scopeItems).length} scope items</div>
                                 <div>{textToLines(quotationTemplateDraft.technicalSpecifications).length} specification lines</div>
@@ -516,7 +516,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         </CardHeader>
                         <CardContent>
                           <div className="rounded-2xl border border-outline-variant/12 bg-white p-4 text-sm leading-6 text-on-surface shadow-sm">
-                            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Preliminary quotation</div>
+                            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Preliminary quotation</div>
                             <div className="mt-3 font-semibold text-primary">Issued to: {"{Customer Name}"}</div>
                             <div className="mt-1 text-secondary">Reference: {"{Auto-generated quotation ref}"}</div>
                             <div className="mt-4 text-base font-bold text-on-surface">{quotationTemplateDraft.machineName || "Machine name"}</div>

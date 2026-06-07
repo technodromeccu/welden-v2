@@ -580,8 +580,8 @@ export function LeadsView(props: LeadsViewProps) {
 
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div>
-              <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Commercial workspace</div>
-              <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">{selectedLead.lead.name}</h2>
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Commercial workspace</div>
+              <h2 className="mt-2 text-4xl font-black tracking-tight text-primary ">{selectedLead.lead.name}</h2>
               <p className="mt-2 text-sm leading-6 text-secondary md:text-base">Work the deal end to end from one place: qualification, quotation review, callbacks, objections, and the next commercial move.</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge variant={selectedLead.workflow?.stage === "won" ? "success" : selectedLead.workflow?.stage === "lost" ? "outline" : "secondary"}>{fmtStatus(selectedLead.workflow?.stage ?? "new")}</Badge>
@@ -623,18 +623,18 @@ export function LeadsView(props: LeadsViewProps) {
             <CardContent className="space-y-6 p-6">
               <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
                 <div className="rounded-2xl bg-surface-container-low p-4">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Primary contact</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Primary contact</div>
                   <div className="mt-3 text-lg font-black text-primary">{selectedLead.lead.name}</div>
                   {/* WF-13: Copy-to-clipboard on email and phone */}
                   <div className="mt-1 flex items-center gap-1.5">
                     <span className="text-sm text-secondary">{selectedLead.lead.email}</span>
-                    <button type="button" title="Copy email" onClick={() => copyToClipboard("email", selectedLead.lead.email)} className="shrink-0 text-[10px] font-bold text-secondary hover:text-primary">
+                    <button type="button" title="Copy email" onClick={() => copyToClipboard("email", selectedLead.lead.email)} className="shrink-0 text-xs font-bold text-secondary hover:text-primary">
                       {copiedKey === "email" ? "✓" : "⎘"}
                     </button>
                   </div>
                   <div className="mt-1 flex items-center gap-1.5">
                     <span className="text-sm text-secondary">{selectedLead.lead.phone}</span>
-                    <button type="button" title="Copy phone" onClick={() => copyToClipboard("phone", selectedLead.lead.phone)} className="shrink-0 text-[10px] font-bold text-secondary hover:text-primary">
+                    <button type="button" title="Copy phone" onClick={() => copyToClipboard("phone", selectedLead.lead.phone)} className="shrink-0 text-xs font-bold text-secondary hover:text-primary">
                       {copiedKey === "phone" ? "✓" : "⎘"}
                     </button>
                     {/* WF-11: WhatsApp click-to-chat */}
@@ -643,24 +643,24 @@ export function LeadsView(props: LeadsViewProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       title="Open in WhatsApp"
-                      className="shrink-0 text-[10px] font-bold text-emerald-600 hover:text-emerald-700"
+                      className="shrink-0 text-xs font-bold text-emerald-600 hover:text-emerald-700"
                     >
                       WA
                     </a>
                   </div>
                 </div>
                 <div className="rounded-2xl bg-surface-container-low p-4">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Machine fit</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Machine fit</div>
                   <div className="mt-3 text-lg font-black text-primary">{selectedLead.recommendation.recommendedCategory ?? "Needs match"}</div>
                   <div className="mt-1 text-sm text-secondary">{selectedLeadMeta?.nextStep ?? "Qualify machine need"}</div>
                 </div>
                 <div className="rounded-2xl bg-surface-container-low p-4">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Lead score</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Lead score</div>
                   <div className="mt-3 text-lg font-black text-primary">{selectedLeadMeta?.score ?? 0}/100</div>
                   <div className="mt-1 text-sm text-secondary">Owner: {selectedLeadMeta?.owner?.name ?? "Unassigned"}</div>
                 </div>
                 <div className="rounded-2xl bg-surface-container-low p-4">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">First call SLA</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">First call SLA</div>
                   <div className="mt-3 text-lg font-black text-primary">{selectedLead.workflow?.firstCallDueAt ? fmtDate(selectedLead.workflow.firstCallDueAt) : "Not scheduled"}</div>
                   <div className="mt-1 text-sm text-secondary">{getLeadFirstCallState(selectedLead).label}</div>
                   <div className="mt-2 text-xs text-secondary">Completed: {selectedLead.workflow?.firstCallCompletedAt ? fmtDate(selectedLead.workflow.firstCallCompletedAt) : "Not completed yet"}</div>
@@ -704,7 +704,7 @@ export function LeadsView(props: LeadsViewProps) {
                                 : "border-outline-variant/15 bg-surface-container-low/60"
                       )}>
                         <div className="min-w-0">
-                          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">{nextBestAction.eyebrow}</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">{nextBestAction.eyebrow}</div>
                           <div className="mt-2 text-2xl font-black tracking-tight text-on-surface">{nextBestAction.title}</div>
                           <div className="mt-2 text-sm leading-6 text-secondary">{nextBestAction.body}</div>
                           <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -732,7 +732,7 @@ export function LeadsView(props: LeadsViewProps) {
                           ) : null}
                         </div>
                         <div className="mt-4 rounded-2xl bg-white/80 px-4 py-4 text-sm leading-6 text-secondary ring-1 ring-black/5">
-                          <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Why this move</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Why this move</div>
                           <div className="mt-2">{nextBestAction.context}</div>
                         </div>
                       </div>
@@ -740,7 +740,7 @@ export function LeadsView(props: LeadsViewProps) {
 
                     {escalationAction ? (
                       <div className="rounded-3xl border border-red-200/80 bg-red-50/85 px-6 py-6 shadow-sm lg:px-6">
-                        <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-red-700">Escalation mode</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.18em] text-red-700">Escalation mode</div>
                         <div className="mt-2 text-2xl font-black tracking-tight text-red-950">{escalationAction.title}</div>
                         <div className="mt-2 text-sm leading-6 text-red-900/80">{escalationAction.body}</div>
                         <div className="mt-4 space-y-2 rounded-2xl bg-white/80 px-4 py-4 text-sm text-red-900/80 ring-1 ring-red-200/70">
@@ -785,14 +785,14 @@ export function LeadsView(props: LeadsViewProps) {
                   </div>
                   <div className="space-y-4 rounded-2xl border border-outline-variant/10 bg-white p-4">
                     <div>
-                      <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Quotation dispatch</div>
+                      <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Quotation dispatch</div>
                       <div className="mt-2 text-lg font-black text-primary">Create and send a preliminary quotation from this lead</div>
                       <div className="mt-2 text-sm leading-6 text-secondary">Select the commercial template, then email the quotation directly to {selectedLead.lead.email} through Resend.</div>
                     </div>
                     {leadQuotationTemplates.length ? (
                       <>
                         <label className="grid gap-2 text-sm">
-                          <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation template</span>
+                          <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Quotation template</span>
                           <select className="h-11 rounded-xl bg-surface-container-high px-3 text-sm text-on-surface outline-none" value={selectedLeadQuotationTemplate?.id ?? ""} onChange={(e) => setLeadQuotationTemplateId(e.target.value)}>
                             {leadQuotationTemplates.map((template) => <option key={template.id} value={template.id}>{template.machineName}{template.variantLabel ? ` - ${template.variantLabel}` : ""} ({template.currency} {template.basePrice})</option>)}
                           </select>
@@ -831,7 +831,7 @@ export function LeadsView(props: LeadsViewProps) {
                     )}
                   </div>
                   <div className="rounded-2xl border border-outline-variant/10 bg-white p-4">
-                    <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Quotation snapshot</div>
+                    <div className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Quotation snapshot</div>
                     {selectedLead.workflow?.quotationSnapshot ? (
                       <div className="max-h-[22rem] overflow-y-auto whitespace-pre-wrap break-words text-sm leading-7 text-secondary">{selectedLead.workflow.quotationSnapshot}</div>
                     ) : (
@@ -842,7 +842,7 @@ export function LeadsView(props: LeadsViewProps) {
                     <div className="rounded-2xl border border-primary/10 bg-primary-fixed/15 p-4">
                       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                         <div>
-                          <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Follow-up engine</div>
+                          <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Follow-up engine</div>
                           <div className="mt-2 text-lg font-black text-primary">Keep this lead moving without losing the callback window.</div>
                           <div className="mt-2 text-sm leading-6 text-secondary">Use the quick actions to schedule the next touchpoint, log no-answer retries, or close the loop immediately.</div>
                         </div>
@@ -861,7 +861,7 @@ export function LeadsView(props: LeadsViewProps) {
                     </div>
                     <div className="grid gap-3 md:grid-cols-2">
                       <label className="grid gap-2 text-sm">
-                        <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Stage</span>
+                        <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Stage</span>
                         <select className="h-11 rounded-xl bg-surface-container-high px-3 text-sm text-on-surface outline-none" value={leadWorkflowDraft.stage} onChange={(e) => setLeadWorkflowDraft((current) => ({ ...current, stage: e.target.value as LeadStage }))}>
                           {leadStageOptions.map((stage) => <option key={stage} value={stage}>{fmtStatus(stage)}</option>)}
                         </select>
@@ -876,7 +876,7 @@ export function LeadsView(props: LeadsViewProps) {
                       {(leadWorkflowDraft.stage === "won" || leadWorkflowDraft.stage === "lost") && (
                         <>
                           <label className="grid gap-2 text-sm">
-                            <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">
+                            <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                               {leadWorkflowDraft.stage === "won" ? "Won reason" : "Lost reason"}
                             </span>
                             <select
@@ -905,7 +905,7 @@ export function LeadsView(props: LeadsViewProps) {
                           </label>
                           {(leadWorkflowDraft.closeReason === "other" || leadWorkflowDraft.stage === "won") && (
                             <label className="grid gap-2 text-sm">
-                              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Additional note</span>
+                              <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Additional note</span>
                               <input
                                 type="text"
                                 className="h-11 rounded-xl bg-surface-container-high px-3 text-sm text-on-surface outline-none"
@@ -918,14 +918,14 @@ export function LeadsView(props: LeadsViewProps) {
                         </>
                       )}
                       <label className="grid gap-2 text-sm">
-                        <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Owner</span>
+                        <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Owner</span>
                         <select className="h-11 rounded-xl bg-surface-container-high px-3 text-sm text-on-surface outline-none" value={leadWorkflowDraft.ownerUserId} onChange={(e) => setLeadWorkflowDraft((current) => ({ ...current, ownerUserId: e.target.value }))}>
                           <option value="">Unassigned</option>
                           {users.filter((user) => user.active).map((user) => <option key={user.id} value={user.id}>{user.name} ({user.role})</option>)}
                         </select>
                       </label>
                       <label className="grid gap-2 text-sm">
-                        <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Follow-up status</span>
+                        <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Follow-up status</span>
                         <select className="h-11 rounded-xl bg-surface-container-high px-3 text-sm text-on-surface outline-none" value={leadWorkflowDraft.followUpStatus} onChange={(e) => setLeadWorkflowDraft((current) => ({ ...current, followUpStatus: e.target.value as LeadWorkflowDraft["followUpStatus"] }))}>
                           <option value="pending">Pending</option>
                           <option value="scheduled">Scheduled</option>
@@ -936,19 +936,19 @@ export function LeadsView(props: LeadsViewProps) {
                         </select>
                       </label>
                       <label className="grid gap-2 text-sm">
-                        <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Next follow-up</span>
+                        <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Next follow-up</span>
                         <Input type="datetime-local" value={leadWorkflowDraft.nextFollowUpAt} onChange={(e) => setLeadWorkflowDraft((current) => ({ ...current, nextFollowUpAt: e.target.value }))} />
                       </label>
                       <label className="grid gap-2 text-sm">
-                        <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Preferred callback</span>
+                        <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Preferred callback</span>
                         <Input type="datetime-local" value={leadWorkflowDraft.preferredCallbackAt} onChange={(e) => setLeadWorkflowDraft((current) => ({ ...current, preferredCallbackAt: e.target.value }))} />
                       </label>
                       <label className="grid gap-2 text-sm md:col-span-2">
-                        <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Callback note</span>
+                        <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Callback note</span>
                         <Textarea rows={3} placeholder="Preferred time, alternate number, buyer context..." value={leadWorkflowDraft.preferredCallbackNote} onChange={(e) => setLeadWorkflowDraft((current) => ({ ...current, preferredCallbackNote: e.target.value }))} />
                       </label>
                       <label className="grid gap-2 text-sm md:col-span-2">
-                        <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Add note</span>
+                        <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Add note</span>
                         <Textarea rows={4} placeholder="Buyer objections, promise made, next step, or call summary..." value={leadNoteDraft} onChange={(e) => setLeadNoteDraft(e.target.value)} />
                       </label>
                       <div className="flex flex-wrap gap-3 md:col-span-2">
@@ -972,7 +972,7 @@ export function LeadsView(props: LeadsViewProps) {
                       className="flex w-full items-center justify-between rounded-2xl px-6 py-4 text-left transition-colors hover:bg-surface-container-low/60"
                     >
                       <div>
-                        <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Activity timeline</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Activity timeline</div>
                         <div className="mt-0.5 text-sm font-semibold text-on-surface">{activity.length} event{activity.length !== 1 ? "s" : ""}{notes.length ? ` · ${notes.length} staff note${notes.length !== 1 ? "s" : ""}` : ""}</div>
                       </div>
                       {timelineOpen ? <ChevronDown className="h-4 w-4 text-secondary" /> : <ChevronRight className="h-4 w-4 text-secondary" />}
@@ -981,14 +981,14 @@ export function LeadsView(props: LeadsViewProps) {
                       <div className="border-t border-outline-variant/10 px-6 pb-5 pt-4 space-y-6">
                         {/* Activity log — newest first */}
                         <div>
-                          <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Events</div>
+                          <div className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-secondary">Events</div>
                           <div className="space-y-2">
                             {activity.map((entry) => (
                               <div key={entry.id} className="flex items-start gap-3 rounded-xl bg-surface-container-low px-4 py-3">
                                 <div className="mt-0.5 shrink-0"><ActivityIcon type={entry.type} /></div>
                                 <div className="min-w-0 flex-1">
                                   <div className="text-sm text-on-surface">{entry.body}</div>
-                                  <div className="mt-1 text-[11px] text-secondary">{entry.authorName} · {relativeTime(entry.createdAt)}</div>
+                                  <div className="mt-1 text-xs text-secondary">{entry.authorName} · {relativeTime(entry.createdAt)}</div>
                                 </div>
                               </div>
                             ))}
@@ -997,12 +997,12 @@ export function LeadsView(props: LeadsViewProps) {
                         {/* Staff notes — newest first */}
                         {notes.length > 0 && (
                           <div>
-                            <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Staff notes</div>
+                            <div className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-secondary">Staff notes</div>
                             <div className="space-y-2">
                               {notes.map((note) => (
                                 <div key={note.id} className="rounded-xl border border-outline-variant/12 bg-white px-4 py-3">
                                   <div className="whitespace-pre-wrap text-sm leading-6 text-on-surface">{note.body}</div>
-                                  <div className="mt-2 text-[11px] text-secondary">{note.authorName} ({note.authorRole}) · {relativeTime(note.createdAt)}</div>
+                                  <div className="mt-2 text-xs text-secondary">{note.authorName} ({note.authorRole}) · {relativeTime(note.createdAt)}</div>
                                 </div>
                               ))}
                             </div>
@@ -1023,7 +1023,7 @@ export function LeadsView(props: LeadsViewProps) {
               <div className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-[0_24px_64px_-16px_rgba(0,0,0,0.32)]" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between border-b border-outline-variant/10 px-6 py-4">
                   <div>
-                    <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Quotation preview</div>
+                    <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Quotation preview</div>
                     <div className="mt-0.5 text-lg font-black text-primary">{selectedLeadQuotationTemplate?.title ?? "Preview"}</div>
                   </div>
                   <button type="button" onClick={() => setPreviewText(null)} className="flex h-8 w-8 items-center justify-center rounded-lg text-secondary hover:bg-surface-container-high hover:text-primary">
@@ -1054,10 +1054,10 @@ export function LeadsView(props: LeadsViewProps) {
           />
 
           <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Visible pipeline</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{filteredLeads.length}</div><Badge variant="outline">Queue</Badge></div><div className="mt-2 text-sm text-secondary">All commercially active leads currently visible in this workspace.</div></CardContent></Card>
-            <Card className="overflow-hidden border border-orange-200/80 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Quotes cooling off</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{quotedAwaitingCallCount}</div><Badge variant="warning">Commercial</Badge></div><div className="mt-2 text-sm text-secondary">Quotes already sent that still need a direct human follow-up.</div></CardContent></Card>
-            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Callbacks today</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{callbacksTodayCount}</div><Badge variant="secondary">Scheduled</Badge></div><div className="mt-2 text-sm text-secondary">Buyer conversations already scheduled into today&apos;s operating window.</div></CardContent></Card>
-            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Retry queue</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{retryQueueCount}</div><Badge variant={retryQueueCount > 0 ? "warning" : "outline"}>{retryQueueCount > 0 ? "Action" : "Clear"}</Badge></div><div className="mt-2 text-sm text-secondary">No-answer and callback-later leads ready for another attempt.</div></CardContent></Card>
+            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-6"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Visible pipeline</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{filteredLeads.length}</div><Badge variant="outline">Queue</Badge></div><div className="mt-2 text-sm text-secondary">All commercially active leads currently visible in this workspace.</div></CardContent></Card>
+            <Card className="overflow-hidden border border-orange-200/80 bg-white shadow-sm"><CardContent className="p-6"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Quotes cooling off</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{quotedAwaitingCallCount}</div><Badge variant="warning">Commercial</Badge></div><div className="mt-2 text-sm text-secondary">Quotes already sent that still need a direct human follow-up.</div></CardContent></Card>
+            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-6"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Callbacks today</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{callbacksTodayCount}</div><Badge variant="secondary">Scheduled</Badge></div><div className="mt-2 text-sm text-secondary">Buyer conversations already scheduled into today&apos;s operating window.</div></CardContent></Card>
+            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-6"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Retry queue</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{retryQueueCount}</div><Badge variant={retryQueueCount > 0 ? "warning" : "outline"}>{retryQueueCount > 0 ? "Action" : "Clear"}</Badge></div><div className="mt-2 text-sm text-secondary">No-answer and callback-later leads ready for another attempt.</div></CardContent></Card>
           </section>
 
           {currentUserRole !== "agent" ? (
@@ -1076,7 +1076,7 @@ export function LeadsView(props: LeadsViewProps) {
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Saved view</div>
+                      <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Saved view</div>
                       <div className="mt-2 text-lg font-black tracking-tight text-primary">{view.label}</div>
                     </div>
                     <Badge variant={savedView === view.id ? "secondary" : "outline"}>{view.count}</Badge>
@@ -1091,7 +1091,7 @@ export function LeadsView(props: LeadsViewProps) {
             <section className="rounded-3xl border border-outline-variant/12 bg-white p-4 shadow-sm">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div>
-                  <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Manager view</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Manager view</div>
                   <div className="mt-1 text-xl font-black tracking-tight text-primary">Pipeline board</div>
                   <div className="mt-1 text-sm leading-6 text-secondary">Switch between the execution list and a stage board to spot blocked flow and ownership gaps faster. Drag cards across lanes to update stage instantly.</div>
                 </div>
@@ -1125,17 +1125,17 @@ export function LeadsView(props: LeadsViewProps) {
             <section className="overflow-hidden rounded-3xl border border-outline-variant/12 bg-[radial-gradient(circle_at_top_left,rgba(26,75,140,0.08),transparent_22%),linear-gradient(180deg,rgba(248,250,252,0.96),rgba(255,255,255,0.98))] shadow-[0_28px_80px_-42px_rgba(15,23,42,0.3)]">
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-outline-variant/10 px-6 py-4">
                 <div>
-                  <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Kanban flow</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Kanban flow</div>
                   <div className="mt-1 text-base font-black tracking-tight text-primary">Stage lanes with live drag-and-drop</div>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <div className="rounded-full border border-outline-variant/15 bg-white/80 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                  <div className="rounded-full border border-outline-variant/15 bg-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                     {visibleLeadRows.length} active cards
                   </div>
-                  <div className="rounded-full border border-outline-variant/15 bg-white/80 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                  <div className="rounded-full border border-outline-variant/15 bg-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                     {visibleLeadRows.filter((entry) => entry.score >= 80).length} hot
                   </div>
-                  <div className="rounded-full border border-outline-variant/15 bg-white/80 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                  <div className="rounded-full border border-outline-variant/15 bg-white/80 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                     Drag to move stage
                   </div>
                 </div>
@@ -1176,7 +1176,7 @@ export function LeadsView(props: LeadsViewProps) {
                     <div className="sticky top-0 z-10 rounded-3xl border border-white/60 bg-white/80 px-4 py-3 backdrop-blur-sm">
                       <div className="flex items-start justify-between gap-3">
                         <div>
-                          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                             <span className={cn("h-2.5 w-2.5 rounded-full", boardStageThemes[column.stage].dot)} />
                             Stage lane
                           </div>
@@ -1187,13 +1187,13 @@ export function LeadsView(props: LeadsViewProps) {
                         </Badge>
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
-                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                           {column.items.filter((entry) => entry.score >= 80).length} hot
                         </span>
-                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                           {column.items.filter((entry) => !entry.owner).length} unassigned
                         </span>
-                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                           {column.items.filter((entry) => getLeadFirstCallState(entry.session).label === "Call overdue").length} overdue
                         </span>
                       </div>
@@ -1232,7 +1232,7 @@ export function LeadsView(props: LeadsViewProps) {
                             )}
                           >
                             <div className="flex items-start justify-between gap-3">
-                              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                                 <span className="rounded-full bg-surface-container-low px-2 py-1">{entry.temperature}</span>
                                 <span className="flex items-center gap-1 rounded-full bg-surface-container-low px-2 py-1">
                                   <GripVertical className="h-3 w-3" />
@@ -1264,22 +1264,22 @@ export function LeadsView(props: LeadsViewProps) {
                               </div>
                               <div className="mt-4 grid grid-cols-2 gap-2">
                                 <div className="rounded-2xl bg-surface-container-low/80 px-3 py-2">
-                                  <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Owner</div>
+                                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Owner</div>
                                   <div className="mt-1 text-sm font-semibold text-on-surface">{entry.owner?.name ?? "Unassigned"}</div>
                                 </div>
                                 <div className="rounded-2xl bg-surface-container-low/80 px-3 py-2">
-                                  <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Last touch</div>
+                                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Last touch</div>
                                   <div className="mt-1 text-sm font-semibold text-on-surface">{lead.workflow?.lastContactedAt ? relativeTime(lead.workflow.lastContactedAt) : "Not logged"}</div>
                                 </div>
                               </div>
                               <div className="mt-4 rounded-2xl border border-outline-variant/10 bg-surface-container-low/55 px-3 py-3">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Next move</div>
+                                <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Next move</div>
                                 <div className="mt-1 text-sm leading-6 text-on-surface">{entry.nextStep}</div>
                               </div>
                             </button>
                             <div className="mt-4 border-t border-outline-variant/10 pt-3">
                               <div className="flex items-center justify-between gap-2">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Move stage</div>
+                                <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Move stage</div>
                                 {stageUpdating ? <Loader2 className="h-3.5 w-3.5 animate-spin text-secondary" /> : null}
                               </div>
                               <div className="mt-2 flex items-center gap-2">
@@ -1295,7 +1295,7 @@ export function LeadsView(props: LeadsViewProps) {
                                 </select>
                                 <Button
                                   variant="outline"
-                                  className="h-10 px-3 text-[11px]"
+                                  className="h-10 px-3 text-xs"
                                   disabled={!stageDirty || stageUpdating}
                                   onClick={() => void applyBoardStage(lead.id, currentStage, draftStage)}
                                 >
@@ -1325,7 +1325,7 @@ export function LeadsView(props: LeadsViewProps) {
             <CardHeader className="border-b border-outline-variant/10 bg-white/80 pb-4">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div>
-                  <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Pipeline command center</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Pipeline command center</div>
                   <CardTitle className="mt-2 text-[1.9rem] tracking-tight text-primary">Commercial lead pipeline</CardTitle>
                   <CardDescription className="mt-1 text-sm leading-6">Scan machine fit, quote state, ownership, and next move without leaving the queue.</CardDescription>
                 </div>
@@ -1344,7 +1344,7 @@ export function LeadsView(props: LeadsViewProps) {
                       type="button"
                       disabled={refreshing}
                       onClick={async () => { setRefreshing(true); try { await onRefresh(); } finally { setRefreshing(false); } }}
-                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/15 bg-white px-4 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface disabled:opacity-50"
+                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/15 bg-white px-4 text-xs font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface disabled:opacity-50"
                     >
                       <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? "animate-spin" : ""}`} />
                       Refresh
@@ -1355,7 +1355,7 @@ export function LeadsView(props: LeadsViewProps) {
                     <a
                       href={buildExportUrl()}
                       download
-                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/15 bg-white px-4 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface"
+                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/15 bg-white px-4 text-xs font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface"
                     >
                       Export CSV
                     </a>
@@ -1384,7 +1384,7 @@ export function LeadsView(props: LeadsViewProps) {
                       type="button"
                       onClick={() => toggleStageFilter(stage)}
                       className={cn(
-                        "rounded-lg px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] transition-colors",
+                        "rounded-lg px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] transition-colors",
                         stageFilters.includes(stage)
                           ? "bg-primary text-white"
                           : "bg-surface-container-low text-secondary hover:bg-surface-container-high hover:text-on-surface"
@@ -1403,7 +1403,7 @@ export function LeadsView(props: LeadsViewProps) {
                       type="button"
                       onClick={() => setSlaFilter(slaFilter === option.value ? "" : option.value)}
                       className={cn(
-                        "rounded-lg px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] transition-colors",
+                        "rounded-lg px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] transition-colors",
                         slaFilter === option.value
                           ? "bg-amber-500 text-white"
                           : "bg-surface-container-low text-secondary hover:bg-surface-container-high hover:text-on-surface"
@@ -1417,7 +1417,7 @@ export function LeadsView(props: LeadsViewProps) {
                 {/* Owner dropdown — admin and manager only */}
                 {currentUserRole !== "agent" && (
                   <select
-                    className="h-8 rounded-lg bg-surface-container-low px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary outline-none transition-colors hover:bg-surface-container-high"
+                    className="h-8 rounded-lg bg-surface-container-low px-3 text-xs font-bold uppercase tracking-[0.16em] text-secondary outline-none transition-colors hover:bg-surface-container-high"
                     value={ownerFilter}
                     onChange={(e) => setOwnerFilter(e.target.value)}
                   >
@@ -1433,7 +1433,7 @@ export function LeadsView(props: LeadsViewProps) {
                 {/* Machine category dropdown */}
                 {machineCategories.length > 0 && (
                   <select
-                    className="h-8 rounded-lg bg-surface-container-low px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary outline-none transition-colors hover:bg-surface-container-high"
+                    className="h-8 rounded-lg bg-surface-container-low px-3 text-xs font-bold uppercase tracking-[0.16em] text-secondary outline-none transition-colors hover:bg-surface-container-high"
                     value={machineFilter}
                     onChange={(e) => setMachineFilter(e.target.value)}
                   >
@@ -1449,7 +1449,7 @@ export function LeadsView(props: LeadsViewProps) {
                   <button
                     type="button"
                     onClick={clearAllFilters}
-                    className="flex items-center gap-1.5 rounded-lg bg-primary/8 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary/15"
+                    className="flex items-center gap-1.5 rounded-lg bg-primary/8 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary/15"
                   >
                     <X className="h-3 w-3" />
                     Clear {activeFilterCount}
@@ -1461,25 +1461,25 @@ export function LeadsView(props: LeadsViewProps) {
               {/* WF-08: Bulk actions toolbar — appears when ≥1 row is checked */}
               {selectedIds.size > 0 && currentUserRole !== "agent" && (
                 <div className="flex flex-wrap items-center gap-3 border-b border-outline-variant/10 bg-primary/5 px-6 py-3">
-                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
+                  <span className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
                     {selectedIds.size} selected
                   </span>
                   <div className="flex flex-wrap items-center gap-2">
                     <select
-                      className="h-8 rounded-lg bg-white px-3 text-[11px] font-bold text-on-surface outline-none ring-1 ring-outline-variant/15"
+                      className="h-8 rounded-lg bg-white px-3 text-xs font-bold text-on-surface outline-none ring-1 ring-outline-variant/15"
                       value={bulkStage}
                       onChange={(e) => setBulkStage(e.target.value as LeadStage | "")}
                     >
                       <option value="">Change stage…</option>
                       {leadStageOptions.map((s) => <option key={s} value={s}>{fmtStatus(s)}</option>)}
                     </select>
-                    <Button variant="outline" className="h-8 text-[11px]" disabled={!bulkStage || bulkLoading} onClick={() => void applyBulkStage()}>
+                    <Button variant="outline" className="h-8 text-xs" disabled={!bulkStage || bulkLoading} onClick={() => void applyBulkStage()}>
                       {bulkLoading ? <Loader2 className="h-3 w-3 animate-spin" /> : "Apply stage"}
                     </Button>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
                     <select
-                      className="h-8 rounded-lg bg-white px-3 text-[11px] font-bold text-on-surface outline-none ring-1 ring-outline-variant/15"
+                      className="h-8 rounded-lg bg-white px-3 text-xs font-bold text-on-surface outline-none ring-1 ring-outline-variant/15"
                       value={bulkOwner}
                       onChange={(e) => setBulkOwner(e.target.value)}
                     >
@@ -1487,18 +1487,18 @@ export function LeadsView(props: LeadsViewProps) {
                       <option value="">Unassigned</option>
                       {users.filter((u) => u.active).map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}
                     </select>
-                    <Button variant="outline" className="h-8 text-[11px]" disabled={bulkLoading} onClick={() => void applyBulkOwner()}>
+                    <Button variant="outline" className="h-8 text-xs" disabled={bulkLoading} onClick={() => void applyBulkOwner()}>
                       {bulkLoading ? <Loader2 className="h-3 w-3 animate-spin" /> : "Reassign"}
                     </Button>
                   </div>
-                  <button type="button" onClick={clearSelection} className="ml-auto text-[11px] font-bold text-secondary hover:text-primary">
+                  <button type="button" onClick={clearSelection} className="ml-auto text-xs font-bold text-secondary hover:text-primary">
                     Clear
                   </button>
                 </div>
               )}
               {/* Column headers — action column added */}
               <div className={cn(
-                "hidden gap-4 border-b border-outline-variant/10 px-6 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-secondary lg:grid",
+                "hidden gap-4 border-b border-outline-variant/10 px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-secondary lg:grid",
                 currentUserRole !== "agent" ? "grid-cols-[2rem_1.75fr_0.95fr_0.7fr_1fr_0.8fr_5rem]" : "grid-cols-[1.75fr_0.95fr_0.7fr_1fr_0.8fr_5rem]"
               )}>
                 {currentUserRole !== "agent" && <div />}

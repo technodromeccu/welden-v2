@@ -88,7 +88,7 @@ function AuditLogPanel() {
                   <div key={entry.id} className="grid gap-0.5 px-6 py-3 text-sm">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="font-semibold text-on-surface">{entry.userName}</span>
-                      <span className="rounded bg-surface-container-low px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-secondary">
+                      <span className="rounded bg-surface-container-low px-2 py-0.5 text-xs font-bold uppercase tracking-[0.12em] text-secondary">
                         {ACTION_LABELS[entry.action] ?? entry.action}
                       </span>
                       <span className="text-xs text-secondary">{entry.entityType.replace("_", " ")} · {entry.entityId.slice(0, 12)}…</span>
@@ -157,27 +157,27 @@ export function SettingsView(props: SettingsViewProps) {
           </CardHeader>
           <CardContent className="space-y-3 text-sm text-secondary">
             <div className="rounded-xl bg-surface-container-low p-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Default assignee</div>
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Default assignee</div>
               <div className="mt-2 text-base font-semibold text-on-surface">{users.find((u) => u.id === settingsDraft.advisorDefaultAssigneeId)?.name ?? "Not set"}</div>
             </div>
             <div className="rounded-xl bg-surface-container-low p-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Business days</div>
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Business days</div>
               <div className="mt-2 text-base font-semibold text-on-surface">{settingsDraft.businessDays.map((day) => daysOfWeek[day]).join(", ")}</div>
             </div>
             <div className="rounded-xl bg-surface-container-low p-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Notification emails</div>
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Notification emails</div>
               <div className="mt-2 text-base leading-7 text-on-surface">{(settingsDraft.internalNotificationEmails ?? []).join(", ") || "None configured"}</div>
             </div>
             <div className="rounded-xl bg-surface-container-low p-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Escalation emails</div>
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Escalation emails</div>
               <div className="mt-2 text-base leading-7 text-on-surface">{(settingsDraft.slaEscalationEmails ?? []).join(", ") || "None configured"}</div>
             </div>
             <div className="rounded-xl bg-surface-container-low p-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation CC emails</div>
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Quotation CC emails</div>
               <div className="mt-2 text-base leading-7 text-on-surface">{(settingsDraft.quotationCcEmails ?? []).join(", ") || "None configured"}</div>
             </div>
             <div className="rounded-xl bg-surface-container-low p-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation branding</div>
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Quotation branding</div>
               <div className="mt-2 text-base font-semibold text-on-surface">{settingsDraft.quotationBrandName || "Welden Industries"}</div>
               <div className="mt-2 text-sm leading-6 text-on-surface">{settingsDraft.quotationLogoUrl || "Placeholder logo will be used until a logo is uploaded."}</div>
             </div>
@@ -193,25 +193,25 @@ export function SettingsView(props: SettingsViewProps) {
             {backupStatus && !backupStatus.configured ? <div className="rounded-xl border border-amber-200/70 bg-amber-50 px-4 py-3 text-amber-900">{backupStatus.configurationError ?? "Backup is not configured yet."}</div> : null}
             {backupError ? <div className="rounded-xl border border-error/20 bg-error-container px-4 py-3 text-on-error-container">{backupError}</div> : null}
             <div className="grid gap-3 md:grid-cols-2">
-              <div className="rounded-xl bg-surface-container-low p-4"><div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Last success</div><div className="mt-2 text-base font-semibold text-on-surface">{backupStatus?.lastSuccessAt ? fmtDate(backupStatus.lastSuccessAt) : "Not run yet"}</div></div>
-              <div className="rounded-xl bg-surface-container-low p-4"><div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Last failure</div><div className="mt-2 text-base font-semibold text-on-surface">{backupStatus?.lastFailureAt ? fmtDate(backupStatus.lastFailureAt) : "No failures recorded"}</div></div>
-              <div className="rounded-xl bg-surface-container-low p-4"><div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Latest snapshot</div><div className="mt-2 break-all text-base font-semibold text-on-surface">{backupStatus?.latestSnapshotName ?? "No snapshot yet"}</div></div>
-              <div className="rounded-xl bg-surface-container-low p-4"><div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Latest secrets backup</div><div className="mt-2 break-all text-base font-semibold text-on-surface">{backupStatus?.latestSecretsName ?? "No secrets backup yet"}</div></div>
+              <div className="rounded-xl bg-surface-container-low p-4"><div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Last success</div><div className="mt-2 text-base font-semibold text-on-surface">{backupStatus?.lastSuccessAt ? fmtDate(backupStatus.lastSuccessAt) : "Not run yet"}</div></div>
+              <div className="rounded-xl bg-surface-container-low p-4"><div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Last failure</div><div className="mt-2 text-base font-semibold text-on-surface">{backupStatus?.lastFailureAt ? fmtDate(backupStatus.lastFailureAt) : "No failures recorded"}</div></div>
+              <div className="rounded-xl bg-surface-container-low p-4"><div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Latest snapshot</div><div className="mt-2 break-all text-base font-semibold text-on-surface">{backupStatus?.latestSnapshotName ?? "No snapshot yet"}</div></div>
+              <div className="rounded-xl bg-surface-container-low p-4"><div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Latest secrets backup</div><div className="mt-2 break-all text-base font-semibold text-on-surface">{backupStatus?.latestSecretsName ?? "No secrets backup yet"}</div></div>
             </div>
             <div className="rounded-xl bg-surface-container-low p-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Next scheduled runs (UTC)</div>
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Next scheduled runs (UTC)</div>
               <div className="mt-3 space-y-2">
                 {backupStatus?.nextScheduledRunsUtc?.length ? backupStatus.nextScheduledRunsUtc.map((entry) => <div key={entry} className="rounded-lg bg-white px-3 py-2 text-on-surface shadow-sm">{fmtDate(entry)}</div>) : <div className="text-on-surface">Schedule not available.</div>}
               </div>
             </div>
             <div className="rounded-xl bg-surface-container-low p-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Recent Google Drive artifacts</div>
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Recent Google Drive artifacts</div>
               <div className="mt-3 space-y-2">
                 {backupLoading ? <div className="text-on-surface">Loading backup status...</div> : backupStatus && !backupStatus.configured ? <div className="text-on-surface">Configure Google Drive and backup secrets to start generating artifacts.</div> : backupArtifacts.length ? backupArtifacts.slice(0, 5).map((artifact) => <div key={artifact.id} className="rounded-lg bg-white px-3 py-3 shadow-sm"><div className="font-semibold text-on-surface">{artifact.name}</div><div className="mt-1 text-xs uppercase tracking-[0.16em] text-secondary">{artifact.kind}</div></div>) : <div className="text-on-surface">No backup artifacts found yet.</div>}
               </div>
             </div>
             <div className="rounded-xl bg-surface-container-low p-4">
-              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Local admin downloads</div>
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Local admin downloads</div>
               <div className="mt-2 text-sm leading-6 text-on-surface">Download a fresh backup file directly to this computer before or after the scheduled Google Drive snapshot runs.</div>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -232,29 +232,29 @@ export function SettingsView(props: SettingsViewProps) {
         <CardContent className="space-y-6">
           <div className="grid gap-3 md:grid-cols-2">
             <label className="grid gap-2 text-sm">
-              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Default assignee</span>
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Default assignee</span>
               <select className="h-11 rounded-xl bg-surface-container-high px-3 text-sm text-on-surface outline-none" value={settingsDraft.advisorDefaultAssigneeId} onChange={(e) => setSettingsDraft((current) => ({ ...current, advisorDefaultAssigneeId: e.target.value }))}>{users.filter((user) => user.active).map((user) => <option key={user.id} value={user.id}>{user.name} ({user.role})</option>)}</select>
             </label>
             <label className="grid gap-2 text-sm">
-              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Business days</span>
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Business days</span>
               <div className="flex flex-wrap gap-2">{daysOfWeek.map((label, index) => <label key={label} className="inline-flex items-center gap-2 rounded-md bg-surface-container-low px-3 py-2 text-sm text-on-surface"><input type="checkbox" checked={settingsDraft.businessDays.includes(index)} onChange={(e) => setSettingsDraft((current) => ({ ...current, businessDays: e.target.checked ? [...current.businessDays, index].sort((a, b) => a - b) : current.businessDays.filter((day) => day !== index) }))} />{label}</label>)}</div>
             </label>
-            <label className="grid gap-2 text-sm"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Business hour start</span><Input type="number" min="0" max="23" value={String(settingsDraft.businessHours.start)} onChange={(e) => setSettingsDraft((current) => ({ ...current, businessHours: { ...current.businessHours, start: Number(e.target.value) } }))} /></label>
-            <label className="grid gap-2 text-sm"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Business hour end</span><Input type="number" min="1" max="24" value={String(settingsDraft.businessHours.end)} onChange={(e) => setSettingsDraft((current) => ({ ...current, businessHours: { ...current.businessHours, end: Number(e.target.value) } }))} /></label>
-            <label className="grid gap-2 text-sm"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">First-response SLA days</span><Input type="number" min="1" value={String(settingsDraft.firstResponseSlaWorkingDays ?? 2)} onChange={(e) => setSettingsDraft((current) => ({ ...current, firstResponseSlaWorkingDays: Number(e.target.value) }))} /></label>
-            <label className="grid gap-2 text-sm"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Reminder lead hours</span><Input type="number" min="1" value={String(settingsDraft.slaReminderLeadHours ?? 4)} onChange={(e) => setSettingsDraft((current) => ({ ...current, slaReminderLeadHours: Number(e.target.value) }))} /></label>
-            <label className="grid gap-2 text-sm"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Escalation lead hours</span><Input type="number" min="1" value={String(settingsDraft.slaEscalationLeadHours ?? 24)} onChange={(e) => setSettingsDraft((current) => ({ ...current, slaEscalationLeadHours: Number(e.target.value) }))} /></label>
-            <label className="grid gap-2 text-sm"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Stale lead threshold (days)</span><Input type="number" min="1" value={String(settingsDraft.staleLeadDays ?? 5)} onChange={(e) => setSettingsDraft((current) => ({ ...current, staleLeadDays: Number(e.target.value) }))} /></label>
-            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Internal notification emails</span><ArrayTextarea splitBy="comma" value={settingsDraft.internalNotificationEmails ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, internalNotificationEmails: val }))} /></div>
-            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Escalation emails</span><ArrayTextarea splitBy="comma" value={settingsDraft.slaEscalationEmails ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, slaEscalationEmails: val }))} /></div>
-            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation CC emails</span><ArrayTextarea splitBy="comma" value={settingsDraft.quotationCcEmails ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, quotationCcEmails: val }))} /></div>
-            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Chatbot quick action questions</span><ArrayTextarea splitBy="newline" placeholder="What is the price of the Automatic Pipe Cutting Machine?" value={settingsDraft.quickActionQuestions ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, quickActionQuestions: val }))} /></div>
+            <label className="grid gap-2 text-sm"><span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Business hour start</span><Input type="number" min="0" max="23" value={String(settingsDraft.businessHours.start)} onChange={(e) => setSettingsDraft((current) => ({ ...current, businessHours: { ...current.businessHours, start: Number(e.target.value) } }))} /></label>
+            <label className="grid gap-2 text-sm"><span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Business hour end</span><Input type="number" min="1" max="24" value={String(settingsDraft.businessHours.end)} onChange={(e) => setSettingsDraft((current) => ({ ...current, businessHours: { ...current.businessHours, end: Number(e.target.value) } }))} /></label>
+            <label className="grid gap-2 text-sm"><span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">First-response SLA days</span><Input type="number" min="1" value={String(settingsDraft.firstResponseSlaWorkingDays ?? 2)} onChange={(e) => setSettingsDraft((current) => ({ ...current, firstResponseSlaWorkingDays: Number(e.target.value) }))} /></label>
+            <label className="grid gap-2 text-sm"><span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Reminder lead hours</span><Input type="number" min="1" value={String(settingsDraft.slaReminderLeadHours ?? 4)} onChange={(e) => setSettingsDraft((current) => ({ ...current, slaReminderLeadHours: Number(e.target.value) }))} /></label>
+            <label className="grid gap-2 text-sm"><span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Escalation lead hours</span><Input type="number" min="1" value={String(settingsDraft.slaEscalationLeadHours ?? 24)} onChange={(e) => setSettingsDraft((current) => ({ ...current, slaEscalationLeadHours: Number(e.target.value) }))} /></label>
+            <label className="grid gap-2 text-sm"><span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Stale lead threshold (days)</span><Input type="number" min="1" value={String(settingsDraft.staleLeadDays ?? 5)} onChange={(e) => setSettingsDraft((current) => ({ ...current, staleLeadDays: Number(e.target.value) }))} /></label>
+            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Internal notification emails</span><ArrayTextarea splitBy="comma" value={settingsDraft.internalNotificationEmails ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, internalNotificationEmails: val }))} /></div>
+            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Escalation emails</span><ArrayTextarea splitBy="comma" value={settingsDraft.slaEscalationEmails ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, slaEscalationEmails: val }))} /></div>
+            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Quotation CC emails</span><ArrayTextarea splitBy="comma" value={settingsDraft.quotationCcEmails ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, quotationCcEmails: val }))} /></div>
+            <div className="grid gap-2 text-sm md:col-span-2"><span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Chatbot quick action questions</span><ArrayTextarea splitBy="newline" placeholder="What is the price of the Automatic Pipe Cutting Machine?" value={settingsDraft.quickActionQuestions ?? []} onChange={(val) => setSettingsDraft((current) => ({ ...current, quickActionQuestions: val }))} /></div>
             <label className="grid gap-2 text-sm md:col-span-2">
-              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation brand name</span>
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Quotation brand name</span>
               <Input value={settingsDraft.quotationBrandName ?? ""} onChange={(e) => setSettingsDraft((current) => ({ ...current, quotationBrandName: e.target.value }))} placeholder="Welden Industries" />
             </label>
             <div className="grid gap-3 text-sm md:col-span-2">
-              <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation logo</span>
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Quotation logo</span>
               <div className="grid gap-3 md:grid-cols-[1fr_auto] md:items-center">
                 <Input value={settingsDraft.quotationLogoUrl ?? ""} onChange={(e) => setSettingsDraft((current) => ({ ...current, quotationLogoUrl: e.target.value }))} placeholder="/images/branding/uploads/welden-logo.png" />
                 <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/15 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
@@ -266,7 +266,7 @@ export function SettingsView(props: SettingsViewProps) {
                 Recommended upload: PNG with transparent background, 1200 x 320 px source size, displayed around 220-260 px wide in the quotation email.
               </div>
               <div className="rounded-xl border border-outline-variant/12 bg-white p-4">
-                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Logo preview</div>
+                <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Logo preview</div>
                 <div className="mt-3 rounded-xl bg-[#0d1b2f] px-6 py-6">
                   <img src={settingsDraft.quotationLogoUrl?.trim() || "/images/branding/welden-placeholder-logo.svg"} alt={settingsDraft.quotationBrandName || "Welden Industries"} className="h-auto max-h-16 w-auto max-w-[240px]" />
                 </div>

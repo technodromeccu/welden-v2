@@ -72,7 +72,7 @@ export function StructureOrganizer({
               )}
             >
               <div className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-container text-[11px] font-black text-secondary">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-container text-xs font-black text-secondary">
                   {index + 1}
                 </span>
                 <button type="button" className="flex h-8 w-8 cursor-grab items-center justify-center rounded-lg text-secondary transition hover:bg-surface-container-low hover:text-primary">
@@ -82,7 +82,7 @@ export function StructureOrganizer({
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <div className="truncate text-sm font-bold text-on-surface">{getBlockLabel(block)}</div>
-                  {block.hidden ? <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-600">Hidden</span> : null}
+                  {block.hidden ? <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-bold uppercase tracking-[0.16em] text-slate-600">Hidden</span> : null}
                 </div>
                 <div className="mt-1 line-clamp-2 text-xs leading-5 text-secondary">{getBlockSupportText(block)}</div>
               </div>
@@ -116,7 +116,7 @@ export function StructureOrganizer({
       </div>
 
       <div className="rounded-2xl border border-outline-variant/12 bg-surface-container-low/30 p-4">
-        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Add blocks back</div>
+        <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Add blocks back</div>
         <div className="mt-2 text-sm leading-6 text-secondary">
           Removed a section by mistake? Bring it back here.
         </div>
@@ -147,12 +147,12 @@ export function StructureOrganizer({
       <CardHeader className="border-b border-outline-variant/10 bg-white/80 pb-4">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Page structure</div>
+            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Page structure</div>
             <div className="mt-1 text-xl font-black tracking-tight text-primary">
               {surface === "landing_card" ? "Landing card order" : "Machine page order"}
             </div>
           </div>
-          <div className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+          <div className="rounded-full bg-surface-container px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
             {layout.length} blocks
           </div>
         </div>

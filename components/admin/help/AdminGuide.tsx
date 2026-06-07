@@ -42,12 +42,12 @@ export function AdminGuide({ currentUserRole }: { currentUserRole: string }) {
               <BookOpen className="h-4 w-4" />
             </span>
             <div>
-              <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-secondary">Admin guide</div>
+              <div className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">Admin guide</div>
               <div className="text-base font-black tracking-tight text-primary">Welden Industries platform reference</div>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="hidden rounded-full bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary md:inline-flex">
+            <span className="hidden rounded-full bg-slate-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary md:inline-flex">
               Signed in as {currentUserRole}
             </span>
             <Link
@@ -63,7 +63,7 @@ export function AdminGuide({ currentUserRole }: { currentUserRole: string }) {
       <div className="mx-auto grid max-w-6xl gap-8 px-6 py-10 lg:grid-cols-[18rem_minmax(0,1fr)]">
         <aside className="hidden lg:block">
           <nav className="sticky top-24 space-y-1 rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="px-2 pb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">On this page</div>
+            <div className="px-2 pb-2 text-xs font-bold uppercase tracking-[0.2em] text-secondary">On this page</div>
             {guideSections.map((section) => {
               const active = activeId === section.id;
               return (
@@ -101,7 +101,7 @@ export function AdminGuide({ currentUserRole }: { currentUserRole: string }) {
               <ChatMarkdown
                 content={section.content}
                 tone="light"
-                className="max-w-none text-[15px] leading-[1.7]"
+                className="max-w-none text-sm leading-[1.7]"
               />
             </section>
           ))}

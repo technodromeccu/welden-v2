@@ -30,51 +30,53 @@ colors:
   info-900:          "#0c4a6e"     # sky-900    — info text
   info-50:           "#f0f9ff"     # sky-50     — info surface
 typography:
+  # Strict Minor Third (1.2) scale — 5 sizes only.
+  # Phase 1.2 sweep (2026-06-07) removed all off-scale sizes:
+  #   text-[10px], text-[11px], text-[15px], text-[1.45rem],
+  #   plus the responsive text-3xl md:text-4xl pattern collapsed to text-4xl.
   page-h1:
     fontFamily: "{font.display}"
-    fontSize: "1.875rem"        # text-3xl
-    fontSize-md: "2.25rem"      # text-4xl on md+
+    fontSize: "2.25rem"         # text-4xl (36px)
     fontWeight: 900             # font-black
     letterSpacing: "-0.025em"   # tracking-tight
     color: "{colors.primary-text}"
   page-eyebrow:
-    fontSize: "0.6875rem"       # text-[11px]
+    fontSize: "0.75rem"         # text-xs (12px)
     fontWeight: 700             # font-bold
     textTransform: "uppercase"
     letterSpacing: "0.2em"      # tracking-[0.2em]
     color: "{colors.secondary-text}"
   card-title:
     fontFamily: "{font.display}"
-    fontSize: "1.125rem"        # text-lg
-    fontSize-md: "1.5rem"       # text-2xl  (when card stands alone)
-    fontWeight: 800             # font-extrabold (or 900 font-black on standalone)
+    fontSize: "1.5rem"          # text-2xl (24px)
+    fontWeight: 900             # font-black
     letterSpacing: "-0.025em"
     color: "{colors.primary-text}"
   card-label:
-    fontSize: "0.625rem"        # text-[10px]
+    fontSize: "0.75rem"         # text-xs (12px)
     fontWeight: 700             # font-bold
     textTransform: "uppercase"
     letterSpacing: "0.16em"     # tracking-[0.16em]
     color: "{colors.secondary-text}"
   stat-number:
     fontFamily: "{font.display}"
-    fontSize: "2.25rem"         # text-4xl
+    fontSize: "2.25rem"         # text-4xl (36px)
     fontWeight: 900             # font-black
-    letterSpacing: "-0.025em"   # tracking-tight
+    letterSpacing: "-0.025em"
     color: "{colors.primary-text}"
+  lead:
+    fontSize: "1.125rem"        # text-lg (18px) — card titles, lead text
+    color: "{colors.on-surface}"
   body:
-    fontSize: "0.875rem"        # text-sm
-    lineHeight: "1.5"           # leading-6 default
+    fontSize: "0.875rem"        # text-sm (14px) — DEFAULT
+    lineHeight: "1.5"
     color: "{colors.secondary-text}"
   body-on-surface:
     fontSize: "0.875rem"
     lineHeight: "1.5"
     color: "{colors.on-surface}"
-  data:
-    fontSize: "1rem"            # text-base
-    color: "{colors.on-surface}"
   micro:
-    fontSize: "0.75rem"         # text-xs
+    fontSize: "0.75rem"         # text-xs (12px) — labels, footnotes, micro UI
     color: "{colors.secondary-text}"
 rounded:
   pill:   "9999px"   # full radius — badges, status dots, avatars, pill buttons

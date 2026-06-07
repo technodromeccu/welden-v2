@@ -63,7 +63,7 @@ export function RowActionMenu({
             className="flex w-full items-center gap-3 px-4 py-3 text-left text-sm text-on-surface transition-colors hover:bg-surface-container-low"
           >
             Log no answer
-            <span className="ml-auto text-[10px] text-secondary">+1 day</span>
+            <span className="ml-auto text-xs text-secondary">+1 day</span>
           </button>
           <button
             type="button"
@@ -78,7 +78,7 @@ export function RowActionMenu({
             className="flex w-full items-center gap-3 px-4 py-3 text-left text-sm text-on-surface transition-colors hover:bg-surface-container-low"
           >
             Follow up tomorrow
-            <span className="ml-auto text-[10px] text-secondary">10:30</span>
+            <span className="ml-auto text-xs text-secondary">10:30</span>
           </button>
         </div>
       )}

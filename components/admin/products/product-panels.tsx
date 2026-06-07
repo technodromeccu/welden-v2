@@ -32,7 +32,7 @@ export function GlobalMachineLabelsPanel({
       <div className="w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white shadow-[0_30px_90px_-35px_rgba(15,23,42,0.55)]">
         <div className="flex items-center justify-between border-b border-outline-variant/10 px-6 py-6">
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Global labels</div>
+            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Global labels</div>
             <div className="mt-1 text-xl font-black tracking-tight text-primary">Machine page shared labels</div>
             <div className="mt-1 text-sm text-secondary">These labels affect all machine detail pages and builder previews.</div>
           </div>
@@ -44,11 +44,11 @@ export function GlobalMachineLabelsPanel({
           <div className="grid gap-4 lg:grid-cols-2">
             {machineDetailFieldGroups.map((group) => (
               <div key={group.title} className="space-y-3 rounded-xl border border-outline-variant/12 bg-surface-container-low/30 p-4">
-                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">{group.title}</div>
+                <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">{group.title}</div>
                 <div className="grid gap-3">
                   {group.fields.map(([fieldKey, label]) => (
                     <label key={fieldKey} className="grid gap-1.5 text-sm">
-                      <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">{label}</span>
+                      <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">{label}</span>
                       <Input value={machineDetailItems[fieldKey] ?? ""} onChange={(event) => updateNamedSiteItem("machine_details", fieldKey, event.target.value)} placeholder={label} />
                     </label>
                   ))}
@@ -85,7 +85,7 @@ export function MachineCreatePanel({
   return (
     <Card className="border border-outline-variant/12 shadow-sm">
       <CardHeader className="border-b border-outline-variant/10 bg-white/70">
-        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">New machine</div>
+        <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">New machine</div>
         <div className="mt-1 text-2xl font-black tracking-tight text-primary">Create an unpublished machine shell</div>
       </CardHeader>
       <CardContent className="space-y-6 p-6">
