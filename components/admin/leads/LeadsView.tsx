@@ -581,7 +581,7 @@ export function LeadsView(props: LeadsViewProps) {
           <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
             <div>
               <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Commercial workspace</div>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-primary md:text-4xl">{selectedLead.lead.name}</h2>
+              <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">{selectedLead.lead.name}</h2>
               <p className="mt-2 text-sm leading-6 text-secondary md:text-base">Work the deal end to end from one place: qualification, quotation review, callbacks, objections, and the next commercial move.</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge variant={selectedLead.workflow?.stage === "won" ? "success" : selectedLead.workflow?.stage === "lost" ? "outline" : "secondary"}>{fmtStatus(selectedLead.workflow?.stage ?? "new")}</Badge>
