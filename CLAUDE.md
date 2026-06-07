@@ -17,6 +17,8 @@ Welden is an industrial B2B platform combining a marketing website, AI chatbot, 
 | `ADMIN-SYSTEM.md` | CMS, ticketing, dashboard, user management specs |
 | `MARKETING-CONTENT.md` | All product copy, hero text, specs, descriptions |
 | `DESIGN-SYSTEM.md` | UI/UX direction, colors, motion, responsive rules |
+| `docs/admin-design.md` | **Admin design system** — derived spec for the admin panel (read before any admin UI change) |
+| `docs/admin-ui-audit.md` | Punch list of admin UI inconsistencies graded against `admin-design.md` |
 
 ## Key Rules
 
