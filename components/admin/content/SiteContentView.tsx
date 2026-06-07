@@ -386,7 +386,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                 setShowSiteContentEditor(true);
                               }}
                               className={cn(
-                                "group overflow-hidden rounded-[1.6rem] border text-left transition duration-150",
+                                "group overflow-hidden rounded-3xl border text-left transition duration-150",
                                 isActive
                                   ? "border-primary/30 bg-primary text-white shadow-[0_18px_40px_-28px_rgba(6,61,122,0.9)]"
                                   : "border-outline-variant/15 bg-white hover:border-primary/20 hover:bg-surface-container-low hover:shadow-sm",
@@ -409,7 +409,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                               </div>
                               {heroPreviewSlide ? (
                                 <div className="px-5 pt-5">
-                                  <div className={cn("overflow-hidden rounded-[1.35rem] border", isActive ? "border-white/12" : "border-outline-variant/12")}>
+                                  <div className={cn("overflow-hidden rounded-3xl border", isActive ? "border-white/12" : "border-outline-variant/12")}>
                                     <div className="relative aspect-[16/10] bg-surface-container-highest">
                                       {heroPreviewSlide.imageUrl ? <Image src={heroPreviewSlide.imageUrl} alt={heroPreviewSlide.title} fill unoptimized sizes="(min-width: 1280px) 20rem, (min-width: 640px) 50vw, 100vw" className="object-cover" /> : null}
                                       <div className={cn("absolute inset-0 bg-gradient-to-t from-black/75 via-black/18 to-transparent", isActive ? "opacity-90" : "opacity-100")} />
