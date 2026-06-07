@@ -58,6 +58,7 @@ export function InternalLeadAssistant({
   const [callOutcome, setCallOutcome] = useState<LeadCallOutcome>("no_answer");
   const [callSummary, setCallSummary] = useState("");
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const panelRef = useRef<HTMLDivElement | null>(null);
 
   const attentionCount = overview.leadsNeedingCallUpdate + overview.callbacksDueNow + overview.quotationsNeedingFollowUp + overview.leadsWaitingOnAssets;
   const quickPrompts = useMemo(() => selectedLead
@@ -96,6 +97,25 @@ export function InternalLeadAssistant({
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages, loading]);
+
+  // Close the copilot when clicking outside the panel or pressing Escape.
+  useEffect(() => {
+    if (!isOpen) return;
+    function onPointerDown(event: MouseEvent) {
+      if (panelRef.current && !panelRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setIsOpen(false);
+    }
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isOpen]);
 
   async function askAssistant(message: string) {
     const trimmed = message.trim();
@@ -181,7 +201,7 @@ export function InternalLeadAssistant({
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-[80] flex max-w-[calc(100vw-1.5rem)] flex-col items-end gap-3">
+    <div ref={panelRef} className="fixed bottom-5 right-5 z-[80] flex max-w-[calc(100vw-1.5rem)] flex-col items-end gap-3">
       {isOpen ? (
         <Card className="flex max-h-[min(78vh,52rem)] w-[min(32rem,calc(100vw-1.5rem))] flex-col overflow-hidden border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.98))] shadow-[0_26px_90px_-30px_rgba(15,23,42,0.48)] backdrop-blur">
           <CardHeader className="border-b border-slate-200/80 bg-[radial-gradient(circle_at_top_left,rgba(26,75,140,0.18),transparent_42%),linear-gradient(135deg,#f8fbff,#eef4fb)] pb-5">
