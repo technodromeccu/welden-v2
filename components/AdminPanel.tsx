@@ -1171,12 +1171,12 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
     <div className="min-h-screen bg-[linear-gradient(180deg,#f3f6fb_0%,#edf2f8_28%,#f7f9fc_100%)] text-on-surface">
       <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 border-r border-slate-200/80 bg-[#0d1b2f] text-white lg:flex lg:flex-col">
         <div className="border-b border-white/10 px-6 py-6">
-          <div className="text-[11px] font-bold uppercase tracking-[0.24em] text-sky-200/80">Welden Industries</div>
+          <div className="text-xs font-bold uppercase tracking-[0.24em] text-sky-200/80">Welden Industries</div>
         </div>
         <div className="grid grid-cols-2 gap-2 border-b border-white/10 px-6 py-4">
           {cockpitMetrics.slice(0, 2).map((metric) => (
             <div key={metric.label} className="rounded-2xl border border-white/8 bg-white/5 px-3 py-3">
-              <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">{metric.label}</div>
+              <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">{metric.label}</div>
               <div className={cn("mt-1 text-xl font-black tracking-tight", metric.tone, metric.tone === "text-on-surface" ? "text-white" : metric.tone)}>{metric.value}</div>
             </div>
           ))}
@@ -1184,7 +1184,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
         <nav className="mt-4 flex-1 overflow-y-auto px-4 pb-4">
           {groupedTabs.map((group) => (
             <div key={group.label} className="mb-6">
-              <div className="px-3 pb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">{group.label}</div>
+              <div className="px-3 pb-2 text-xs font-bold uppercase tracking-[0.2em] text-slate-500">{group.label}</div>
               <div className="space-y-1">
                 {group.tabs.map((entry) => {
                   const Icon = iconForTab(entry);
@@ -1242,7 +1242,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
                 <div className="truncate text-xs text-slate-400">{currentUser.email}</div>
               </div>
             </div>
-            <div className="inline-flex shrink-0 rounded-full bg-sky-400/12 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-sky-200">{currentUser.role}</div>
+            <div className="inline-flex shrink-0 rounded-full bg-sky-400/12 px-2.5 py-1 text-xs font-bold uppercase tracking-[0.16em] text-sky-200">{currentUser.role}</div>
           </div>
           <Button className="mt-3 w-full rounded-xl bg-white text-slate-950 hover:bg-slate-100" onClick={logout}><LogOut className="mr-2 h-4 w-4" />Sign out</Button>
         </div>
@@ -1251,7 +1251,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
       <header className="fixed left-0 right-0 top-0 z-30 border-b border-slate-200/80 bg-white/86 backdrop-blur-md lg:left-72">
         <div className="mx-auto flex min-h-[6.5rem] max-w-[1600px] items-center justify-between gap-4 px-6 py-4 lg:px-8">
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500">{pageHeader.eyebrow}</div>
+            <div className="text-xs font-bold uppercase tracking-[0.24em] text-slate-500">{pageHeader.eyebrow}</div>
             <div className="mt-1 text-xl font-black tracking-tight text-slate-950 md:text-2xl">{pageHeader.title}</div>
             <div className="mt-1 max-w-3xl text-sm leading-6 text-slate-600">{pageHeader.description}</div>
           </div>
@@ -1267,7 +1267,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
             <div className="mb-3 grid grid-cols-3 gap-2">
               {cockpitMetrics.map((metric) => (
                 <div key={metric.label} className="rounded-2xl bg-slate-50 px-3 py-3">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">{metric.label}</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">{metric.label}</div>
                   <div className="mt-1 text-xl font-black tracking-tight text-slate-950">{metric.value}</div>
                 </div>
               ))}
@@ -1308,7 +1308,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
               ))}
             </div>
           ) : null}
-          {notice ? <div className="pointer-events-none fixed right-6 top-24 z-[70] max-w-md"><div className="flex items-start gap-3 rounded-2xl border border-emerald-200/70 bg-white px-4 py-4 shadow-[0_22px_55px_-28px_rgba(10,80,35,0.45)] ring-1 ring-emerald-100 backdrop-blur"><div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"><CheckCircle2 className="h-5 w-5" /></div><div className="min-w-0"><div className="text-[11px] font-bold uppercase tracking-[0.18em] text-emerald-700">Saved</div><div className="mt-1 text-sm font-medium leading-6 text-slate-800">{notice}</div></div></div></div> : null}
+          {notice ? <div className="pointer-events-none fixed right-6 top-24 z-[70] max-w-md"><div className="flex items-start gap-3 rounded-2xl border border-emerald-200/70 bg-white px-4 py-4 shadow-[0_22px_55px_-28px_rgba(10,80,35,0.45)] ring-1 ring-emerald-100 backdrop-blur"><div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"><CheckCircle2 className="h-5 w-5" /></div><div className="min-w-0"><div className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">Saved</div><div className="mt-1 text-sm font-medium leading-6 text-slate-800">{notice}</div></div></div></div> : null}
 
           {tab === "dashboard" ? (
             <DashboardView

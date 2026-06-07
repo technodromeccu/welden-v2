@@ -213,11 +213,11 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
       <div className="space-y-4">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Quick edit</div>
+            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Quick edit</div>
             <div className="mt-1 text-lg font-black tracking-tight text-primary">{getBlockLabel(selectedBlock)}</div>
             <div className="mt-1 text-sm leading-6 text-secondary">{getBlockSupportText(selectedBlock)}</div>
           </div>
-          <div className="rounded-full bg-surface-container-low px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+          <div className="rounded-full bg-surface-container-low px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
             {selectedBlock.surface === "landing_card" ? "Landing" : "Detail"}
           </div>
         </div>
@@ -281,7 +281,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
       return (
         <div className="space-y-6">
           <div className="rounded-3xl border border-outline-variant/12 bg-[linear-gradient(180deg,#f6f9fc_0%,#ffffff_100%)] p-6">
-            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">{SURFACE_COPY[activeSurface].eyebrow}</div>
+            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">{SURFACE_COPY[activeSurface].eyebrow}</div>
             <div className="mt-2 text-xl font-black tracking-tight text-primary">{SURFACE_COPY[activeSurface].label}</div>
             <div className="mt-2 text-sm leading-7 text-secondary">{SURFACE_COPY[activeSurface].description}</div>
             <div className="mt-3 rounded-2xl bg-surface-container-low/50 px-4 py-3 text-sm leading-6 text-on-surface">{SURFACE_COPY[activeSurface].audience}</div>
@@ -308,7 +308,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
         <div className="rounded-3xl border border-outline-variant/12 bg-white p-6">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Selected block</div>
+              <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Selected block</div>
               <div className="mt-2 text-xl font-black tracking-tight text-primary">{getBlockLabel(selectedBlock)}</div>
               <div className="mt-2 text-sm leading-6 text-secondary">
                 {selectedBlock.surface === "landing_card"
@@ -316,7 +316,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                   : "Edits here affect the machine’s detail page block."}
               </div>
             </div>
-            <div className="rounded-full bg-surface-container-low px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+            <div className="rounded-full bg-surface-container-low px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
               {selectedBlock.surface === "landing_card" ? "Landing" : "Detail"}
             </div>
           </div>
@@ -324,7 +324,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
 
         <div className="rounded-3xl border border-outline-variant/12 bg-white p-6">
           <div className="mb-4 flex items-center justify-between gap-3">
-            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Block settings</div>
+            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Block settings</div>
             <div className="flex gap-2">
               <Button
                 variant="outline"
@@ -542,7 +542,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
             <CardHeader className="border-b border-outline-variant/10 bg-white/80 pb-4">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Machines</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Machines</div>
                   <div className="mt-1 text-xl font-black tracking-tight text-primary">{filteredProducts.length} in workspace</div>
                 </div>
                 {currentUser.role === "admin" ? (
@@ -581,7 +581,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                     >
                       <div className="flex flex-col gap-4">
                         <div className="flex h-40 w-full shrink-0 items-center justify-center overflow-hidden rounded-xl border border-outline-variant/15 bg-surface-container-low">
-                          {image ? <Image src={image} alt={product.title} width={400} height={320} unoptimized className="h-full w-full object-cover" /> : <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary/60">No image</div>}
+                          {image ? <Image src={image} alt={product.title} width={400} height={320} unoptimized className="h-full w-full object-cover" /> : <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary/60">No image</div>}
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className="flex items-start justify-between gap-3">
@@ -592,8 +592,8 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                             {currentUser.role === "admin" ? <GripVertical className="mt-1 h-4 w-4 shrink-0 text-secondary" /> : null}
                           </div>
                           <div className="mt-3 flex flex-wrap gap-2">
-                            <span className={cn("rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em]", status.tone)}>{status.label}</span>
-                            <span className="rounded-full bg-surface-container px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">{completeness.percent}% complete</span>
+                            <span className={cn("rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-[0.16em]", status.tone)}>{status.label}</span>
+                            <span className="rounded-full bg-surface-container px-2.5 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">{completeness.percent}% complete</span>
                           </div>
                           <div className="mt-3 text-xs leading-5 text-secondary">{product.category || "No category"}{lastUpdated ? ` • Updated ${new Date(lastUpdated).toLocaleDateString()}` : ""}</div>
                         </div>
@@ -610,7 +610,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
             <CardContent className="p-4 text-sm leading-7 text-secondary">
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Global machine content</div>
+                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Global machine content</div>
                   <div className="mt-1 text-base font-black tracking-tight text-primary">Shared page labels</div>
                 </div>
                 <Button variant="outline" size="sm" onClick={() => setShowGlobalMachineLabels(true)}>
@@ -640,15 +640,15 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                       <div className="flex flex-col gap-6">
                         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                           <div>
-                            <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Machine builder</div>
+                            <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Machine builder</div>
                             <div className="mt-1 text-2xl font-black tracking-tight text-primary">{previewProduct.title || "Untitled machine"}</div>
                             <div className="mt-3 flex flex-wrap gap-2">
-                              <span className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                              <span className="rounded-full bg-surface-container px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                                 {selectedProductDraftRecord
                                   ? `Draft saved ${new Date(selectedProductDraftRecord.updatedAt).toLocaleDateString()}`
                                   : "No saved draft yet"}
                               </span>
-                              <span className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                              <span className="rounded-full bg-surface-container px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                                 {changedFields.length ? `${changedFields.length} unpublished change${changedFields.length > 1 ? "s" : ""}` : "No unpublished changes"}
                               </span>
                             </div>
@@ -699,13 +699,13 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                     </CardHeader>
                     <CardContent className="space-y-4 bg-[linear-gradient(180deg,#f5f8fc_0%,#eef3f8_100%)] p-6">
                       <div className="flex flex-wrap gap-2">
-                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                        <span className="rounded-full bg-white/88 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                           {SURFACE_COPY[activeSurface].label}
                         </span>
-                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                        <span className="rounded-full bg-white/88 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                           Click section to edit
                         </span>
-                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
+                        <span className="rounded-full bg-white/88 px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-secondary">
                           Drag section to reorder
                         </span>
                       </div>
@@ -756,7 +756,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                   <div className="sticky top-6 flex h-[calc(100vh-4rem)] w-full flex-col overflow-hidden rounded-3xl border border-outline-variant/12 bg-white shadow-sm xl:w-[420px] xl:shrink-0">
                     <div className="flex items-start justify-between gap-3 border-b border-outline-variant/10 bg-white/90 px-6 py-4 backdrop-blur">
                       <div>
-                        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Inspector</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Inspector</div>
                         <div className="mt-1 text-xl font-black tracking-tight text-primary">
                           {builderSidebarTab === "edit"
                             ? (selectedBlock ? getBlockLabel(selectedBlock) : "Select a section")
@@ -774,14 +774,14 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                         <button
                           type="button"
                           onClick={() => setBuilderSidebarTab("edit")}
-                          className={cn("rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] transition", builderSidebarTab === "edit" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
+                          className={cn("rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] transition", builderSidebarTab === "edit" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
                         >
                           Edit section
                         </button>
                         <button
                           type="button"
                           onClick={() => setBuilderSidebarTab("structure")}
-                          className={cn("rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] transition", builderSidebarTab === "structure" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
+                          className={cn("rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] transition", builderSidebarTab === "structure" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
                         >
                           Structure
                         </button>

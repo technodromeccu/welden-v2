@@ -214,7 +214,7 @@ export function InternalLeadAssistant({
                   {selectedLead ? <Badge variant="outline" className="bg-white/70">Lead context</Badge> : <Badge variant="outline" className="bg-white/70">Dashboard context</Badge>}
                   {attentionCount > 0 ? <Badge variant="warning">{attentionCount} active prompts</Badge> : null}
                 </div>
-                <CardTitle className="mt-3 flex items-center gap-2 text-[1.45rem] tracking-tight text-on-surface">
+                <CardTitle className="mt-3 flex items-center gap-2 text-2xl tracking-tight text-on-surface">
                   <Sparkles className="h-5 w-5 text-sky-700" />
                   {selectedLead ? "Lead Copilot" : "Queue Copilot"}
                 </CardTitle>
@@ -237,7 +237,7 @@ export function InternalLeadAssistant({
             <div className="mt-4 grid grid-cols-2 gap-2">
               {statusCards.map((item) => (
                 <div key={item.label} className={cn("rounded-2xl border px-3 py-3", item.tone)}>
-                  <div className="text-[10px] font-black uppercase tracking-[0.16em] opacity-75">{item.label}</div>
+                  <div className="text-xs font-black uppercase tracking-[0.16em] opacity-75">{item.label}</div>
                   <div className="mt-1 text-2xl font-black leading-none">{item.value}</div>
                 </div>
               ))}
@@ -246,7 +246,7 @@ export function InternalLeadAssistant({
           <CardContent className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden p-6">
             {selectedLead?.workflow?.assistantMemory ? (
               <div className="rounded-3xl border border-sky-200/80 bg-[linear-gradient(135deg,rgba(237,246,255,0.95),rgba(248,251,255,0.95))] px-4 py-4 text-sm leading-6 text-on-surface">
-                <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em] text-sky-800">
+                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-sky-800">
                   <Radar className="h-3.5 w-3.5" /> Remembered context
                 </div>
                 <div className="mt-2">{selectedLead.workflow.assistantMemory}</div>
@@ -255,7 +255,7 @@ export function InternalLeadAssistant({
 
             {!selectedLead && attentionCount > 0 ? (
               <div className="rounded-3xl border border-amber-200/80 bg-[linear-gradient(135deg,rgba(255,248,228,0.98),rgba(255,252,243,0.96))] px-4 py-4 text-sm leading-6 text-amber-950">
-                <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-amber-700">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-amber-700">
                   <MessageSquareWarning className="h-3.5 w-3.5" /> Existing leads need updates
                 </div>
                 <div className="mt-2">
@@ -381,11 +381,11 @@ export function InternalLeadAssistant({
           <Bot className="h-5 w-5" />
         </span>
         <span className="relative hidden pr-2 text-left sm:block">
-          <span className="block text-[10px] font-black uppercase tracking-[0.18em] text-sky-100/80">Lead AI</span>
+          <span className="block text-xs font-black uppercase tracking-[0.18em] text-sky-100/80">Lead AI</span>
           <span className="block text-sm font-semibold leading-none">{attentionCount > 0 ? "Updates waiting" : "Open copilot"}</span>
         </span>
         {attentionCount > 0 ? (
-          <span className="absolute -right-1 -top-1 flex h-7 min-w-7 items-center justify-center rounded-full bg-amber-500 px-1 text-[11px] font-black text-white">
+          <span className="absolute -right-1 -top-1 flex h-7 min-w-7 items-center justify-center rounded-full bg-amber-500 px-1 text-xs font-black text-white">
             {attentionCount > 99 ? "99+" : attentionCount}
           </span>
         ) : null}

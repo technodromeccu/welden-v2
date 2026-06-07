@@ -54,7 +54,7 @@ export function ReorderableStringList({
   return (
     <div className="rounded-2xl border border-outline-variant/12 bg-surface-container-low/30 p-4">
       <div className="mb-3">
-        <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">{title}</div>
+        <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">{title}</div>
         <div className="mt-1 text-xs leading-5 text-secondary">{hint}</div>
       </div>
       <div className="space-y-2">
@@ -210,8 +210,8 @@ export function HowItWorksEditor({
         >
           <div className="mb-3 flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-[11px] font-black text-primary">{index + 1}</span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Step {index + 1}</span>
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-xs font-black text-primary">{index + 1}</span>
+              <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Step {index + 1}</span>
             </div>
             <div className="flex items-center gap-1">
               <button type="button" className="flex h-8 w-8 cursor-grab items-center justify-center rounded-lg text-secondary transition hover:bg-white hover:text-primary">
@@ -281,7 +281,7 @@ export function FaqsEditor({
           className={cn("rounded-xl border border-outline-variant/14 bg-surface-container-low/40 p-4 transition", draggedIndex === index && "bg-primary-fixed/25")}
         >
           <div className="mb-2 flex items-center justify-between">
-            <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">FAQ {index + 1}</span>
+            <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">FAQ {index + 1}</span>
             <div className="flex items-center gap-1">
               <button type="button" className="flex h-8 w-8 cursor-grab items-center justify-center rounded-lg text-secondary transition hover:bg-white hover:text-primary">
                 <GripVertical className="h-4 w-4" />

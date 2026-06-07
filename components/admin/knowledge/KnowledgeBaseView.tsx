@@ -74,8 +74,8 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
         <div className="space-y-6">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Creating document</div>
-              <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">Add knowledge document</h2>
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Creating document</div>
+              <h2 className="mt-2 text-4xl font-black tracking-tight text-primary ">Add knowledge document</h2>
               <p className="mt-2 text-sm leading-6 text-secondary md:text-base">Create a grounding source in a full-width editor so summaries, extracted text, and availability are reviewed in one calm workspace.</p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -89,14 +89,14 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
               <div className="grid gap-6 xl:grid-cols-[0.34fr_0.66fr]">
                 <div className="space-y-4">
                   <div className="rounded-2xl border border-outline-variant/10 bg-surface-container-low p-4">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Draft snapshot</div>
+                    <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Draft snapshot</div>
                     <div className="mt-3 space-y-3 text-sm text-secondary">
                       <div className="rounded-xl bg-white p-4">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Source type</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Source type</div>
                         <div className="mt-2 text-base font-semibold text-on-surface">{newDoc.sourceType.toUpperCase()}</div>
                       </div>
                       <div className="rounded-xl bg-white p-4">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Availability</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Availability</div>
                         <div className="mt-2 text-base font-semibold text-on-surface">{newDoc.active ? "Active immediately" : "Draft only"}</div>
                       </div>
                     </div>
@@ -115,7 +115,7 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
                   
                   {newDoc.sourceType !== "text" && (
                     <div className="rounded-xl border border-outline-variant/15 p-4">
-                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary mb-2">Upload source file</div>
+                      <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary mb-2">Upload source file</div>
                       <div className="flex items-center gap-3">
                         <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/15 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
                           <input type="file" accept="application/pdf,video/mp4" className="hidden" onChange={(e) => handleFileUpload(e, true)} disabled={uploading} />
@@ -137,8 +137,8 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
         <div className="space-y-6">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Selected document</div>
-              <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">{selectedDoc.title}</h2>
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Selected document</div>
+              <h2 className="mt-2 text-4xl font-black tracking-tight text-primary ">{selectedDoc.title}</h2>
               <p className="mt-2 text-sm leading-6 text-secondary md:text-base">Refine metadata, adjust grounding text, and control whether this source is available to chatbot answers in one full-width document editor.</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge variant="outline">{selectedDoc.sourceType}</Badge>
@@ -156,18 +156,18 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
               <div className="grid gap-6 xl:grid-cols-[0.34fr_0.66fr]">
                 <div className="space-y-4">
                   <div className="rounded-2xl border border-outline-variant/10 bg-surface-container-low p-4">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Document snapshot</div>
+                    <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Document snapshot</div>
                     <div className="mt-3 space-y-3 text-sm text-secondary">
                       <div className="rounded-xl bg-white p-4">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Source type</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Source type</div>
                         <div className="mt-2 text-base font-semibold text-on-surface">{docDraft.sourceType.toUpperCase()}</div>
                       </div>
                       <div className="rounded-xl bg-white p-4">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Summary length</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Summary length</div>
                         <div className="mt-2 text-base font-semibold text-on-surface">{docDraft.summary.length} characters</div>
                       </div>
                       <div className="rounded-xl bg-white p-4">
-                        <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Availability</div>
+                        <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Availability</div>
                         <div className="mt-2 text-base font-semibold text-on-surface">{docDraft.active ? "Available to chatbot" : "Hidden from chatbot"}</div>
                       </div>
                     </div>
@@ -179,7 +179,7 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
                   
                   {docDraft.sourceType !== "text" && (
                     <div className="rounded-xl border border-outline-variant/15 p-4">
-                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary mb-2">Upload source file</div>
+                      <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary mb-2">Upload source file</div>
                       <div className="flex items-center gap-3">
                         <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/15 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
                           <input type="file" accept="application/pdf,video/mp4" className="hidden" onChange={(e) => handleFileUpload(e, false)} disabled={uploading} />
@@ -228,8 +228,8 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
         <div className="space-y-6">
           <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
             <div className="grid gap-3 sm:grid-cols-2 xl:max-w-xl xl:flex-1">
-              <Card className="border border-outline-variant/15 shadow-sm"><CardContent className="p-4"><div className="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Documents</div><div className="mt-2 text-3xl font-black tracking-tight text-primary">{data.knowledgeDocuments.length}</div></CardContent></Card>
-              <Card className="border border-outline-variant/15 shadow-sm"><CardContent className="p-4"><div className="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Active</div><div className="mt-2 text-3xl font-black tracking-tight text-primary">{data.knowledgeDocuments.filter((doc: any) => doc.active).length}</div></CardContent></Card>
+              <Card className="border border-outline-variant/15 shadow-sm"><CardContent className="p-4"><div className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Documents</div><div className="mt-2 text-3xl font-black tracking-tight text-primary">{data.knowledgeDocuments.length}</div></CardContent></Card>
+              <Card className="border border-outline-variant/15 shadow-sm"><CardContent className="p-4"><div className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">Active</div><div className="mt-2 text-3xl font-black tracking-tight text-primary">{data.knowledgeDocuments.filter((doc: any) => doc.active).length}</div></CardContent></Card>
             </div>
             {currentUser.role === "admin" ? <div className="flex justify-end"><Button onClick={() => { setShowKnowledgeDocEditor(false); setShowAddKnowledgeDoc(true); }}>Add document</Button></div> : null}
           </div>
