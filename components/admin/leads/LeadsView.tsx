@@ -623,7 +623,7 @@ export function LeadsView(props: LeadsViewProps) {
             <CardContent className="space-y-6 p-6">
               <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
                 <div className="rounded-2xl bg-surface-container-low p-4">
-                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Primary contact</div>
+                  <div className="text-xs font-medium text-secondary">Primary contact</div>
                   <div className="mt-3 text-lg font-black text-primary">{selectedLead.lead.name}</div>
                   {/* WF-13: Copy-to-clipboard on email and phone */}
                   <div className="mt-1 flex items-center gap-1.5">
@@ -650,17 +650,17 @@ export function LeadsView(props: LeadsViewProps) {
                   </div>
                 </div>
                 <div className="rounded-2xl bg-surface-container-low p-4">
-                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Machine fit</div>
+                  <div className="text-xs font-medium text-secondary">Machine fit</div>
                   <div className="mt-3 text-lg font-black text-primary">{selectedLead.recommendation.recommendedCategory ?? "Needs match"}</div>
                   <div className="mt-1 text-sm text-secondary">{selectedLeadMeta?.nextStep ?? "Qualify machine need"}</div>
                 </div>
                 <div className="rounded-2xl bg-surface-container-low p-4">
-                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Lead score</div>
+                  <div className="text-xs font-medium text-secondary">Lead score</div>
                   <div className="mt-3 text-lg font-black text-primary">{selectedLeadMeta?.score ?? 0}/100</div>
                   <div className="mt-1 text-sm text-secondary">Owner: {selectedLeadMeta?.owner?.name ?? "Unassigned"}</div>
                 </div>
                 <div className="rounded-2xl bg-surface-container-low p-4">
-                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">First call SLA</div>
+                  <div className="text-xs font-medium text-secondary">First call SLA</div>
                   <div className="mt-3 text-lg font-black text-primary">{selectedLead.workflow?.firstCallDueAt ? fmtDate(selectedLead.workflow.firstCallDueAt) : "Not scheduled"}</div>
                   <div className="mt-1 text-sm text-secondary">{getLeadFirstCallState(selectedLead).label}</div>
                   <div className="mt-2 text-xs text-secondary">Completed: {selectedLead.workflow?.firstCallCompletedAt ? fmtDate(selectedLead.workflow.firstCallCompletedAt) : "Not completed yet"}</div>
@@ -732,7 +732,7 @@ export function LeadsView(props: LeadsViewProps) {
                           ) : null}
                         </div>
                         <div className="mt-4 rounded-2xl bg-white/80 px-4 py-4 text-sm leading-6 text-secondary ring-1 ring-black/5">
-                          <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Why this move</div>
+                          <div className="text-xs font-medium text-secondary">Why this move</div>
                           <div className="mt-2">{nextBestAction.context}</div>
                         </div>
                       </div>
@@ -785,8 +785,7 @@ export function LeadsView(props: LeadsViewProps) {
                   </div>
                   <div className="space-y-4 rounded-2xl border border-outline-variant/10 bg-white p-4">
                     <div>
-                      <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Quotation dispatch</div>
-                      <div className="mt-2 text-lg font-black text-primary">Create and send a preliminary quotation from this lead</div>
+                      <div className="text-lg font-black text-primary">Create and send a preliminary quotation from this lead</div>
                       <div className="mt-2 text-sm leading-6 text-secondary">Select the commercial template, then email the quotation directly to {selectedLead.lead.email} through Resend.</div>
                     </div>
                     {leadQuotationTemplates.length ? (
@@ -831,7 +830,7 @@ export function LeadsView(props: LeadsViewProps) {
                     )}
                   </div>
                   <div className="rounded-2xl border border-outline-variant/10 bg-white p-4">
-                    <div className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-secondary">Quotation snapshot</div>
+                    <div className="mb-3 text-sm font-semibold text-on-surface">Quotation snapshot</div>
                     {selectedLead.workflow?.quotationSnapshot ? (
                       <div className="max-h-[22rem] overflow-y-auto whitespace-pre-wrap break-words text-sm leading-7 text-secondary">{selectedLead.workflow.quotationSnapshot}</div>
                     ) : (
@@ -842,8 +841,7 @@ export function LeadsView(props: LeadsViewProps) {
                     <div className="rounded-2xl border border-primary/10 bg-primary-fixed/15 p-4">
                       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                         <div>
-                          <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Follow-up engine</div>
-                          <div className="mt-2 text-lg font-black text-primary">Keep this lead moving without losing the callback window.</div>
+                          <div className="text-lg font-black text-primary">Keep this lead moving without losing the callback window.</div>
                           <div className="mt-2 text-sm leading-6 text-secondary">Use the quick actions to schedule the next touchpoint, log no-answer retries, or close the loop immediately.</div>
                         </div>
                         <div className="rounded-xl bg-white px-4 py-3 text-sm text-secondary shadow-sm">
@@ -972,8 +970,8 @@ export function LeadsView(props: LeadsViewProps) {
                       className="flex w-full items-center justify-between rounded-2xl px-6 py-4 text-left transition-colors hover:bg-surface-container-low/60"
                     >
                       <div>
-                        <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Activity timeline</div>
-                        <div className="mt-0.5 text-sm font-semibold text-on-surface">{activity.length} event{activity.length !== 1 ? "s" : ""}{notes.length ? ` · ${notes.length} staff note${notes.length !== 1 ? "s" : ""}` : ""}</div>
+                        <div className="text-sm font-semibold text-on-surface">Activity timeline</div>
+                        <div className="mt-0.5 text-xs text-secondary">{activity.length} event{activity.length !== 1 ? "s" : ""}{notes.length ? ` · ${notes.length} staff note${notes.length !== 1 ? "s" : ""}` : ""}</div>
                       </div>
                       {timelineOpen ? <ChevronDown className="h-4 w-4 text-secondary" /> : <ChevronRight className="h-4 w-4 text-secondary" />}
                     </button>
@@ -1023,7 +1021,7 @@ export function LeadsView(props: LeadsViewProps) {
               <div className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-[0_24px_64px_-16px_rgba(0,0,0,0.32)]" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between border-b border-outline-variant/10 px-6 py-4">
                   <div>
-                    <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Quotation preview</div>
+                    <div className="text-xs font-medium text-secondary">Quotation preview</div>
                     <div className="mt-0.5 text-lg font-black text-primary">{selectedLeadQuotationTemplate?.title ?? "Preview"}</div>
                   </div>
                   <button type="button" onClick={() => setPreviewText(null)} className="flex h-8 w-8 items-center justify-center rounded-lg text-secondary hover:bg-surface-container-high hover:text-primary">
@@ -1325,8 +1323,7 @@ export function LeadsView(props: LeadsViewProps) {
             <CardHeader className="border-b border-outline-variant/10 bg-white/80 pb-4">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Pipeline command center</div>
-                  <CardTitle className="mt-2 text-[1.9rem] tracking-tight text-primary">Commercial lead pipeline</CardTitle>
+                  <CardTitle className="text-[1.9rem] tracking-tight text-primary">Commercial lead pipeline</CardTitle>
                   <CardDescription className="mt-1 text-sm leading-6">Scan machine fit, quote state, ownership, and next move without leaving the queue.</CardDescription>
                 </div>
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
