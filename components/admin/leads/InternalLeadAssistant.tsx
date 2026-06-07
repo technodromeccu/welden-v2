@@ -208,7 +208,7 @@ export function InternalLeadAssistant({
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="secondary" className="border border-sky-200/70 bg-white/80 text-sky-900">
+                  <Badge variant="info">
                     <BrainCircuit className="mr-1 h-3 w-3" /> Lead memory AI
                   </Badge>
                   {selectedLead ? <Badge variant="outline" className="bg-white/70">Lead context</Badge> : <Badge variant="outline" className="bg-white/70">Dashboard context</Badge>}
