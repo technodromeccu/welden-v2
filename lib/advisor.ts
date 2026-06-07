@@ -8,10 +8,7 @@ import { buildSiteSectionSourceText, buildSnippet, scoreBag, tokenize } from "@/
 import { mergePublicAdvisorMemorySummary } from "@/lib/advisor-memory";
 import type { AdvisorIntent } from "@/lib/advisor-core";
 import type { AdvisorCitation, AiConfidence, AiResponseMetadata, KnowledgeDocument, Lead, Product, PublicAdvisorResponse, SiteSection } from "@/lib/types";
-import { getCachedStaticFileUri, needsGeminiRefresh, uploadFileToGemini } from "./gemini-files";
 import { writeCollection } from "./store";
-import fs from "fs";
-import path from "path";
 
 type KnowledgeAnswer = {
   found: boolean;
@@ -248,18 +245,6 @@ function buildGroundedContext(knowledge: KnowledgeAnswer, selectedProduct: Produ
   };
 }
 
-async function loadBrochuresFileData() {
-  const brochuresDir = path.join(process.cwd(), "public", "brochures");
-  const files = await fs.promises.readdir(brochuresDir).catch(() => []);
-  const pdfs = files.filter((f) => f.endsWith(".pdf"));
-  const fileData: Array<{ mimeType: string; fileUri: string }> = [];
-  for (const pdf of pdfs) {
-    const uri = await getCachedStaticFileUri(path.join(brochuresDir, pdf), "application/pdf", pdf);
-    fileData.push({ mimeType: "application/pdf", fileUri: uri });
-  }
-  return fileData;
-}
-
 async function generateGroundedAdvisorAnswer(input: {
   question: string;
   transcriptSummary?: string;
@@ -289,23 +274,12 @@ async function generateGroundedAdvisorAnswer(input: {
   }
 
   const groundedContext = buildGroundedContext(input.knowledge, input.selectedProduct, input.documents, input.siteSections);
-  // Gather knowledge base file URIs
-  const kbFilesRaw = await Promise.all(
-    input.documents
-      .filter((doc) => doc.active && doc.fileUrl)
-      .map(async (doc) => {
-        try {
-          const filePath = path.join(process.cwd(), "public", doc.fileUrl!.replace(/^\//, ""));
-          const mimeType = doc.sourceType === "video" ? "video/mp4" : "application/pdf";
-          const uri = await getCachedStaticFileUri(filePath, mimeType, doc.title);
-          return { mimeType, fileUri: uri };
-        } catch {
-          return null;
-        }
-      })
-  );
-  const kbFiles = kbFilesRaw.filter((file) => file !== null) as Array<{ mimeType: string; fileUri: string }>;
 
+  // PERF: brochure/KB PDF grounding was removed. Uploading + processing 4 brochure PDFs
+  // through the Gemini File API added ~10s per reply (advisor was 16-21s, over Netlify's
+  // timeout) and the local-filesystem read was already broken on serverless. The text
+  // grounding below (product specs + KB extractedText + site sections) produces accurate
+  // answers; PDF-content grounding can return later via Cloud Storage + a cached upload.
   const response = await generateGeminiJson<AdvisorAiPayload>({
     groundedContextSummary: groundedContext.summary,
     system: [
@@ -325,8 +299,7 @@ async function generateGroundedAdvisorAnswer(input: {
       `Approved grounding context:\n${groundedContext.prompt}`,
       "JSON schema:",
       '{ "answer": "string", "confidence": "high|medium|low", "humanHandoffRecommended": true, "groundedContextSummary": "string" }'
-    ].filter(Boolean).join("\n\n"),
-    fileData: [...(await loadBrochuresFileData()), ...kbFiles]
+    ].filter(Boolean).join("\n\n")
   });
 
   if (!response.ok || !response.data.answer?.trim()) {
