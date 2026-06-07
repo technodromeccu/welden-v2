@@ -774,7 +774,7 @@ export function LeadsView(props: LeadsViewProps) {
                       <div className="flex items-center gap-2">
                         <div className="rounded-lg bg-white/15 px-2 py-1 text-xs font-bold uppercase tracking-[0.16em]">{selectedLead.workflow?.quotationReference ?? "Pending"}</div>
                         {selectedLead.workflow?.quotationReference && (
-                          <button type="button" title="Copy reference" onClick={() => copyToClipboard("ref", selectedLead.workflow!.quotationReference!)} className="text-[11px] font-bold text-white/60 hover:text-white">
+                          <button type="button" title="Copy reference" onClick={() => copyToClipboard("ref", selectedLead.workflow!.quotationReference!)} className="text-xs font-bold text-white/60 hover:text-white">
                             {copiedKey === "ref" ? "✓" : "⎘"}
                           </button>
                         )}
