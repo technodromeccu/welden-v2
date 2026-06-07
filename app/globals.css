@@ -136,6 +136,17 @@
       transition-duration: 0.01ms !important;
     }
   }
+
+  /* Universal keyboard-focus indicator. Uses :focus-visible so that mouse
+     clicks don't show a ring, but Tab navigation does. Renders as an outline
+     (not a box-shadow) so it sits cleanly outside rounded corners without
+     clipping. Picked the iron-navy primary color so it reads on both light
+     and dark surfaces. */
+  :focus-visible {
+    outline: 2px solid var(--color-iron);
+    outline-offset: 2px;
+    border-radius: inherit;
+  }
 }
 
 @layer components {
