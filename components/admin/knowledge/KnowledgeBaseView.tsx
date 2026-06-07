@@ -20,6 +20,7 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
     docDraft,
     setDocDraft,
     saveDoc,
+    deleteDoc,
     setSelectedDocId,
     data,
     getCreateButtonLabel,
@@ -29,6 +30,10 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
   } = ctx;
 
   const [uploading, setUploading] = useState(false);
+  // Two-step destructive confirm: first click arms, second click commits. Auto-disarms
+  // when the editor closes (selectedDoc cleared) so the armed state can't persist into
+  // a different document.
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
   async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>, isNew: boolean) {
     const file = e.target.files?.[0];
@@ -187,7 +192,33 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
 
                   <Textarea rows={14} value={docDraft.extractedText} onChange={(e) => setDocDraft((c: any) => ({ ...c, extractedText: e.target.value }))} placeholder="Extracted text" />
                   <label className="flex items-center gap-2 text-sm text-secondary"><input type="checkbox" checked={docDraft.active} onChange={(e) => setDocDraft((c: any) => ({ ...c, active: e.target.checked }))} />Available to chatbot answers</label>
-                  <div className="flex flex-wrap gap-3"><Button onClick={saveDoc}>{getSaveButtonLabel("knowledge-doc-save", "Save document")}</Button><Button variant="outline" onClick={() => selectedDoc ? setDocDraft({ title: selectedDoc.title, summary: selectedDoc.summary, extractedText: selectedDoc.extractedText, sourceType: selectedDoc.sourceType, active: selectedDoc.active }) : null}>Reset</Button></div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <Button onClick={saveDoc}>{getSaveButtonLabel("knowledge-doc-save", "Save document")}</Button>
+                    <Button variant="outline" onClick={() => selectedDoc ? setDocDraft({ title: selectedDoc.title, summary: selectedDoc.summary, extractedText: selectedDoc.extractedText, sourceType: selectedDoc.sourceType, active: selectedDoc.active }) : null}>Reset</Button>
+                    <div className="ml-auto flex items-center gap-2">
+                      {confirmDelete ? (
+                        <>
+                          <span className="text-xs text-rose-700">This deletes the document and its uploaded file. This cannot be undone.</span>
+                          <Button
+                            variant="outline"
+                            className="border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100"
+                            onClick={async () => { await deleteDoc(); setConfirmDelete(false); }}
+                          >
+                            Confirm delete
+                          </Button>
+                          <Button variant="outline" onClick={() => setConfirmDelete(false)}>Cancel</Button>
+                        </>
+                      ) : (
+                        <Button
+                          variant="outline"
+                          className="border-rose-200 text-rose-700 hover:bg-rose-50"
+                          onClick={() => setConfirmDelete(true)}
+                        >
+                          Delete document
+                        </Button>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </CardContent>
