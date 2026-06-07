@@ -142,39 +142,23 @@ export function DashboardView(props: DashboardViewProps) {
       />
 
       <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
-        <Card className="overflow-hidden border-0 bg-[linear-gradient(135deg,#0f172a_0%,#173b79_55%,#1d4ed8_100%)] text-white shadow-[0_28px_80px_-36px_rgba(15,23,42,0.65)]">
-          <CardContent className="grid gap-6 p-6 lg:grid-cols-[1.05fr_0.95fr] lg:p-6">
-            <div>
-              <div className="text-xs font-bold uppercase tracking-[0.22em] text-sky-200/80">Today</div>
-              <h2 className="mt-3 max-w-xl text-2xl font-black tracking-tight md:text-[2rem]">Keep the commercial queue moving without hunting through the dashboard.</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-200">
-                Focus on leads that need action today, open the pipeline fast, and keep quotation follow-up visible without wasting vertical space.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Button className="rounded-xl bg-white text-slate-950 hover:bg-slate-100" onClick={() => setTab("leads")}>
-                  Open pipeline
-                </Button>
-                <Button variant="outline" className="rounded-xl border-white/20 bg-white/10 text-white hover:bg-white/15 hover:text-white" onClick={() => setTab("quotation templates")}>
-                  Review quote playbooks
-                </Button>
-              </div>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-              <div className="rounded-2xl border border-white/12 bg-white/10 p-4">
-                <div className="text-xs font-bold uppercase tracking-[0.16em] text-sky-100/70">Calls due now</div>
-                <div className="mt-2 text-3xl font-black tracking-tight">{dashboardFirstCallDueCount}</div>
-                <div className="mt-1 text-sm text-slate-200">Immediate phone follow-up needed.</div>
-              </div>
-              <div className="rounded-2xl border border-white/12 bg-white/10 p-4">
-                <div className="text-xs font-bold uppercase tracking-[0.16em] text-sky-100/70">Quotes awaiting follow-up</div>
-                <div className="mt-2 text-3xl font-black tracking-tight">{dashboardQuotedAwaitingCallCount}</div>
-                <div className="mt-1 text-sm text-slate-200">Quoted buyers still waiting on a call.</div>
-              </div>
-              <div className="rounded-2xl border border-white/12 bg-white/10 p-4">
-                <div className="text-xs font-bold uppercase tracking-[0.16em] text-sky-100/70">Callbacks on deck</div>
-                <div className="mt-2 text-3xl font-black tracking-tight">{dashboardCallbacksTodayCount}</div>
-                <div className="mt-1 text-sm text-slate-200">Committed callbacks scheduled today.</div>
-              </div>
+        {/* Hero card was duplicating the 4-tile stat row below (Calls due now == Immediate pressure,
+            Quotes awaiting follow-up == Quoted but cooling, Callbacks on deck == Callbacks committed).
+            Replaced with a quiet white surface that frames intent and routes — stats live below. */}
+        <Card className="border border-outline-variant/15 bg-white shadow-sm">
+          <CardContent className="p-6 lg:p-8">
+            <div className="text-xs font-bold uppercase tracking-[0.22em] text-secondary">Today</div>
+            <h2 className="mt-3 max-w-xl text-2xl font-black tracking-tight text-primary md:text-[2rem]">Keep the commercial queue moving without hunting through the dashboard.</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-secondary">
+              Focus on leads that need action today, open the pipeline fast, and keep quotation follow-up visible without wasting vertical space.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button onClick={() => setTab("leads")}>
+                Open pipeline
+              </Button>
+              <Button variant="outline" onClick={() => setTab("quotation templates")}>
+                Review quote playbooks
+              </Button>
             </div>
           </CardContent>
         </Card>
@@ -209,11 +193,13 @@ export function DashboardView(props: DashboardViewProps) {
         </Card>
       </section>
 
+      {/* Stat tiles: bigger numbers (text-5xl on lg), lighter chrome (no decorative amber border on the
+          "Quoted but cooling" tile — attention is signaled by the count itself + the queue below). */}
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-6"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Pipeline intake</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardFirstCallOpenCount}</div><div className="mt-2 text-sm text-secondary">New leads still waiting for the first staff touch.</div></CardContent></Card>
-        <Card className="border border-amber-200/70 bg-white shadow-sm"><CardContent className="p-6"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Quoted but cooling</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardQuotedAwaitingCallCount}</div><div className="mt-2 text-sm text-secondary">Quotes sent without a logged human follow-up yet.</div></CardContent></Card>
-        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-6"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Callbacks committed</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardCallbacksTodayCount}</div><div className="mt-2 text-sm text-secondary">Buyer calls scheduled into today&apos;s operating window.</div></CardContent></Card>
-        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-6"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Immediate pressure</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardFirstCallDueCount}</div><div className="mt-2 text-sm text-secondary">Leads whose first call deadline has already arrived.</div></CardContent></Card>
+        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-6 lg:p-8"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Pipeline intake</div><div className="mt-3 text-4xl font-black tracking-tight text-primary lg:text-5xl">{dashboardFirstCallOpenCount}</div><div className="mt-2 text-sm text-secondary">New leads still waiting for the first staff touch.</div></CardContent></Card>
+        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-6 lg:p-8"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Quoted but cooling</div><div className="mt-3 text-4xl font-black tracking-tight text-primary lg:text-5xl">{dashboardQuotedAwaitingCallCount}</div><div className="mt-2 text-sm text-secondary">Quotes sent without a logged human follow-up yet.</div></CardContent></Card>
+        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-6 lg:p-8"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Callbacks committed</div><div className="mt-3 text-4xl font-black tracking-tight text-primary lg:text-5xl">{dashboardCallbacksTodayCount}</div><div className="mt-2 text-sm text-secondary">Buyer calls scheduled into today&apos;s operating window.</div></CardContent></Card>
+        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-6 lg:p-8"><div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Immediate pressure</div><div className="mt-3 text-4xl font-black tracking-tight text-primary lg:text-5xl">{dashboardFirstCallDueCount}</div><div className="mt-2 text-sm text-secondary">Leads whose first call deadline has already arrived.</div></CardContent></Card>
       </section>
 
       <section className="grid gap-6 xl:grid-cols-[1.18fr_0.82fr]">
