@@ -237,7 +237,7 @@ export function InternalLeadAssistant({
             <div className="mt-4 grid grid-cols-2 gap-2">
               {statusCards.map((item) => (
                 <div key={item.label} className={cn("rounded-2xl border px-3 py-3", item.tone)}>
-                  <div className="text-[10px] font-black uppercase tracking-[0.14em] opacity-75">{item.label}</div>
+                  <div className="text-[10px] font-black uppercase tracking-[0.16em] opacity-75">{item.label}</div>
                   <div className="mt-1 text-2xl font-black leading-none">{item.value}</div>
                 </div>
               ))}

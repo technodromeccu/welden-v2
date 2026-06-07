@@ -82,7 +82,7 @@ export function StructureOrganizer({
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
                   <div className="truncate text-sm font-bold text-on-surface">{getBlockLabel(block)}</div>
-                  {block.hidden ? <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-600">Hidden</span> : null}
+                  {block.hidden ? <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-600">Hidden</span> : null}
                 </div>
                 <div className="mt-1 line-clamp-2 text-xs leading-5 text-secondary">{getBlockSupportText(block)}</div>
               </div>
@@ -126,7 +126,7 @@ export function StructureOrganizer({
               key={type}
               type="button"
               onClick={() => addBlock(type)}
-              className="rounded-full border border-outline-variant/12 bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.14em] text-primary transition hover:border-primary/20 hover:bg-primary-fixed/20"
+              className="rounded-full border border-outline-variant/12 bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary transition hover:border-primary/20 hover:bg-primary-fixed/20"
             >
               + {surface === "landing_card"
                 ? LANDING_BLOCK_LABELS[type as LandingCardBlockType]
@@ -152,7 +152,7 @@ export function StructureOrganizer({
               {surface === "landing_card" ? "Landing card order" : "Machine page order"}
             </div>
           </div>
-          <div className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+          <div className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
             {layout.length} blocks
           </div>
         </div>

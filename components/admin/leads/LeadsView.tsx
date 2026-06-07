@@ -772,7 +772,7 @@ export function LeadsView(props: LeadsViewProps) {
                       <div className="text-sm font-bold uppercase tracking-[0.16em] text-white/70">Preliminary quotation</div>
                       {/* WF-13: Copy quotation reference */}
                       <div className="flex items-center gap-2">
-                        <div className="rounded-lg bg-white/15 px-2 py-1 text-xs font-bold uppercase tracking-[0.14em]">{selectedLead.workflow?.quotationReference ?? "Pending"}</div>
+                        <div className="rounded-lg bg-white/15 px-2 py-1 text-xs font-bold uppercase tracking-[0.16em]">{selectedLead.workflow?.quotationReference ?? "Pending"}</div>
                         {selectedLead.workflow?.quotationReference && (
                           <button type="button" title="Copy reference" onClick={() => copyToClipboard("ref", selectedLead.workflow!.quotationReference!)} className="text-[11px] font-bold text-white/60 hover:text-white">
                             {copiedKey === "ref" ? "✓" : "⎘"}
@@ -1187,13 +1187,13 @@ export function LeadsView(props: LeadsViewProps) {
                         </Badge>
                       </div>
                       <div className="mt-3 flex flex-wrap gap-2">
-                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                           {column.items.filter((entry) => entry.score >= 80).length} hot
                         </span>
-                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                           {column.items.filter((entry) => !entry.owner).length} unassigned
                         </span>
-                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                        <span className="rounded-full bg-surface-container-low px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                           {column.items.filter((entry) => getLeadFirstCallState(entry.session).label === "Call overdue").length} overdue
                         </span>
                       </div>
@@ -1232,7 +1232,7 @@ export function LeadsView(props: LeadsViewProps) {
                             )}
                           >
                             <div className="flex items-start justify-between gap-3">
-                              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                                 <span className="rounded-full bg-surface-container-low px-2 py-1">{entry.temperature}</span>
                                 <span className="flex items-center gap-1 rounded-full bg-surface-container-low px-2 py-1">
                                   <GripVertical className="h-3 w-3" />
@@ -1264,22 +1264,22 @@ export function LeadsView(props: LeadsViewProps) {
                               </div>
                               <div className="mt-4 grid grid-cols-2 gap-2">
                                 <div className="rounded-2xl bg-surface-container-low/80 px-3 py-2">
-                                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">Owner</div>
+                                  <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Owner</div>
                                   <div className="mt-1 text-sm font-semibold text-on-surface">{entry.owner?.name ?? "Unassigned"}</div>
                                 </div>
                                 <div className="rounded-2xl bg-surface-container-low/80 px-3 py-2">
-                                  <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">Last touch</div>
+                                  <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Last touch</div>
                                   <div className="mt-1 text-sm font-semibold text-on-surface">{lead.workflow?.lastContactedAt ? relativeTime(lead.workflow.lastContactedAt) : "Not logged"}</div>
                                 </div>
                               </div>
                               <div className="mt-4 rounded-2xl border border-outline-variant/10 bg-surface-container-low/55 px-3 py-3">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">Next move</div>
+                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Next move</div>
                                 <div className="mt-1 text-sm leading-6 text-on-surface">{entry.nextStep}</div>
                               </div>
                             </button>
                             <div className="mt-4 border-t border-outline-variant/10 pt-3">
                               <div className="flex items-center justify-between gap-2">
-                                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">Move stage</div>
+                                <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Move stage</div>
                                 {stageUpdating ? <Loader2 className="h-3.5 w-3.5 animate-spin text-secondary" /> : null}
                               </div>
                               <div className="mt-2 flex items-center gap-2">
@@ -1344,7 +1344,7 @@ export function LeadsView(props: LeadsViewProps) {
                       type="button"
                       disabled={refreshing}
                       onClick={async () => { setRefreshing(true); try { await onRefresh(); } finally { setRefreshing(false); } }}
-                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/20 bg-white px-4 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface disabled:opacity-50"
+                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/20 bg-white px-4 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface disabled:opacity-50"
                     >
                       <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? "animate-spin" : ""}`} />
                       Refresh
@@ -1355,7 +1355,7 @@ export function LeadsView(props: LeadsViewProps) {
                     <a
                       href={buildExportUrl()}
                       download
-                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/20 bg-white px-4 text-[11px] font-bold uppercase tracking-[0.14em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface"
+                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/20 bg-white px-4 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface"
                     >
                       Export CSV
                     </a>
@@ -1384,7 +1384,7 @@ export function LeadsView(props: LeadsViewProps) {
                       type="button"
                       onClick={() => toggleStageFilter(stage)}
                       className={cn(
-                        "rounded-lg px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] transition-colors",
+                        "rounded-lg px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] transition-colors",
                         stageFilters.includes(stage)
                           ? "bg-primary text-white"
                           : "bg-surface-container-low text-secondary hover:bg-surface-container-high hover:text-on-surface"
@@ -1403,7 +1403,7 @@ export function LeadsView(props: LeadsViewProps) {
                       type="button"
                       onClick={() => setSlaFilter(slaFilter === option.value ? "" : option.value)}
                       className={cn(
-                        "rounded-lg px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] transition-colors",
+                        "rounded-lg px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] transition-colors",
                         slaFilter === option.value
                           ? "bg-amber-500 text-white"
                           : "bg-surface-container-low text-secondary hover:bg-surface-container-high hover:text-on-surface"
@@ -1417,7 +1417,7 @@ export function LeadsView(props: LeadsViewProps) {
                 {/* Owner dropdown — admin and manager only */}
                 {currentUserRole !== "agent" && (
                   <select
-                    className="h-8 rounded-lg bg-surface-container-low px-3 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary outline-none transition-colors hover:bg-surface-container-high"
+                    className="h-8 rounded-lg bg-surface-container-low px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary outline-none transition-colors hover:bg-surface-container-high"
                     value={ownerFilter}
                     onChange={(e) => setOwnerFilter(e.target.value)}
                   >
@@ -1433,7 +1433,7 @@ export function LeadsView(props: LeadsViewProps) {
                 {/* Machine category dropdown */}
                 {machineCategories.length > 0 && (
                   <select
-                    className="h-8 rounded-lg bg-surface-container-low px-3 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary outline-none transition-colors hover:bg-surface-container-high"
+                    className="h-8 rounded-lg bg-surface-container-low px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary outline-none transition-colors hover:bg-surface-container-high"
                     value={machineFilter}
                     onChange={(e) => setMachineFilter(e.target.value)}
                   >
@@ -1449,7 +1449,7 @@ export function LeadsView(props: LeadsViewProps) {
                   <button
                     type="button"
                     onClick={clearAllFilters}
-                    className="flex items-center gap-1.5 rounded-lg bg-primary/8 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-primary transition-colors hover:bg-primary/15"
+                    className="flex items-center gap-1.5 rounded-lg bg-primary/8 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-primary transition-colors hover:bg-primary/15"
                   >
                     <X className="h-3 w-3" />
                     Clear {activeFilterCount}

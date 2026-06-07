@@ -316,7 +316,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                                   <GripVertical className="h-4 w-4" />
                                   Sort
                                 </div>
-                                <span className={cn("inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em]", template.active ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500")}>{template.active ? "Active" : "Inactive"}</span>
+                                <span className={cn("inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em]", template.active ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500")}>{template.active ? "Active" : "Inactive"}</span>
                               </div>
                             </div>
 

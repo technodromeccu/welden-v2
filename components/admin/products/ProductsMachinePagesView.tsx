@@ -592,8 +592,8 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                             {currentUser.role === "admin" ? <GripVertical className="mt-1 h-4 w-4 shrink-0 text-secondary" /> : null}
                           </div>
                           <div className="mt-3 flex flex-wrap gap-2">
-                            <span className={cn("rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em]", status.tone)}>{status.label}</span>
-                            <span className="rounded-full bg-surface-container px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">{completeness.percent}% complete</span>
+                            <span className={cn("rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em]", status.tone)}>{status.label}</span>
+                            <span className="rounded-full bg-surface-container px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">{completeness.percent}% complete</span>
                           </div>
                           <div className="mt-3 text-xs leading-5 text-secondary">{product.category || "No category"}{lastUpdated ? ` • Updated ${new Date(lastUpdated).toLocaleDateString()}` : ""}</div>
                         </div>
@@ -643,12 +643,12 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                             <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Machine builder</div>
                             <div className="mt-1 text-2xl font-black tracking-tight text-primary">{previewProduct.title || "Untitled machine"}</div>
                             <div className="mt-3 flex flex-wrap gap-2">
-                              <span className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                              <span className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                                 {selectedProductDraftRecord
                                   ? `Draft saved ${new Date(selectedProductDraftRecord.updatedAt).toLocaleDateString()}`
                                   : "No saved draft yet"}
                               </span>
-                              <span className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                              <span className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                                 {changedFields.length ? `${changedFields.length} unpublished change${changedFields.length > 1 ? "s" : ""}` : "No unpublished changes"}
                               </span>
                             </div>
@@ -674,23 +674,23 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                             <button
                               type="button"
                               onClick={() => setActiveSurface("landing_card")}
-                              className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] transition", activeSurface === "landing_card" ? "bg-white text-primary shadow-sm" : "text-secondary")}
+                              className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition", activeSurface === "landing_card" ? "bg-white text-primary shadow-sm" : "text-secondary")}
                             >
                               <Eye className="mr-1.5 inline h-3.5 w-3.5" /> Landing Page Card
                             </button>
                             <button
                               type="button"
                               onClick={() => setActiveSurface("machine_page")}
-                              className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] transition", activeSurface === "machine_page" ? "bg-white text-primary shadow-sm" : "text-secondary")}
+                              className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition", activeSurface === "machine_page" ? "bg-white text-primary shadow-sm" : "text-secondary")}
                             >
                               <LayoutTemplate className="mr-1.5 inline h-3.5 w-3.5" /> Machine Detail Page
                             </button>
                           </div>
                           <div className="inline-flex rounded-full bg-surface-container p-1 xl:justify-end">
-                            <button type="button" onClick={() => setPreviewDevice("desktop")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] transition", previewDevice === "desktop" ? "bg-white text-primary shadow-sm" : "text-secondary")}>
+                            <button type="button" onClick={() => setPreviewDevice("desktop")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] transition", previewDevice === "desktop" ? "bg-white text-primary shadow-sm" : "text-secondary")}>
                               <Monitor className="mr-1 inline h-3.5 w-3.5" /> Desktop
                             </button>
-                            <button type="button" onClick={() => setPreviewDevice("mobile")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.14em] transition", previewDevice === "mobile" ? "bg-white text-primary shadow-sm" : "text-secondary")}>
+                            <button type="button" onClick={() => setPreviewDevice("mobile")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] transition", previewDevice === "mobile" ? "bg-white text-primary shadow-sm" : "text-secondary")}>
                               <Smartphone className="mr-1 inline h-3.5 w-3.5" /> Mobile
                             </button>
                           </div>
@@ -699,13 +699,13 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                     </CardHeader>
                     <CardContent className="space-y-4 bg-[linear-gradient(180deg,#f5f8fc_0%,#eef3f8_100%)] p-5">
                       <div className="flex flex-wrap gap-2">
-                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                           {SURFACE_COPY[activeSurface].label}
                         </span>
-                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                           Click section to edit
                         </span>
-                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                        <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                           Drag section to reorder
                         </span>
                       </div>
@@ -774,14 +774,14 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                         <button
                           type="button"
                           onClick={() => setBuilderSidebarTab("edit")}
-                          className={cn("rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] transition", builderSidebarTab === "edit" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
+                          className={cn("rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] transition", builderSidebarTab === "edit" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
                         >
                           Edit section
                         </button>
                         <button
                           type="button"
                           onClick={() => setBuilderSidebarTab("structure")}
-                          className={cn("rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.14em] transition", builderSidebarTab === "structure" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
+                          className={cn("rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] transition", builderSidebarTab === "structure" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
                         >
                           Structure
                         </button>
