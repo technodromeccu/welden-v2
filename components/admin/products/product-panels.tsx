@@ -48,7 +48,7 @@ export function GlobalMachineLabelsPanel({
                 <div className="grid gap-3">
                   {group.fields.map(([fieldKey, label]) => (
                     <label key={fieldKey} className="grid gap-1.5 text-sm">
-                      <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">{label}</span>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">{label}</span>
                       <Input value={machineDetailItems[fieldKey] ?? ""} onChange={(event) => updateNamedSiteItem("machine_details", fieldKey, event.target.value)} placeholder={label} />
                     </label>
                   ))}

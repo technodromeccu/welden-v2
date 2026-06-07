@@ -124,7 +124,7 @@ export function GalleryAssetEditor({
               )}
             </div>
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+              <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                 <button type="button" className="flex h-8 w-8 cursor-grab items-center justify-center rounded-lg text-secondary transition hover:bg-surface-container-low hover:text-primary">
                   <GripVertical className="h-4 w-4" />
                 </button>

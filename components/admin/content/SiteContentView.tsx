@@ -44,7 +44,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div>
                       <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Landing page section</div>
-                      <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-primary md:text-4xl">{selectedSiteSection.key.split(/[-_]/).map((part: string) => part.charAt(0).toUpperCase() + part.slice(1)).join(" ")}</h2>
+                      <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">{selectedSiteSection.key.split(/[-_]/).map((part: string) => part.charAt(0).toUpperCase() + part.slice(1)).join(" ")}</h2>
                       <p className="mt-2 text-sm leading-6 text-secondary md:text-base">
                         {selectedSiteSection.key === "hero"
                           ? "Manage the live hero slides, their order, and each slide's image and copy in one dedicated editor."
@@ -180,11 +180,11 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                               <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Hero CTA buttons</div>
                               <div className="mt-4 grid gap-3 md:grid-cols-2">
                                 <label className="grid gap-2 text-sm">
-                                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">Primary button label</span>
+                                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Primary button label</span>
                                   <Input placeholder="Talk to our expert" value={parseNamedItems(selectedSiteSection.items).cta_primary ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "cta_primary", e.target.value)} />
                                 </label>
                                 <label className="grid gap-2 text-sm">
-                                  <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">Secondary button label</span>
+                                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Secondary button label</span>
                                   <Input placeholder="Explore machines" value={parseNamedItems(selectedSiteSection.items).cta_secondary ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "cta_secondary", e.target.value)} />
                                 </label>
                               </div>
@@ -280,7 +280,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                     <div className="grid gap-3 md:grid-cols-2">
                                       {group.fields.map(([fieldKey, label]) => (
                                         <label key={fieldKey} className="grid gap-2 text-sm">
-                                          <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-secondary">{label}</span>
+                                          <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">{label}</span>
                                           <Input value={machineDetailItems[fieldKey] ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, fieldKey, e.target.value)} placeholder={label} />
                                         </label>
                                       ))}

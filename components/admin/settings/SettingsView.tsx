@@ -94,7 +94,7 @@ function AuditLogPanel() {
                       <span className="text-xs text-secondary">{entry.entityType.replace("_", " ")} · {entry.entityId.slice(0, 12)}…</span>
                     </div>
                     <div className="text-xs text-secondary">{entry.summary}</div>
-                    <div className="text-[11px] text-secondary/60">
+                    <div className="text-xs text-secondary/60">
                       {new Date(entry.timestamp).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" })}
                     </div>
                   </div>

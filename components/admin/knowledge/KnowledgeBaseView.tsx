@@ -70,7 +70,7 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Creating document</div>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-primary md:text-4xl">Add knowledge document</h2>
+              <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">Add knowledge document</h2>
               <p className="mt-2 text-sm leading-6 text-secondary md:text-base">Create a grounding source in a full-width editor so summaries, extracted text, and availability are reviewed in one calm workspace.</p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -133,7 +133,7 @@ export function KnowledgeBaseView({ ctx }: { ctx: any }) {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Selected document</div>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-primary md:text-4xl">{selectedDoc.title}</h2>
+              <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">{selectedDoc.title}</h2>
               <p className="mt-2 text-sm leading-6 text-secondary md:text-base">Refine metadata, adjust grounding text, and control whether this source is available to chatbot answers in one full-width document editor.</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Badge variant="outline">{selectedDoc.sourceType}</Badge>

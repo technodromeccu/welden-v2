@@ -87,7 +87,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div>
                       <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Creating template</div>
-                      <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-primary md:text-4xl">Add quotation template</h2>
+                      <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">Add quotation template</h2>
                       <p className="mt-2 text-sm leading-6 text-secondary md:text-base">Create a preliminary quotation template in the same commercial workspace used for editing, so new templates start clean and structured.</p>
                     </div>
                     <div className="flex flex-wrap gap-3">
@@ -254,7 +254,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                   <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
                     <div className="max-w-2xl">
                       <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Template library</div>
-                      <div className="mt-2 text-3xl font-extrabold tracking-tight text-primary">Commercial quotation templates</div>
+                      <div className="mt-2 text-3xl font-black tracking-tight text-primary">Commercial quotation templates</div>
                       <p className="mt-2 text-sm leading-6 text-secondary">Browse, reorder, and open machine-linked commercial templates without leaving the quotation workspace.</p>
                     </div>
                     <div className="flex flex-wrap items-center gap-3 xl:justify-end">
@@ -316,7 +316,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                                   <GripVertical className="h-4 w-4" />
                                   Sort
                                 </div>
-                                <span className={cn("inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em]", template.active ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500")}>{template.active ? "Active" : "Inactive"}</span>
+                                <span className={cn("inline-flex rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em]", template.active ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500")}>{template.active ? "Active" : "Inactive"}</span>
                               </div>
                             </div>
 
@@ -364,7 +364,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div className="max-w-4xl">
                       <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Editing template - {selectedQuotationTemplate.title}</div>
-                      <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-primary md:text-4xl">{quotationTemplateDraft.machineName || selectedQuotationTemplate.machineName}</h2>
+                      <h2 className="mt-2 text-3xl font-black tracking-tight text-primary md:text-4xl">{quotationTemplateDraft.machineName || selectedQuotationTemplate.machineName}</h2>
                       <p className="mt-2 text-sm leading-6 text-secondary md:text-base">A cleaner commercial editor for machine-linked preliminary quotations, with pricing, scope, terms, and preview context in one place.</p>
                       <div className="mt-4 flex flex-wrap items-center gap-2">
                         <Badge variant={quotationTemplateDraft.active ? "success" : "outline"}>{quotationTemplateDraft.active ? "Active" : "Inactive"}</Badge>
