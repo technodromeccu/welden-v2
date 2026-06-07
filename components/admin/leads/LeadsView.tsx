@@ -2,7 +2,7 @@
 
 import type { Dispatch, SetStateAction } from "react";
 import { useRef, useEffect, useState } from "react";
-import { AlertCircle, CheckCircle2, ChevronDown, ChevronRight, Clock, FileText, Filter, GripVertical, Loader2, MessageSquare, MoreHorizontal, Phone, RefreshCw, Search, UserCheck, X } from "lucide-react";
+import { ChevronDown, ChevronRight, Filter, GripVertical, Loader2, Phone, RefreshCw, Search, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,14 +12,8 @@ import { InternalLeadAssistant } from "@/components/admin/leads/InternalLeadAssi
 import { cn } from "@/lib/utils";
 import type { AdvisorSession, LeadCallOutcome, LeadStage, LeadSuggestedAction, QuotationTemplate, User } from "@/lib/types";
 import { fmtDate, fmtStatus, getLeadFirstCallState, getLeadHealthBadges, getLeadQualityBadge, isLeadStale, isSameLocalDay, leadStageOptions, type LeadWorkflowDraft } from "@/components/admin/shared/admin-panel-helpers";
-
-type LeadMeta = {
-  session: AdvisorSession;
-  score: number;
-  nextStep: string;
-  temperature: string;
-  owner: User | null;
-};
+import { boardStageThemes, relativeTime, type LeadMeta } from "./leads-view-helpers";
+import { ActivityIcon, RowActionMenu } from "./leads-view-row";
 
 type LeadsViewProps = {
   showLeadEditor: boolean;
@@ -83,174 +77,6 @@ type LeadsViewProps = {
   loadMoreLeads?: () => Promise<void>;
   loadingMoreLeads?: boolean;
   onRefresh?: () => Promise<void>;
-};
-
-// Self-contained row action dropdown — manages its own open/close with click-outside
-function RowActionMenu({
-  sessionId,
-  loading,
-  onNoAnswer,
-  onMarkContacted,
-  onFollowUpTomorrow
-}: {
-  sessionId: string;
-  loading: boolean;
-  onNoAnswer: () => void;
-  onMarkContacted: () => void;
-  onFollowUpTomorrow: () => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    function handleClick(event: MouseEvent) {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [open]);
-
-  return (
-    <div ref={ref} className="relative">
-      <button
-        type="button"
-        title="Quick actions"
-        onClick={(e) => { e.stopPropagation(); setOpen((current) => !current); }}
-        className="flex h-7 w-7 items-center justify-center rounded-lg text-secondary transition-colors hover:bg-surface-container-high hover:text-primary"
-        disabled={loading}
-      >
-        {loading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <MoreHorizontal className="h-3.5 w-3.5" />}
-      </button>
-      {open && (
-        <div className="absolute right-0 top-full z-30 mt-1 w-52 overflow-hidden rounded-xl border border-outline-variant/20 bg-white shadow-[0_8px_30px_-8px_rgba(0,0,0,0.18)]">
-          <button
-            type="button"
-            onClick={() => { onNoAnswer(); setOpen(false); }}
-            className="flex w-full items-center gap-3 px-4 py-3 text-left text-sm text-on-surface transition-colors hover:bg-surface-container-low"
-          >
-            Log no answer
-            <span className="ml-auto text-[10px] text-secondary">+1 day</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => { onMarkContacted(); setOpen(false); }}
-            className="flex w-full items-center gap-3 px-4 py-3 text-left text-sm text-on-surface transition-colors hover:bg-surface-container-low"
-          >
-            Mark called now
-          </button>
-          <button
-            type="button"
-            onClick={() => { onFollowUpTomorrow(); setOpen(false); }}
-            className="flex w-full items-center gap-3 px-4 py-3 text-left text-sm text-on-surface transition-colors hover:bg-surface-container-low"
-          >
-            Follow up tomorrow
-            <span className="ml-auto text-[10px] text-secondary">10:30</span>
-          </button>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// WF-07: Icon and label per activity type for the timeline
-function ActivityIcon({ type }: { type: string }) {
-  switch (type) {
-    case "quote_issued": return <FileText className="h-3.5 w-3.5 text-primary" />;
-    case "call_logged": return <Phone className="h-3.5 w-3.5 text-emerald-600" />;
-    case "note_added": return <MessageSquare className="h-3.5 w-3.5 text-secondary" />;
-    case "status_changed": return <CheckCircle2 className="h-3.5 w-3.5 text-amber-600" />;
-    case "owner_changed": return <UserCheck className="h-3.5 w-3.5 text-secondary" />;
-    case "follow_up_scheduled": return <Clock className="h-3.5 w-3.5 text-secondary" />;
-    case "escalation_sent": return <AlertCircle className="h-3.5 w-3.5 text-red-500" />;
-    case "duplicate_merged": return <AlertCircle className="h-3.5 w-3.5 text-amber-500" />;
-    case "close_reason_set": return <CheckCircle2 className="h-3.5 w-3.5 text-primary" />;
-    case "email_delivery_failed": return <AlertCircle className="h-3.5 w-3.5 text-red-500" />;
-    case "assistant_prompted": return <MessageSquare className="h-3.5 w-3.5 text-primary" />;
-    case "call_outcome_logged": return <Phone className="h-3.5 w-3.5 text-primary" />;
-    case "brochure_requested": return <FileText className="h-3.5 w-3.5 text-amber-600" />;
-    case "details_requested": return <MessageSquare className="h-3.5 w-3.5 text-amber-600" />;
-    default: return <Clock className="h-3.5 w-3.5 text-secondary" />;
-  }
-}
-
-function relativeTime(iso: string) {
-  const diff = Date.now() - new Date(iso).getTime();
-  const mins = Math.floor(diff / 60_000);
-  if (mins < 2) return "just now";
-  if (mins < 60) return `${mins}m ago`;
-  const hours = Math.floor(mins / 60);
-  if (hours < 24) return `${hours}h ago`;
-  const days = Math.floor(hours / 24);
-  if (days < 7) return `${days}d ago`;
-  return new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "short" });
-}
-
-const boardStageThemes: Record<LeadStage, {
-  lane: string;
-  laneActive: string;
-  dot: string;
-  accentText: string;
-  cardGlow: string;
-}> = {
-  new: {
-    lane: "border-sky-200/70 bg-[linear-gradient(180deg,rgba(239,246,255,0.96),rgba(255,255,255,0.98))]",
-    laneActive: "border-sky-400/80 shadow-[0_22px_60px_-34px_rgba(14,116,144,0.5)] ring-2 ring-sky-300/40",
-    dot: "bg-sky-500",
-    accentText: "text-sky-700",
-    cardGlow: "shadow-[0_18px_44px_-30px_rgba(14,116,144,0.35)]"
-  },
-  quoted: {
-    lane: "border-amber-200/80 bg-[linear-gradient(180deg,rgba(255,251,235,0.96),rgba(255,255,255,0.98))]",
-    laneActive: "border-amber-400/80 shadow-[0_22px_60px_-34px_rgba(217,119,6,0.45)] ring-2 ring-amber-300/40",
-    dot: "bg-amber-500",
-    accentText: "text-amber-700",
-    cardGlow: "shadow-[0_18px_44px_-30px_rgba(217,119,6,0.3)]"
-  },
-  contact_scheduled: {
-    lane: "border-cyan-200/80 bg-[linear-gradient(180deg,rgba(236,254,255,0.96),rgba(255,255,255,0.98))]",
-    laneActive: "border-cyan-400/80 shadow-[0_22px_60px_-34px_rgba(8,145,178,0.45)] ring-2 ring-cyan-300/40",
-    dot: "bg-cyan-500",
-    accentText: "text-cyan-700",
-    cardGlow: "shadow-[0_18px_44px_-30px_rgba(8,145,178,0.28)]"
-  },
-  contacted: {
-    lane: "border-indigo-200/80 bg-[linear-gradient(180deg,rgba(238,242,255,0.96),rgba(255,255,255,0.98))]",
-    laneActive: "border-indigo-400/80 shadow-[0_22px_60px_-34px_rgba(79,70,229,0.4)] ring-2 ring-indigo-300/40",
-    dot: "bg-indigo-500",
-    accentText: "text-indigo-700",
-    cardGlow: "shadow-[0_18px_44px_-30px_rgba(79,70,229,0.28)]"
-  },
-  qualified: {
-    lane: "border-emerald-200/80 bg-[linear-gradient(180deg,rgba(236,253,245,0.96),rgba(255,255,255,0.98))]",
-    laneActive: "border-emerald-400/80 shadow-[0_22px_60px_-34px_rgba(5,150,105,0.4)] ring-2 ring-emerald-300/40",
-    dot: "bg-emerald-500",
-    accentText: "text-emerald-700",
-    cardGlow: "shadow-[0_18px_44px_-30px_rgba(5,150,105,0.26)]"
-  },
-  proposal_sent: {
-    lane: "border-orange-200/80 bg-[linear-gradient(180deg,rgba(255,247,237,0.96),rgba(255,255,255,0.98))]",
-    laneActive: "border-orange-400/80 shadow-[0_22px_60px_-34px_rgba(234,88,12,0.42)] ring-2 ring-orange-300/40",
-    dot: "bg-orange-500",
-    accentText: "text-orange-700",
-    cardGlow: "shadow-[0_18px_44px_-30px_rgba(234,88,12,0.28)]"
-  },
-  won: {
-    lane: "border-emerald-300/80 bg-[linear-gradient(180deg,rgba(220,252,231,0.98),rgba(255,255,255,0.98))]",
-    laneActive: "border-emerald-500/80 shadow-[0_22px_60px_-34px_rgba(22,163,74,0.45)] ring-2 ring-emerald-300/40",
-    dot: "bg-emerald-600",
-    accentText: "text-emerald-800",
-    cardGlow: "shadow-[0_18px_44px_-30px_rgba(22,163,74,0.28)]"
-  },
-  lost: {
-    lane: "border-slate-200/80 bg-[linear-gradient(180deg,rgba(248,250,252,0.98),rgba(255,255,255,0.98))]",
-    laneActive: "border-slate-400/80 shadow-[0_22px_60px_-34px_rgba(71,85,105,0.35)] ring-2 ring-slate-300/40",
-    dot: "bg-slate-500",
-    accentText: "text-slate-700",
-    cardGlow: "shadow-[0_18px_44px_-30px_rgba(71,85,105,0.22)]"
-  }
 };
 
 export function LeadsView(props: LeadsViewProps) {
