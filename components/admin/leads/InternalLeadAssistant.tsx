@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Bot, BrainCircuit, Loader2, MessageSquareWarning, PhoneCall, Radar, SendHorizontal, Sparkles, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ChatMarkdown } from "@/components/ui/chat-markdown";
@@ -243,80 +243,122 @@ export function InternalLeadAssistant({
               ))}
             </div>
           </CardHeader>
-          <CardContent className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden p-6">
-            {selectedLead?.workflow?.assistantMemory ? (
-              <div className="rounded-3xl border border-sky-200/80 bg-[linear-gradient(135deg,rgba(237,246,255,0.95),rgba(248,251,255,0.95))] px-4 py-4 text-sm leading-6 text-on-surface">
-                <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-sky-800">
-                  <Radar className="h-3.5 w-3.5" /> Remembered context
-                </div>
-                <div className="mt-2">{selectedLead.workflow.assistantMemory}</div>
-              </div>
-            ) : null}
+          {/*
+            Layout fix: previously CardContent stacked 6 fixed-height regions in a flex column,
+            with only the messages region having overflow-y-auto AND a min-h-[16rem] floor. When
+            the call-log panel + status cards + callouts pushed total content past 78vh, the
+            messages area got squeezed below 16rem; its min-h then forced overflow into the
+            parent's overflow-hidden, clipping the scroll handles. Bottom sections became
+            unreachable.
 
-            {!selectedLead && attentionCount > 0 ? (
-              <div className="rounded-3xl border border-amber-200/80 bg-[linear-gradient(135deg,rgba(255,248,228,0.98),rgba(255,252,243,0.96))] px-4 py-4 text-sm leading-6 text-amber-950">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-amber-700">
-                  <MessageSquareWarning className="h-3.5 w-3.5" /> Existing leads need updates
+            New structure: header (fixed) + scrollable body (callouts, prompts, messages,
+            call-log all flow together) + sticky input bar. Everything is always reachable
+            via the body scroll, and the input never moves.
+          */}
+          <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
+            <div className="flex-1 space-y-4 overflow-y-auto px-6 py-6">
+              {selectedLead?.workflow?.assistantMemory ? (
+                <div className="rounded-3xl border border-sky-200/80 bg-[linear-gradient(135deg,rgba(237,246,255,0.95),rgba(248,251,255,0.95))] px-4 py-4 text-sm leading-6 text-on-surface">
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-sky-800">
+                    <Radar className="h-3.5 w-3.5" /> Remembered context
+                  </div>
+                  <div className="mt-2">{selectedLead.workflow.assistantMemory}</div>
                 </div>
-                <div className="mt-2">
-                  Ask me which leads need calls today, which quoted leads still need a human update, or which callback commitments are due right now.
+              ) : null}
+
+              {!selectedLead && attentionCount > 0 ? (
+                <div className="rounded-3xl border border-amber-200/80 bg-[linear-gradient(135deg,rgba(255,248,228,0.98),rgba(255,252,243,0.96))] px-4 py-4 text-sm leading-6 text-amber-950">
+                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-amber-700">
+                    <MessageSquareWarning className="h-3.5 w-3.5" /> Existing leads need updates
+                  </div>
+                  <div className="mt-2">
+                    Ask me which leads need calls today, which quoted leads still need a human update, or which callback commitments are due right now.
+                  </div>
                 </div>
-              </div>
-            ) : null}
+              ) : null}
 
-            <div className="flex flex-wrap gap-2">
-              {quickPrompts.map((prompt) => (
-                <button
-                  key={prompt}
-                  type="button"
-                  onClick={() => void askAssistant(prompt)}
-                  className="rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-secondary transition hover:-translate-y-px hover:border-sky-200 hover:bg-sky-50 hover:text-sky-900"
-                >
-                  {prompt}
-                </button>
-              ))}
-            </div>
-
-            <div className="min-h-0 flex-1 overflow-hidden rounded-3xl border border-slate-200/80 bg-[linear-gradient(180deg,rgba(244,247,251,0.95),rgba(250,251,253,0.98))]">
-              <div className="flex h-full min-h-[16rem] flex-col gap-3 overflow-y-auto px-4 py-4">
-                {messages.map((message, index) => (
-                  <div
-                    key={`${message.role}-${index}`}
-                    className={message.role === "assistant"
-                      ? "rounded-3xl rounded-tl-md border border-white bg-white px-4 py-3 text-sm leading-6 text-on-surface shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]"
-                      : "ml-8 rounded-3xl rounded-br-md bg-[linear-gradient(135deg,#0f3d78,#1b5aa5)] px-4 py-3 text-sm leading-6 text-white shadow-[0_14px_32px_-18px_rgba(15,61,120,0.65)]"}
+              <div className="flex flex-wrap gap-2">
+                {quickPrompts.map((prompt) => (
+                  <button
+                    key={prompt}
+                    type="button"
+                    onClick={() => void askAssistant(prompt)}
+                    className="rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-secondary transition hover:-translate-y-px hover:border-sky-200 hover:bg-sky-50 hover:text-sky-900"
                   >
-                    {message.role === "assistant"
-                      ? <ChatMarkdown content={message.text} tone="light" />
-                      : message.text}
-                    {message.role === "assistant" && message.actions?.length ? (
-                      <div className="mt-3 flex flex-wrap gap-2">
-                        {message.actions.map((action, actionIndex) => (
-                          <button
-                            key={`${action.type}-${action.leadId}-${actionIndex}`}
-                            type="button"
-                            onClick={() => void applyProposal(action)}
-                            className={cn(
-                              "rounded-full border px-3 py-1.5 text-xs font-semibold transition",
-                              action.requiresConfirmation
-                                ? "border-amber-200 bg-amber-50 text-amber-900 hover:bg-amber-100"
-                                : "border-sky-200 bg-sky-50 text-sky-900 hover:bg-sky-100"
-                            )}
-                          >
-                            {action.requiresConfirmation ? `Confirm: ${action.label}` : action.label}
-                          </button>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
+                    {prompt}
+                  </button>
                 ))}
-                {loading ? (
-                  <div className="flex items-center gap-2 rounded-3xl border border-white bg-white px-4 py-3 text-sm text-secondary shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]">
-                    <Loader2 className="h-4 w-4 animate-spin" /> Thinking...
-                  </div>
-                ) : null}
-                <div ref={messagesEndRef} />
               </div>
+
+              <div className="rounded-3xl border border-slate-200/80 bg-[linear-gradient(180deg,rgba(244,247,251,0.95),rgba(250,251,253,0.98))] p-4">
+                <div className="flex flex-col gap-3">
+                  {messages.map((message, index) => (
+                    <div
+                      key={`${message.role}-${index}`}
+                      className={message.role === "assistant"
+                        ? "rounded-3xl rounded-tl-md border border-white bg-white px-4 py-3 text-sm leading-6 text-on-surface shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]"
+                        : "ml-8 rounded-3xl rounded-br-md bg-[linear-gradient(135deg,#0f3d78,#1b5aa5)] px-4 py-3 text-sm leading-6 text-white shadow-[0_14px_32px_-18px_rgba(15,61,120,0.65)]"}
+                    >
+                      {message.role === "assistant"
+                        ? <ChatMarkdown content={message.text} tone="light" />
+                        : message.text}
+                      {message.role === "assistant" && message.actions?.length ? (
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {message.actions.map((action, actionIndex) => (
+                            <button
+                              key={`${action.type}-${action.leadId}-${actionIndex}`}
+                              type="button"
+                              onClick={() => void applyProposal(action)}
+                              className={cn(
+                                "rounded-full border px-3 py-1.5 text-xs font-semibold transition",
+                                action.requiresConfirmation
+                                  ? "border-amber-200 bg-amber-50 text-amber-900 hover:bg-amber-100"
+                                  : "border-sky-200 bg-sky-50 text-sky-900 hover:bg-sky-100"
+                              )}
+                            >
+                              {action.requiresConfirmation ? `Confirm: ${action.label}` : action.label}
+                            </button>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  ))}
+                  {loading ? (
+                    <div className="flex items-center gap-2 rounded-3xl border border-white bg-white px-4 py-3 text-sm text-secondary shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]">
+                      <Loader2 className="h-4 w-4 animate-spin" /> Thinking...
+                    </div>
+                  ) : null}
+                  <div ref={messagesEndRef} />
+                </div>
+              </div>
+
+              {selectedLead ? (
+                <div className="rounded-3xl border border-slate-200/80 bg-[linear-gradient(180deg,#ffffff,#f8fafc)] p-4">
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="bg-white"><PhoneCall className="mr-1 h-3 w-3" /> Log phone call outcome</Badge>
+                  </div>
+                  <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(10.5rem,12rem)_minmax(0,1fr)]">
+                    <select
+                      className="h-11 rounded-2xl border border-slate-200 bg-slate-50 px-3 text-sm text-on-surface outline-none"
+                      value={callOutcome}
+                      onChange={(event) => setCallOutcome(event.target.value as LeadCallOutcome)}
+                    >
+                      {outcomeOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
+                    </select>
+                    <Textarea
+                      rows={5}
+                      value={callSummary}
+                      onChange={(event) => setCallSummary(event.target.value)}
+                      placeholder="What happened on the call, what was promised, and what should happen next?"
+                      className="rounded-2xl border-slate-200 bg-slate-50"
+                    />
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-3">
+                    <Button onClick={() => void submitOutcome()} disabled={loading} className="rounded-2xl">Save call outcome</Button>
+                    {onScheduleFollowUp ? <Button variant="outline" onClick={() => onScheduleFollowUp()} className="rounded-2xl">Open follow-up scheduler</Button> : null}
+                  </div>
+                </div>
+              ) : null}
             </div>
 
             <form
@@ -324,49 +366,23 @@ export function InternalLeadAssistant({
                 event.preventDefault();
                 void askAssistant(input);
               }}
-              className="rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_12px_30px_-24px_rgba(15,23,42,0.25)]"
+              className="border-t border-slate-200/80 bg-white px-6 py-3"
             >
-              <div className="flex gap-2">
-                <Input
-                  value={input}
-                  onChange={(event) => setInput(event.target.value)}
-                  placeholder={selectedLead ? "Ask about this lead..." : "Ask about existing leads..."}
-                  className="border-none bg-slate-50 shadow-none"
-                />
-                <Button type="submit" disabled={loading} className="rounded-2xl px-4">
-                  <SendHorizontal className="mr-1.5 h-4 w-4" /> Ask
-                </Button>
+              <div className="rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_12px_30px_-24px_rgba(15,23,42,0.25)]">
+                <div className="flex gap-2">
+                  <Input
+                    value={input}
+                    onChange={(event) => setInput(event.target.value)}
+                    placeholder={selectedLead ? "Ask about this lead..." : "Ask about existing leads..."}
+                    className="border-none bg-slate-50 shadow-none"
+                  />
+                  <Button type="submit" disabled={loading} className="rounded-2xl px-4">
+                    <SendHorizontal className="mr-1.5 h-4 w-4" /> Ask
+                  </Button>
+                </div>
               </div>
             </form>
-
-            {selectedLead ? (
-              <div className="rounded-3xl border border-slate-200/80 bg-[linear-gradient(180deg,#ffffff,#f8fafc)] p-4">
-                <div className="flex items-center gap-2">
-                  <Badge variant="outline" className="bg-white"><PhoneCall className="mr-1 h-3 w-3" /> Log phone call outcome</Badge>
-                </div>
-                <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(10.5rem,12rem)_minmax(0,1fr)]">
-                  <select
-                    className="h-11 rounded-2xl border border-slate-200 bg-slate-50 px-3 text-sm text-on-surface outline-none"
-                    value={callOutcome}
-                    onChange={(event) => setCallOutcome(event.target.value as LeadCallOutcome)}
-                  >
-                    {outcomeOptions.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
-                  </select>
-                  <Textarea
-                    rows={5}
-                    value={callSummary}
-                    onChange={(event) => setCallSummary(event.target.value)}
-                    placeholder="What happened on the call, what was promised, and what should happen next?"
-                    className="rounded-2xl border-slate-200 bg-slate-50"
-                  />
-                </div>
-                <div className="mt-3 flex flex-wrap gap-3">
-                  <Button onClick={() => void submitOutcome()} disabled={loading} className="rounded-2xl">Save call outcome</Button>
-                  {onScheduleFollowUp ? <Button variant="outline" onClick={() => onScheduleFollowUp()} className="rounded-2xl">Open follow-up scheduler</Button> : null}
-                </div>
-              </div>
-            ) : null}
-          </CardContent>
+          </div>
         </Card>
       ) : null}
 
