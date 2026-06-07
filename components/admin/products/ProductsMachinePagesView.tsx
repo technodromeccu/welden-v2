@@ -674,23 +674,23 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                             <button
                               type="button"
                               onClick={() => setActiveSurface("landing_card")}
-                              className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition", activeSurface === "landing_card" ? "bg-white text-primary shadow-sm" : "text-secondary")}
+                              className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition", activeSurface === "landing_card" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
                             >
                               <Eye className="mr-1.5 inline h-3.5 w-3.5" /> Landing Page Card
                             </button>
                             <button
                               type="button"
                               onClick={() => setActiveSurface("machine_page")}
-                              className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition", activeSurface === "machine_page" ? "bg-white text-primary shadow-sm" : "text-secondary")}
+                              className={cn("rounded-full px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] transition", activeSurface === "machine_page" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}
                             >
                               <LayoutTemplate className="mr-1.5 inline h-3.5 w-3.5" /> Machine Detail Page
                             </button>
                           </div>
                           <div className="inline-flex rounded-full bg-surface-container p-1 xl:justify-end">
-                            <button type="button" onClick={() => setPreviewDevice("desktop")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] transition", previewDevice === "desktop" ? "bg-white text-primary shadow-sm" : "text-secondary")}>
+                            <button type="button" onClick={() => setPreviewDevice("desktop")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] transition", previewDevice === "desktop" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}>
                               <Monitor className="mr-1 inline h-3.5 w-3.5" /> Desktop
                             </button>
-                            <button type="button" onClick={() => setPreviewDevice("mobile")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] transition", previewDevice === "mobile" ? "bg-white text-primary shadow-sm" : "text-secondary")}>
+                            <button type="button" onClick={() => setPreviewDevice("mobile")} className={cn("rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] transition", previewDevice === "mobile" ? "bg-white text-primary shadow-sm" : "text-secondary hover:text-primary")}>
                               <Smartphone className="mr-1 inline h-3.5 w-3.5" /> Mobile
                             </button>
                           </div>

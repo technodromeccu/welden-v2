@@ -346,6 +346,35 @@ The admin uses three motion patterns:
 
 `transition-all` for hover-only color changes is overkill — use `transition-colors` instead.
 
+### Interaction states — required on every interactive element
+
+Every clickable element (button, link, tab, icon trigger) must have **all four states** covered.
+
+| State | Visible cue | How to ship it |
+|---|---|---|
+| **Idle** | Default styling | The base classes. |
+| **Hover (mouse)** | Visible change — bg shift, color shift, or border emphasis | A `hover:` utility. Required on raw `<button>`/`<a>` and on the **inactive branch** of any toggle. |
+| **Focus (keyboard)** | A visible ring around the element | **Handled globally** — `:focus-visible` in `app/globals.css` adds a 2px iron-navy outline to every focusable element. Do not strip it; if a specific element needs a different focus look, override locally rather than removing the global rule. |
+| **Disabled** | Reduced opacity, no pointer events | The `Button` component already encodes `disabled:opacity-50 disabled:pointer-events-none`. Raw `<button>` elements that can be disabled must add it. |
+
+The `Button` component covers all four states automatically. Raw `<button>` / `<a>` only need the **hover** rule from the table — focus is global, disabled is added when relevant.
+
+#### Canonical hover patterns (use these)
+
+| Element type | Idle | Hover |
+|---|---|---|
+| Icon-only button (drag handle, eye, X) | `text-secondary` | `hover:bg-surface-container-low hover:text-primary` |
+| Destructive icon (Trash2, X-remove) | `text-secondary` | `hover:bg-rose-50 hover:text-rose-500` |
+| Tab toggle — inactive branch | `text-secondary` | `hover:text-primary` (no bg change — the active branch's bg is what differentiates) |
+| Filter pill — inactive branch | `bg-slate-100 text-slate-600` | `hover:bg-slate-200 hover:text-on-surface` |
+| Text link / anchor | `text-secondary` or `text-on-surface` | `hover:text-primary` or `hover:underline` |
+
+#### Don'ts
+
+- ❌ Don't write a toggle pattern where the inactive branch has no hover (`cn(active ? "..." : "text-secondary")` is missing feedback — make it `"text-secondary hover:text-primary"`).
+- ❌ Don't add `outline: none` / `focus:outline-none` without replacing it with a visible focus indicator. The global `:focus-visible` rule already covers all interactive elements; stripping it locally breaks keyboard accessibility.
+- ❌ Don't use `:focus` (always-on) where `:focus-visible` (keyboard-only) is appropriate — `:focus` shows rings on mouse clicks too, which feels noisy.
+
 No entrance animations, no skeleton shimmer beyond what the Loader2 spinner provides. The admin is utilitarian by design.
 
 ---

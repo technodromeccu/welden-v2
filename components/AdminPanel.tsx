@@ -1270,7 +1270,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
                     onClick={() => setTab(entry)}
                     className={cn(
                       "inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-colors",
-                      tab === entry ? "bg-primary text-white" : "bg-slate-100 text-slate-600"
+                      tab === entry ? "bg-primary text-white" : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-on-surface"
                     )}
                   >
                     <Icon className="h-4 w-4" />
