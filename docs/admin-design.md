@@ -336,14 +336,15 @@ The admin uses **one shadow value**: `shadow-sm`. That is intentional — depth 
 
 ## 8. Motion
 
-The admin uses **two motion patterns**, both at Tailwind's default speed (`duration-150` implied).
+The admin uses three motion patterns:
 
-| Pattern | Class |
-|---|---|
-| Hover on text/icon buttons | `transition-colors` |
-| Press feedback on buttons | `transition-all active:scale-[0.97]` (used by the Button component already) |
+| Pattern | Class | When |
+|---|---|---|
+| Hover on text/icon buttons | `transition-colors` | The default for hover-only color changes (78%+ of motion uses). |
+| Press feedback on buttons | `transition-all active:scale-[0.97]` | Built into the `Button` component. |
+| Multi-property animation | `transition-all duration-200` | When **multiple style properties** animate together (drag-state changes, device-preview resize, board-lane focus). Legitimate use of `transition-all` because layout properties (max-width, transform) need to be animated alongside colors. |
 
-`transition-all` outside of buttons is overkill — use `transition-colors`.
+`transition-all` for hover-only color changes is overkill — use `transition-colors` instead.
 
 No entrance animations, no skeleton shimmer beyond what the Loader2 spinner provides. The admin is utilitarian by design.
 

@@ -2,6 +2,26 @@
 
 Derived alongside `docs/admin-design.md` (2026-06-07). Every item is a concrete deviation from the dominant pattern that the design doc codifies. Counts are exact greps across `components/admin/**` and `components/AdminPanel.tsx`.
 
+## Status (2026-06-07, after PRs #14, #15, #16)
+
+All P1 items closed. P2 + P3 items either closed or verified intentional. Remaining work is the per-view state-coverage audit (PR-E) which requires human-eye judgment.
+
+| Item | Severity | Status | Closed by |
+|---|---|---|---|
+| 1. Custom radii | P1 | ✅ DONE | PR #15 (PR-B) |
+| 2. `text-slate-*` mixed with semantic | P1 | ✅ DONE | PR #16 (PR-C) |
+| 3. H1 `font-extrabold` → `font-black` | P1 | ✅ DONE | PR #14 (PR-A.1) |
+| 4. `tracking-[0.14em]` → `[0.16em]` | P1 | ✅ DONE | PR #14 (PR-A.2) |
+| 5. `outline-variant/20` → `/15` | P1 | ✅ DONE | PR #16 (PR-C) |
+| 6. Hand-rolled card shells | P2 | ⏳ Deferred — "only when files are otherwise touched" |  |
+| 7. `transition-all` outside Button | P2 | ✅ Verified intentional — multi-property animations (design doc updated to acknowledge) |  |
+| 8. Card padding `p-5/p-6/p-4` drift | P2 | ⏳ Open — needs per-card judgment |  |
+| 9. Bare `<button>` aria-labels | P3 | ✅ Verified — 0 missing (codebase was already correct) |  |
+| 10. `text-[11px]` body cases | P3 | ✅ DONE | PR #14 (PR-A.3) — 2 cases bumped |
+| State-coverage audit | per-view | ⏳ Manual pass — see table below |  |
+
+---
+
 Severity legend:
 - 🟥 **P1** — visible inconsistency a user can perceive (different look across views).
 - 🟧 **P2** — code-style inconsistency (no visible drift today, but creates drift over time).
