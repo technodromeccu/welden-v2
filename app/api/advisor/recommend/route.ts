@@ -5,6 +5,11 @@ import { validateAdvisorRequest } from "@/lib/request-validation";
 import { apiError } from "@/lib/api-error";
 import type { PublicAdvisorResponse } from "@/lib/types";
 
+// This route runs two sequential Gemini calls plus brochure-PDF grounding, so it can take
+// ~15-20s. Raise the serverless function timeout. Netlify honors Next's maxDuration up to
+// the plan's maximum (26s); on the free tier functions are still capped at 10s.
+export const maxDuration = 26;
+
 // SEC-01: Validate that the request origin matches the configured site URL.
 // Blocks cross-domain abuse where external scripts POST fake leads from arbitrary domains.
 // In development mode all origins are allowed so localhost tooling keeps working.

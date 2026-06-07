@@ -227,8 +227,21 @@ export function AdvisorWidget({ products, whatsappHref, whatsappLabel, quickActi
         // Use ref so we always send the current lead even if state hasn't flushed yet
         body: JSON.stringify({ lead: leadRef.current, question, transcriptSummary: buildTranscript(transcriptMessages) })
       });
-      const payload = await res.json() as ChatResponse & { error?: string };
-      if (!res.ok) throw new Error(payload.error ?? "The advisor is unavailable right now.");
+      // The response can be a non-JSON HTML page when the serverless function times out
+      // (the advisor is slow). Read as text first and parse defensively so the user never
+      // sees a raw "Unexpected token '<'" parse error.
+      const raw = await res.text();
+      let payload: (ChatResponse & { error?: string }) | null = null;
+      try {
+        payload = raw ? (JSON.parse(raw) as ChatResponse & { error?: string }) : null;
+      } catch {
+        payload = null;
+      }
+      if (!res.ok || !payload) {
+        throw new Error(
+          payload?.error ?? "The advisor is taking longer than usual to respond. Please try again in a moment."
+        );
+      }
 
       const data = payload as ChatResponse;
       setLastResponse(data);

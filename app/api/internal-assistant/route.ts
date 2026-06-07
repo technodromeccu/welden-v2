@@ -7,6 +7,10 @@ import { getAdvisorSessions } from "@/lib/leads";
 import { answerInternalAssistantQuery, applyAssistantProposal, logAssistantCallOutcome } from "@/lib/internal-lead-assistant";
 import type { AssistantProposal, InternalAssistantResponse, LeadCallOutcome } from "@/lib/types";
 
+// Runs a Gemini call against the CRM context; can exceed the 10s default. Raise the
+// function timeout (Netlify honors Next's maxDuration up to the plan's 26s max).
+export const maxDuration = 26;
+
 const callOutcomes: LeadCallOutcome[] = ["no_answer", "call_back_requested", "send_brochure", "send_quotation", "needs_more_details", "technical_discussion_needed", "budget_not_clear", "wrong_contact", "not_interested", "follow_up_later", "meeting_scheduled", "converted", "lost"];
 
 export async function POST(request: Request) {
