@@ -266,6 +266,15 @@ For variants in size, prefer `text-[11px] tracking-[0.18em]` or `text-[11px] tra
 - **`variant="ghost"`** — for tertiary actions inside dense panels.
 - Raw `<button>` is acceptable only for icon-only actions inside list rows (e.g. drag handles, delete-row, dropdown triggers) — and those should always have an `aria-label`.
 
+#### Sizing scale (strict 8pt)
+| Size | Height | Horizontal padding |
+|---|---:|---:|
+| `size="sm"` | 32 (`h-8`) | 12 (`px-3`) |
+| `size="default"` | 40 (`h-10`) | 16 (`px-4`) |
+| `size="lg"` | 48 (`h-12`) | 24 (`px-6`) |
+
+`Input` is `h-10` (40px) and `Textarea` is `min-h-[120px]` — both align to the **default** Button height so they sit on a shared baseline when placed in a row.
+
 ### Form input
 ```tsx
 <Input placeholder="…" value={…} onChange={…} />
