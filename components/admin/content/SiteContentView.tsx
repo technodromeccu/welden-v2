@@ -77,7 +77,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
 
                           {selectedSiteSection.key === "machine_cards" ? (
                             <div className="rounded-2xl border border-outline-variant/15 bg-white p-6">
-                              <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Homepage machine cards</div>
+                              <div className="text-sm font-semibold text-on-surface">Homepage machine cards</div>
                               <div className="mt-3 text-lg font-black tracking-tight text-primary">Separate visibility control for the landing-page card rail</div>
                               <div className="mt-3 text-sm leading-7 text-secondary">
                                 Use this section to show or hide the machine cards independently from the `Machine lineup` intro copy. The card content itself still comes from each published machine in the Machines workspace.
@@ -89,7 +89,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                             <div className="space-y-4 rounded-2xl border border-outline-variant/15 bg-surface-container-low/50 p-4">
                               <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
                                 <div>
-                                  <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Hero slides</div>
+                                  <div className="text-sm font-semibold text-on-surface">Hero slides</div>
                                   <div className="mt-2 text-sm leading-6 text-secondary">Add only the slides you want on the homepage hero. Drag to reorder, click to edit, and delete when a slide is no longer needed.</div>
                                 </div>
                                 <div className="flex flex-wrap gap-3">
@@ -120,7 +120,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                       className={cn("overflow-hidden rounded-2xl border bg-white text-left transition", isSelected ? "border-primary/30 shadow-md ring-1 ring-primary/15" : "border-outline-variant/15 hover:border-primary/20 hover:shadow-sm", isDragged && "bg-primary-fixed/30")}
                                     >
                                       <div className="flex items-center justify-between border-b border-outline-variant/10 px-4 py-3">
-                                        <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Slide {String(index + 1).padStart(2, "0")}</div>
+                                        <div className="text-sm font-semibold text-on-surface">Slide {String(index + 1).padStart(2, "0")}</div>
                                         <GripVertical className="h-4 w-4 text-secondary" />
                                       </div>
                                       <div className="aspect-[4/3] bg-surface-container-highest">
@@ -140,14 +140,14 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                 <div className="grid gap-4 lg:grid-cols-[0.38fr_0.62fr]">
                                   <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
                                     <div className="flex items-center justify-between gap-3">
-                                      <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Live preview</div>
+                                      <div className="text-xs font-medium text-secondary">Live preview</div>
                                       <Button variant="outline" size="sm" onClick={() => deleteHeroSlide(selectedHeroSlide.id)}>Delete slide</Button>
                                     </div>
                                     <div className="mt-4 overflow-hidden rounded-2xl border border-outline-variant/10 bg-surface-container-highest">
                                       {selectedHeroSlide.imageUrl ? <Image src={selectedHeroSlide.imageUrl} alt={selectedHeroSlide.title} width={640} height={480} unoptimized className="aspect-[4/3] h-full w-full object-cover" style={{ objectPosition: selectedHeroSlide.imagePosition || "center center" }} /> : <div className="flex aspect-[4/3] items-center justify-center text-sm text-secondary">No hero image selected</div>}
                                     </div>
                                     <div className="mt-4 space-y-2 rounded-xl bg-surface-container-low px-4 py-4">
-                                      <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Text preview</div>
+                                      <div className="text-xs font-medium text-secondary">Text preview</div>
                                       <div className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">{selectedHeroSlide.eyebrow || "Welden Industries"}</div>
                                       <div className="text-xl font-black tracking-tight text-primary">{selectedHeroSlide.title}</div>
                                       <div className="text-sm leading-6 text-secondary">{selectedHeroSlide.summary}</div>
@@ -155,7 +155,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                   </div>
                                   <div className="space-y-4 rounded-2xl border border-outline-variant/15 bg-white p-4">
                                     <div>
-                                      <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Edit selected slide</div>
+                                      <div className="text-xs font-medium text-secondary">Edit selected slide</div>
                                       <div className="mt-2 text-lg font-black tracking-tight text-primary">Slide content and image</div>
                                     </div>
                                     <Input placeholder="Eyebrow" value={selectedHeroSlide.eyebrow ?? ""} onChange={(e) => updateHeroSlide(selectedHeroSlide.id, { eyebrow: e.target.value })} />
@@ -177,14 +177,14 @@ export function SiteContentView({ ctx }: { ctx: any }) {
 
                           {selectedSiteSection.key === "hero" ? (
                             <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
-                              <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Hero CTA buttons</div>
+                              <div className="text-sm font-semibold text-on-surface">Hero CTA buttons</div>
                               <div className="mt-4 grid gap-3 md:grid-cols-2">
                                 <label className="grid gap-2 text-sm">
-                                  <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Primary button label</span>
+                                  <span className="text-xs font-medium text-secondary">Primary button label</span>
                                   <Input placeholder="Talk to our expert" value={parseNamedItems(selectedSiteSection.items).cta_primary ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "cta_primary", e.target.value)} />
                                 </label>
                                 <label className="grid gap-2 text-sm">
-                                  <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Secondary button label</span>
+                                  <span className="text-xs font-medium text-secondary">Secondary button label</span>
                                   <Input placeholder="Explore machines" value={parseNamedItems(selectedSiteSection.items).cta_secondary ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "cta_secondary", e.target.value)} />
                                 </label>
                               </div>
@@ -194,7 +194,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                           {selectedSiteSection.key === "footer" ? (
                             <div className="space-y-4 rounded-2xl border border-outline-variant/15 bg-white p-4">
                               <div>
-                                <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Footer links</div>
+                                <div className="text-sm font-semibold text-on-surface">Footer links</div>
                                 <div className="mt-4 grid gap-3">
                                   {Array.from({ length: 3 }).map((_, index) => {
                                     const plainItems = (selectedSiteSection.items ?? []).filter((item: string) => !item.startsWith("social_") && !item.startsWith("custom_social_"));
@@ -218,7 +218,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                 </div>
                               </div>
                               <div className="rounded-xl border border-outline-variant/12 bg-surface-container-low/40 p-4">
-                                <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Social links</div>
+                                <div className="text-sm font-semibold text-on-surface">Social links</div>
                                 <div className="mt-4 grid gap-3 md:grid-cols-2">
                                   <Input placeholder="LinkedIn URL" value={parseNamedItems(selectedSiteSection.items).social_linkedin ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "social_linkedin", e.target.value)} />
                                   <Input placeholder="Twitter URL" value={parseNamedItems(selectedSiteSection.items).social_twitter ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "social_twitter", e.target.value)} />
@@ -238,7 +238,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
 
                           {selectedSiteSection.key === "contact" ? (
                             <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
-                              <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Contact actions</div>
+                              <div className="text-sm font-semibold text-on-surface">Contact actions</div>
                               <div className="mt-4 grid gap-4">
                                 {Array.from({ length: 3 }).map((_, index) => (
                                   <Input
@@ -252,14 +252,14 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                 <Input placeholder="WhatsApp number with country code" value={parseNamedItems(selectedSiteSection.items).whatsapp_number ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "whatsapp_number", e.target.value)} />
                               </div>
                               <div className="rounded-xl border border-outline-variant/12 bg-surface-container-low/40 p-4">
-                                <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">CTA buttons</div>
+                                <div className="text-sm font-semibold text-on-surface">CTA buttons</div>
                                 <div className="mt-3 grid gap-3 md:grid-cols-2">
                                   <Input placeholder="Quote CTA label" value={parseNamedItems(selectedSiteSection.items).cta_quote ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "cta_quote", e.target.value)} />
                                   <Input placeholder="Chatbot CTA label" value={parseNamedItems(selectedSiteSection.items).cta_chatbot ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "cta_chatbot", e.target.value)} />
                                 </div>
                               </div>
                               <div className="rounded-xl border border-outline-variant/12 bg-surface-container-low/40 p-4">
-                                <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Form labels</div>
+                                <div className="text-sm font-semibold text-on-surface">Form labels</div>
                                 <div className="mt-3 grid gap-3 md:grid-cols-2">
                                   <Input placeholder="Form heading" value={parseNamedItems(selectedSiteSection.items).form_heading ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "form_heading", e.target.value)} />
                                   <Input placeholder="Response posture line" value={parseNamedItems(selectedSiteSection.items).form_response ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, "form_response", e.target.value)} />
@@ -272,15 +272,15 @@ export function SiteContentView({ ctx }: { ctx: any }) {
 
                           {selectedSiteSection.key === "machine_details" ? (
                             <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
-                              <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Machine detail page copy</div>
+                              <div className="text-sm font-semibold text-on-surface">Machine detail page copy</div>
                               <div className="mt-4 space-y-6">
                                 {machineDetailFieldGroups.map((group) => (
                                   <div key={group.title} className="space-y-3 rounded-xl border border-outline-variant/12 bg-surface-container-low/40 p-4">
-                                    <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">{group.title}</div>
+                                    <div className="text-sm font-semibold text-on-surface">{group.title}</div>
                                     <div className="grid gap-3 md:grid-cols-2">
                                       {group.fields.map(([fieldKey, label]) => (
                                         <label key={fieldKey} className="grid gap-2 text-sm">
-                                          <span className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">{label}</span>
+                                          <span className="text-xs font-medium text-secondary">{label}</span>
                                           <Input value={machineDetailItems[fieldKey] ?? ""} onChange={(e) => updateNamedSiteItem(selectedSiteSection.key, fieldKey, e.target.value)} placeholder={label} />
                                         </label>
                                       ))}
@@ -293,7 +293,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
 
                           {selectedSiteSection.key !== "footer" && selectedSiteSection.key !== "contact" && selectedSiteSection.key !== "machine_cards" && selectedSiteSection.key !== "machine_details" ? (
                             <div className="space-y-2">
-                              <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Items</div>
+                              <div className="text-xs font-medium text-secondary">Items</div>
                               <Textarea
                                 rows={6}
                                 placeholder="One item per line"
@@ -307,7 +307,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                         </div>
                         <div className="space-y-4">
                           <div className="rounded-2xl border border-outline-variant/15 bg-surface-container-low/50 p-4">
-                            <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Section controls</div>
+                            <div className="text-xs font-medium text-secondary">Section controls</div>
                             <div className="mt-4 space-y-4 text-sm leading-6 text-secondary">
                               <label className="flex items-center gap-2 text-sm font-medium text-on-surface"><input type="checkbox" checked={selectedSiteSection.published !== false} onChange={(e) => updateSiteSection(selectedSiteSection.key, { published: e.target.checked })} />Published on site</label>
                               <div>Section key: <span className="font-semibold text-on-surface">{selectedSiteSection.key}</span></div>
@@ -320,14 +320,14 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                             </div>
                           </div>
                           <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
-                            <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Section snapshot</div>
+                            <div className="text-xs font-medium text-secondary">Section snapshot</div>
                             <div className="mt-4 space-y-3 text-sm text-secondary">
                               <div className="rounded-xl bg-surface-container-low p-4">
-                                <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Current title</div>
+                                <div className="text-xs font-medium text-secondary">Current title</div>
                                 <div className="mt-2 text-base font-semibold text-on-surface">{selectedSiteSection.title || "Untitled section"}</div>
                               </div>
                               <div className="rounded-xl bg-surface-container-low p-4">
-                                <div className="text-xs font-bold uppercase tracking-[0.16em] text-secondary">Body length</div>
+                                <div className="text-xs font-medium text-secondary">Body length</div>
                                 <div className="mt-2 text-base font-semibold text-on-surface">{selectedSiteSection.body?.length ?? 0} characters</div>
                               </div>
                             </div>
@@ -342,17 +342,17 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                   <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
                     <div className="grid gap-3 sm:grid-cols-3 xl:max-w-3xl xl:flex-1">
                       <div className="rounded-2xl border border-outline-variant/15 bg-white px-6 py-4 shadow-sm">
-                        <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Sections</div>
+                        <div className="text-sm font-semibold text-on-surface">Sections</div>
                         <div className="mt-3 text-3xl font-black tracking-tight text-primary">{visibleSiteSections.length}</div>
                         <div className="mt-1 text-sm text-secondary">Landing page sections in the content library.</div>
                       </div>
                       <div className="rounded-2xl border border-outline-variant/15 bg-white px-6 py-4 shadow-sm">
-                        <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Published</div>
+                        <div className="text-sm font-semibold text-on-surface">Published</div>
                         <div className="mt-3 text-3xl font-black tracking-tight text-primary">{visibleSiteSections.filter((section: any) => section.published !== false).length}</div>
                         <div className="mt-1 text-sm text-secondary">Sections currently live on the public site.</div>
                       </div>
                       <div className="rounded-2xl border border-outline-variant/15 bg-white px-6 py-4 shadow-sm">
-                        <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Editor mode</div>
+                        <div className="text-sm font-semibold text-on-surface">Editor mode</div>
                         <div className="mt-3 text-lg font-black tracking-tight text-primary">Section library</div>
                         <div className="mt-1 text-sm text-secondary">Open one block at a time in a full-screen editor.</div>
                       </div>
