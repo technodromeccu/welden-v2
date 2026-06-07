@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
-import { AlertTriangle, BadgeAlert, Bot, CheckCircle2, Eye, FileText, Filter, GripVertical, LayoutDashboard, Library, LogOut, MessageSquare, PencilLine, Plus, Search, Settings2, TimerReset, Users, UserRoundPlus, ClipboardList } from "lucide-react";
+import { AlertTriangle, BadgeAlert, BookOpen, Bot, CheckCircle2, Eye, FileText, Filter, GripVertical, LayoutDashboard, Library, LogOut, MessageSquare, PencilLine, Plus, Search, Settings2, TimerReset, Users, UserRoundPlus, ClipboardList } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { DashboardView } from "@/components/admin/dashboard/DashboardView";
 import { LeadsView } from "@/components/admin/leads/LeadsView";
@@ -1205,6 +1205,20 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
             </div>
           ))}
         </nav>
+        <div className="border-t border-white/10 px-4 py-3">
+          <a
+            href="/admin/help"
+            className="flex items-center gap-3 rounded-2xl px-3 py-3 text-left text-sm font-medium tracking-tight text-slate-300 transition-colors hover:bg-white/8 hover:text-white"
+          >
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/6 text-slate-300">
+              <BookOpen className="h-4 w-4" />
+            </span>
+            <div className="min-w-0">
+              <div className="truncate font-semibold">Help &amp; Guide</div>
+              <div className="text-xs text-slate-500">Terms, flows, and FAQs</div>
+            </div>
+          </a>
+        </div>
         <div className="border-t border-white/10 p-4">
           <div className="flex items-center gap-3 rounded-2xl border border-white/8 bg-white/5 p-3 text-sm shadow-sm">
             <div className="flex min-w-0 flex-1 items-center gap-3">
