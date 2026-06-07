@@ -13,10 +13,12 @@ const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
   ghost: "text-primary hover:bg-surface-container-low"
 };
 
+// Strict 8pt grid: sm=32 / md=40 / lg=48. Matches Input height so buttons and
+// inputs sit on the same baseline when placed in a row.
 const sizeClasses: Record<NonNullable<ButtonProps["size"]>, string> = {
   default: "h-10 px-4 py-2",
-  sm: "h-9 px-3",
-  lg: "h-11 px-5"
+  sm: "h-8 px-3",
+  lg: "h-12 px-6"
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
