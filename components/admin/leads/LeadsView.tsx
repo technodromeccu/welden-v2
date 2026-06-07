@@ -692,7 +692,7 @@ export function LeadsView(props: LeadsViewProps) {
                   <div className="space-y-6">
                     {nextBestAction && (
                       <div className={cn(
-                        "rounded-3xl border px-5 py-5 shadow-sm lg:px-6",
+                        "rounded-3xl border px-6 py-6 shadow-sm lg:px-6",
                         nextBestAction.tone === "danger"
                           ? "border-red-200/80 bg-red-50/90"
                           : nextBestAction.tone === "warning"
@@ -739,7 +739,7 @@ export function LeadsView(props: LeadsViewProps) {
                     )}
 
                     {escalationAction ? (
-                      <div className="rounded-3xl border border-red-200/80 bg-red-50/85 px-5 py-5 shadow-sm lg:px-6">
+                      <div className="rounded-3xl border border-red-200/80 bg-red-50/85 px-6 py-6 shadow-sm lg:px-6">
                         <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-red-700">Escalation mode</div>
                         <div className="mt-2 text-2xl font-black tracking-tight text-red-950">{escalationAction.title}</div>
                         <div className="mt-2 text-sm leading-6 text-red-900/80">{escalationAction.body}</div>
@@ -767,7 +767,7 @@ export function LeadsView(props: LeadsViewProps) {
                   </div>
                 </div>
                 <div className="space-y-6">
-                  <div className="rounded-2xl bg-primary p-5 text-white">
+                  <div className="rounded-2xl bg-primary p-6 text-white">
                     <div className="flex items-center justify-between gap-3">
                       <div className="text-sm font-bold uppercase tracking-[0.16em] text-white/70">Preliminary quotation</div>
                       {/* WF-13: Copy quotation reference */}
@@ -969,7 +969,7 @@ export function LeadsView(props: LeadsViewProps) {
                     <button
                       type="button"
                       onClick={() => setTimelineOpen((v) => !v)}
-                      className="flex w-full items-center justify-between rounded-2xl px-5 py-4 text-left transition-colors hover:bg-surface-container-low/60"
+                      className="flex w-full items-center justify-between rounded-2xl px-6 py-4 text-left transition-colors hover:bg-surface-container-low/60"
                     >
                       <div>
                         <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Activity timeline</div>
@@ -978,7 +978,7 @@ export function LeadsView(props: LeadsViewProps) {
                       {timelineOpen ? <ChevronDown className="h-4 w-4 text-secondary" /> : <ChevronRight className="h-4 w-4 text-secondary" />}
                     </button>
                     {timelineOpen && (
-                      <div className="border-t border-outline-variant/10 px-5 pb-5 pt-4 space-y-6">
+                      <div className="border-t border-outline-variant/10 px-6 pb-5 pt-4 space-y-6">
                         {/* Activity log — newest first */}
                         <div>
                           <div className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Events</div>
@@ -1054,10 +1054,10 @@ export function LeadsView(props: LeadsViewProps) {
           />
 
           <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Visible pipeline</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{filteredLeads.length}</div><Badge variant="outline">Queue</Badge></div><div className="mt-2 text-sm text-secondary">All commercially active leads currently visible in this workspace.</div></CardContent></Card>
-            <Card className="overflow-hidden border border-orange-200/80 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Quotes cooling off</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{quotedAwaitingCallCount}</div><Badge variant="warning">Commercial</Badge></div><div className="mt-2 text-sm text-secondary">Quotes already sent that still need a direct human follow-up.</div></CardContent></Card>
-            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Callbacks today</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{callbacksTodayCount}</div><Badge variant="secondary">Scheduled</Badge></div><div className="mt-2 text-sm text-secondary">Buyer conversations already scheduled into today&apos;s operating window.</div></CardContent></Card>
-            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Retry queue</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{retryQueueCount}</div><Badge variant={retryQueueCount > 0 ? "warning" : "outline"}>{retryQueueCount > 0 ? "Action" : "Clear"}</Badge></div><div className="mt-2 text-sm text-secondary">No-answer and callback-later leads ready for another attempt.</div></CardContent></Card>
+            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Visible pipeline</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{filteredLeads.length}</div><Badge variant="outline">Queue</Badge></div><div className="mt-2 text-sm text-secondary">All commercially active leads currently visible in this workspace.</div></CardContent></Card>
+            <Card className="overflow-hidden border border-orange-200/80 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Quotes cooling off</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{quotedAwaitingCallCount}</div><Badge variant="warning">Commercial</Badge></div><div className="mt-2 text-sm text-secondary">Quotes already sent that still need a direct human follow-up.</div></CardContent></Card>
+            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Callbacks today</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{callbacksTodayCount}</div><Badge variant="secondary">Scheduled</Badge></div><div className="mt-2 text-sm text-secondary">Buyer conversations already scheduled into today&apos;s operating window.</div></CardContent></Card>
+            <Card className="overflow-hidden border border-outline-variant/12 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Retry queue</div><div className="mt-3 flex items-end justify-between gap-3"><div className="text-4xl font-black tracking-tight text-primary">{retryQueueCount}</div><Badge variant={retryQueueCount > 0 ? "warning" : "outline"}>{retryQueueCount > 0 ? "Action" : "Clear"}</Badge></div><div className="mt-2 text-sm text-secondary">No-answer and callback-later leads ready for another attempt.</div></CardContent></Card>
           </section>
 
           {currentUserRole !== "agent" ? (
@@ -1068,7 +1068,7 @@ export function LeadsView(props: LeadsViewProps) {
                   type="button"
                   onClick={() => setSavedView(view.id)}
                   className={cn(
-                    "rounded-3xl border px-5 py-5 text-left transition-all",
+                    "rounded-3xl border px-6 py-6 text-left transition-all",
                     savedView === view.id
                       ? "border-primary bg-primary-fixed/12 shadow-[0_18px_38px_-26px_rgba(22,59,121,0.5)]"
                       : "border-outline-variant/12 bg-white hover:border-primary/25 hover:bg-surface-container-low"
@@ -1123,7 +1123,7 @@ export function LeadsView(props: LeadsViewProps) {
 
           {currentUserRole !== "agent" && pipelineViewMode === "board" ? (
             <section className="overflow-hidden rounded-3xl border border-outline-variant/12 bg-[radial-gradient(circle_at_top_left,rgba(26,75,140,0.08),transparent_22%),linear-gradient(180deg,rgba(248,250,252,0.96),rgba(255,255,255,0.98))] shadow-[0_28px_80px_-42px_rgba(15,23,42,0.3)]">
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-outline-variant/10 px-5 py-4">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-outline-variant/10 px-6 py-4">
                 <div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Kanban flow</div>
                   <div className="mt-1 text-base font-black tracking-tight text-primary">Stage lanes with live drag-and-drop</div>
@@ -1540,7 +1540,7 @@ export function LeadsView(props: LeadsViewProps) {
                       <button
                         type="button"
                         onClick={() => { setSelectedLeadId(lead.id); setShowLeadEditor(true); }}
-                        className="grid min-w-0 flex-1 gap-4 px-6 py-5 text-left lg:grid-cols-[1.75fr_0.95fr_0.7fr_1fr_0.8fr] lg:items-center"
+                        className="grid min-w-0 flex-1 gap-4 px-6 py-6 text-left lg:grid-cols-[1.75fr_0.95fr_0.7fr_1fr_0.8fr] lg:items-center"
                       >
                         <div className="flex items-start gap-4">
                           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-container-low text-sm font-black uppercase text-primary">

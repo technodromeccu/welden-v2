@@ -83,7 +83,7 @@ export function ReorderableStringList({
           </div>
         ))}
       </div>
-      {!items.length ? <div className="rounded-xl border border-dashed border-outline-variant/30 py-5 text-center text-sm text-secondary">No items yet.</div> : null}
+      {!items.length ? <div className="rounded-xl border border-dashed border-outline-variant/30 py-6 text-center text-sm text-secondary">No items yet.</div> : null}
       <Button type="button" variant="outline" size="sm" className="mt-3" onClick={addItem}>
         <Plus className="mr-1.5 h-3.5 w-3.5" /> Add item
       </Button>

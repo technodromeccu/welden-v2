@@ -76,7 +76,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                           ) : null}
 
                           {selectedSiteSection.key === "machine_cards" ? (
-                            <div className="rounded-2xl border border-outline-variant/15 bg-white p-5">
+                            <div className="rounded-2xl border border-outline-variant/15 bg-white p-6">
                               <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Homepage machine cards</div>
                               <div className="mt-3 text-lg font-black tracking-tight text-primary">Separate visibility control for the landing-page card rail</div>
                               <div className="mt-3 text-sm leading-7 text-secondary">
@@ -133,7 +133,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                     </button>
                                   );
                                 })}
-                                {!heroSlides.length ? <div className="rounded-2xl border border-dashed border-outline-variant/15 bg-white px-5 py-10 text-center text-sm text-secondary md:col-span-2 xl:col-span-4">No hero slides yet. Add a slide to start building the hero.</div> : null}
+                                {!heroSlides.length ? <div className="rounded-2xl border border-dashed border-outline-variant/15 bg-white px-6 py-10 text-center text-sm text-secondary md:col-span-2 xl:col-span-4">No hero slides yet. Add a slide to start building the hero.</div> : null}
                               </div>
 
                               {selectedHeroSlide ? (
@@ -273,7 +273,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                           {selectedSiteSection.key === "machine_details" ? (
                             <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
                               <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Machine detail page copy</div>
-                              <div className="mt-4 space-y-5">
+                              <div className="mt-4 space-y-6">
                                 {machineDetailFieldGroups.map((group) => (
                                   <div key={group.title} className="space-y-3 rounded-xl border border-outline-variant/12 bg-surface-container-low/40 p-4">
                                     <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">{group.title}</div>
@@ -341,17 +341,17 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                 <div className="space-y-6">
                   <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
                     <div className="grid gap-3 sm:grid-cols-3 xl:max-w-3xl xl:flex-1">
-                      <div className="rounded-2xl border border-outline-variant/15 bg-white px-5 py-4 shadow-sm">
+                      <div className="rounded-2xl border border-outline-variant/15 bg-white px-6 py-4 shadow-sm">
                         <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Sections</div>
                         <div className="mt-3 text-3xl font-black tracking-tight text-primary">{visibleSiteSections.length}</div>
                         <div className="mt-1 text-sm text-secondary">Landing page sections in the content library.</div>
                       </div>
-                      <div className="rounded-2xl border border-outline-variant/15 bg-white px-5 py-4 shadow-sm">
+                      <div className="rounded-2xl border border-outline-variant/15 bg-white px-6 py-4 shadow-sm">
                         <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Published</div>
                         <div className="mt-3 text-3xl font-black tracking-tight text-primary">{visibleSiteSections.filter((section: any) => section.published !== false).length}</div>
                         <div className="mt-1 text-sm text-secondary">Sections currently live on the public site.</div>
                       </div>
-                      <div className="rounded-2xl border border-outline-variant/15 bg-white px-5 py-4 shadow-sm">
+                      <div className="rounded-2xl border border-outline-variant/15 bg-white px-6 py-4 shadow-sm">
                         <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Editor mode</div>
                         <div className="mt-3 text-lg font-black tracking-tight text-primary">Section library</div>
                         <div className="mt-1 text-sm text-secondary">Open one block at a time in a full-screen editor.</div>
@@ -392,7 +392,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                   : "border-outline-variant/15 bg-white hover:border-primary/20 hover:bg-surface-container-low hover:shadow-sm",
                               )}
                             >
-                              <div className={cn("flex items-center justify-between border-b px-5 py-4", isActive ? "border-white/12 bg-white/8" : "border-outline-variant/10 bg-surface-container-low/40")}>
+                              <div className={cn("flex items-center justify-between border-b px-6 py-4", isActive ? "border-white/12 bg-white/8" : "border-outline-variant/10 bg-surface-container-low/40")}>
                                 <div className="flex items-center gap-3">
                                   <div className={cn("flex h-11 w-11 items-center justify-center rounded-2xl", isActive ? "bg-white/14 text-white" : "bg-primary-fixed/25 text-primary")}>
                                     <SectionIcon className="h-5 w-5" />
@@ -408,7 +408,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                 </div>
                               </div>
                               {heroPreviewSlide ? (
-                                <div className="px-5 pt-5">
+                                <div className="px-6 pt-5">
                                   <div className={cn("overflow-hidden rounded-3xl border", isActive ? "border-white/12" : "border-outline-variant/12")}>
                                     <div className="relative aspect-[16/10] bg-surface-container-highest">
                                       {heroPreviewSlide.imageUrl ? <Image src={heroPreviewSlide.imageUrl} alt={heroPreviewSlide.title} fill unoptimized sizes="(min-width: 1280px) 20rem, (min-width: 640px) 50vw, 100vw" className="object-cover" /> : null}
@@ -422,7 +422,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                   </div>
                                 </div>
                               ) : null}
-                              <div className="space-y-4 px-5 py-5">
+                              <div className="space-y-4 px-6 py-6">
                                 <div className={cn("text-sm leading-6", isActive ? "text-white/82" : "text-secondary")}>{sectionDescription}</div>
                                 <div className="flex items-center justify-between">
                                   <div className={cn("text-[11px] font-bold uppercase tracking-[0.18em]", isActive ? "text-white/70" : "text-secondary")}>{heroPreviewSlide ? "Edit hero workspace" : "Open full editor"}</div>

@@ -1183,7 +1183,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
         </div>
         <nav className="mt-4 flex-1 overflow-y-auto px-4 pb-4">
           {groupedTabs.map((group) => (
-            <div key={group.label} className="mb-5">
+            <div key={group.label} className="mb-6">
               <div className="px-3 pb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">{group.label}</div>
               <div className="space-y-1">
                 {group.tabs.map((entry) => {
@@ -1297,7 +1297,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
           {loadingTab && !loadedTabs[tab] ? (
             <div className="overflow-hidden rounded-2xl border border-outline-variant/15 bg-white shadow-sm">
               {[...Array(5)].map((_, i) => (
-                <div key={i} className="flex items-center gap-4 border-b border-outline-variant/10 px-6 py-5 last:border-0">
+                <div key={i} className="flex items-center gap-4 border-b border-outline-variant/10 px-6 py-6 last:border-0">
                   <div className="h-11 w-11 animate-pulse rounded-xl bg-surface-container-high" />
                   <div className="flex-1 space-y-2">
                     <div className="h-3.5 w-1/3 animate-pulse rounded-md bg-surface-container-high" style={{ animationDelay: `${i * 60}ms` }} />

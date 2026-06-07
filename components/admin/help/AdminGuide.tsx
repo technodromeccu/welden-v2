@@ -92,7 +92,7 @@ export function AdminGuide({ currentUserRole }: { currentUserRole: string }) {
               ref={(node) => { sectionRefs.current[section.id] = node; }}
               className="scroll-mt-24 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
             >
-              <div className="mb-5 flex items-center gap-3">
+              <div className="mb-6 flex items-center gap-3">
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-xs font-black text-secondary">
                   {index + 1}
                 </span>

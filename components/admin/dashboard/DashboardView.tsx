@@ -143,14 +143,14 @@ export function DashboardView(props: DashboardViewProps) {
 
       <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
         <Card className="overflow-hidden border-0 bg-[linear-gradient(135deg,#0f172a_0%,#173b79_55%,#1d4ed8_100%)] text-white shadow-[0_28px_80px_-36px_rgba(15,23,42,0.65)]">
-          <CardContent className="grid gap-5 p-5 lg:grid-cols-[1.05fr_0.95fr] lg:p-6">
+          <CardContent className="grid gap-6 p-6 lg:grid-cols-[1.05fr_0.95fr] lg:p-6">
             <div>
               <div className="text-[11px] font-bold uppercase tracking-[0.22em] text-sky-200/80">Today</div>
               <h2 className="mt-3 max-w-xl text-2xl font-black tracking-tight md:text-[2rem]">Keep the commercial queue moving without hunting through the dashboard.</h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-200">
                 Focus on leads that need action today, open the pipeline fast, and keep quotation follow-up visible without wasting vertical space.
               </p>
-              <div className="mt-5 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-3">
                 <Button className="rounded-xl bg-white text-slate-950 hover:bg-slate-100" onClick={() => setTab("leads")}>
                   Open pipeline
                 </Button>
@@ -210,10 +210,10 @@ export function DashboardView(props: DashboardViewProps) {
       </section>
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Pipeline intake</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardFirstCallOpenCount}</div><div className="mt-2 text-sm text-secondary">New leads still waiting for the first staff touch.</div></CardContent></Card>
-        <Card className="border border-amber-200/70 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Quoted but cooling</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardQuotedAwaitingCallCount}</div><div className="mt-2 text-sm text-secondary">Quotes sent without a logged human follow-up yet.</div></CardContent></Card>
-        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Callbacks committed</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardCallbacksTodayCount}</div><div className="mt-2 text-sm text-secondary">Buyer calls scheduled into today&apos;s operating window.</div></CardContent></Card>
-        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-5"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Immediate pressure</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardFirstCallDueCount}</div><div className="mt-2 text-sm text-secondary">Leads whose first call deadline has already arrived.</div></CardContent></Card>
+        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Pipeline intake</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardFirstCallOpenCount}</div><div className="mt-2 text-sm text-secondary">New leads still waiting for the first staff touch.</div></CardContent></Card>
+        <Card className="border border-amber-200/70 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Quoted but cooling</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardQuotedAwaitingCallCount}</div><div className="mt-2 text-sm text-secondary">Quotes sent without a logged human follow-up yet.</div></CardContent></Card>
+        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Callbacks committed</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardCallbacksTodayCount}</div><div className="mt-2 text-sm text-secondary">Buyer calls scheduled into today&apos;s operating window.</div></CardContent></Card>
+        <Card className="border border-outline-variant/15 bg-white shadow-sm"><CardContent className="p-6"><div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Immediate pressure</div><div className="mt-3 text-4xl font-black tracking-tight text-primary">{dashboardFirstCallDueCount}</div><div className="mt-2 text-sm text-secondary">Leads whose first call deadline has already arrived.</div></CardContent></Card>
       </section>
 
       <section className="grid gap-6 xl:grid-cols-[1.18fr_0.82fr]">
@@ -231,9 +231,9 @@ export function DashboardView(props: DashboardViewProps) {
               )}
             </div>
           </CardHeader>
-          <CardContent className="space-y-5">
+          <CardContent className="space-y-6">
             {totalTodayCount === 0 ? (
-              <div className="rounded-2xl border border-dashed border-emerald-200/60 bg-emerald-50/40 px-5 py-10 text-center">
+              <div className="rounded-2xl border border-dashed border-emerald-200/60 bg-emerald-50/40 px-6 py-10 text-center">
                 <div className="text-sm font-semibold text-emerald-700">All clear</div>
                 <div className="mt-1 text-sm text-emerald-600/80">No callbacks, follow-ups, or overdue calls for today.</div>
               </div>

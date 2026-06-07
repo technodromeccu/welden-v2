@@ -279,14 +279,14 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
   function renderBlockInspector() {
     if (!selectedBlock) {
       return (
-        <div className="space-y-5">
-          <div className="rounded-3xl border border-outline-variant/12 bg-[linear-gradient(180deg,#f6f9fc_0%,#ffffff_100%)] p-5">
+        <div className="space-y-6">
+          <div className="rounded-3xl border border-outline-variant/12 bg-[linear-gradient(180deg,#f6f9fc_0%,#ffffff_100%)] p-6">
             <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">{SURFACE_COPY[activeSurface].eyebrow}</div>
             <div className="mt-2 text-xl font-black tracking-tight text-primary">{SURFACE_COPY[activeSurface].label}</div>
             <div className="mt-2 text-sm leading-7 text-secondary">{SURFACE_COPY[activeSurface].description}</div>
             <div className="mt-3 rounded-2xl bg-surface-container-low/50 px-4 py-3 text-sm leading-6 text-on-surface">{SURFACE_COPY[activeSurface].audience}</div>
           </div>
-          <div className="rounded-3xl border border-outline-variant/12 bg-white p-5">
+          <div className="rounded-3xl border border-outline-variant/12 bg-white p-6">
             <div className="flex items-start gap-3">
               <div className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-primary-fixed/30 text-primary">
                 <SquarePen className="h-4.5 w-4.5" />
@@ -304,8 +304,8 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
     }
 
     return (
-      <div className="space-y-5">
-        <div className="rounded-3xl border border-outline-variant/12 bg-white p-5">
+      <div className="space-y-6">
+        <div className="rounded-3xl border border-outline-variant/12 bg-white p-6">
           <div className="flex items-start justify-between gap-3">
             <div>
               <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Selected block</div>
@@ -322,7 +322,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-outline-variant/12 bg-white p-5">
+        <div className="rounded-3xl border border-outline-variant/12 bg-white p-6">
           <div className="mb-4 flex items-center justify-between gap-3">
             <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Block settings</div>
             <div className="flex gap-2">
@@ -339,7 +339,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
             </div>
           </div>
 
-          <div className="space-y-5">
+          <div className="space-y-6">
             {selectedBlock.type === "cardMedia" ? (
               <ImageAssetEditor
                 label="Media"
@@ -453,7 +453,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
             ) : null}
 
             {selectedBlock.type === "hero" ? (
-              <div className="space-y-5">
+              <div className="space-y-6">
                 <ReorderableStringList
                   title="Hero points"
                   hint="Short support points that sit under the hero copy."
@@ -493,7 +493,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
             ) : null}
 
             {selectedBlock.type === "resourcePanel" ? (
-              <div className="space-y-5">
+              <div className="space-y-6">
                 <FieldGroup label="Media" hint="Brochure and video populate the resource panel.">
                   <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
                     <Input placeholder="/brochures/machine.pdf" value={normalizedDraft.brochureUrl} onChange={(event) => patchDraft({ brochureUrl: event.target.value })} />
@@ -637,7 +637,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                 <div className="flex flex-col gap-6 xl:flex-row xl:items-start">
                   <Card className="flex-1 border border-outline-variant/12 shadow-sm min-w-0">
                     <CardHeader className="border-b border-outline-variant/10 bg-white/80 pb-5">
-                      <div className="flex flex-col gap-5">
+                      <div className="flex flex-col gap-6">
                         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                           <div>
                             <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Machine builder</div>
@@ -697,7 +697,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="space-y-4 bg-[linear-gradient(180deg,#f5f8fc_0%,#eef3f8_100%)] p-5">
+                    <CardContent className="space-y-4 bg-[linear-gradient(180deg,#f5f8fc_0%,#eef3f8_100%)] p-6">
                       <div className="flex flex-wrap gap-2">
                         <span className="rounded-full bg-white/88 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">
                           {SURFACE_COPY[activeSurface].label}
@@ -754,7 +754,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                   </Card>
 
                   <div className="sticky top-6 flex h-[calc(100vh-4rem)] w-full flex-col overflow-hidden rounded-3xl border border-outline-variant/12 bg-white shadow-sm xl:w-[420px] xl:shrink-0">
-                    <div className="flex items-start justify-between gap-3 border-b border-outline-variant/10 bg-white/90 px-5 py-4 backdrop-blur">
+                    <div className="flex items-start justify-between gap-3 border-b border-outline-variant/10 bg-white/90 px-6 py-4 backdrop-blur">
                       <div>
                         <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Inspector</div>
                         <div className="mt-1 text-xl font-black tracking-tight text-primary">
@@ -769,7 +769,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                         </div>
                       </div>
                     </div>
-                    <div className="border-b border-outline-variant/10 px-5 py-3 bg-surface-container-low/40">
+                    <div className="border-b border-outline-variant/10 px-6 py-3 bg-surface-container-low/40">
                       <div className="inline-flex rounded-full bg-surface-container p-1">
                         <button
                           type="button"
@@ -795,7 +795,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.15 }}
-                          className="p-5"
+                          className="p-6"
                         >
                           {builderSidebarTab === "edit" ? (
                             selectedBlock && isSimpleQuickEditBlock(selectedBlock) ? (

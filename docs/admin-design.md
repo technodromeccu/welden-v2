@@ -83,13 +83,15 @@ rounded:
   inner:  "0.75rem"  # rounded-xl — inner panels, list rows, content tiles
   button: "0.5rem"   # rounded-lg — buttons, inputs, dropdowns
 spacing:
-  card-pad:         "1.25rem"    # p-5    — DEFAULT CardContent padding
-  card-pad-form:    "1.5rem"     # p-6    — form-heavy cards (editor panels)
-  card-pad-compact: "1rem"       # p-4    — list rows, micro tiles only
+  # Strict 8pt grid (4pt only for fine-tuning inside compact components).
+  card-pad:         "1.5rem"     # p-6    — DEFAULT CardContent padding
+  card-pad-form:    "2rem"       # p-8    — form-heavy cards (editor panels)
+  card-pad-compact: "1rem"       # p-4    — list rows, micro tiles
   gap-row:          "0.5rem"     # gap-2  — chip / pill rows
-  gap-tight:        "0.75rem"    # gap-3  — most form fields, button rows
+  gap-tight:        "0.75rem"    # gap-3  — most form fields, button rows (4pt fine-tune)
   gap-section:      "1rem"       # gap-4  — multi-card grids
   stack-section:    "1.5rem"     # space-y-6 — between major card groups
+  stack-large:      "2rem"       # space-y-8 — between major page sections
 shadows:
   card:  "0 1px 2px rgba(10,22,40,0.05)"   # shadow-sm — the canonical card shadow
 components:
@@ -287,14 +289,19 @@ Use the `<Input>` and `<Textarea>` components — they already encode the right 
 
 ## 5. Layout Principles
 
-### Spacing scale (Tailwind defaults — admin does not invent custom spacing)
-| Use | Class |
-|---|---|
-| Chip-row spacing | `gap-2` (111 uses — dominant) |
-| Form-field row spacing | `gap-3` (104) |
-| Grid-card gap | `gap-4` (46) |
-| Section stack | `space-y-6` (30) |
-| Card content padding | `p-5` (default), `p-6` (forms), `p-4` (compact) |
+### Spacing scale — strict 8pt grid (4pt fine-tune only inside compact components)
+| Use | Class | Pixels |
+|---|---|---|
+| Chip-row spacing | `gap-2` | 8 |
+| Form-field row spacing | `gap-3` | 12 (4pt fine-tune — exception) |
+| Grid-card gap | `gap-4` | 16 |
+| Section stack | `space-y-6` | 24 |
+| Major page section stack | `space-y-8` | 32 |
+| Card content padding (default) | `p-6` | 24 |
+| Card content padding (form-heavy) | `p-8` | 32 |
+| Card content padding (compact list rows) | `p-4` | 16 |
+
+**Banned:** any `*-5`, `*-7`, `*-9` spacing utility — these are off the 8pt grid. PR Phase-1.1 (2026-06-07) swept all 75 such instances in admin to the nearest on-grid value.
 
 ### Page header pattern
 ```tsx

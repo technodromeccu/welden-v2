@@ -267,7 +267,7 @@ export function SettingsView(props: SettingsViewProps) {
               </div>
               <div className="rounded-xl border border-outline-variant/12 bg-white p-4">
                 <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Logo preview</div>
-                <div className="mt-3 rounded-xl bg-[#0d1b2f] px-6 py-5">
+                <div className="mt-3 rounded-xl bg-[#0d1b2f] px-6 py-6">
                   <img src={settingsDraft.quotationLogoUrl?.trim() || "/images/branding/welden-placeholder-logo.svg"} alt={settingsDraft.quotationBrandName || "Welden Industries"} className="h-auto max-h-16 w-auto max-w-[240px]" />
                 </div>
               </div>
