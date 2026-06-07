@@ -352,10 +352,10 @@ Every clickable element (button, link, tab, icon trigger) must have **all four s
 
 | State | Visible cue | How to ship it |
 |---|---|---|
-| **Idle** | Default styling | The base classes. |
+| **Idle** | Default styling + **pointer cursor on hover** | The base classes. Cursor is **handled globally** in `app/globals.css` — every `<button>` and `[role="button"]` gets `cursor: pointer` (overriding Tailwind's reset which would leave them at `cursor: default`). Disabled buttons get `cursor: not-allowed`. For non-button clickable elements (clickable cards, draggable rows), keep the `cursor-pointer` utility; for drag handles use `cursor-grab` / `cursor-grabbing`. |
 | **Hover (mouse)** | Visible change — bg shift, color shift, or border emphasis | A `hover:` utility. Required on raw `<button>`/`<a>` and on the **inactive branch** of any toggle. |
 | **Focus (keyboard)** | A visible ring around the element | **Handled globally** — `:focus-visible` in `app/globals.css` adds a 2px iron-navy outline to every focusable element. Do not strip it; if a specific element needs a different focus look, override locally rather than removing the global rule. |
-| **Disabled** | Reduced opacity, no pointer events | The `Button` component already encodes `disabled:opacity-50 disabled:pointer-events-none`. Raw `<button>` elements that can be disabled must add it. |
+| **Disabled** | Reduced opacity, no pointer events, **`not-allowed` cursor** | The `Button` component already encodes `disabled:opacity-50 disabled:pointer-events-none`. The cursor part is global. Raw `<button>` elements that can be disabled must add the opacity rule. |
 
 The `Button` component covers all four states automatically. Raw `<button>` / `<a>` only need the **hover** rule from the table — focus is global, disabled is added when relevant.
 
