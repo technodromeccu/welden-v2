@@ -243,7 +243,7 @@ export function InternalLeadAssistant({
               ))}
             </div>
           </CardHeader>
-          <CardContent className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden p-5">
+          <CardContent className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden p-6">
             {selectedLead?.workflow?.assistantMemory ? (
               <div className="rounded-3xl border border-sky-200/80 bg-[linear-gradient(135deg,rgba(237,246,255,0.95),rgba(248,251,255,0.95))] px-4 py-4 text-sm leading-6 text-on-surface">
                 <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em] text-sky-800">

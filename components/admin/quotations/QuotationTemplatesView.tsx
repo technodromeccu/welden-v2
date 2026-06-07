@@ -42,7 +42,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
               <>
               <div className="grid gap-4 xl:grid-cols-3">
                 <Card className="border border-outline-variant/15 bg-white shadow-sm">
-                  <CardContent className="p-5">
+                  <CardContent className="p-6">
                     <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Template library</div>
                     <div className="mt-3 flex items-end justify-between gap-4">
                       <div>
@@ -54,7 +54,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                   </CardContent>
                 </Card>
                 <Card className="border border-emerald-200/70 bg-emerald-50/60 shadow-sm">
-                  <CardContent className="p-5">
+                  <CardContent className="p-6">
                     <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-700">Active templates</div>
                     <div className="mt-3 flex items-end justify-between gap-4">
                       <div>
@@ -66,7 +66,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                   </CardContent>
                 </Card>
                 <Card className="border border-primary/10 bg-primary-fixed/20 shadow-sm">
-                  <CardContent className="p-5">
+                  <CardContent className="p-6">
                     <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Machine coverage</div>
                     <div className="mt-3 flex items-end justify-between gap-4">
                       <div>
@@ -102,7 +102,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         <CardDescription>Set the machine, price, scope, and commercial terms up front so the chatbot can issue a clean preliminary quotation from day one.</CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-6">
-                        <div className="rounded-2xl border border-primary/10 bg-primary-fixed/20 p-5">
+                        <div className="rounded-2xl border border-primary/10 bg-primary-fixed/20 p-6">
                           <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Commercial summary</div>
                           <div className="mt-4 grid gap-3 md:grid-cols-2">
                             <Input placeholder="Template title" value={newQuotationTemplate.title} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, title: e.target.value }))} />
@@ -122,7 +122,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         </div>
 
                         <div className="grid gap-4 lg:grid-cols-2">
-                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-5">
+                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
                             <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Scope and technical definition</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
@@ -136,7 +136,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                             </div>
                           </div>
 
-                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-5">
+                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
                             <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">General notes and commercial terms</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
@@ -155,7 +155,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                           </div>
                         </div>
 
-                        <div className="rounded-2xl border border-outline-variant/12 bg-white p-5">
+                        <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
                           <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Delivery, payment, and footer</div>
                           <div className="mt-4 grid gap-4 md:grid-cols-2">
                             <Input placeholder="Delivery note" value={newQuotationTemplate.deliveryNote} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, deliveryNote: e.target.value }))} />
@@ -251,7 +251,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
 {!showAddQuotationTemplate && !showQuotationTemplateEditor ? (
               <Card className="overflow-hidden border border-outline-variant/10 shadow-sm">
                 <CardHeader className="border-b border-outline-variant/10 bg-white/90 pb-5">
-                  <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
+                  <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
                     <div className="max-w-2xl">
                       <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Template library</div>
                       <div className="mt-2 text-3xl font-black tracking-tight text-primary">Commercial quotation templates</div>
@@ -260,10 +260,10 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                     <div className="flex flex-wrap items-center gap-3 xl:justify-end">
                       <div className="rounded-full bg-surface-container px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">{filteredQuotationTemplates.length} in view</div>
                       <div className="rounded-full bg-primary-fixed/30 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Drag cards to reorder</div>
-                      <Button className="rounded-lg px-5 py-2.5" onClick={() => { setShowQuotationTemplateEditor(false); setShowAddQuotationTemplate(true); }}><Plus className="mr-2 h-4 w-4" />Add template</Button>
+                      <Button className="rounded-lg px-6 py-2.5" onClick={() => { setShowQuotationTemplateEditor(false); setShowAddQuotationTemplate(true); }}><Plus className="mr-2 h-4 w-4" />Add template</Button>
                     </div>
                   </div>
-                  <div className="mt-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                  <div className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                     <div className="relative w-full max-w-xl">
                       <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary/60" />
                       <Input className="pl-10" placeholder="Search quotation template title, machine, variant, or price..." value={quotationSearch} onChange={(e) => setQuotationSearch(e.target.value)} />
@@ -271,7 +271,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                     <div className="text-sm text-secondary">Open any card to edit pricing, scope, and chatbot output.</div>
                   </div>
                 </CardHeader>
-                <CardContent className="bg-surface-container-low/40 p-5 md:p-6">
+                <CardContent className="bg-surface-container-low/40 p-6 md:p-6">
                   {filteredQuotationTemplates.length ? (
                     <div className="grid gap-4 xl:grid-cols-2">
                       {filteredQuotationTemplates.map((template: any) => {
@@ -296,7 +296,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                               setShowQuotationTemplateEditor(true);
                             }}
                             className={cn(
-                              "group w-full rounded-3xl border border-outline-variant/12 bg-white p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-primary/15 hover:shadow-md",
+                              "group w-full rounded-3xl border border-outline-variant/12 bg-white p-6 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-primary/15 hover:shadow-md",
                               draggedQuotationTemplateId === template.id && "border-primary/30 bg-primary-fixed/25",
                               selectedQuotationTemplateId === template.id && "border-primary/25 ring-1 ring-primary/10"
                             )}
@@ -320,7 +320,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                               </div>
                             </div>
 
-                            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                            <div className="mt-6 grid gap-3 sm:grid-cols-3">
                               <div className="rounded-2xl bg-surface-container-low p-4">
                                 <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-secondary">Base price</div>
                                 <div className="mt-2 text-lg font-black tracking-tight text-primary">{template.currency} {template.basePrice || "On request"}</div>
@@ -342,7 +342,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                               {linkedProduct ? <Badge variant="secondary">Machine linked</Badge> : <Badge variant="outline">Machine pending</Badge>}
                             </div>
 
-                            <div className="mt-5 flex items-center justify-between border-t border-outline-variant/10 pt-4 text-sm text-secondary">
+                            <div className="mt-6 flex items-center justify-between border-t border-outline-variant/10 pt-4 text-sm text-secondary">
                               <span>{linkedProduct?.title || template.machineName || "Machine to be assigned"}</span>
                               <span className="inline-flex items-center gap-2 font-semibold text-primary">Open full editor <Eye className="h-4 w-4" /></span>
                             </div>
@@ -386,7 +386,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         <CardDescription>Keep the commercial source of truth clear and grouped by meaning instead of one long undifferentiated field stack.</CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-6">
-                        <div className="rounded-2xl border border-primary/10 bg-primary-fixed/20 p-5">
+                        <div className="rounded-2xl border border-primary/10 bg-primary-fixed/20 p-6">
                           <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Commercial summary</div>
                           <div className="mt-4 grid gap-3 md:grid-cols-2">
                             <Input placeholder="Template title" value={quotationTemplateDraft.title} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, title: e.target.value }))} />
@@ -419,7 +419,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         </div>
 
                         <div className="grid gap-4 lg:grid-cols-2">
-                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-5">
+                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
                             <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Scope and technical definition</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
@@ -433,7 +433,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                             </div>
                           </div>
 
-                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-5">
+                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
                             <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">General notes and commercial terms</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
@@ -452,7 +452,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                           </div>
                         </div>
 
-                        <div className="rounded-2xl border border-outline-variant/12 bg-white p-5">
+                        <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
                           <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">Delivery, payment, and footer</div>
                           <div className="mt-4 grid gap-4 md:grid-cols-2">
                             <Input placeholder="Delivery note" value={quotationTemplateDraft.deliveryNote} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, deliveryNote: e.target.value }))} />

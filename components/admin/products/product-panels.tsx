@@ -30,7 +30,7 @@ export function GlobalMachineLabelsPanel({
   return (
     <div className="fixed inset-0 z-[75] flex items-start justify-center bg-slate-950/40 px-4 py-8 backdrop-blur-sm">
       <div className="w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white shadow-[0_30px_90px_-35px_rgba(15,23,42,0.55)]">
-        <div className="flex items-center justify-between border-b border-outline-variant/10 px-6 py-5">
+        <div className="flex items-center justify-between border-b border-outline-variant/10 px-6 py-6">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">Global labels</div>
             <div className="mt-1 text-xl font-black tracking-tight text-primary">Machine page shared labels</div>
@@ -88,7 +88,7 @@ export function MachineCreatePanel({
         <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-secondary">New machine</div>
         <div className="mt-1 text-2xl font-black tracking-tight text-primary">Create an unpublished machine shell</div>
       </CardHeader>
-      <CardContent className="space-y-5 p-6">
+      <CardContent className="space-y-6 p-6">
         <FieldGroup label="Basics" hint="Start with the core identity. You can finish layout and content in the visual builder after creation.">
           <div className="grid gap-3 sm:grid-cols-2">
             <Input placeholder="Machine title" value={draft.title} onChange={(event) => setDraft((current) => ({ ...current, title: event.target.value }))} />

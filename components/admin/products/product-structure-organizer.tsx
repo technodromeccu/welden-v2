@@ -42,7 +42,7 @@ export function StructureOrganizer({
   embedded?: boolean;
 }) {
   const content = (
-    <CardContent className={cn("space-y-4", embedded ? "p-0" : "p-5")}>
+    <CardContent className={cn("space-y-4", embedded ? "p-0" : "p-6")}>
       <div className="space-y-2">
         {layout.map((block, index) => {
           const isSelected = selectedBlockId === block.id;
