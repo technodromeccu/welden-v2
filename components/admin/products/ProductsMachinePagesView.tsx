@@ -133,11 +133,17 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
   const selectedBlock = currentLayout.find((block) => block.id === selectedBlockId) ?? null;
   const availableBlocks = getAvailableMachineBlocks(activeSurface, currentLayout);
 
+  // Selection-validity sync: when the active surface or layout changes, snap the
+  // selected block id to something valid (or null when the layout is empty).
+  // Guarded — we only setState when the current selection becomes invalid, so this
+  // doesn't loop. Refactoring to derive-during-render conflicts with the event-handler
+  // setters (addBlock / removeBlock / etc.) that also write selectedBlockId.
   useEffect(() => {
     const layout = activeSurface === "landing_card"
       ? (normalizedDraft.landingCardLayout ?? [])
       : (normalizedDraft.machinePageLayout ?? []);
     if (!layout.length) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional guarded sync
       setSelectedBlockId(null);
       return;
     }
@@ -191,8 +197,12 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
     }
   }
 
+  // Sidebar-tab sync: when the user picks a block (anywhere — board click, drag-end,
+  // keyboard nav), open the edit tab. Several event handlers can change selectedBlockId,
+  // so doing this in an effect keeps the behavior in one place.
   useEffect(() => {
     if (!selectedBlockId) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional sidebar sync
     setBuilderSidebarTab("edit");
   }, [selectedBlockId]);
 

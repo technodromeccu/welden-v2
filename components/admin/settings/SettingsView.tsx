@@ -118,10 +118,14 @@ function AuditLogPanel() {
 
 function ArrayTextarea({ value, onChange, placeholder, splitBy }: { value: string[]; onChange: (val: string[]) => void; placeholder?: string; splitBy: "comma" | "newline" }) {
   const [text, setText] = useState(value.join("\n"));
+  // Keep the local textarea text in sync when the parent prop changes (e.g. server
+  // reload of settings). Guarded: only setText when the parsed value actually differs
+  // from the parent's array, so typing doesn't trigger a reset mid-edit.
   useEffect(() => {
     const pattern = splitBy === "comma" ? /\r?\n|,/ : /\r?\n/;
     const parsedLocal = text.split(pattern).map((s) => s.trim()).filter(Boolean);
     if (JSON.stringify(parsedLocal) !== JSON.stringify(value)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional prop→local sync
       setText(value.join("\n"));
     }
   }, [value, splitBy, text]);
