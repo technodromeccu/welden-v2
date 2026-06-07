@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { ChatMarkdown } from "@/components/ui/chat-markdown";
 import { cn } from "@/lib/utils";
 import type { AdvisorSession, AssistantProposal, InternalAssistantResponse, LeadCallOutcome } from "@/lib/types";
 
@@ -110,13 +111,9 @@ export function InternalLeadAssistant({
         text: payload.reply ?? payload.error ?? "I couldn't answer that right now.",
         actions: payload.actions
       }]);
-
-      if (payload.actions?.length) {
-        const firstOpen = payload.actions.find((action) => action.type === "open_lead");
-        if (firstOpen && onOpenLead) {
-          onOpenLead(firstOpen.leadId);
-        }
-      }
+      // Note: do NOT auto-open a lead here. The reply must stay in the chat window.
+      // open_lead proposals are rendered as explicit action buttons the user can click
+      // (auto-navigating used to switch to the lead page and reset the conversation).
     } finally {
       setLoading(false);
     }
@@ -247,7 +244,9 @@ export function InternalLeadAssistant({
                       ? "rounded-[1.35rem] rounded-tl-md border border-white bg-white px-4 py-3 text-sm leading-6 text-slate-800 shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]"
                       : "ml-8 rounded-[1.35rem] rounded-br-md bg-[linear-gradient(135deg,#0f3d78,#1b5aa5)] px-4 py-3 text-sm leading-6 text-white shadow-[0_14px_32px_-18px_rgba(15,61,120,0.65)]"}
                   >
-                    {message.text}
+                    {message.role === "assistant"
+                      ? <ChatMarkdown content={message.text} tone="light" />
+                      : message.text}
                     {message.role === "assistant" && message.actions?.length ? (
                       <div className="mt-3 flex flex-wrap gap-2">
                         {message.actions.map((action, actionIndex) => (

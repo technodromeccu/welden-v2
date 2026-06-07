@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Bot, Loader2, MessageCircle, SendHorizontal, X } from "lucide-react";
 import { assessLeadQuality, isPlaceholderName, isValidEmail, isValidPhone } from "@/lib/request-validation";
 import { spring, springBounce, staggerFast } from "@/lib/motion";
-import { cn } from "@/lib/utils";
+import { ChatMarkdown } from "@/components/ui/chat-markdown";
 import type { AdvisorCitation, AiResponseMetadata, Lead, LeadQuality, Product, Role } from "@/lib/types";
 
 // Which step of the info-collection we're on before full chat unlocks
@@ -54,10 +54,6 @@ function makeMessage(
 
 function buildTranscript(messages: ChatMessage[]) {
   return messages.map((m) => `${m.role === "bot" ? "Advisor" : "Visitor"}: ${m.text}`).join("\n");
-}
-
-function splitLines(text: string) {
-  return text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
 }
 
 function isWithinWhatsappHours() {
@@ -402,7 +398,6 @@ export function AdvisorWidget({ products, whatsappHref, whatsappLabel, quickActi
                 >
                   <AnimatePresence initial={false}>
                     {messages.map((message) => {
-                      const lines = splitLines(message.text);
                       const isUser = message.role === "user";
                       const isSystem = message.tone === "system";
 
@@ -428,24 +423,9 @@ export function AdvisorWidget({ products, whatsappHref, whatsappLabel, quickActi
                                   <div className="px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-on-dark-dim)]">
                                     {message.text}
                                   </div>
-                                ) : lines.length > 1 ? (
-                                  <div className="space-y-2.5 px-4 py-3.5">
-                                    {lines.map((line, li) => (
-                                      <div
-                                        key={`${message.id}-line-${li}`}
-                                        className={cn(
-                                          "whitespace-pre-wrap break-words text-sm leading-7 text-[var(--color-on-dark)]",
-                                          li === 0 && "font-bold text-white",
-                                          line.startsWith("-") && "text-[var(--color-on-dark-dim)] font-medium"
-                                        )}
-                                      >
-                                        {line.replace(/^-\s*/, "")}
-                                      </div>
-                                    ))}
-                                  </div>
                                 ) : (
-                                  <div className="px-4 py-3.5 text-sm leading-7 text-[var(--color-on-dark)]">
-                                    {message.text}
+                                  <div className="px-4 py-3.5">
+                                    <ChatMarkdown content={message.text} tone="dark" />
                                   </div>
                                 )}
 
