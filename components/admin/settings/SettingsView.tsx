@@ -61,7 +61,7 @@ function AuditLogPanel() {
   }
 
   return (
-    <Card className="border border-outline-variant/20 shadow-sm">
+    <Card className="border border-outline-variant/15 shadow-sm">
       <CardHeader className="flex flex-row items-start justify-between gap-4">
         <div>
           <CardTitle>Audit log</CardTitle>
@@ -150,7 +150,7 @@ export function SettingsView(props: SettingsViewProps) {
   return (
     <div className="grid gap-6 xl:grid-cols-[0.42fr_0.58fr]">
       <div className="space-y-6">
-        <Card className="border border-outline-variant/20 shadow-sm">
+        <Card className="border border-outline-variant/15 shadow-sm">
           <CardHeader>
             <CardTitle>Settings summary</CardTitle>
             <CardDescription>Current routing, SLA, notification, and recovery defaults.</CardDescription>
@@ -184,7 +184,7 @@ export function SettingsView(props: SettingsViewProps) {
           </CardContent>
         </Card>
 
-        <Card className="border border-outline-variant/20 shadow-sm">
+        <Card className="border border-outline-variant/15 shadow-sm">
           <CardHeader>
             <CardTitle>Backup and recovery</CardTitle>
             <CardDescription>Google Drive snapshots for restoring the app from GitHub onto a persistent server.</CardDescription>
@@ -224,7 +224,7 @@ export function SettingsView(props: SettingsViewProps) {
         </Card>
       </div>
 
-      <Card className="border border-outline-variant/20 shadow-sm">
+      <Card className="border border-outline-variant/15 shadow-sm">
         <CardHeader>
           <CardTitle>Edit settings</CardTitle>
           <CardDescription>Control default ownership, operating hours, SLA behavior, and quotation branding.</CardDescription>
@@ -257,7 +257,7 @@ export function SettingsView(props: SettingsViewProps) {
               <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-secondary">Quotation logo</span>
               <div className="grid gap-3 md:grid-cols-[1fr_auto] md:items-center">
                 <Input value={settingsDraft.quotationLogoUrl ?? ""} onChange={(e) => setSettingsDraft((current) => ({ ...current, quotationLogoUrl: e.target.value }))} placeholder="/images/branding/uploads/welden-logo.png" />
-                <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/20 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
+                <label className="inline-flex cursor-pointer items-center justify-center rounded-lg border border-outline-variant/15 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary-fixed/30">
                   <input type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml" className="hidden" onChange={(e) => void handleLogoUpload(e.target.files?.[0])} disabled={uploadingLogo} />
                   {uploadingLogo ? "Uploading..." : "Upload logo"}
                 </label>

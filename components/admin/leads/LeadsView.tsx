@@ -683,7 +683,7 @@ export function LeadsView(props: LeadsViewProps) {
                         <div className="mt-2 whitespace-pre-wrap">{selectedLead.recommendation.engineeringBrief}</div>
                       </div>
                     )}
-                    <div className="rounded-2xl border border-dashed border-outline-variant/20 bg-surface-container-low/30 p-4 text-sm leading-7 text-secondary">
+                    <div className="rounded-2xl border border-dashed border-outline-variant/15 bg-surface-container-low/30 p-4 text-sm leading-7 text-secondary">
                       <div className="font-semibold text-on-surface">Lead quality</div>
                       <div className="mt-2">{selectedLead.quality?.warnings?.length ? selectedLead.quality.warnings.join(" ") : "No obvious issues found in the submitted details."}</div>
                     </div>
@@ -701,7 +701,7 @@ export function LeadsView(props: LeadsViewProps) {
                               ? "border-emerald-200/80 bg-emerald-50/90"
                               : nextBestAction.tone === "secondary"
                                 ? "border-primary/15 bg-primary-fixed/10"
-                                : "border-outline-variant/20 bg-surface-container-low/60"
+                                : "border-outline-variant/15 bg-surface-container-low/60"
                       )}>
                         <div className="min-w-0">
                           <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-secondary">{nextBestAction.eyebrow}</div>
@@ -1308,7 +1308,7 @@ export function LeadsView(props: LeadsViewProps) {
                       }) : (
                         <div className={cn(
                           "flex min-h-[12rem] items-center justify-center rounded-3xl border border-dashed px-4 py-8 text-center text-sm text-secondary",
-                          dragOverStage === column.stage && draggedLeadId ? "border-primary/35 bg-white/90 text-on-surface" : "border-outline-variant/20 bg-white/60"
+                          dragOverStage === column.stage && draggedLeadId ? "border-primary/35 bg-white/90 text-on-surface" : "border-outline-variant/15 bg-white/60"
                         )}>
                           {dragOverStage === column.stage && draggedLeadId ? "Drop here to move this deal." : "No deals in this stage yet."}
                         </div>
@@ -1333,8 +1333,8 @@ export function LeadsView(props: LeadsViewProps) {
                   <div className="relative w-full min-w-[280px] max-w-md">
                     {/* FEAT-10: show spinner while debounced server search is in-flight */}
                     {serverSearchLoading
-                      ? <Loader2 className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-slate-400" />
-                      : <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                      ? <Loader2 className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 animate-spin text-secondary/60" />
+                      : <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary/60" />
                     }
                     <Input className="h-11 rounded-xl border-none bg-surface-container-low pl-10 shadow-none" placeholder="Search the commercial pipeline..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
                   </div>
@@ -1344,7 +1344,7 @@ export function LeadsView(props: LeadsViewProps) {
                       type="button"
                       disabled={refreshing}
                       onClick={async () => { setRefreshing(true); try { await onRefresh(); } finally { setRefreshing(false); } }}
-                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/20 bg-white px-4 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface disabled:opacity-50"
+                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/15 bg-white px-4 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface disabled:opacity-50"
                     >
                       <RefreshCw className={`h-3.5 w-3.5 ${refreshing ? "animate-spin" : ""}`} />
                       Refresh
@@ -1355,7 +1355,7 @@ export function LeadsView(props: LeadsViewProps) {
                     <a
                       href={buildExportUrl()}
                       download
-                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/20 bg-white px-4 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface"
+                      className="flex h-11 shrink-0 items-center gap-2 rounded-xl border border-outline-variant/15 bg-white px-4 text-[11px] font-bold uppercase tracking-[0.16em] text-secondary transition-colors hover:bg-surface-container-low hover:text-on-surface"
                     >
                       Export CSV
                     </a>
@@ -1466,7 +1466,7 @@ export function LeadsView(props: LeadsViewProps) {
                   </span>
                   <div className="flex flex-wrap items-center gap-2">
                     <select
-                      className="h-8 rounded-lg bg-white px-3 text-[11px] font-bold text-on-surface outline-none ring-1 ring-outline-variant/20"
+                      className="h-8 rounded-lg bg-white px-3 text-[11px] font-bold text-on-surface outline-none ring-1 ring-outline-variant/15"
                       value={bulkStage}
                       onChange={(e) => setBulkStage(e.target.value as LeadStage | "")}
                     >
@@ -1479,7 +1479,7 @@ export function LeadsView(props: LeadsViewProps) {
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
                     <select
-                      className="h-8 rounded-lg bg-white px-3 text-[11px] font-bold text-on-surface outline-none ring-1 ring-outline-variant/20"
+                      className="h-8 rounded-lg bg-white px-3 text-[11px] font-bold text-on-surface outline-none ring-1 ring-outline-variant/15"
                       value={bulkOwner}
                       onChange={(e) => setBulkOwner(e.target.value)}
                     >

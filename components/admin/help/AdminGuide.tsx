@@ -34,7 +34,7 @@ export function AdminGuide({ currentUserRole }: { currentUserRole: string }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className="min-h-screen bg-slate-50 text-on-surface">
       <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
           <div className="flex items-center gap-3">
@@ -42,17 +42,17 @@ export function AdminGuide({ currentUserRole }: { currentUserRole: string }) {
               <BookOpen className="h-4 w-4" />
             </span>
             <div>
-              <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">Admin guide</div>
-              <div className="text-base font-black tracking-tight text-slate-950">Welden Industries platform reference</div>
+              <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-secondary">Admin guide</div>
+              <div className="text-base font-black tracking-tight text-primary">Welden Industries platform reference</div>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="hidden rounded-full bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-600 md:inline-flex">
+            <span className="hidden rounded-full bg-slate-100 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-secondary md:inline-flex">
               Signed in as {currentUserRole}
             </span>
             <Link
               href="/admin"
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-slate-900 transition hover:border-slate-300 hover:bg-slate-50"
+              className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-on-surface transition hover:border-slate-300 hover:bg-slate-50"
             >
               <ArrowLeft className="h-3.5 w-3.5" /> Back to admin
             </Link>
@@ -63,7 +63,7 @@ export function AdminGuide({ currentUserRole }: { currentUserRole: string }) {
       <div className="mx-auto grid max-w-6xl gap-8 px-6 py-10 lg:grid-cols-[18rem_minmax(0,1fr)]">
         <aside className="hidden lg:block">
           <nav className="sticky top-24 space-y-1 rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="px-2 pb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">On this page</div>
+            <div className="px-2 pb-2 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">On this page</div>
             {guideSections.map((section) => {
               const active = activeId === section.id;
               return (
@@ -74,7 +74,7 @@ export function AdminGuide({ currentUserRole }: { currentUserRole: string }) {
                     "block rounded-xl px-3 py-2 text-sm font-medium transition-colors",
                     active
                       ? "bg-slate-900 text-white"
-                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                      : "text-secondary hover:bg-slate-100 hover:text-on-surface"
                   )}
                 >
                   {section.title}
@@ -93,10 +93,10 @@ export function AdminGuide({ currentUserRole }: { currentUserRole: string }) {
               className="scroll-mt-24 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8"
             >
               <div className="mb-5 flex items-center gap-3">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-xs font-black text-slate-500">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-xs font-black text-secondary">
                   {index + 1}
                 </span>
-                <h2 className="text-2xl font-black tracking-tight text-slate-950">{section.title}</h2>
+                <h2 className="text-2xl font-black tracking-tight text-primary">{section.title}</h2>
               </div>
               <ChatMarkdown
                 content={section.content}

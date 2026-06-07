@@ -201,7 +201,7 @@ export function DashboardView(props: DashboardViewProps) {
                 </Badge>
               </button>
             )) : (
-              <div className="rounded-2xl border border-dashed border-outline-variant/20 bg-surface-container-low/40 px-4 py-8 text-sm text-secondary">
+              <div className="rounded-2xl border border-dashed border-outline-variant/15 bg-surface-container-low/40 px-4 py-8 text-sm text-secondary">
                 No priority leads are waiting right now.
               </div>
             )}
@@ -363,7 +363,7 @@ export function DashboardView(props: DashboardViewProps) {
                   </BarChart>
                 </ResponsiveContainer>
               </div>
-            ) : <div className="rounded-xl border border-dashed border-outline-variant/20 bg-surface-container-low/40 px-4 py-8 text-center">No lead stages recorded yet.</div>}
+            ) : <div className="rounded-xl border border-dashed border-outline-variant/15 bg-surface-container-low/40 px-4 py-8 text-center">No lead stages recorded yet.</div>}
           </CardContent>
         </Card>
         <Card className="border border-outline-variant/15 bg-white shadow-sm">
@@ -382,7 +382,7 @@ export function DashboardView(props: DashboardViewProps) {
                   </PieChart>
                 </ResponsiveContainer>
               </div>
-            ) : <div className="rounded-xl border border-dashed border-outline-variant/20 bg-surface-container-low/40 px-4 py-8 text-center">No machine demand signals yet.</div>}
+            ) : <div className="rounded-xl border border-dashed border-outline-variant/15 bg-surface-container-low/40 px-4 py-8 text-center">No machine demand signals yet.</div>}
           </CardContent>
         </Card>
         <Card className="border border-outline-variant/15 bg-white shadow-sm">

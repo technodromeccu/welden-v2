@@ -56,7 +56,7 @@ export function RowActionMenu({
         {loading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <MoreHorizontal className="h-3.5 w-3.5" />}
       </button>
       {open && (
-        <div className="absolute right-0 top-full z-30 mt-1 w-52 overflow-hidden rounded-xl border border-outline-variant/20 bg-white shadow-[0_8px_30px_-8px_rgba(0,0,0,0.18)]">
+        <div className="absolute right-0 top-full z-30 mt-1 w-52 overflow-hidden rounded-xl border border-outline-variant/15 bg-white shadow-[0_8px_30px_-8px_rgba(0,0,0,0.18)]">
           <button
             type="button"
             onClick={() => { onNoAnswer(); setOpen(false); }}

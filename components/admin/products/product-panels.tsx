@@ -98,7 +98,7 @@ export function MachineCreatePanel({
           </div>
         </FieldGroup>
 
-        <div className="rounded-2xl border border-dashed border-outline-variant/20 bg-surface-container-low/20 px-4 py-4 text-sm leading-7 text-secondary">
+        <div className="rounded-2xl border border-dashed border-outline-variant/15 bg-surface-container-low/20 px-4 py-4 text-sm leading-7 text-secondary">
           The new machine will be created as <strong>unpublished</strong>. Build the landing card and machine page visually, save drafts as you go, and publish when it is ready for the public site.
         </div>
 
