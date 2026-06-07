@@ -783,7 +783,7 @@ export function LeadsView(props: LeadsViewProps) {
                     <div className="mt-4 text-4xl font-black tracking-tight">{selectedLead.workflow?.quoteIssued ? `${selectedLead.workflow?.quotationCurrency ?? "INR"} ${selectedLead.workflow?.quotationPrice ?? "On request"}` : "On request"}</div>
                     <div className="mt-4 text-sm text-white/80">{selectedLead.workflow?.quotationTitle ?? "Stored quotation snapshot available when the chatbot issues a quote."}</div>
                   </div>
-                  <div className="space-y-4 rounded-2xl border border-outline-variant/10 bg-white p-4">
+                  <div className="space-y-4">
                     <div>
                       <div className="text-lg font-black text-primary">Create and send a preliminary quotation from this lead</div>
                       <div className="mt-2 text-sm leading-6 text-secondary">Select the commercial template, then email the quotation directly to {selectedLead.lead.email} through Resend.</div>
@@ -829,7 +829,7 @@ export function LeadsView(props: LeadsViewProps) {
                       <div className="rounded-xl bg-surface-container-low p-4 text-sm text-secondary">No active quotation templates are available for this lead yet. Add one in the quotation templates section first.</div>
                     )}
                   </div>
-                  <div className="rounded-2xl border border-outline-variant/10 bg-white p-4">
+                  <div>
                     <div className="mb-3 text-sm font-semibold text-on-surface">Quotation snapshot</div>
                     {selectedLead.workflow?.quotationSnapshot ? (
                       <div className="max-h-[22rem] overflow-y-auto whitespace-pre-wrap break-words text-sm leading-7 text-secondary">{selectedLead.workflow.quotationSnapshot}</div>
@@ -837,7 +837,7 @@ export function LeadsView(props: LeadsViewProps) {
                       <div className="text-sm text-secondary">No quotation text stored on this lead yet.</div>
                     )}
                   </div>
-                  <div className="space-y-4 rounded-2xl border border-outline-variant/10 bg-white p-4">
+                  <div className="space-y-4">
                     <div className="rounded-2xl border border-primary/10 bg-primary-fixed/15 p-4">
                       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                         <div>

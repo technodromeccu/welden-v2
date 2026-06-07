@@ -754,7 +754,8 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                   </Card>
 
                   <div className="sticky top-6 flex h-[calc(100vh-4rem)] w-full flex-col overflow-hidden rounded-3xl border border-outline-variant/12 bg-white shadow-sm xl:w-[420px] xl:shrink-0">
-                    <div className="flex items-start justify-between gap-3 border-b border-outline-variant/10 bg-white/90 px-6 py-4 backdrop-blur">
+                    {/* Phase 2.6: inspector header sits one surface step below the body to anchor it visually. */}
+                    <div className="flex items-start justify-between gap-3 border-b border-outline-variant/10 bg-surface-container-low/60 px-6 py-4 backdrop-blur">
                       <div>
                         <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Inspector</div>
                         <div className="mt-1 text-xl font-black tracking-tight text-primary">
@@ -769,7 +770,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                         </div>
                       </div>
                     </div>
-                    <div className="border-b border-outline-variant/10 px-6 py-3 bg-surface-container-low/40">
+                    <div className="border-b border-outline-variant/10 px-6 py-3 bg-surface-container-low/30">
                       <div className="inline-flex rounded-full bg-surface-container p-1">
                         <button
                           type="button"

@@ -122,7 +122,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         </div>
 
                         <div className="grid gap-4 lg:grid-cols-2">
-                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
+                          <div className="space-y-4">
                             <div className="text-sm font-semibold text-on-surface">Scope and technical definition</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
@@ -136,7 +136,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                             </div>
                           </div>
 
-                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
+                          <div className="space-y-4">
                             <div className="text-sm font-semibold text-on-surface">General notes and commercial terms</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
@@ -155,7 +155,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                           </div>
                         </div>
 
-                        <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
+                        <div className="space-y-4">
                           <div className="text-sm font-semibold text-on-surface">Delivery, payment, and footer</div>
                           <div className="mt-4 grid gap-4 md:grid-cols-2">
                             <Input placeholder="Delivery note" value={newQuotationTemplate.deliveryNote} onChange={(e) => setNewQuotationTemplate((current: any) => ({ ...current, deliveryNote: e.target.value }))} />
@@ -419,7 +419,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                         </div>
 
                         <div className="grid gap-4 lg:grid-cols-2">
-                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
+                          <div className="space-y-4">
                             <div className="text-sm font-semibold text-on-surface">Scope and technical definition</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
@@ -433,7 +433,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                             </div>
                           </div>
 
-                          <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
+                          <div className="space-y-4">
                             <div className="text-sm font-semibold text-on-surface">General notes and commercial terms</div>
                             <div className="mt-4 grid gap-4">
                               <div className="grid gap-2">
@@ -452,7 +452,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                           </div>
                         </div>
 
-                        <div className="rounded-2xl border border-outline-variant/12 bg-white p-6">
+                        <div className="space-y-4">
                           <div className="text-sm font-semibold text-on-surface">Delivery, payment, and footer</div>
                           <div className="mt-4 grid gap-4 md:grid-cols-2">
                             <Input placeholder="Delivery note" value={quotationTemplateDraft.deliveryNote} onChange={(e) => setQuotationTemplateDraft((current: any) => ({ ...current, deliveryNote: e.target.value }))} />
