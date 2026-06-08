@@ -76,7 +76,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                           ) : null}
 
                           {selectedSiteSection.key === "machine_cards" ? (
-                            <div className="rounded-2xl border border-outline-variant/15 bg-white p-6">
+                            <div className="space-y-4">
                               <div className="text-sm font-semibold text-on-surface">Homepage machine cards</div>
                               <div className="mt-3 text-lg font-black tracking-tight text-primary">Separate visibility control for the landing-page card rail</div>
                               <div className="mt-3 text-sm leading-7 text-secondary">
@@ -138,7 +138,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
 
                               {selectedHeroSlide ? (
                                 <div className="grid gap-4 lg:grid-cols-[0.38fr_0.62fr]">
-                                  <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
+                                  <div className="space-y-4">
                                     <div className="flex items-center justify-between gap-3">
                                       <div className="text-xs font-medium text-secondary">Live preview</div>
                                       <Button variant="outline" size="sm" onClick={() => deleteHeroSlide(selectedHeroSlide.id)}>Delete slide</Button>
@@ -153,7 +153,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                                       <div className="text-sm leading-6 text-secondary">{selectedHeroSlide.summary}</div>
                                     </div>
                                   </div>
-                                  <div className="space-y-4 rounded-2xl border border-outline-variant/15 bg-white p-4">
+                                  <div className="space-y-4 space-y-4">
                                     <div>
                                       <div className="text-xs font-medium text-secondary">Edit selected slide</div>
                                       <div className="mt-2 text-lg font-black tracking-tight text-primary">Slide content and image</div>
@@ -176,7 +176,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                           ) : null}
 
                           {selectedSiteSection.key === "hero" ? (
-                            <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
+                            <div className="space-y-4">
                               <div className="text-sm font-semibold text-on-surface">Hero CTA buttons</div>
                               <div className="mt-4 grid gap-3 md:grid-cols-2">
                                 <label className="grid gap-2 text-sm">
@@ -192,7 +192,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                           ) : null}
 
                           {selectedSiteSection.key === "footer" ? (
-                            <div className="space-y-4 rounded-2xl border border-outline-variant/15 bg-white p-4">
+                            <div className="space-y-4 space-y-4">
                               <div>
                                 <div className="text-sm font-semibold text-on-surface">Footer links</div>
                                 <div className="mt-4 grid gap-3">
@@ -237,7 +237,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                           ) : null}
 
                           {selectedSiteSection.key === "contact" ? (
-                            <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
+                            <div className="space-y-4">
                               <div className="text-sm font-semibold text-on-surface">Contact actions</div>
                               <div className="mt-4 grid gap-4">
                                 {Array.from({ length: 3 }).map((_, index) => (
@@ -271,7 +271,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                           ) : null}
 
                           {selectedSiteSection.key === "machine_details" ? (
-                            <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
+                            <div className="space-y-4">
                               <div className="text-sm font-semibold text-on-surface">Machine detail page copy</div>
                               <div className="mt-4 space-y-6">
                                 {machineDetailFieldGroups.map((group) => (
@@ -319,7 +319,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                               {!["hero", "footer", "machine_cards"].includes(selectedSiteSection.key) ? <div>Use items for compact supporting bullets and keep the body focused on one clear message.</div> : null}
                             </div>
                           </div>
-                          <div className="rounded-2xl border border-outline-variant/15 bg-white p-4">
+                          <div className="space-y-4">
                             <div className="text-xs font-medium text-secondary">Section snapshot</div>
                             <div className="mt-4 space-y-3 text-sm text-secondary">
                               <div className="rounded-xl bg-surface-container-low p-4">
@@ -394,7 +394,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                             >
                               <div className={cn("flex items-center justify-between border-b px-6 py-4", isActive ? "border-white/12 bg-white/8" : "border-outline-variant/10 bg-surface-container-low/40")}>
                                 <div className="flex items-center gap-3">
-                                  <div className={cn("flex h-11 w-11 items-center justify-center rounded-2xl", isActive ? "bg-white/14 text-white" : "bg-primary-fixed/25 text-primary")}>
+                                  <div className={cn("flex h-10 w-10 items-center justify-center rounded-2xl", isActive ? "bg-white/14 text-white" : "bg-primary-fixed/25 text-primary")}>
                                     <SectionIcon className="h-5 w-5" />
                                   </div>
                                   <div>

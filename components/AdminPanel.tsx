@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
-import { AlertTriangle, BadgeAlert, BookOpen, Bot, CheckCircle2, Eye, FileText, Filter, GripVertical, LayoutDashboard, Library, LogOut, MessageSquare, PencilLine, Plus, Search, Settings2, TimerReset, Users, UserRoundPlus, ClipboardList } from "lucide-react";
+import { AlertTriangle, BadgeAlert, BookOpen, Bot, Eye, FileText, Filter, GripVertical, LayoutDashboard, Library, LogOut, MessageSquare, PencilLine, Plus, Search, Settings2, TimerReset, Users, UserRoundPlus, ClipboardList } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { DashboardView } from "@/components/admin/dashboard/DashboardView";
 import { LeadsView } from "@/components/admin/leads/LeadsView";
@@ -14,6 +14,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Toast } from "@/components/ui/toast";
+import { motion } from "framer-motion";
 import { useBackupActions } from "@/hooks/admin/useBackupActions";
 import { useLeadActions } from "@/hooks/admin/useLeadActions";
 import { useProductUploads } from "@/hooks/admin/useProductUploads";
@@ -1173,7 +1175,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
           cockpit metrics — full set still renders in the mobile shell + dashboard). Active nav state
           uses a quieter shadow. Text hierarchy flattened to two on-dark tones: white/90 for primary,
           white/55 for secondary. Group label and item subtitle now visually distinct. */}
-      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-72 border-r border-slate-200/80 bg-[#0d1b2f] text-white lg:flex lg:flex-col">
+      <aside className="noise-overlay fixed left-0 top-0 z-40 hidden h-screen w-72 border-r border-slate-200/80 bg-[#0d1b2f] text-white lg:flex lg:flex-col">
         <div className="border-b border-white/10 px-6 py-6">
           <div className="text-xs font-bold uppercase tracking-[0.24em] text-sky-200/80">Welden Industries</div>
         </div>
@@ -1197,7 +1199,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
                           : "text-white/75 hover:bg-white/8 hover:text-white"
                       )}
                     >
-                      <span className={cn("flex h-9 w-9 items-center justify-center rounded-xl", active ? "bg-slate-100 text-primary" : "bg-white/6 text-white/75")}>
+                      <span className={cn("flex h-8 w-8 items-center justify-center rounded-xl", active ? "bg-slate-100 text-primary" : "bg-white/6 text-white/75")}>
                         <Icon className="h-4 w-4" />
                       </span>
                       <div className="min-w-0">
@@ -1218,7 +1220,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
             href="/admin/help"
             className="flex items-center gap-3 rounded-2xl px-3 py-3 text-left text-sm font-medium tracking-tight text-white/75 transition-colors hover:bg-white/8 hover:text-white"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/6 text-white/75">
+            <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/6 text-white/75">
               <BookOpen className="h-4 w-4" />
             </span>
             <div className="min-w-0">
@@ -1259,7 +1261,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
 
       <main className="pt-[8.25rem] lg:ml-72">
         <div className="mx-auto max-w-[1600px] space-y-6 px-6 py-6 lg:px-8">
-          <div className="rounded-3xl border border-slate-200/80 bg-white/90 p-3 shadow-[0_24px_70px_-44px_rgba(15,23,42,0.45)] lg:hidden">
+          <div className="rounded-3xl border border-slate-200/80 bg-white/90 p-3 shadow-xl lg:hidden">
             <div className="mb-3 grid grid-cols-3 gap-2">
               {cockpitMetrics.map((metric) => (
                 <div key={metric.label} className="rounded-2xl bg-slate-50 px-3 py-3">
@@ -1294,7 +1296,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
             <div className="overflow-hidden rounded-2xl border border-outline-variant/15 bg-white shadow-sm">
               {[...Array(5)].map((_, i) => (
                 <div key={i} className="flex items-center gap-4 border-b border-outline-variant/10 px-6 py-6 last:border-0">
-                  <div className="h-11 w-11 animate-pulse rounded-xl bg-surface-container-high" />
+                  <div className="h-10 w-10 animate-pulse rounded-xl bg-surface-container-high" />
                   <div className="flex-1 space-y-2">
                     <div className="h-3.5 w-1/3 animate-pulse rounded-md bg-surface-container-high" style={{ animationDelay: `${i * 60}ms` }} />
                     <div className="h-3 w-1/2 animate-pulse rounded-md bg-surface-container-low" style={{ animationDelay: `${i * 60 + 30}ms` }} />
@@ -1304,8 +1306,19 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
               ))}
             </div>
           ) : null}
-          {notice ? <div className="pointer-events-none fixed right-6 top-24 z-[70] max-w-md"><div className="flex items-start gap-3 rounded-2xl border border-emerald-200/70 bg-white px-4 py-4 shadow-[0_22px_55px_-28px_rgba(10,80,35,0.45)] ring-1 ring-emerald-100 backdrop-blur"><div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"><CheckCircle2 className="h-5 w-5" /></div><div className="min-w-0"><div className="text-xs font-bold uppercase tracking-[0.18em] text-emerald-700">Saved</div><div className="mt-1 text-sm font-medium leading-6 text-slate-800">{notice}</div></div></div></div> : null}
+          <Toast message={notice} tone="success" onDismiss={() => setNotice(null)} />
 
+          {/* Phase 3 polish — tab-switch entrance. key={tab} causes a fresh mount
+              + animate-in on every tab change. No exit animation (mode='popLayout'
+              would cause flicker on layouts that contain absolutely-positioned
+              children). Form drafts live in AdminPanel state, so remounting view
+              components is cheap and stateless. */}
+          <motion.div
+            key={tab}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+          >
           {tab === "dashboard" ? (
             <DashboardView
               dashboardFirstCallOpenCount={dashboardFirstCallOpenCount}
@@ -1521,6 +1534,7 @@ export function AdminPanel({ initialData, currentUser }: { initialData: Dashboar
               getSaveButtonLabel={getSaveButtonLabel}
             />
           ) : null}
+          </motion.div>
         </div>
       </main>
     </div>

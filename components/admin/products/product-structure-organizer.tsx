@@ -93,7 +93,7 @@ export function StructureOrganizer({
                     event.stopPropagation();
                     toggleBlockVisibility(block.id);
                   }}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg text-secondary transition hover:bg-surface-container-low hover:text-primary"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-secondary transition hover:bg-surface-container-low hover:text-primary"
                   aria-label={block.hidden ? "Show block" : "Hide block"}
                 >
                   {block.hidden ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
@@ -104,7 +104,7 @@ export function StructureOrganizer({
                     event.stopPropagation();
                     removeBlock(block.id);
                   }}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg text-secondary transition hover:bg-rose-50 hover:text-rose-500"
+                  className="flex h-8 w-8 items-center justify-center rounded-lg text-secondary transition hover:bg-rose-50 hover:text-rose-500"
                   aria-label="Remove block"
                 >
                   <Trash2 className="h-4 w-4" />

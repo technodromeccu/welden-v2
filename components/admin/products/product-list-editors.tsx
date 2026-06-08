@@ -73,11 +73,11 @@ export function ReorderableStringList({
             }}
             className={cn("grid grid-cols-[auto_1fr_auto] items-center gap-2 rounded-xl bg-white p-2 shadow-sm transition", draggedIndex === index && "bg-primary-fixed/25")}
           >
-            <button type="button" className="flex h-9 w-9 cursor-grab items-center justify-center rounded-lg text-secondary transition hover:bg-surface-container-low hover:text-primary">
+            <button type="button" className="flex h-8 w-8 cursor-grab items-center justify-center rounded-lg text-secondary transition hover:bg-surface-container-low hover:text-primary">
               <GripVertical className="h-4 w-4" />
             </button>
             <Input value={item} placeholder={placeholder} onChange={(event) => updateItem(index, event.target.value)} />
-            <button type="button" onClick={() => removeItem(index)} className="flex h-9 w-9 items-center justify-center rounded-lg text-secondary transition hover:bg-rose-50 hover:text-rose-500">
+            <button type="button" onClick={() => removeItem(index)} className="flex h-8 w-8 items-center justify-center rounded-lg text-secondary transition hover:bg-rose-50 hover:text-rose-500">
               <X className="h-4 w-4" />
             </button>
           </div>
