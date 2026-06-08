@@ -394,7 +394,7 @@ export function SiteContentView({ ctx }: { ctx: any }) {
                             >
                               <div className={cn("flex items-center justify-between border-b px-6 py-4", isActive ? "border-white/12 bg-white/8" : "border-outline-variant/10 bg-surface-container-low/40")}>
                                 <div className="flex items-center gap-3">
-                                  <div className={cn("flex h-11 w-11 items-center justify-center rounded-2xl", isActive ? "bg-white/14 text-white" : "bg-primary-fixed/25 text-primary")}>
+                                  <div className={cn("flex h-10 w-10 items-center justify-center rounded-2xl", isActive ? "bg-white/14 text-white" : "bg-primary-fixed/25 text-primary")}>
                                     <SectionIcon className="h-5 w-5" />
                                   </div>
                                   <div>

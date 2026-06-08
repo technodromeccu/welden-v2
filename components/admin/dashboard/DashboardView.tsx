@@ -82,7 +82,7 @@ function TodayQueueRow({
           title="Log called now"
           onClick={onMarkContacted}
           disabled={isLoading}
-          className="flex h-7 w-7 items-center justify-center rounded-lg text-secondary transition-colors hover:bg-surface-container-high hover:text-primary disabled:opacity-50"
+          className="flex h-8 w-8 items-center justify-center rounded-lg text-secondary transition-colors hover:bg-surface-container-high hover:text-primary disabled:opacity-50"
         >
           {isLoading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Phone className="h-3.5 w-3.5" />}
         </button>

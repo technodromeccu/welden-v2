@@ -203,7 +203,7 @@ export function InternalLeadAssistant({
   return (
     <div ref={panelRef} className="fixed bottom-5 right-5 z-[80] flex max-w-[calc(100vw-1.5rem)] flex-col items-end gap-3">
       {isOpen ? (
-        <Card className="flex max-h-[min(78vh,52rem)] w-[min(32rem,calc(100vw-1.5rem))] flex-col overflow-hidden border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.98))] shadow-[0_26px_90px_-30px_rgba(15,23,42,0.48)] backdrop-blur">
+        <Card className="flex max-h-[min(78vh,52rem)] w-[min(32rem,calc(100vw-1.5rem))] flex-col overflow-hidden border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(248,250,252,0.98))] shadow-2xl backdrop-blur">
           <CardHeader className="border-b border-slate-200/80 bg-[radial-gradient(circle_at_top_left,rgba(26,75,140,0.18),transparent_42%),linear-gradient(135deg,#f8fbff,#eef4fb)] pb-5">
             <div className="flex items-start justify-between gap-4">
               <div className="min-w-0">
@@ -296,7 +296,7 @@ export function InternalLeadAssistant({
                     <div
                       key={`${message.role}-${index}`}
                       className={message.role === "assistant"
-                        ? "rounded-3xl rounded-tl-md border border-white bg-white px-4 py-3 text-sm leading-6 text-on-surface shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]"
+                        ? "rounded-3xl rounded-tl-md border border-white bg-white px-4 py-3 text-sm leading-6 text-on-surface shadow-md"
                         : "ml-8 rounded-3xl rounded-br-md bg-[linear-gradient(135deg,#0f3d78,#1b5aa5)] px-4 py-3 text-sm leading-6 text-white shadow-[0_14px_32px_-18px_rgba(15,61,120,0.65)]"}
                     >
                       {message.role === "assistant"
@@ -324,7 +324,7 @@ export function InternalLeadAssistant({
                     </div>
                   ))}
                   {loading ? (
-                    <div className="flex items-center gap-2 rounded-3xl border border-white bg-white px-4 py-3 text-sm text-secondary shadow-[0_12px_25px_-18px_rgba(15,23,42,0.35)]">
+                    <div className="flex items-center gap-2 rounded-3xl border border-white bg-white px-4 py-3 text-sm text-secondary shadow-md">
                       <Loader2 className="h-4 w-4 animate-spin" /> Thinking...
                     </div>
                   ) : null}
@@ -368,7 +368,7 @@ export function InternalLeadAssistant({
               }}
               className="border-t border-slate-200/80 bg-white px-6 py-3"
             >
-              <div className="rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_12px_30px_-24px_rgba(15,23,42,0.25)]">
+              <div className="rounded-3xl border border-slate-200/80 bg-white p-2 shadow-md">
                 <div className="flex gap-2">
                   <Input
                     value={input}

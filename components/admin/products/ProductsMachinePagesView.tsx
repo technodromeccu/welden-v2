@@ -663,7 +663,7 @@ export function ProductsMachinePagesView({ ctx }: { ctx: any }) {
                             <Button onClick={publishMachine} disabled={machineDraftBusy !== null}>
                               {machineDraftBusy === "publish" ? "Publishing..." : getSaveButtonLabel("machine-publish", "Publish changes")}
                             </Button>
-                            <Button variant="outline" className="border-rose-200 text-rose-600 hover:bg-rose-50 hover:text-rose-700" onClick={deleteProduct} disabled={machineDraftBusy !== null}>
+                            <Button variant="destructive" onClick={deleteProduct} disabled={machineDraftBusy !== null}>
                               Delete machine
                             </Button>
                           </div>

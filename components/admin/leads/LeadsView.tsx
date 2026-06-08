@@ -2,10 +2,11 @@
 
 import type { Dispatch, SetStateAction } from "react";
 import { useRef, useEffect, useState } from "react";
-import { ChevronDown, ChevronRight, Filter, GripVertical, Loader2, Phone, RefreshCw, Search, X } from "lucide-react";
+import { ChevronDown, ChevronRight, FileText, Filter, GripVertical, Inbox, Loader2, Phone, RefreshCw, Search, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/empty-state";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { InternalLeadAssistant } from "@/components/admin/leads/InternalLeadAssistant";
@@ -752,7 +753,7 @@ export function LeadsView(props: LeadsViewProps) {
                           ))}
                         </div>
                         <div className="mt-4 flex flex-col gap-3">
-                          <Button className="justify-start bg-red-600 text-white hover:bg-red-700" onClick={escalationAction.onPrimary}>
+                          <Button variant="destructive" className="justify-start" onClick={escalationAction.onPrimary}>
                             {escalationAction.primaryLabel}
                           </Button>
                           <Button variant="outline" className="justify-start border-red-200 bg-white text-red-900 hover:bg-red-100" onClick={escalationAction.onSecondary}>
@@ -834,7 +835,11 @@ export function LeadsView(props: LeadsViewProps) {
                     {selectedLead.workflow?.quotationSnapshot ? (
                       <div className="max-h-[22rem] overflow-y-auto whitespace-pre-wrap break-words text-sm leading-7 text-secondary">{selectedLead.workflow.quotationSnapshot}</div>
                     ) : (
-                      <div className="text-sm text-secondary">No quotation text stored on this lead yet.</div>
+                      <EmptyState
+                        icon={FileText}
+                        title="No quotation snapshot yet"
+                        description="When the chatbot or an admin issues a quotation for this lead, the rendered text will be stored here for reference."
+                      />
                     )}
                   </div>
                   <div className="space-y-4">
@@ -1018,7 +1023,7 @@ export function LeadsView(props: LeadsViewProps) {
           {/* WF-09: Quotation preview modal */}
           {previewText && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" onClick={() => setPreviewText(null)}>
-              <div className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-[0_24px_64px_-16px_rgba(0,0,0,0.32)]" onClick={(e) => e.stopPropagation()}>
+              <div className="relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between border-b border-outline-variant/10 px-6 py-4">
                   <div>
                     <div className="text-xs font-medium text-secondary">Quotation preview</div>
@@ -1120,7 +1125,7 @@ export function LeadsView(props: LeadsViewProps) {
           ) : null}
 
           {currentUserRole !== "agent" && pipelineViewMode === "board" ? (
-            <section className="overflow-hidden rounded-3xl border border-outline-variant/12 bg-[radial-gradient(circle_at_top_left,rgba(26,75,140,0.08),transparent_22%),linear-gradient(180deg,rgba(248,250,252,0.96),rgba(255,255,255,0.98))] shadow-[0_28px_80px_-42px_rgba(15,23,42,0.3)]">
+            <section className="overflow-hidden rounded-3xl border border-outline-variant/12 bg-[radial-gradient(circle_at_top_left,rgba(26,75,140,0.08),transparent_22%),linear-gradient(180deg,rgba(248,250,252,0.96),rgba(255,255,255,0.98))] shadow-xl">
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-outline-variant/10 px-6 py-4">
                 <div>
                   <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Kanban flow</div>
@@ -1540,7 +1545,7 @@ export function LeadsView(props: LeadsViewProps) {
                         className="grid min-w-0 flex-1 gap-4 px-6 py-6 text-left lg:grid-cols-[1.75fr_0.95fr_0.7fr_1fr_0.8fr] lg:items-center"
                       >
                         <div className="flex items-start gap-4">
-                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface-container-low text-sm font-black uppercase text-primary">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface-container-low text-sm font-black uppercase text-primary">
                             {lead.lead.name.split(" ").map((part) => part[0]).slice(0, 2).join("")}
                           </div>
                           <div className="min-w-0">
@@ -1589,7 +1594,7 @@ export function LeadsView(props: LeadsViewProps) {
                           onClick={() => void applyRowQuickAction(lead.id, "mark_contacted")}
                           disabled={isLoadingAction}
                           className={cn(
-                            "flex h-7 w-7 items-center justify-center rounded-lg transition-colors",
+                            "flex h-8 w-8 items-center justify-center rounded-lg transition-colors",
                             contactedToday
                               ? "text-emerald-600 hover:bg-emerald-50"
                               : "text-secondary hover:bg-surface-container-high hover:text-primary"
@@ -1608,7 +1613,15 @@ export function LeadsView(props: LeadsViewProps) {
                       </div>
                     </div>
                   );
-                }) : <div className="px-6 py-12 text-center text-sm text-secondary">No leads match the current saved view{activeFilterCount > 0 || searchTerm ? ", search, or active filters" : ""}.</div>}
+                }) : (
+                  <div className="px-6 py-6">
+                    <EmptyState
+                      icon={Inbox}
+                      title="No leads to show"
+                      description={`Nothing matches the current saved view${activeFilterCount > 0 || searchTerm ? ", search, or active filters" : ""}. Adjust the filters or clear the search to widen the queue.`}
+                    />
+                  </div>
+                )}
               </div>
 
               {/* PERF-01: Load more button — shown when there are more sessions server-side than currently loaded */}

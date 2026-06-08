@@ -29,7 +29,7 @@ export function GlobalMachineLabelsPanel({
 
   return (
     <div className="fixed inset-0 z-[75] flex items-start justify-center bg-slate-950/40 px-4 py-8 backdrop-blur-sm">
-      <div className="w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white shadow-[0_30px_90px_-35px_rgba(15,23,42,0.55)]">
+      <div className="w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white shadow-2xl">
         <div className="flex items-center justify-between border-b border-outline-variant/10 px-6 py-6">
           <div>
             <div className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Global labels</div>

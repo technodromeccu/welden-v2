@@ -303,7 +303,7 @@ export function QuotationTemplatesView({ ctx }: { ctx: any }) {
                           >
                             <div className="flex items-start justify-between gap-4">
                               <div className="flex min-w-0 items-center gap-3">
-                                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary-fixed/35 text-primary">
+                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary-fixed/35 text-primary">
                                   <ClipboardList className="h-5 w-5" />
                                 </div>
                                 <div className="min-w-0">

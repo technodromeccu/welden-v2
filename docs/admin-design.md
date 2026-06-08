@@ -267,10 +267,12 @@ Floor: badge text is `text-xs` (12px) — never sub-12px.
 For variants in size, prefer `text-[11px] tracking-[0.18em]` or `text-[11px] tracking-[0.2em]`. **Pick one per view, never mix two letter-spacings.**
 
 ### Button (use the Button component, not raw `<button>`)
-- **Default**: the filled primary look — for the main action in a panel.
+- **Default**: filled primary brand gradient with inset micro-bevel (top highlight + bottom shade) — for the main action in a panel.
+- **`variant="secondary"`** — neutral surface with a 1px top highlight for tactile depth — supporting actions.
 - **`variant="outline"`** (50 uses) — for secondary actions, by far the most-used in admin.
 - **`variant="ghost"`** — for tertiary actions inside dense panels.
-- Raw `<button>` is acceptable only for icon-only actions inside list rows (e.g. drag handles, delete-row, dropdown triggers) — and those should always have an `aria-label`.
+- **`variant="destructive"`** — red brand gradient with inset micro-bevel — for **delete / discard / escalate / irreversible** actions only. Do NOT use outline+red inline overrides; route through this variant so destructive intent is unambiguous and consistent.
+- Every variant has `active:translate-y-px` for tactile press feedback. Raw `<button>` is acceptable only for icon-only actions inside list rows (e.g. drag handles, delete-row, dropdown triggers) — and those should always have an `aria-label`.
 
 #### Sizing scale (strict 8pt)
 | Size | Height | Horizontal padding |
